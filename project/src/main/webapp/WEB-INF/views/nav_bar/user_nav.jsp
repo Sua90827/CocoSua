@@ -7,7 +7,7 @@
 		<div>
 			<a href="notice">NOTICE</a> | <a href="qna">Q&A</a> | 
 			<a href="/">MILLKccoa</a> |
-			<a href="login">LOGOUT</a> | <a href="join">EDIT</a> | <a href="cart">CART</a> | <a href="guide">GUIDE</a> | <a href="mypages">MY PAGES</a><br>
+			<a href="logout">LOGOUT</a> | <a href="edit">EDIT</a> | <a href="cart">CART</a> | <a href="guide">GUIDE</a> | <a href="mypages">MY PAGES</a><br>
 		</div>
 		<div>
 			<a href="search">SEARCH</a>
