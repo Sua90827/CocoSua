@@ -6,12 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/styles.css">
-<title></title>
+<title>suamall</title>
 </head>
 <body>
-	<form action="do.do" method="post">
-		<input type="text" name="name">
-		<button type="submit">저장</button>
-	</form>
+<c:if test="${empty sessionScope.loginType }">
+	<%@ include file="/WEB-INF/views/nav_bar/basic_nav.jsp"%>
+</c:if>
+<c:if test="${sessionScope.loginType eq 1 || sessionScope.loginType eq 2 }">
+	<%@ include file="/WEB-INF/views/nav_bar/user_nav.jsp"%>
+</c:if>
+<br>
+
 </body>
 </html>
