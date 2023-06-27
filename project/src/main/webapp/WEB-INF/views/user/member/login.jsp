@@ -13,9 +13,11 @@
 		<%@ include file="/WEB-INF/views/nav_bar/basic_nav.jsp"%>
 	</c:if>
 	<br>
+	${msg }
+	<br>
 	<form action="login.do" method="post">
-		<input type="text" name="member_id">
-		<input type="password" name="member_pw">
+		<input type="text" name="member_id"><br>
+		<input type="password" name="member_pw"><br>
 		<button type="submit">로그인</button>
 	</form>
 </body>
