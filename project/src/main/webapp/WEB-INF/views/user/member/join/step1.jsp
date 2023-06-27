@@ -17,16 +17,16 @@ ${msg }
 <br>
 <form action="join.do" method="post">
 	<input type="hidden" name="member_login_type" value="0">
-	아이디 : <input type="text" name="member_id" placeholder="example@example.com" value="${member.member_id }">
-	비밀번호 : <input type="password" name="member_pw" value="${member.member_pw }">
-	비밀번호 확인 : <input type="password" name="member_pwCheck" value="${member.member_pwCheck }">
-	이름 : <input type="text" name="member_nm" value="${member.member_nm }">
-	email : <input type="text" name="member_email" value="${member.member_email }">
-	생년월일 : <input type="text" name="member_birth" placeholder="19001010" value="${member.member_birth }">
-	휴대폰 : <input type="text" name="member_phone_num" placeholder="01012345678" value="${member.member_phone_num }">
-	우편번호 : <input type="text" name="member_zip_code" value="${member.member_zip_code }">
-	주소 : <input type="text" name="member_address" value="${member.member_address }">
-	상세 주소 : <input type="text" name="member_address_detail" value="${member.member_address_detail }">
+	아이디 : <input type="text" name="member_id" placeholder="example@example.com" value="${member.member_id }"><br>
+	비밀번호 : <input type="password" name="member_pw" value="${member.member_pw }"><br>
+	비밀번호 확인 : <input type="password" name="member_pwCheck" value="${member.member_pwCheck }"><br>
+	이름 : <input type="text" name="member_nm" value="${member.member_nm }"><br>
+	email : <input type="text" name="member_email" value="${member.member_email }"><br>
+	생년월일 : <input type="text" name="member_birth" placeholder="19001010" value="${member.member_birth }"><br>
+	휴대폰 : <input type="text" name="member_phone_num" placeholder="01012345678" value="${member.member_phone_num }"><br>
+	우편번호 : <input type="text" name="member_zip_code" value="${member.member_zip_code }"><br>
+	주소 : <input type="text" name="member_address" value="${member.member_address }"><br>
+	상세 주소 : <input type="text" name="member_address_detail" value="${member.member_address_detail }"><br>
 	<button type="submit">회원가입</button>
 </form>
 </body>
