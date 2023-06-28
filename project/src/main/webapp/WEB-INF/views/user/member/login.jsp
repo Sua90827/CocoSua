@@ -16,8 +16,8 @@
 	${msg }
 	<br>
 	<form action="login.do" method="post">
-		<input type="text" name="member_id"><br>
-		<input type="password" name="member_pw"><br>
+		<input type="text" name="member_id" value="${member.member_id }"><br>
+		<input type="password" name="member_pw" value=${member.member_pw }><br>
 		<button type="submit">로그인</button>
 	</form>
 </body>
