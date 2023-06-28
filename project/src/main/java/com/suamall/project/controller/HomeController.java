@@ -17,7 +17,7 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String main() {
-		return "index";
+		return "user/index";
 	}
 	
 	@PostMapping("do.do")
