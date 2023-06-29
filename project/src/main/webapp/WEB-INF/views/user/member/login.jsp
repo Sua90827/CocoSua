@@ -20,5 +20,8 @@
 		<input type="password" name="member_pw" value=${member.member_pw }><br>
 		<button type="submit">로그인</button>
 	</form>
+	<script type="text/javascript">
+	//02815b62490fb36ce12ed9ee4dcdebe6
+	</script>
 </body>
 </html>

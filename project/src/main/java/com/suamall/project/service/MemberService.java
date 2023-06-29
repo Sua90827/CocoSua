@@ -21,33 +21,33 @@ public class MemberService {
 		MemberDTO db = new MemberDTO();
 		db= repo.idCheck(inputDTO.getMember_id());
 		if(inputDTO.getMember_id()==null || inputDTO.getMember_id().equals(""))
-			return "id¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+			return "idë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 		if(db!=null)
-			return "ÀÌ¹Ì ÀÖ´Â ¾ÆÀÌµğÀÔ´Ï´Ù.";
+			return "ì´ë¯¸ ìˆëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.";
 		
 		if(inputDTO.getMember_pw()==null || inputDTO.getMember_pw().equals(""))
-			return "pw¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+			return "pwë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 		if(!(inputDTO.getMember_pw().equals(inputDTO.getMember_pwCheck())))
-			return "pw°¡ ´Ù¸¨´Ï´Ù.";
+			return "pwê°€ ë‹¤ë¦…ë‹ˆë‹¤.";
 		if(inputDTO.getMember_nm()==null || inputDTO.getMember_nm().equals(""))
-			return "nm¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+			return "nmë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 		if(inputDTO.getMember_email()==null || inputDTO.getMember_email().equals(""))
-			return "email¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+			return "emailë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 		if(inputDTO.getMember_birth() == 0)
-			return "birthday¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+			return "birthdayë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 		if(inputDTO.getMember_phone_num()==null || inputDTO.getMember_phone_num().equals(""))
-			return "phone number¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+			return "phone numberë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 		if(inputDTO.getMember_zip_code()==null || inputDTO.getMember_zip_code().equals(""))
-			return "zip_code¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+			return "zip_codeë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 		if(inputDTO.getMember_address()==null || inputDTO.getMember_address().equals(""))
-			return "address¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+			return "addressë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 		if(inputDTO.getMember_address_detail()==null || inputDTO.getMember_address_detail().equals(""))
-			return "address detail¸¦ ÀÔ·ÂÇÏ½Ã¿À";		
+			return "address detailë¥¼ ì…ë ¥í•˜ì‹œì˜¤";		
 
 		if(db == null) {
 			session.setAttribute("user_id", inputDTO.getMember_id());
 			repo.storeDTO(inputDTO);
-			return "°¡ÀÔ¿Ï·á";
+			return "ê°€ì…ì™„ë£Œ";
 		}
 		
 		return null;
@@ -55,24 +55,19 @@ public class MemberService {
 
 	public String getMsg(MemberDTO dto) {
 		MemberDTO db = new MemberDTO();
-	
 		if(dto.getMember_id().equals("") || dto.getMember_id()==null) {
-			return "id¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+			return "idë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 		}
 		if(dto.getMember_pw().equals("") || dto.getMember_pw()==null) {
-			return "pw¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+			return "pwë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 		}
-		
-		db = repo.idCheck(dto.getMember_id());
-		if(db!=null) {
-			if(!(dto.getMember_pw().equals( db.getMember_pw()))) {
-				return "pw°¡ ´Ù¸¨´Ï´Ù.";
-			}
-		}else 
-			return "È¸¿øÁ¤º¸°¡ ¾ø½À´Ï´Ù.";
-
+		if(!(dto.getMember_id().equals( db.getMember_id()))) {
+			return "idê°€ ë‹¤ë¦…ë‹ˆë‹¤.";
+		}
+		if(!(dto.getMember_pw().equals( db.getMember_pw()))) {
+			return "pwê°€ ë‹¤ë¦…ë‹ˆë‹¤.";
+		}
 		session.setAttribute("user_id", dto.getMember_id());
-		session.setAttribute("loginType", dto.getMember_login_type());
 		return null;
 	}
 	
