@@ -57,4 +57,6 @@ public class MemberController {
 			return "user/member/login";
 		return "redirect:/";
 	}
+	
+	
 }
