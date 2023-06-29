@@ -12,13 +12,17 @@
 	<c:if test="${empty sessionScope.loginType }">
 		<%@ include file="/WEB-INF/views/nav_bar/basic_nav.jsp"%>
 	</c:if>
-	<br>
-	${msg }
+	<br> ${msg }
 	<br>
 	<form action="login.do" method="post">
 		<input type="text" name="member_id" value="${member.member_id }"><br>
 		<input type="password" name="member_pw" value=${member.member_pw }><br>
 		<button type="submit">로그인</button>
 	</form>
+	<a class="p-2"
+		href="https://kauth.kakao.com/oauth/authorize?client_id=02815b62490fb36ce12ed9ee4dcdebe6&redirect_uri=http://localhost:8080/login/kakao&response_type=code">
+		<img src="resources/img/kakaoImg.png"
+		style="height: 60px" />
+	</a>
 </body>
 </html>

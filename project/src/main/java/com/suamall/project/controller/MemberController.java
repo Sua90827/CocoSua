@@ -30,13 +30,13 @@ public class MemberController {
 	public String join( @Valid MemberDTO dto, BindingResult br, Model model ) {
 		String msg = "";
 		if (br.hasErrors()) {
-			msg="";
+			msg="입력이 올바르지 않습니다.";
 			model.addAttribute("msg", msg);
 			model.addAttribute("member", dto);
 			return "user/member/join/step1";
 		}
 		msg = service.idCheck(dto);
-		if(msg=="���ԿϷ�")	
+		if(msg=="가입완료")	
 		return "user/member/join/step2";
 		else {
 			model.addAttribute("msg", msg);
@@ -53,18 +53,10 @@ public class MemberController {
 	@PostMapping("/login.do")
 	public String login(Model model, MemberDTO dto) {
 		String msg = service.getMsg(dto);
-		
-		if(msg!=null) {
-			model.addAttribute("msg", msg);
-			model.addAttribute("member", dto);
+		if(msg!=null)
 			return "user/member/login";
-		}
 		return "redirect:/";
 	}
 	
-	@GetMapping("/logout")
-	public String logout() {
-		session.invalidate();
-		return "redirect:/";
-	}
+	
 }
