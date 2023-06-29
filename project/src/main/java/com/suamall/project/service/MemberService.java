@@ -55,19 +55,24 @@ public class MemberService {
 
 	public String getMsg(MemberDTO dto) {
 		MemberDTO db = new MemberDTO();
+	
 		if(dto.getMember_id().equals("") || dto.getMember_id()==null) {
 			return "id를 입력하시오";
 		}
 		if(dto.getMember_pw().equals("") || dto.getMember_pw()==null) {
 			return "pw를 입력하시오";
 		}
-		if(!(dto.getMember_id().equals( db.getMember_id()))) {
-			return "id가 다릅니다.";
-		}
-		if(!(dto.getMember_pw().equals( db.getMember_pw()))) {
-			return "pw가 다릅니다.";
-		}
+		
+		db = repo.idCheck(dto.getMember_id());
+		if(db!=null) {
+			if(!(dto.getMember_pw().equals( db.getMember_pw()))) {
+				return "pw가 다릅니다.";
+			}
+		}else 
+			return "회원정보가 없습니다.";
+
 		session.setAttribute("user_id", dto.getMember_id());
+		session.setAttribute("loginType", dto.getMember_login_type());
 		return null;
 	}
 	
