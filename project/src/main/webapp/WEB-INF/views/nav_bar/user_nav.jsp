@@ -5,7 +5,7 @@
 <div>
 	<div>
 		<div>
-			<a href="notice">NOTICE</a> | <a href="qna">Q&A</a> | <c:if test="${sessionScope.loginType eq 2">
+			<a href="notice">NOTICE</a> | <a href="qna">Q&A</a> | <c:if test="${sessionScope.loginType eq 2}">
 	<a href="admin">ADMIN</a> |
 </c:if>
 			<a href="/">MILLKccoa</a> |
