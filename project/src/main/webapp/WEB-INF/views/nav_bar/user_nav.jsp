@@ -5,7 +5,9 @@
 <div>
 	<div>
 		<div>
-			<a href="notice">NOTICE</a> | <a href="qna">Q&A</a> | 
+			<a href="notice">NOTICE</a> | <a href="qna">Q&A</a> | <c:if test="${sessionScope.loginType eq 2">
+	<a href="admin">ADMIN</a> |
+</c:if>
 			<a href="/">MILLKccoa</a> |
 			<a href="logout">LOGOUT</a> | <a href="edit">EDIT</a> | <a href="cart">CART</a> | <a href="guide">GUIDE</a> | <a href="mypages">MY PAGES</a><br>
 		</div>

@@ -15,11 +15,9 @@
 <br>
 ${msg }
 <br>
-<form action="join.do" method="post">
-	<input type="hidden" name="member_login_type" value="0">
-	아이디 : <input type="text" name="member_id" value="${member.member_id }"><br>
-	비밀번호 : <input type="password" name="member_pw" value="${member.member_pw }"><br>
-	비밀번호 확인 : <input type="password" name="member_pwCheck" value="${member.member_pwCheck }"><br>
+<form action="kakao_join.do" method="post">
+	<input type="hidden" name="member_login_type" value="1">
+	<input type="hidden" name="member_id" value="${member.member_id }"><br>
 	이름 : <input type="text" name="member_nm" value="${member.member_nm }"><br>
 	email : <input type="text" name="member_email"  placeholder="example@example.com" value="${member.member_email }"><br>
 	생년월일 : <input type="text" name="member_birth" placeholder="19001010" value="${member.member_birth }"><br>
