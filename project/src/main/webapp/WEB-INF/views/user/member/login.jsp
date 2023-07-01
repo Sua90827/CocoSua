@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="resources/img/cocoSuaIcon.png" rel="shortcut icon" type="image/x-icon">
-<link rel="stylesheet" href="resources/css/styles.css">
+<link href="/resources/img/cocoSuaIcon.png" rel="shortcut icon" type="image/x-icon">
+<link rel="stylesheet" href="/resources/css/styles.css">
 <title>CocoSua</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
 	</c:if>
 	<br> ${msg }
 	<br>
-	<form action="login.do" method="post">
+	<form action="/login.do" method="post">
 		<input type="text" name="member_id" value="${member.member_id }"><br>
 		<input type="password" name="member_pw" value=${member.member_pw }><br>
 		<button type="submit">로그인</button>

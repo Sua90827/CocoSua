@@ -5,12 +5,12 @@
 <div>
 	<div>
 		<div>
-			<a href="notice">NOTICE</a> | <a href="qna">Q&A</a> | 
+			<a href="/notice">NOTICE</a> | <a href="/qna">Q&A</a> | 
 			<a href="/">MILLKccoa</a> |
-			<a href="login">LOGIN</a> | <a href="join">JOIN</a> | <a href="cart">CART</a> | <a href="guide">GUIDE</a> | <a href="mypages">MY PAGES</a><br>
+			<a href="/login">LOGIN</a> | <a href="/join">JOIN</a> | <a href="/cart">CART</a> | <a href="/guide">GUIDE</a> | <a href="/mypages">MY PAGES</a><br>
 		</div>
 		<div>
-			<a href="search">SEARCH</a>
+			<a href="/search">SEARCH</a>
 		</div>
 	</div>
 	<div>
