@@ -54,8 +54,11 @@ public class MemberController {
 	public String login(MemberDTO dto, Model model) {
 		System.out.println("gdgd");
 		String msg = service.getMsg(dto);
-		if(msg!=null)
+		if(msg!=null) {
+			model.addAttribute("msg", msg);
+			model.addAttribute("member", dto);
 			return "user/member/login";
+		}
 		else
 		return "redirect:/";
 	}
