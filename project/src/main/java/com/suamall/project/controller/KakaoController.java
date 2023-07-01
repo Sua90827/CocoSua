@@ -56,14 +56,15 @@ public class KakaoController {
 	}
 	
 	@PostMapping("/kakao_join.do")
-	public String Store( @Valid KakaoMemberDTO dto, BindingResult br, Model model ) {
+	public String Store(KakaoMemberDTO dto, Model model ) {
+		System.out.println("gdgd");
 		String msg = "";
-		if (br.hasErrors()) {
-			msg="입력이 올바르지 않습니다.";
-			model.addAttribute("msg", msg);
-			model.addAttribute("member", dto);
-			return "user/member/kakao_join/step1";
-		}
+//		if (br.hasErrors()) {
+//			msg="입력이 올바르지 않습니다.";
+//			model.addAttribute("msg", msg);
+//			model.addAttribute("member", dto);
+//			return "user/member/kakao_join/step1";
+//		}
 		msg = service.getJoinMsg(dto);
 		if(msg=="가입완료")	
 		return "redirect:/";
@@ -75,7 +76,6 @@ public class KakaoController {
 	}
 
 	@RequestMapping(value="/logout")
-
 	public ModelAndView logout(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
