@@ -21,7 +21,7 @@
 		<button type="submit">로그인</button>
 	</form>
 	<a class="p-2"
-		href="https://kauth.kakao.com/oauth/authorize?client_id=02815b62490fb36ce12ed9ee4dcdebe6&redirect_uri=http://localhost:8080/login/kakao&response_type=code">
+		href="https://kauth.kakao.com/oauth/authorize?client_id=bb7ab199150e947c571829261362a621&redirect_uri=http://localhost:8080/login/kakao&response_type=code">
 		<img src="resources/img/kakaoImg.png"
 		style="height: 60px" />
 	</a>
