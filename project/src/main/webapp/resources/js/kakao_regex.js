@@ -1,5 +1,5 @@
     function birth_click(){
-		document.getElementById("member_birth").innerText="ex)19001212";
+		document.getElementById("member_birth").innerText="ex)19001010";
 	}
 	function birth_blur(){
 		document.getElementById("member_birth").innerText="";
@@ -35,9 +35,14 @@
 		}
 		
 		var phoneRegex = /^[0-9]{11,11}$/;
-		
+		var birthRegex;
 		var phoner = phoneRegex.test(phone);
 		
+        if(birthRegex <= 10000000 || birthRegex >= 99999999){
+            document.getElementById("msg").innerText="생년월일이 형식에 맞지 않습니다.";
+            return;
+        }
+
 		if(phoner === false){
 			document.getElementById("msg").innerText="핸드폰번호가 형식에 맞지 않습니다.";
 			return;
