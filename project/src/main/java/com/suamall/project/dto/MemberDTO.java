@@ -10,9 +10,8 @@ import lombok.ToString;
 
 @Setter
 @Getter
-@ToString
-@NoArgsConstructor
 public class MemberDTO {
+	@Setter
 	@Pattern(regexp = "^[a-zA-Z0-9_]{6,20}$")
 	private String member_id;
 	@Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$")

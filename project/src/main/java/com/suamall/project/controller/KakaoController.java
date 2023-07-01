@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.suamall.project.dto.MemberDTO;
 import com.suamall.project.service.KakaoService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,31 +21,35 @@ public class KakaoController {
 
 	private final KakaoService service;
 
+
 	@RequestMapping(value = "/login/kakao")
 	public ModelAndView login(@RequestParam("code") String code, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		// 1번 인증코드 요청 전달"
 		String accessToken = service.getAccessToken(code);
 		// 2번 인증코드로 토큰 전달
-		HashMap<String, Object> userInfo = service.getUserInfo(accessToken);
-		System.out.println("userId" + userInfo.get("nickname"));
-		System.out.println("email" + userInfo.get("email"));
+		MemberDTO userInfo = service.getUserInfo(accessToken);
 
-		System.out.println("login info : " + userInfo.toString());
 
-		if (userInfo.get("email") != null) {
-			session.setAttribute("userId", userInfo.get("email"));
-			session.setAttribute("accessToken", accessToken);
-		}
-		
-		mav.addObject("userId", userInfo.get("email"));
-		mav.setViewName("index");
+		//stem.out.println("login info : " + userInfo.toString());
+
+		if (userInfo != null) {
+			session.setAttribute("userId", userInfo.getMember_id());
+			//session.setAttribute("accessToken", accessToken);
+			session.setAttribute("loginType", userInfo.getMember_login_type());
+			
+			mav.setViewName("redirect:/");
+			return mav;
+		} else {
+			mav.addObject("member", userInfo);
+			mav.setViewName("user/member/kakao_join/step1");
+
 		return mav;
+		}
 	}
 
+	@RequestMapping(value="/logout")
 
-	
-	@RequestMapping(value = "/logout")
 	public ModelAndView logout(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
@@ -54,6 +59,5 @@ public class KakaoController {
 		mav.setViewName("index");
 		return mav;
 	}
-	
-	
+
 }
