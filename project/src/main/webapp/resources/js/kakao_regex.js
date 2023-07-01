@@ -33,10 +33,6 @@
 			document.getElementById("msg").innerText="상세주소 입력은 필수입니다.";
 			return;
 		}
-		if(pw != pwCheck){
-			document.getElementById("msg").innerText="비밀번호가 일치하지 않습니다.";
-			return;
-		}
 		
 		var phoneRegex = /^[0-9]{11,11}$/;
 		
