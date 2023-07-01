@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="resources/css/styles.css">
 <link href="resources/img/cocoSuaIcon.png" rel="shortcut icon" type="image/x-icon">
+<link rel="stylesheet" href="resources/css/styles.css">
 <title>suamall</title>
 </head>
 <body>
