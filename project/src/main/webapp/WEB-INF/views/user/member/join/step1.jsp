@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="resources/img/cocoSuaIcon.png" rel="shortcut icon" type="image/x-icon">
-<link rel="stylesheet" href="resources/css/styles.css">
+<link href="/resources/img/cocoSuaIcon.png" rel="shortcut icon" type="image/x-icon">
+<link rel="stylesheet" href="/resources/css/styles.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>CocoSua</title>
 </head>
@@ -18,7 +18,7 @@
 ${msg }
 <span id="msg" style="color: red"></span><br>
 <br>
-<form action="join.do" method="post" id="f">
+<form action="/join.do" method="post" id="f">
 	<input type="hidden" name="member_login_type" value="0">
 	아이디 : <input type="text" id="id" name="member_id" value="${member.member_id }" onkeydown="id_click();" onblur="id_blur();">
 	<span id="member_id" style="color: red"></span><br>
@@ -38,7 +38,7 @@ ${msg }
 	<input type="hidden" id="sample6_extraAddress" readonly="readonly">
 	<input type="button" value="회원가입" onclick="check();">
 </form>
-<script src="resources/js/register_regex.js"></script>
-<script src="resources/js/search_road.js"></script>
+<script src="/resources/js/register_regex.js"></script>
+<script src="/resources/js/search_road.js"></script>
 </body>
 </html>
