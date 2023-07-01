@@ -61,6 +61,9 @@ public class MemberService {
 		if(dto.getMember_pw().equals("") || dto.getMember_pw()==null) {
 			return "pw를 입력하시오";
 		}
+		
+		
+		
 		if(!(dto.getMember_id().equals( db.getMember_id()))) {
 			return "id가 다릅니다.";
 		}

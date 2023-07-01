@@ -9,7 +9,7 @@
 	</select>
 	
     <insert id="storeDTO" parameterType="com.suamall.project.dto.KakaoMemberDTO">
-    	INSERT INTO sh_member_info VALUES (#{member_id}, '', #{member_nm}, #{member_email}, #{member_birth}, #{member_phone_num}, 
+    	INSERT INTO sh_member_info VALUES (#{member_id}, ' ', #{member_nm}, #{member_email}, #{member_birth}, #{member_phone_num}, 
     	#{member_zip_code}, #{member_address}, #{member_address_detail}, #{member_login_type})
     </insert>
     

@@ -51,10 +51,12 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login.do")
-	public String login(Model model, MemberDTO dto) {
+	public String login(MemberDTO dto, Model model) {
+		System.out.println("gdgd");
 		String msg = service.getMsg(dto);
 		if(msg!=null)
 			return "user/member/login";
+		else
 		return "redirect:/";
 	}
 	

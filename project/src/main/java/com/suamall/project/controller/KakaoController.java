@@ -33,7 +33,6 @@ public class KakaoController {
 		try {
 			kakaoInput = service.getUserInfo(accessToken);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		KakaoMemberDTO userInfo = service.getMember(kakaoInput.getMember_id());
@@ -75,14 +74,13 @@ public class KakaoController {
 		}
 	}
 
-	@RequestMapping(value="/logout")
+	@RequestMapping(value="/kakao_logout")
 	public ModelAndView logout(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
 		service.kakaoLogout((String) session.getAttribute("accessToken"));
-		session.removeAttribute("accessToken");
-		session.removeAttribute("userId");
-		mav.setViewName("index");
+		session.invalidate();
+		mav.setViewName("redirect:/");
 		return mav;
 	}
 
