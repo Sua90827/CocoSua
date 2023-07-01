@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <link href="resources/img/cocoSuaIcon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="resources/css/styles.css">
-<title>suamall</title>
+<title>CocoSua</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/nav_bar/admin_nav.jsp"%>
