@@ -43,7 +43,6 @@ public class KakaoController {
 			session.setAttribute("userId", userInfo.getMember_id());
 			//session.setAttribute("accessToken", accessToken);
 			session.setAttribute("loginType", userInfo.getMember_login_type());
-			mav.addObject("msg", userInfo.getMember_login_type());
 			mav.setViewName("redirect:/");
 			return mav;
 		} 
