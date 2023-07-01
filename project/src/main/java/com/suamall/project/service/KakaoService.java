@@ -69,7 +69,8 @@ public class KakaoService {
 		return accessToken;
 	}
 
-	public HashMap<String, Object> getUserInfo(String accessToken) {
+	public MemberDTO getUserInfo(String accessToken) {
+		MemberDTO db = new MemberDTO();
 		HashMap<String, Object> userInfo = new HashMap<String, Object>();
 		String reqUrl = "https://kapi.kakao.com/v2/user/me";
 		try {
@@ -104,18 +105,16 @@ public class KakaoService {
 			userInfo.put("email", email);
 			System.out.println("name" + nickname);
 			System.out.println("email" + email);
-			System.out.println(userInfo);
 			
-			//MemberDTO db = new MemberDTO();
-			//db= repo.idCheck(id);
-
+			db= repo.idCheck(id);
+			if(db == null)
+				return null;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return userInfo;
+		return db;
 	}
-	
-	
 
 	public void kakaoLogout(String accessToken) {
 		String reqURL = "http://kapi.kakao.com/v1/user/logout";
