@@ -8,19 +8,25 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.suamall.project.dto.MemberDTO;
-import com.suamall.project.repository.MemberRepository;
+import com.suamall.project.dto.KakaoMemberDTO;
+import com.suamall.project.repository.KakaoMemberRepository;
 
 @Service
 public class KakaoService {
+	
 	@Autowired
-	private MemberRepository repo;
+	private KakaoMemberRepository repo;
+	
+	@Autowired
+	private HttpSession session;
 
 	public String getAccessToken(String code) {
 		String accessToken = "";
@@ -36,7 +42,7 @@ public class KakaoService {
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
-			sb.append("&client_id=02815b62490fb36ce12ed9ee4dcdebe6");
+			sb.append("&client_id=bb7ab199150e947c571829261362a621");
 			sb.append("&redirect_uri=http://localhost:8080/login/kakao");
 			sb.append("&code="+code);
 			
@@ -69,8 +75,8 @@ public class KakaoService {
 		return accessToken;
 	}
 
-	public MemberDTO getUserInfo(String accessToken) {
-		MemberDTO db = new MemberDTO();
+	public KakaoMemberDTO getUserInfo(String accessToken) throws Exception {
+		KakaoMemberDTO kakaoInput = null;
 		HashMap<String, Object> userInfo = new HashMap<String, Object>();
 		String reqUrl = "https://kapi.kakao.com/v2/user/me";
 		try {
@@ -96,24 +102,25 @@ public class KakaoService {
 			
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakaoAccount = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-			String id = element.getAsJsonObject().get("id").toString();
+			String member_id = element.getAsJsonObject().get("id").getAsString();
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
 			
-			System.out.println("kakao id : " + id);
+			System.out.println("kakao id : " + member_id);
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
 			System.out.println("name" + nickname);
 			System.out.println("email" + email);
-			
-			db= repo.idCheck(id);
-			if(db == null)
-				return null;
+			kakaoInput = new KakaoMemberDTO();
+			kakaoInput.setMember_id(member_id);
+			kakaoInput.setMember_nm(nickname);
+			kakaoInput.setMember_email(email);
+		
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return db;
+		return kakaoInput;
 	}
 
 	public void kakaoLogout(String accessToken) {
@@ -140,6 +147,34 @@ public class KakaoService {
 		}
 	}
 	
+	public KakaoMemberDTO getMember(String member_id) {
+		KakaoMemberDTO member = repo.idCheck(member_id);
+		return member;
+	}
+
+
+
+	public String getJoinMsg(KakaoMemberDTO input) {
+		if(input.getMember_birth()==0) {
+			return "birthday 입력하세요";
+		}
+		if(input.getMember_phone_num()==null||input.getMember_phone_num().equals("")) {
+			return "phone_num 확인 좀 ;;";
+		}
+		if(input.getMember_zip_code()==null || input.getMember_zip_code().equals("")) {
+			return "check zip code";
+		}
+		if(input.getMember_address()==null || input.getMember_address().equals("")) {
+			return "check address";
+		}
+		if(input.getMember_address_detail()==null || input.getMember_address_detail().equals("")) {
+			return "check detail address";
+		}
+		
+		session.setAttribute("user_id", input.getMember_id());
+		repo.storeDTO(input);
+		return "가입완료";
 	
+	}
 
 }
