@@ -8,8 +8,8 @@
 			<a href="notice">NOTICE</a> | <a href="qna">Q&A</a> | <c:if test="${sessionScope.loginType eq 2}">
 	<a href="admin">ADMIN</a> |
 </c:if>
-			<a href="/">MILLKccoa</a> |
-			<c:if test="${sessionScope.loginType eq 1 }"><a href="/kakao_logout">LOGOUT</a></c:if>
+			<a href="/">CocoSua</a> |
+			<c:if test="${sessionScope.loginType eq 1 }"><a href="https://kauth.kakao.com/oauth/logout?client_id=bb7ab199150e947c571829261362a621&logout_redirect_uri=http://localhost:8080/kakao_logout">LOGOUT</a></c:if>
 			<c:if test="${sessionScope.loginType eq 0 || sessionScope.loginType eq 2}"><a href="/logout">LOGOUT</a></c:if> | <a href="/edit">EDIT</a> | <a href="/cart">CART</a> | <a href="/guide">GUIDE</a> | <a href="/mypages">MY PAGES</a><br>
 		</div>
 		<div>

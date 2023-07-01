@@ -6,7 +6,7 @@
 	<div>
 		<div>
 			<a href="/notice">NOTICE</a> | <a href="/qna">Q&A</a> | 
-			<a href="/">MILLKccoa</a> |
+			<a href="/">CocoSua</a> |
 			<a href="/login">LOGIN</a> | <a href="/join">JOIN</a> | <a href="/cart">CART</a> | <a href="/guide">GUIDE</a> | <a href="/mypages">MY PAGES</a><br>
 		</div>
 		<div>
