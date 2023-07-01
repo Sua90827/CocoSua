@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="resources/img/cocoSuaIcon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="resources/css/styles.css">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>suamall</title>
 </head>
 <body>
@@ -15,17 +17,20 @@
 <br>
 ${msg }
 <br>
-<form action="kakao_join.do" method="post">
+<form action="kakao_join.do" method="post" id="f">
 	<input type="hidden" name="member_login_type" value="1">
 	<input type="hidden" name="member_id" value="${member.member_id }"><br>
-	이름 : <input type="text" name="member_nm" value="${member.member_nm }"><br>
-	email : <input type="text" name="member_email"  placeholder="example@example.com" value="${member.member_email }"><br>
+	<input type="hidden" name="member_nm" value="${member.member_nm }"><br>
+	<input type="hidden" name="member_email"  placeholder="example@example.com" value="${member.member_email }"><br>
 	생년월일 : <input type="text" name="member_birth" placeholder="19001010" value="${member.member_birth }"><br>
 	휴대폰 : <input type="text" name="member_phone_num" placeholder="01012345678" value="${member.member_phone_num }"><br>
-	우편번호 : <input type="text" name="member_zip_code" value="${member.member_zip_code }"><br>
-	주소 : <input type="text" name="member_address" value="${member.member_address }"><br>
-	상세 주소 : <input type="text" name="member_address_detail" value="${member.member_address_detail }"><br>
-	<button type="submit">회원가입</button>
+	우편번호 : <input type="text" id="sample6_postcode" name="member_zip_code" value="${member.member_zip_code }" readonly="readonly"> <input type="button" onClick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+	주소 : <input type="text" id="sample6_address" name="member_address" value="${member.member_address }" readonly="readonly"><br>
+	상세 주소 : <input type="text" id="sample6_detailAddress" name="member_address_detail" value="${member.member_address_detail }"><br>
+	<input type="hidden" id="sample6_extraAddress" readonly="readonly">
+	<button type="submit" onclick="check();">회원가입</button>
 </form>
+<script src="resources/js/kakao_regex.js"></script>
+<script src="resources/js/search_road.js"></script>
 </body>
 </html>
