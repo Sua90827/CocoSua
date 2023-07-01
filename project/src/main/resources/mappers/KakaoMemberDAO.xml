@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.suamall.project.repository.KakaoMemberRepository">
+	
+	<select id="idCheck" resultType="com.suamall.project.dto.KakaoMemberDTO">
+		SELECT * FROM sh_member_info WHERE member_id=#{member_id}
+	</select>
+	
+    <insert id="storeDTO" parameterType="com.suamall.project.dto.KakaoMemberDTO">
+    	INSERT INTO sh_member_info VALUES (#{member_id}, '', #{member_nm}, #{member_email}, #{member_birth}, #{member_phone_num}, 
+    	#{member_zip_code}, #{member_address}, #{member_address_detail}, #{member_login_type})
+    </insert>
+    
+</mapper>
