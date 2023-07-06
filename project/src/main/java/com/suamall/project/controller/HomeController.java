@@ -25,4 +25,9 @@ public class HomeController {
 		service.insertName(dto.getName());
 		return "good";
 	}
+	
+	@GetMapping("/admin")
+	public String admin() {
+		return "admin/index";
+	}
 }
