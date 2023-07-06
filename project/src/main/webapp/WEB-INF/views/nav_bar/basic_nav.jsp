@@ -8,20 +8,20 @@
 			<div class="navbar_main_menu">
 				<div class="navbar_sub sub_left_menu">
 				<div>
-					<a href="notice">NOTICE</a>
+					<a href="/notice">NOTICE</a>
 				</div>
 				<div>
-					<a href="qna">Q&A</a>
+					<a href="/qna">Q&A</a>
 				</div>
 				<c:if test="${sessionScope.loginType eq 2}">
 					<div>
-						<a href="admin">ADMIN</a>			
+						<a href="/admin">ADMIN</a>			
 					</div>
 				</c:if>
 					 
 				</div>
 				<div class="navbar_sub">
-					<a href="/"><img class="coco_sua_img" src="resources/img/cocoSuaIcon.png" alt="..."/></a>
+					<a href="/"><img class="coco_sua_img" src="/resources/img/cocoSuaIcon.png" alt="..."/></a>
 				</div>
 				<div class="navbar_sub sub_right_menu">
 					<div>
@@ -29,18 +29,6 @@
 					</div>
 					<div>
 						<a href="/join">JOIN</a>
-					</div>
-					<div>
-						<a href="/edit">EDIT</a>
-					</div>
-					<div>
-						<a href="/cart">CART</a>
-					</div>
-					<div>
-						<a href="/guide">GUIDE</a>
-					</div>
-					<div>
-						<a href="/mypages">MY PAGES</a>
 					</div>
 				</div>
 			</div>
