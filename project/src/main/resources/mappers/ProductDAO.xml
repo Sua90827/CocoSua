@@ -14,4 +14,11 @@
 	<select id="checkDB" resultType="com.suamall.project.dto.ProductDTO">
 		SELECT * FROM sh_product_cate WHERE cate_nm=#{cate_nm}
 	</select>
+	
+	<select id="getColorList" resultType="com.suamall.project.dto.ColorDTO">
+		SELECT * FROM sh_product_color
+	</select>
+	<select id="getCategoryList" resultType="com.suamall.project.dto.CategoryDTO">
+		SELECT * FROM sh_product_cate
+	</select>
 </mapper>
