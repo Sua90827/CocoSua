@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.suamall.project.repository.ProductRepository">
+	<insert id="cate_id" parameterType="com.suamall.project.dto.ProductDTO">
+	 	<selectKey order="BEFORE" keyProperty="cate_id" resultType="Integer">
+	 		SELECT nvl(max(cate_id),10000)+1 FROM sh_product_cate
+	 	</selectKey>
+	 	INSERT INTO sh_product_cate VALUES(#{cate_id}, #{cate_nm})
+	</insert>
+</mapper>

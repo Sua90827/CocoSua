@@ -3,6 +3,7 @@ package com.suamall.project.service;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -16,7 +17,10 @@ public class MemberService {
 	
 	@Autowired
 	private HttpSession session;
-
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	public String idCheck(MemberDTO inputDTO) {
 		MemberDTO db = new MemberDTO();
 		db= repo.idCheck(inputDTO.getMember_id());
@@ -46,6 +50,7 @@ public class MemberService {
 
 		if(db == null) {
 			session.setAttribute("user_id", inputDTO.getMember_id());
+			inputDTO.setMember_pw(passwordEncoder.encode(inputDTO.getMember_pw()));
 			repo.storeDTO(inputDTO);
 			return "가입완료";
 		}
@@ -72,7 +77,7 @@ public class MemberService {
 		if(!(dto.getMember_id().equals( db.getMember_id()))) {
 			return "아이디가 다릅니다.";
 		}
-		if(!(dto.getMember_pw().equals( db.getMember_pw()))) {
+		if(!(passwordEncoder.matches(dto.getMember_pw(), db.getMember_pw()))) {
 			return "비밀번호가 일치하지 않습니다.";
 		}
 		session.setAttribute("user_id", dto.getMember_id());
