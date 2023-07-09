@@ -10,7 +10,7 @@
 <title>CocoSua</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/nav_bar/admin_nav.jsp"%>
+<%@ include file="/WEB-INF/views/nav_bar/product_nav.jsp"%>
 <br>
 <form action="/categoryRegister.do" method="post">
 	<input name="cate_nm">

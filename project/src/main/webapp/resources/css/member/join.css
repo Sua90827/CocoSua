@@ -52,3 +52,9 @@
 .register_location{
     padding-top: 100px;
 }
+
+.register_page{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

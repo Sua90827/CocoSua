@@ -50,47 +50,11 @@
 		</div>
 		<div class="nav_cate_menu">
 			<div>
-				<a href="#">NEW</a>
+				<a href="/prdtRegister">Product</a>
 			</div> 
 			<div>
-				<a href="#">Dress</a>
+				<a href="/categoryRegister">Category</a>
 			</div> 
-			<div>
-				<a href="#">Outer</a>
-			</div>
-			<div>
-				<a href="#">Blouse</a>
-			</div>
-			<div> 
-				<a href="#">Tee</a>
-			</div> 
-			<div>
-				<a href="#">Knit</a>
-			</div>
-			<div>
-				<a href="#">Bottom</a>
-			</div>
-			<div>
-				<a href="#">Shoes</a>
-			</div>
-			<div>
-				<a href="#">Bag</a>
-			</div>
-			<div>
-				<a href="#">Acc</a>
-			</div>
-			<div>
-				<a href="#">Cruise</a>
-			</div>
-			<div>
-				<a href="#">Sale</a>
-			</div>
-			<div>
-				<a href="#">Only you</a>
-			</div>
-			<div>
-				<a href="#">Celebrity</a>
-			</div>
 		</div>
 	</div>
 </div>
