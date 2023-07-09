@@ -12,8 +12,9 @@
 <body>
 <%@ include file="/WEB-INF/views/nav_bar/admin_nav.jsp"%>
 <br>
-
-<a href="productInfo">상품정보</a> |
-<a href="productRegister">상품등록</a> | <a href="categoryRegister">카테고리 등록</a>
+<form action="/categoryRegister.do" method="post">
+	<input name="cate_nm">
+	<button type="submit">등록하기</button>
+</form>
 </body>
 </html>

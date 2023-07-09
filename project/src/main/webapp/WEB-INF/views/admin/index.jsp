@@ -10,7 +10,7 @@
 <title>CocoSua</title>
 </head>
 <body>
-<%@ include file="../nav_bar/basic_nav.jsp"%>
+<%@ include file="../nav_bar/admin_nav.jsp"%>
 <br>
 
 </body>

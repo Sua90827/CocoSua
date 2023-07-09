@@ -6,17 +6,11 @@
 	<div>
 		<div>
 			<a href="/notice">NOTICE</a> | <a href="/qna">Q&A</a> | 
-			<a href="/">CocoSua</a> |
-			<a href="/login">LOGIN</a> | <a href="/join">JOIN</a> | <a href="/cart">CART</a> | <a href="/guide">GUIDE</a> | <a href="/mypages">MY PAGES</a><br>
+			<a href="/">HOME</a> | <a href="/admin">ADMIN</a> | <a href="/productList">상품리스트</a>
+			<a href="/logout">LOGOUT</a> | <br>
 		</div>
 		<div>
-			<a href="search">SEARCH</a>
+			<a href="/search">SEARCH</a>
 		</div>
-	</div>
-	<div>
-		<a href="#">NEW</a> | <a href="#">Dress</a> | <a href="#">Outer</a> | 
-		<a href="#">Blouse</a> | <a href="#">Tee</a> | <a href="#">Knit</a> | <a href="#">Bottom</a> | 
-		<a href="#">Shoes</a> | <a href="#">Bag</a>| <a href="#">Acc</a> | <a href="#">Cruise</a> | 
-		<a href="#">Sale</a> | <a href="#">Only you</a> | <a href="#">Celebrity</a>
 	</div>
 </div>
