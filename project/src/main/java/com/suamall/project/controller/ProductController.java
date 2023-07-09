@@ -44,4 +44,7 @@ public class ProductController {
 		
 		return "admin/product/product_list";
 	}
+	
+
+	
 }
