@@ -36,6 +36,6 @@ public class ProductService {
 
 	public List<CategoryDTO> getCategoryList() {
 		List<CategoryDTO> cate = repo.getCategoryList();
-		return null;
+		return cate;
 	}
 }
