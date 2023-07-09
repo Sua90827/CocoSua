@@ -50,7 +50,7 @@
 		</div>
 		<div class="nav_cate_menu">
 			<div>
-				<a href="/prdtRegister">Product</a>
+				<a href="/productRegister">Product</a>
 			</div> 
 			<div>
 				<a href="/categoryRegister">Category</a>
