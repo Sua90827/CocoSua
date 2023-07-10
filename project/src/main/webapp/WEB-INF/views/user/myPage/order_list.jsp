@@ -17,6 +17,6 @@
 	<%@ include file="/WEB-INF/views/nav_bar/user_nav.jsp"%>
 </c:if>
 <br>
-
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>

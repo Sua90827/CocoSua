@@ -29,6 +29,10 @@
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+.sub_center_menu{
+	padding-top:50px;
+}
+
 .sub_left_menu{
     padding-top:110px;
     justify-content:right;
@@ -49,6 +53,11 @@
 
 .coco_sua_img{
     width: 250px;
+    object-fit: contain;
+}
+
+.admin_img{
+	width: 250px;
     object-fit: contain;
 }
 

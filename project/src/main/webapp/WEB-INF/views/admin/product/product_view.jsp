@@ -13,5 +13,7 @@
 <%@ include file="/WEB-INF/views/nav_bar/product_nav.jsp"%>
 <br>
 
+
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>

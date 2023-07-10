@@ -21,7 +21,9 @@
 					 
 				</div>
 				<div class="navbar_sub">
-					<a href="/admin"><img class="coco_sua_img" src="resources/img/adminImg.png" alt="..."/></a>
+					<div class="sub_center_menu">
+						<a href="/admin"><img class="coco_sua_img" src="resources/img/adminImg.png" alt="..."/></a>
+					</div>
 				</div>
 				<div class="navbar_sub sub_right_menu">
 					<c:if test="${sessionScope.loginType eq 1 }">
@@ -49,12 +51,12 @@
 			</div>
 		</div>
 		<div class="nav_cate_menu">
-			<div>
+			<!-- <div>
 				<a href="#">NEW</a>
-			</div> 
+			</div>
 			<div>
 				<a href="#">Dress</a>
-			</div> 
+			</div>
 			<div>
 				<a href="#">Outer</a>
 			</div>
@@ -63,7 +65,7 @@
 			</div>
 			<div> 
 				<a href="#">Tee</a>
-			</div> 
+			</div>
 			<div>
 				<a href="#">Knit</a>
 			</div>
@@ -90,7 +92,7 @@
 			</div>
 			<div>
 				<a href="#">Celebrity</a>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>

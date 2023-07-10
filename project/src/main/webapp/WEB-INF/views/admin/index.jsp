@@ -13,5 +13,7 @@
 <%@ include file="../nav_bar/admin_nav.jsp"%>
 <br>
 
+
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>

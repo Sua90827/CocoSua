@@ -18,5 +18,6 @@
 </c:if>
 <br>
 
+<%@ include file="../footer/footer.jsp"%>
 </body>
 </html>
