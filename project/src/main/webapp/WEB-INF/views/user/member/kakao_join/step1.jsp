@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="/resources/img/cocoSuaIcon.png" rel="shortcut icon"
+<link href="/resources/img/cocoIcon.png" rel="shortcut icon"
 	type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
 <script
