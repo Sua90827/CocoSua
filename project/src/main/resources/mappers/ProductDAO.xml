@@ -9,4 +9,9 @@
 	 	</selectKey>
 	 	INSERT INTO sh_product_cate VALUES(#{cate_id}, #{cate_nm})
 	</insert>
+	
+	
+	<select id="checkDB" resultType="com.suamall.project.dto.ProductDTO">
+		SELECT * FROM sh_product_cate WHERE cate_nm=#{cate_nm}
+	</select>
 </mapper>

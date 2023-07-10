@@ -21,7 +21,7 @@
 					 
 				</div>
 				<div class="navbar_sub">
-					<a href="/admin"><img class="coco_sua_img" src="resources/img/adminImg.png" alt="..."/></a>
+					<a href="/admin"><img class="coco_sua_img" src="resources/img/cocoSuaIcon.png" alt="..."/></a>
 				</div>
 				<div class="navbar_sub sub_right_menu">
 					<c:if test="${sessionScope.loginType eq 1 }">
@@ -50,47 +50,11 @@
 		</div>
 		<div class="nav_cate_menu">
 			<div>
-				<a href="#">NEW</a>
+				<a href="/productRegister">Product</a>
 			</div> 
 			<div>
-				<a href="#">Dress</a>
+				<a href="/categoryRegister">Category</a>
 			</div> 
-			<div>
-				<a href="#">Outer</a>
-			</div>
-			<div>
-				<a href="#">Blouse</a>
-			</div>
-			<div> 
-				<a href="#">Tee</a>
-			</div> 
-			<div>
-				<a href="#">Knit</a>
-			</div>
-			<div>
-				<a href="#">Bottom</a>
-			</div>
-			<div>
-				<a href="#">Shoes</a>
-			</div>
-			<div>
-				<a href="#">Bag</a>
-			</div>
-			<div>
-				<a href="#">Acc</a>
-			</div>
-			<div>
-				<a href="#">Cruise</a>
-			</div>
-			<div>
-				<a href="#">Sale</a>
-			</div>
-			<div>
-				<a href="#">Only you</a>
-			</div>
-			<div>
-				<a href="#">Celebrity</a>
-			</div>
 		</div>
 	</div>
 </div>

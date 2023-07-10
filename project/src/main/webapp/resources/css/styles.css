@@ -2,6 +2,9 @@
 @import "header/nav-bar.css";
 @import "login/login.css";
 @import "join/register.css";
+@import "product/list.css";
+@import "product/product-register.css";
+@import "product/category-register.css";
 
 :root{
     --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -17,4 +20,8 @@ a {
     padding-top: 100px;
     text-align: center;
     color: red;
+}
+
+.text_center{
+	text-align:center;
 }
