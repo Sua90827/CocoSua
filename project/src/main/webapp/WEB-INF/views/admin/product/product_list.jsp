@@ -18,14 +18,14 @@
 	
 		<table class="list_table">
 			<tr>
-				<th>Num</th>
-				<th>Category</th>
-				<th>Name</th>
-				<th>Img</th>
-				<th>Title</th>
-				<th>Color</th>
-				<th>Price</th>
-				<th>Amount</th>
+				<th class="product_font_size">Num</th>
+				<th class="product_font_size">Category</th>
+				<th class="product_font_size">Name</th>
+				<th class="product_font_size">Img</th>
+				<th class="product_font_size">Title</th>
+				<th class="product_font_size">Color</th>
+				<th class="product_font_size">Price</th>
+				<th class="product_font_size">Amount</th>
 			</tr>
 			<c:if test="${empty prdt }">
 				<tr>

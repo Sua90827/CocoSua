@@ -21,7 +21,7 @@
 					<td>카테고리</td>
 					<td><select name="cate_id">
 					<c:forEach var="category" items="${cate }">
-						<option value="${category.cate_id }">${category.cate_nm }</option>
+						<option value="${category.cate_id }" ${product.cate_id == category.cate_id ? 'selected="selected"' : '' }>${category.cate_nm }</option>
 					</c:forEach>
 				</select></td>
 				</tr>
@@ -41,7 +41,7 @@
 					<td>색 상</td>
 					<td><select name="prdt_color">
 					<c:forEach var="color" items="${color }">
-						<option value="${color.color_id }">${color.color_nm }</option>
+						<option value="${color.color_id }" ${product.color_id == color.color_id ? 'selected="selected"' : '' }>${color.color_nm }</option>
 					</c:forEach>
 				</select></td>
 				</tr>
