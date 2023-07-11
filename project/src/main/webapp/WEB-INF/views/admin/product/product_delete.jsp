@@ -5,13 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="/resources/img/cocoSuaIcon.png" rel="shortcut icon" type="image/x-icon">
+<link href="/resources/img/cocoIcon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
 <title>CocoSua</title>
 </head>
-<body>
-<%@ include file="/WEB-INF/views/nav_bar/product_nav.jsp"%>
-<br>
-
-</body>
+	<body>
+		<%@ include file="/WEB-INF/views/nav_bar/product_nav.jsp"%>
+		<br>
+		
+		
+		<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
+	</body>
 </html>

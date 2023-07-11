@@ -21,7 +21,11 @@
 					 
 				</div>
 				<div class="navbar_sub">
-					<a href="/admin"><img class="coco_sua_img" src="resources/img/cocoSuaIcon.png" alt="..."/></a>
+					<div class="sub_center_menu">
+						<a href="/admin">
+							<img class="admin_img" src="resources/img/adminImg.png" alt="..."/>
+						</a>
+					</div>
 				</div>
 				<div class="navbar_sub sub_right_menu">
 					<c:if test="${sessionScope.loginType eq 1 }">

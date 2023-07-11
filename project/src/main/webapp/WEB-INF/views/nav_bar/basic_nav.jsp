@@ -21,7 +21,7 @@
 					 
 				</div>
 				<div class="navbar_sub">
-					<a href="/"><img class="coco_sua_img" src="/resources/img/cocoSuaIcon.png" alt="..."/></a>
+					<a href="/"><img class="coco_sua_img" src="/resources/img/userImg.png" alt="..."/></a>
 				</div>
 				<div class="navbar_sub sub_right_menu">
 					<div>

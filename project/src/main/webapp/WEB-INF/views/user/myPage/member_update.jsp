@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="/resources/img/cocoSuaIcon.png" rel="shortcut icon" type="image/x-icon">
+<link href="/resources/img/cocoIcon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
 <title>CocoSua</title>
 </head>
@@ -17,6 +17,6 @@
 	<%@ include file="/WEB-INF/views/nav_bar/user_nav.jsp"%>
 </c:if>
 <br>
-
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>

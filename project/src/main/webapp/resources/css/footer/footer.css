@@ -1,0 +1,38 @@
+
+.footer_page{
+	width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top:100px;
+}
+
+.footer_location{
+	display: flex;
+    justify-content: center;
+	width: 75%;
+	padding-right: 25px;
+}
+
+.footer_location a{
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.footer_location div{
+	text-align: center;
+	font-size: 11px;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.footer_top_line{
+	border-top:solid 2px rgba(0, 0, 0, 0.2);
+	width: 70%;
+	padding-top:20px;
+}
+
+.footer_first_div{
+	margin-bottom: 60px;
+}
+
+.footer_second_div{
+	margin-bottom: 30px;
+}
