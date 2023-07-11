@@ -55,9 +55,10 @@ public class ProductService {
 		 String prdt_img;
 		 String prdt_title=multi.getParameter("prdt_title");     
 		 String prdt_content=multi.getParameter("prdt_content");  
-		 String prdt_color=multi.getParameter("prdt_color");    
+		 int prdt_color=Integer.parseInt(multi.getParameter("prdt_color"));    
 		 int prdt_price;  
 		 int prdt_amount;   
+	
 		try {
 			prdt_price=Integer.parseInt(multi.getParameter("prdt_price")); 
 		} catch (Exception e) {
@@ -83,7 +84,7 @@ public class ProductService {
 			return "상품 설명을 입력하시오.";
 		}else if (prdt_content == null) {
 			return "상품 내용을 입력하시오.";
-		}else if (prdt_color == null) {
+		}else if (prdt_color < 0) {
 			return "상품 색상을 입력하시오.";
 		}else if (prdt_price < 0) {
 			return "상품 가격을 입력하시오.";
@@ -122,6 +123,8 @@ public class ProductService {
 	public ProductDTO getPrdtInput(MultipartHttpServletRequest multi) {
 		ProductDTO dto = new ProductDTO();
 		dto.setPrdt_amount(Integer.parseInt(multi.getParameter("prdt_amount")));
+		dto.setCate_id(Integer.parseInt(multi.getParameter("cate_id")));
+		dto.setPrdt_color(Integer.parseInt(multi.getParameter("prdt_color")));
 		dto.setPrdt_content(multi.getParameter("prdt_content"));
 		dto.setPrdt_nm(multi.getParameter("prdt_nm"));
 		dto.setPrdt_price(Integer.parseInt(multi.getParameter("prdt_price")));
