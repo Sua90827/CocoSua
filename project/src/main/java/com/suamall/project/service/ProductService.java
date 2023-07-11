@@ -70,13 +70,6 @@ public class ProductService {
 		}
 		
 		//multi parameter 설정
-		System.out.println(cate_id);
-		System.out.println(prdt_nm);
-		System.out.println(prdt_title);
-		System.out.println(prdt_content);
-		System.out.println(prdt_color);
-		System.out.println(prdt_price);
-		System.out.println(prdt_amount);
 		
 		int maxId = repo.getMaxId();
 		prdt_id = maxId;
@@ -121,7 +114,7 @@ public class ProductService {
 		dto.setPrdt_nm(prdt_nm);
 		dto.setPrdt_price(prdt_price);
 		dto.setPrdt_title(prdt_title);
-		repo.insert(dto);
+		repo.productInsert(dto);
 
 		return "성공";
 	}
@@ -158,6 +151,4 @@ public class ProductService {
 		}
 		return fileName;
 	}
-
-	
 }

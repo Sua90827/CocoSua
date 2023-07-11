@@ -27,8 +27,8 @@
 		as maxId From sh_product_info
 	</select>
 	
-	<insert id="insert" parameterType="com.suamall.project.dto.ProductDTO">
-		INSERT INTO sh_product_info VALUES(prdt_id=#{prdt_id}, cate_id=#{cate_id}, prdt_nm=#{prdt_nm}, prdt_img=#{prdt_img}, prdt_title=#{prdt_title}, 
-		prdt_content=#{prdt_content}, prdt_color=#{prdt_color}, prdt_price=#{prdt_price}, prdt_amount=#{prdt_amount})
+	<insert id="productInsert" parameterType="com.suamall.project.dto.ProductDTO">
+		INSERT INTO sh_product_info VALUES(#{prdt_id}, #{cate_id}, #{prdt_nm}, #{prdt_img}, #{prdt_title}, 
+		#{prdt_content}, #{prdt_color}, #{prdt_price}, #{prdt_amount})
 	</insert>
 </mapper>

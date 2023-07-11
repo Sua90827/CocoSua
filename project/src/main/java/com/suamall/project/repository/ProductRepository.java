@@ -21,7 +21,7 @@ public interface ProductRepository {
 
 	int getMaxId();
 
-	void insert(ProductDTO dto);
+	void productInsert(ProductDTO dto);
 	
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),

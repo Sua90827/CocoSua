@@ -55,8 +55,11 @@ public class ProductController {
 			List<CategoryDTO> cate = service.getCategoryList();
 			model.addAttribute("color", color);
 			model.addAttribute("cate", cate);
+			model.addAttribute("product", dto);
+			model.addAttribute("msg", msg);
 			return "admin/product/product_register";
 		}
+		
 		return "admin/product/product_list";
 	}
 	
