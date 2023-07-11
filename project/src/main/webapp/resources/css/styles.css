@@ -26,3 +26,7 @@ a {
 .text_center{
 	text-align:center;
 }
+
+p {
+	font-family: Verdana, sans-serif;
+}

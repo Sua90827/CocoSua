@@ -31,3 +31,22 @@
     margin:10px;
     padding:3px;
 }
+
+.product_file{
+	display: flex;
+	justify-content: center;
+}
+
+.product_botton{
+	padding-top:20px;
+	display: flex;
+	justify-content: center;
+}
+
+.product_botton button{
+	margin-right:5px;
+}
+
+.product_botton input{
+	margin-left:5px;
+}

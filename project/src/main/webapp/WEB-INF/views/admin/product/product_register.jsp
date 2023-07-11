@@ -55,8 +55,12 @@
 				</tr>
 			</table>
 			<br><br>
-			<input type="file" name="file"><br>
-			<button type="submit">상품 등록</button> <input type="button" onclick="window.history.back()" value="뒤로가기">
+			<div class="product_file">
+				<input type="file" name="file"><br>
+			</div>
+			<div class="product_botton">
+				<button type="submit">상품 등록</button> <input type="button" onclick="window.history.back()" value="뒤로가기">
+			</div>
 		</form>
 	</div>
 </div>
