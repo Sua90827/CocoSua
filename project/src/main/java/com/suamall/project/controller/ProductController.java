@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
+import com.suamall.project.dto.ProductDTO;
 import com.suamall.project.service.ProductService;
 
 import lombok.Data;
@@ -42,6 +43,21 @@ public class ProductController {
 		model.addAttribute("cate", cate);
 		
 		return "admin/product/product_register";
+	}
+	
+	@PostMapping("productRegister.do")
+	public String productRegister(MultipartHttpServletRequest multi, Model model) {
+		String msg = service.prdtInsert(multi);
+		if(!msg.equals("성공")) {
+			ProductDTO dto = new ProductDTO();
+			dto = service.getPrdtInput(multi);
+			List<ColorDTO> color = service.getColorList();
+			List<CategoryDTO> cate = service.getCategoryList();
+			model.addAttribute("color", color);
+			model.addAttribute("cate", cate);
+			return "admin/product/product_register";
+		}
+		return "admin/product/product_list";
 	}
 	
 	@GetMapping("/categoryRegister")
