@@ -18,6 +18,30 @@
 </c:if>
 <br>
 
+<div class="user_main_page">
+	<div class="user_main_location">
+		<c:if test="${prdt.size() > 0 }">
+			<c:forEach var="prdt" items="${prdt }">
+				<div>
+					<div>
+						<img src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." />
+					</div>
+					<div>
+						${prdt.prdt_title }
+					</div>
+					<div>
+						${prdt.prdt_price }
+					</div>
+				</div>			
+			</c:forEach>
+		</c:if>
+		<c:if test="${empty prdt }">
+			<div>
+				등록된 사진이 없습니다.		
+			</div>
+		</c:if>
+	</div>
+</div>
 <%@ include file="../footer/footer.jsp"%>
 </body>
 </html>
