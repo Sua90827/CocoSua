@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.ProductListViewDTO;
 import com.suamall.project.repository.ProductRepository;
 
 @Service
@@ -49,7 +50,7 @@ public class ProductService {
 	public String prdtInsert(MultipartHttpServletRequest multi) {
 		//multi parameter 설정
 		
-		 int prdt_id = 0;       
+		 int prdt_id = repo.getMaxId();       
 		 int cate_id = Integer.parseInt(multi.getParameter("cate_id"));     
 		 String prdt_nm = multi.getParameter("prdt_nm");   
 		 String prdt_img;
@@ -72,8 +73,7 @@ public class ProductService {
 		
 		//multi parameter 설정
 		
-		int maxId = repo.getMaxId();
-		prdt_id = maxId;
+		
 		if (prdt_id < 0) {
 			return "상품 id를 입력하시오";
 		} else if (cate_id < 0) {
@@ -100,7 +100,7 @@ public class ProductService {
 			return "파일을 업로드해주세요.";
 		}
 
-		prdt_img = productImgSaveFile(file, maxId);
+		prdt_img = productImgSaveFile(file, prdt_id);
 		
 		//~~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
 		
@@ -120,7 +120,7 @@ public class ProductService {
 		return "성공";
 	}
 	
-	public ProductDTO getPrdtInput(MultipartHttpServletRequest multi) {
+	public ProductDTO getPrdtInput(MultipartHttpServletRequest multi) {//뷰에 남기기 위한 애들
 		ProductDTO dto = new ProductDTO();
 		dto.setPrdt_amount(Integer.parseInt(multi.getParameter("prdt_amount")));
 		dto.setCate_id(Integer.parseInt(multi.getParameter("cate_id")));
@@ -141,17 +141,32 @@ public class ProductService {
 		Calendar cal = Calendar.getInstance();
 		String fileName = sdf.format(cal.getTime()) + originalName;
 		String path = directory + maxId + "\\" + fileName;
-		File targetFile = new File(path);
+		File targetFile = new File(path); //경로 설정
 		if (targetFile.exists() == false) {
-			targetFile.mkdirs();
+			targetFile.mkdirs(); //경로에 폴더가 없으면 폴더 생성
 		}
 		try {
-			file.transferTo(targetFile);
+			file.transferTo(targetFile); //파일 생성
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return fileName;
+	}
+
+	public List<ProductDTO> selectAll() {
+		List<ProductDTO> dto = repo.selectAll();
+		return dto;
+	}
+	
+	public String getCateName(int cate_id) {
+		String cate_nm = repo.getCateName(cate_id);
+		return cate_nm;
+	}
+
+	public List<ProductListViewDTO> getProductListView() {
+		List<ProductListViewDTO> list = repo.getProductListView();
+		return list;
 	}
 }

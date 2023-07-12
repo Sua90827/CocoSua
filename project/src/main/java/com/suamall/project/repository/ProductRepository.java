@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.ProductListViewDTO;
 
 @Mapper
 public interface ProductRepository {
@@ -22,6 +23,12 @@ public interface ProductRepository {
 	int getMaxId();
 
 	void productInsert(ProductDTO dto);
+
+	public List<ProductDTO> selectAll();
+	
+	public String getCateName(int cate_id);
+
+	List<ProductListViewDTO> getProductListView();
 	
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),
