@@ -35,7 +35,7 @@
 			<c:forEach var="product" items="${prdt }">
 				<tr>
 					<td>${product.prdt_id }</td>
-					<td>${product.cate_name }</td>
+					<td>${product.cate_nm }</td>
 					<td>${product.prdt_nm }</td>
 					<td>${product.prdt_img }</td>
 					<td>${product.prdt_title }</td>
