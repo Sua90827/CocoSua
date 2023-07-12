@@ -39,7 +39,7 @@
 					<td>${product.prdt_nm }</td>
 					<td>${product.prdt_img }</td>
 					<td>${product.prdt_title }</td>
-					<td>${product.prdt_color }</td>
+					<td>${product.color_nm }</td>
 					<td>${product.prdt_price }</td>
 					<td>${product.prdt_amount }</td>
 				</tr>
