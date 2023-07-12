@@ -12,7 +12,7 @@ public class ProductDTO {
 	    private String prdt_img;
 	    private String prdt_title;     
 	    private String prdt_content;  
-	    private String prdt_color;    
+	    private int prdt_color;    
 	    private int prdt_price;  
 	    private int prdt_amount;   
 };

@@ -1,5 +1,6 @@
 package com.suamall.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.ProductListViewDTO;
 import com.suamall.project.service.ProductService;
 
 import lombok.Data;
@@ -25,7 +27,10 @@ public class ProductController {
 	
 	
 	@GetMapping("/productList")
-	public String productlist() {
+	public String productlist(Model model) {
+		List<ProductListViewDTO> list = service.getProductListView();
+		
+		model.addAttribute("prdt", list);
 		return "admin/product/product_list";
 	}
 	
@@ -77,4 +82,6 @@ public class ProductController {
 		}
 		return "admin/product/product_list";
 	}
+	
+	
 }

@@ -31,4 +31,18 @@
 		INSERT INTO sh_product_info VALUES(#{prdt_id}, #{cate_id}, #{prdt_nm}, #{prdt_img}, #{prdt_title}, 
 		#{prdt_content}, #{prdt_color}, #{prdt_price}, #{prdt_amount})
 	</insert>
+	
+	<select id="selectAll" resultType="com.suamall.project.dto.ProductDTO">
+		SELECT * FROM SH_PRODUCT_INFO
+	</select>
+	
+	<select id="getProductListView" resultType="com.suamall.project.dto.ProductListViewDTO">
+		SELECT a.*, b.cate_nm, c.color_nm FROM sh_product_info a 
+		INNER JOIN sh_product_color c ON a.prdt_color=c.color_id 
+		INNER JOIN sh_product_cate b ON a.cate_id=b.cate_id
+	</select>
+	
+	<select id="getCateName" resultType="String">
+		SELECT cate_nm FROM sh_product_cate WHERE cate_id = #{cate_id}
+	</select>
 </mapper>
