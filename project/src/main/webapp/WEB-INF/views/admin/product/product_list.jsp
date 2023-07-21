@@ -19,13 +19,13 @@
 		<table class="list_table">
 			<tr>
 				<th class="product_font_size">Num</th>
-				<th class="product_font_size">Category</th>
-				<th class="product_font_size">Name</th>
 				<th class="product_font_size">Img</th>
+				<th class="product_font_size">Name</th>
 				<th class="product_font_size">Title</th>
 				<th class="product_font_size">Color</th>
 				<th class="product_font_size">Price</th>
 				<th class="product_font_size">Amount</th>
+				<th class="product_font_size">Category</th>
 			</tr>
 			<c:if test="${empty prdt }">
 				<tr>
@@ -35,17 +35,17 @@
 			<c:forEach var="product" items="${prdt }">
 				<tr>
 					<td>${product.prdt_id }</td>
-					<td>${product.cate_nm }</td>
+					<td><img class="img-fluid product_list_img_size" src="resources/upload/${product.prdt_id }/${product.prdt_img}"
+								 alt="..." /></td>
 					<td>${product.prdt_nm }</td>
-					<td>${product.prdt_img }</td>
 					<td>${product.prdt_title }</td>
 					<td>${product.color_nm }</td>
 					<td>${product.prdt_price }</td>
 					<td>${product.prdt_amount }</td>
+					<td>${product.cate_nm }</td>
 				</tr>
 			</c:forEach>
 		</table>
-		
 	</div>
 </div>
 
