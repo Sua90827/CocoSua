@@ -1,0 +1,10 @@
+.user_main_page{
+	display: flex;
+	justify-content: center;
+}
+
+.user_main_location{
+	width: 60%;
+	display: flex;
+	justify-content: center;
+}
