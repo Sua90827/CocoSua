@@ -18,7 +18,7 @@ public class KakaoMemberDTO {
 	private int member_birth;
 	@Pattern(regexp = "^\\d{11}$")
 	private String member_phone_num;
-	private String member_zip_code;
+	private String member_zip_code; 
 	private String member_address ;
 	private String member_address_detail;
 	private int member_login_type ;
