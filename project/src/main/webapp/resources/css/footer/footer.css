@@ -9,8 +9,8 @@
 .footer_location{
 	display: flex;
     justify-content: center;
-	width: 75%;
-	padding-right: 25px;
+	width: 83%;
+	padding-right: 10px;
 }
 
 .footer_location a{

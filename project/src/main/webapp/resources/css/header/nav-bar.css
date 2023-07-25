@@ -8,12 +8,12 @@
 .navbar_location{
     padding-left: 400px;
     text-align: center;
-    width:75%;
+    width:100%;
 }
 
 .navbar_bottom_line{
     border-bottom:solid 2px rgba(0, 0, 0, 0.2);
-    width: 70%;
+    width: 73%;
 }
 
 .navbar_main_menu{
