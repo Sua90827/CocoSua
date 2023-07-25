@@ -1,5 +1,6 @@
 package com.suamall.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
+import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.ProductListViewDTO;
 import com.suamall.project.service.ProductService;
 
 import lombok.Data;
@@ -24,7 +27,10 @@ public class ProductController {
 	
 	
 	@GetMapping("/productList")
-	public String productlist() {
+	public String productlist(Model model) {
+		List<ProductListViewDTO> list = service.getProductListView();
+		
+		model.addAttribute("prdt", list);
 		return "admin/product/product_list";
 	}
 	
@@ -44,6 +50,24 @@ public class ProductController {
 		return "admin/product/product_register";
 	}
 	
+	@PostMapping("productRegister.do")
+	public String productRegister(MultipartHttpServletRequest multi, Model model) {
+		String msg = service.prdtInsert(multi);
+		if(!msg.equals("성공")) {
+			ProductDTO dto = new ProductDTO();
+			dto = service.getPrdtInput(multi);
+			List<ColorDTO> color = service.getColorList();
+			List<CategoryDTO> cate = service.getCategoryList();
+			model.addAttribute("color", color);
+			model.addAttribute("cate", cate);
+			model.addAttribute("product", dto);
+			model.addAttribute("msg", msg);
+			return "admin/product/product_register";
+		}
+		
+		return "admin/product/product_list";
+	}
+	
 	@GetMapping("/categoryRegister")
 	public String categoryRegister() {
 		return "admin/product/category_register";
@@ -58,4 +82,6 @@ public class ProductController {
 		}
 		return "admin/product/product_list";
 	}
+	
+	
 }

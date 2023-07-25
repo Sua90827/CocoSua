@@ -6,4 +6,8 @@
     <insert id="insertName" parameterType="String">
     	insert into test values(#{name})
     </insert>
+    <select id="selectAll" resultType="com.suamall.project.dto.ProductDTO">
+    	select * from SH_PRODUCT_INFO
+    </select>
+    
 </mapper>

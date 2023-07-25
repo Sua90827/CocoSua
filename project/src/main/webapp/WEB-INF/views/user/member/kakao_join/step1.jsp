@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="/resources/img/cocoSuaIcon.png" rel="shortcut icon"
+<link href="/resources/img/cocoIcon.png" rel="shortcut icon"
 	type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
 <script
@@ -77,6 +77,9 @@
 		</form>
 	</div>
 </div>
+
+
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 	<script src="/resources/js/kakao_regex.js"></script>
 	<script src="/resources/js/search_road.js"></script>
 </body>
