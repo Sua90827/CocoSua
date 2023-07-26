@@ -80,7 +80,6 @@
 
 
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
-<script src="/resources/js/register_regex.js"></script>
 <script src="/resources/js/search_road.js"></script>
 </body>
 </html>

@@ -47,7 +47,7 @@
 					<tr>
 						<td>${cate.cate_id }</td>
 						<td>${cate.cate_nm }</td>
-						<td><a href="#">등록</a> | <a href="#">삭제</a></td>
+						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
 					</tr>
 				</c:forEach>
 			</table>
