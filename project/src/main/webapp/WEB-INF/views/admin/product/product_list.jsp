@@ -38,8 +38,8 @@
 			<c:forEach var="product" items="${prdt }">
 				<tr>
 					<td>${product.prdt_id }</td>
-					<td><img class="img-fluid product_list_img_size" src="resources/upload/${product.prdt_id }/${product.prdt_img}"
-								 alt="..." /></td>
+					<td><a href="adminProductInfo?prdt_id=${product.prdt_id }"><img class="img-fluid product_list_img_size" src="resources/upload/${product.prdt_id }/${product.prdt_img}"
+								 alt="..." /></a></td>
 					<td>${product.prdt_nm }</td>
 					<td>${product.prdt_title }</td>
 					<td>${product.color_nm }</td>

@@ -35,26 +35,34 @@
 				<tr>
 					<th>Num</th>
 					<th>Name</th>
-					<th>update</th>
+					<th>delete</th>
 				</tr>
 				<c:if test="${empty cate }">
 					<tr>
-						<td colspan="3" class="text_center" style="color: red">등록된
-							카테고리가 없습니다.</td>
+						<td colspan="3" class="text_center" style="color: red">등록된 카테고리가 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:forEach var="cate" items="${cate }">
 					<tr>
 						<td>${cate.cate_id }</td>
 						<td>${cate.cate_nm }</td>
-						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+						<td><button type="button" onclick="categoryDelete(${cate.cate_id})">삭제</button><a href="cateUpBtn?cate_id=${cate.cate_id }"><button class="cateUpBtn">▲</button></a>  <a href="cateDownBtn?cate_id=${cate.cate_id }"><button class="cateDownBtn">▼</button></a></td>
 					</tr>
 				</c:forEach>
 			</table>
 
 		</div>
 	</div>
-
+	
+	<script>
+		function categoryDelete(id){
+			var cateId = id;
+			if(window.confirm('카테고리를 삭제하시겠습니까?')){
+				location.href="categoryDelete.do?cate_id=" + cateId;	
+			}else
+			return;
+		}
+	</script>
 	<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>
