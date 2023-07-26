@@ -14,7 +14,7 @@ public class ProductListViewDTO {
     private String prdt_content;  
     private int prdt_color;    
     private int prdt_price;  
-    private int prdt_amount;  
+    private int prdt_amount;   
     private String cate_nm;
     private String color_nm;
 }

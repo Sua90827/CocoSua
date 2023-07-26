@@ -17,7 +17,7 @@ import java.util.Collections;
 public class MemberService implements UserDetailsService {
     @Autowired
     private MemberRepository repo;
-
+ 
     public MemberDTO findId(String username) throws Exception {
         return repo.idCheck(username);
     }

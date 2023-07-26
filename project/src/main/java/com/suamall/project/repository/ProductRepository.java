@@ -11,7 +11,7 @@ import com.suamall.project.dto.ProductListViewDTO;
 
 @Mapper
 public interface ProductRepository {
-
+	
 	CategoryDTO checkDB(CategoryDTO input);
 
 	void cate_id(CategoryDTO input);
