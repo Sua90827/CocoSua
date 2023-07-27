@@ -30,14 +30,11 @@
 						</div>
 					</div>
 				</form>
-			<a class="p-2"
-				href="https://kauth.kakao.com/oauth/authorize?client_id=bb7ab199150e947c571829261362a621&redirect_uri=http://localhost:8080/login/kakao&response_type=code">
+			<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=bb7ab199150e947c571829261362a621&redirect_uri=http://localhost:8080/login/kakao&response_type=code">
 				<img src="resources/img/kakao_short.png"/>
 			</a>		
 		</div>
 	</div>
-	
-	
 	<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>

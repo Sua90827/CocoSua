@@ -19,7 +19,7 @@ public class MemberDTO {
 	private String member_nm;
 	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
 	private String member_email;
-	@Min(10000000)
+	@Min(10000000) 
 	private int member_birth;
 	@Pattern(regexp = "^\\d{11}$")
 	private String member_phone_num;

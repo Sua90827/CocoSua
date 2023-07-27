@@ -37,7 +37,7 @@ public class KakaoController {
 		}
 		KakaoMemberDTO userInfo = service.getMember(kakaoInput.getMember_id());
 		//stem.out.println("login info : " + userInfo.toString());
-		System.out.println("userInfo ----> "+userInfo);
+		System.out.println("userInfo ----> " + userInfo);
 		
 		if (userInfo != null) {  //이미 회원인 경우
 			session.setAttribute("userId", userInfo.getMember_id());

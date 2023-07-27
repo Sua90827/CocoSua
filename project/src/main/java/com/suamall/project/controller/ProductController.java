@@ -1,6 +1,5 @@
 package com.suamall.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +14,6 @@ import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
 import com.suamall.project.dto.ProductListViewDTO;
 import com.suamall.project.service.ProductService;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Controller
 public class ProductController {

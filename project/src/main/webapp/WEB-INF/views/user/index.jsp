@@ -9,14 +9,10 @@
 	type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
 <!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <!-- Google fonts-->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
-	rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
 <title>CocoSua</title>
 </head>
 <body>
@@ -41,7 +37,7 @@
 					<!-- Portfolio item 1-->
 					<div class="portfolio-item">
 						<a class="portfolio-link" data-bs-toggle="modal"
-							href="#portfolioModal1">
+							href="userPrdtInfo?prdt_id=${prdt.prdt_id }">
 							 <img class="img-fluid" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}"
 								 alt="..." />
 						</a>
