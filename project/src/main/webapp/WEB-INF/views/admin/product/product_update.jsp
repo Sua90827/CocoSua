@@ -20,39 +20,39 @@
 						<td>카테고리</td>
 						<td><select name="cate_id">
 						<c:forEach var="category" items="${cate }">
-							<option value="${category.cate_id }" ${product.cate_id == category.cate_id ? 'selected="selected"' : '' }>${category.cate_nm }</option>
+							<option value="${category.cate_id }" ${prdt.cate_id == category.cate_id ? 'selected="selected"' : '' }>${category.cate_nm }</option>
 						</c:forEach>
 					</select></td>
 					</tr>
 					<tr>
 						<td>제 목</td>
-						<td><input type="text" name="prdt_title" value="${product.prdt_title }"></td>
+						<td><input type="text" name="prdt_title" value="${prdt.prdt_title }"></td>
 					</tr>
 					<tr>
 						<td>상품명</td>
-						<td><input type="text" name="prdt_nm" value="${product.prdt_nm }"></td>
+						<td><input type="text" name="prdt_nm" value="${prdt.prdt_nm }"></td>
 					</tr>
 					<tr>
 						<td>내 용</td>
-						<td><input type="text" name="prdt_content" value="${product.prdt_content }"></td>
+						<td><input type="text" name="prdt_content" value="${prdt.prdt_content }"></td>
 					</tr>
 					<tr>
 						<td>색 상</td>
 						<td>
 							<select name="prdt_color">
 								<c:forEach var="color" items="${color }">
-									<option value="${color.color_id }" ${product.prdt_color == color.color_id ? 'selected="selected"' : '' }>${color.color_nm }</option>
+									<option value="${color.color_id }" ${prdt.prdt_color == color.color_id ? 'selected="selected"' : '' }>${color.color_nm }</option>
 								</c:forEach>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td>가 격</td>
-						<td><input type="text" name="prdt_price" value="${product.prdt_price }"></td>
+						<td><input type="text" name="prdt_price" value="${prdt.prdt_price }"></td>
 					</tr>
 					<tr>
 						<td>재 고</td>
-						<td><input type="text" name="prdt_amount" value="${product.prdt_amount }"></td>
+						<td><input type="text" name="prdt_amount" value="${prdt.prdt_amount }"></td>
 					</tr>
 				</table>
 				<br><br>
