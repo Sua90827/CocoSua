@@ -8,6 +8,7 @@
     </insert>
     <select id="selectAll" resultType="com.suamall.project.dto.ProductDTO">
     	select * from SH_PRODUCT_INFO
+    	ORDER BY prdt_id DESC
     </select>
     
 </mapper>

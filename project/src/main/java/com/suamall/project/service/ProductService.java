@@ -47,90 +47,60 @@ public class ProductService {
 		return cate;
 	}
 	
-	public String prdtInsert(MultipartHttpServletRequest multi) {
+	public String prdtInsert(ProductDTO dto) {
 		//multi parameter 설정
 		
-		 int prdt_id = repo.getMaxId();       
-		 int cate_id = Integer.parseInt(multi.getParameter("cate_id"));     
-		 String prdt_nm = multi.getParameter("prdt_nm");   
-		 String prdt_img;
-		 String prdt_title=multi.getParameter("prdt_title");     
-		 String prdt_content=multi.getParameter("prdt_content");  
-		 int prdt_color=Integer.parseInt(multi.getParameter("prdt_color"));    
-		 int prdt_price;  
-		 int prdt_amount;   
-	
-		try {
-			prdt_price=Integer.parseInt(multi.getParameter("prdt_price")); 
-		} catch (Exception e) {
-			return "금액을 올바르게 입력해주세요";
-		}
-		try {
-			prdt_amount=Integer.parseInt(multi.getParameter("prdt_amount"));
-		} catch (Exception e) {
-			return "수량을 올바르게 입력해주세요";
-		}
-		
-		//multi parameter 설정
-		
-		
-		if (prdt_id < 0) {
+		if (dto.getPrdt_id() < 0) {
 			return "상품 id를 입력하시오";
-		} else if (cate_id < 0) {
+		} else if (dto.getCate_id() < 0) {
 			return "카테고리 id를 입력하시오.";
-		} else if (prdt_nm == null) {
+		} else if (dto.getPrdt_nm() == null) {
 			return "상품 이름을 입력하시오.";
-		} else if (prdt_title == null) {
+		} else if (dto.getPrdt_title() == null) {
 			return "상품 설명을 입력하시오.";
-		}else if (prdt_content == null) {
+		}else if (dto.getPrdt_content() == null) {
 			return "상품 내용을 입력하시오.";
-		}else if (prdt_color < 0) {
+		}else if (dto.getPrdt_color() < 0) {
 			return "상품 색상을 입력하시오.";
-		}else if (prdt_price < 0) {
+		}else if (dto.getPrdt_price() < 0) {
 			return "상품 가격을 입력하시오.";
-		}else if (prdt_amount < 0) {
+		}else if (dto.getPrdt_amount() < 0) {
 			return "상품 수량을 입력하시오.";
 		}
 		
 		//~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
 		
-		MultipartFile file = multi.getFile("file");
+		MultipartFile file = dto.getFile();
 
 		if (file == null || file.isEmpty()) {
 			return "파일을 업로드해주세요.";
 		}
+		
+		int maxId = repo.getMaxId();
 
-		prdt_img = productImgSaveFile(file, prdt_id);
+		String prdt_img = productImgSaveFile(file, maxId);
 		
 		//~~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
 		
-		ProductDTO dto = new ProductDTO();
-		
-		dto.setCate_id(cate_id);
-		dto.setPrdt_amount(prdt_amount);
-		dto.setPrdt_color(prdt_color);
-		dto.setPrdt_content(prdt_content);
-		dto.setPrdt_id(prdt_id);
+		dto.setPrdt_id(maxId);
 		dto.setPrdt_img(prdt_img);
-		dto.setPrdt_nm(prdt_nm);
-		dto.setPrdt_price(prdt_price);
-		dto.setPrdt_title(prdt_title);
+
 		repo.productInsert(dto);
 
 		return "성공";
 	}
 	
-	public ProductDTO getPrdtInput(MultipartHttpServletRequest multi) {//뷰에 남기기 위한 애들
-		ProductDTO dto = new ProductDTO();
-		dto.setPrdt_amount(Integer.parseInt(multi.getParameter("prdt_amount")));
-		dto.setCate_id(Integer.parseInt(multi.getParameter("cate_id")));
-		dto.setPrdt_color(Integer.parseInt(multi.getParameter("prdt_color")));
-		dto.setPrdt_content(multi.getParameter("prdt_content"));
-		dto.setPrdt_nm(multi.getParameter("prdt_nm"));
-		dto.setPrdt_price(Integer.parseInt(multi.getParameter("prdt_price")));
-		dto.setPrdt_title(multi.getParameter("prdt_title"));
-		return dto;
-	}
+//	public ProductDTO getPrdtInput(MultipartHttpServletRequest multi) {//뷰에 남기기 위한 애들
+//		ProductDTO dto = new ProductDTO();
+//		dto.setPrdt_amount(Integer.parseInt(multi.getParameter("prdt_amount")));
+//		dto.setCate_id(Integer.parseInt(multi.getParameter("cate_id")));
+//		dto.setPrdt_color(Integer.parseInt(multi.getParameter("prdt_color")));
+//		dto.setPrdt_content(multi.getParameter("prdt_content"));
+//		dto.setPrdt_nm(multi.getParameter("prdt_nm"));
+//		dto.setPrdt_price(Integer.parseInt(multi.getParameter("prdt_price")));
+//		dto.setPrdt_title(multi.getParameter("prdt_title"));
+//		return dto;
+//	}
 	
 	
 	

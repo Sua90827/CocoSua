@@ -3,13 +3,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.suamall.project.repository.ProductRepository">
-	<insert id="cate_id" parameterType="com.suamall.project.dto.ProductDTO">
-	 	<selectKey order="BEFORE" keyProperty="cate_id" resultType="Integer">
-	 		SELECT nvl(max(cate_id),10000)+1 FROM sh_product_cate
-	 	</selectKey>
-	 	INSERT INTO sh_product_cate VALUES(#{cate_id}, #{cate_nm})
-	</insert>
-	
 	
 	<select id="checkDB" resultType="com.suamall.project.dto.ProductDTO">
 		SELECT * FROM sh_product_cate WHERE cate_nm=#{cate_nm}
@@ -24,7 +17,7 @@
 	
 	<select id="getMaxId" resultType="Integer">
 		SELECT nvl(max(prdt_id), 10000)+1
-		as maxId From sh_product_info
+		From sh_product_info
 	</select>
 	
 	<insert id="productInsert" parameterType="com.suamall.project.dto.ProductDTO">
@@ -40,6 +33,7 @@
 		SELECT a.*, b.cate_nm, c.color_nm FROM sh_product_info a 
 		INNER JOIN sh_product_color c ON a.prdt_color=c.color_id 
 		INNER JOIN sh_product_cate b ON a.cate_id=b.cate_id
+		ORDER BY a.prdt_id DESC
 	</select>
 	
 	<select id="getCateName" resultType="String">

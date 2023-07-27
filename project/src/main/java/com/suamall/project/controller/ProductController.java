@@ -46,11 +46,9 @@ public class ProductController {
 	}
 	
 	@PostMapping("productRegister.do")
-	public String productRegister(MultipartHttpServletRequest multi, Model model) {
-		String msg = service.prdtInsert(multi);
+	public String productRegister(ProductDTO dto, Model model) {
+		String msg = service.prdtInsert(dto);
 		if(!msg.equals("성공")) {
-			ProductDTO dto = new ProductDTO();
-			dto = service.getPrdtInput(multi);
 			List<ColorDTO> color = service.getColorList();
 			List<CategoryDTO> cate = service.getCategoryList();
 			model.addAttribute("color", color);
@@ -78,5 +76,9 @@ public class ProductController {
 		return "admin/product/product_list";
 	}
 	
+	@GetMapping("/prdtUpdate")
+	public String prdtUpdate(Model model) {
+		return "여기서부터 작업 시작!!!";
+	}
 	
 }
