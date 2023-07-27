@@ -24,7 +24,7 @@
 			<input type="hidden" name="member_nm" value="${member.member_nm }"><br>
 			<input type="hidden" name="member_email" placeholder="example@example.com" value="${member.member_email }"><br>
 			<input type="hidden" id="sample6_extraAddress" readonly="readonly">
-	
+
 			<table class="join_table">
 				<tr>
 					<td>생년월일</td>

@@ -26,38 +26,50 @@
 				    </td>
 				    <td style="width:100%">
 				    	<div>
-				    	<input type="text" id="id" class="id" name="member_id" value="${member.member_id }" onkeydown="id_click();" onblur="id_blur();" placeholder="ID"><br>
+				    		<input type="text" id="id" class="id" name="member_id" value="${member.member_id }" onkeydown="id_click();" onblur="id_blur();" placeholder="ID"><br>
 							<span id="member_id" style="color: red"></span>
 						</div>
 					</td>
 				</tr>
 				<tr>
 				    <td>비밀번호</td>
-				    <td><input type="password" id="pw" name="member_pw" value="${member.member_pw }" onkeydown="pw_click();" onblur="pw_blur();" placeholder="PASSWORD">
-			<br><span id="member_pw" style="color: red"></span></td>
+				    <td>
+					    <input type="password" id="pw" name="member_pw" value="${member.member_pw }" onkeydown="pw_click();" onblur="pw_blur();" placeholder="PASSWORD">
+						<br><span id="member_pw" style="color: red"></span>
+					</td>
 				</tr>
 				<tr>
 				    <td>비밀번호 확인</td>
-				    <td><input type="password" id="pwCheck" name="member_pwCheck" value="${member.member_pwCheck }" placeholder="PASSWORDCHECK"></td>
+				    <td>
+				    	<input type="password" id="pwCheck" name="member_pwCheck" value="${member.member_pwCheck }" placeholder="PASSWORDCHECK">
+				    </td>
 				</tr>
 				<tr>
 				    <td>이름</td>
-				    <td><input type="text" id="nm" name="member_nm" value="${member.member_nm }"></td>
+				    <td>
+				    	<input type="text" id="nm" name="member_nm" value="${member.member_nm }">
+				    </td>
 				</tr>
 				<tr>
 				    <td>email</td>
-				    <td><input type="text" id="email" name="member_email"  placeholder="example@example.com" value="${member.member_email }" onkeydown="email_click();" onblur="email_blur();">
-				    <br><span id="member_email" style="color: red"></span></td>
+				    <td>
+					    <input type="text" id="email" name="member_email"  placeholder="example@example.com" value="${member.member_email }" onkeydown="email_click();" onblur="email_blur();">
+					    <br><span id="member_email" style="color: red"></span>
+				    </td>
 				</tr>
 				<tr>
 				    <td>생년월일</td>
-				    <td><input type="number" min="10000000" max="99999999" id="birth" name="member_birth" placeholder="19001010" <c:if test="${member.member_birth eq 0 }">value=""</c:if><c:if test="${member.member_birth > 0 }">value="${member.member_birth }"</c:if> onkeydown="birth_click();" onblur="birth_blur();" maxlength='8'>
-			<br><span id="member_birth" style="color: red"></span></td>
+				    <td>
+					    <input type="number" min="10000000" max="99999999" id="birth" name="member_birth" placeholder="19001010" <c:if test="${member.member_birth eq 0 }">value=""</c:if><c:if test="${member.member_birth > 0 }">value="${member.member_birth }"</c:if> onkeydown="birth_click();" onblur="birth_blur();" maxlength='8'>
+						<br><span id="member_birth" style="color: red"></span>
+					</td>
 				</tr>
 				<tr>
 				    <td>휴대폰</td>
-				    <td><input type="text" id="phone" name="member_phone_num" placeholder="01012345678" value="${member.member_phone_num }" onkeydown="phone_click();" onblur="phone_blur();" maxlength='11'>
-			<br><span id="member_phone" style="color: red"></span></td>
+				    <td>
+					    <input type="text" id="phone" name="member_phone_num" placeholder="01012345678" value="${member.member_phone_num }" onkeydown="phone_click();" onblur="phone_blur();" maxlength='11'>
+						<br><span id="member_phone" style="color: red"></span>
+					</td>
 				</tr>
 				<tr>
 				    <td>우편번호</td>
@@ -72,15 +84,16 @@
 				    <td><input type="text" id="sample6_detailAddress" name="member_address_detail" value="${member.member_address_detail }"></td>
 				</tr>
 		    </table>
-		    <div class="join_button_location"><input class="join_button join_button_left" type="button" value="회원가입" onclick="check();"> <input type="button" class="join_button join_button_right" onclick="window.history.back()"value="뒤로가기"></div>
-			
+		    <div class="join_button_location">
+			    <input class="join_button join_button_left" type="button" value="회원가입" onclick="check();"> 
+			    <input type="button" class="join_button join_button_right" onclick="window.history.back()"value="뒤로가기">
+		    </div>
 		</form>
 	</div>
 </div>
 
 
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
-<script src="/resources/js/register_regex.js"></script>
 <script src="/resources/js/search_road.js"></script>
 </body>
 </html>

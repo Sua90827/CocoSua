@@ -34,3 +34,19 @@
 	width: 80px;
 	height: 120px;
 }
+
+.product_update_button{
+	all: unset;
+	font-size: 12px;
+	padding-right: 3px;
+}
+
+.product_delete_button{
+	all: unset;
+	font-size: 12px;
+	padding-left: 3px;	
+}
+
+.product_delete_button:hover{
+	color: var(--bs-link-hover-color);
+}

@@ -7,23 +7,26 @@
 		<div class="navbar_bottom_line">
 			<div class="navbar_main_menu">
 				<div class="navbar_sub sub_left_menu">
-				<div>
-					<a href="/notice">NOTICE</a>
-				</div>
-				<div>
-					<a href="/qna">Q&A</a>
-				</div>
-				<c:if test="${sessionScope.loginType eq 2}">
 					<div>
-						<a href="/admin">ADMIN</a>			
+					<a href="/search">SEARCH</a>
 					</div>
-				</c:if>
-					 
 				</div>
 				<div class="navbar_sub">
-					<a href="/"><img class="coco_sua_img" src="/resources/img/userImg.png" alt="..."/></a>
+					<a href="/"><img class="coco_sua_img"
+						src="/resources/img/userImg.png" alt="..." /></a>
 				</div>
 				<div class="navbar_sub sub_right_menu">
+					<div>
+						<a href="/notice">NOTICE</a>
+					</div>
+					<div>
+						<a href="/qna">Q&A</a>
+					</div>
+					<c:if test="${sessionScope.loginType eq 2}">
+						<div>
+							<a href="/admin">ADMIN</a>
+						</div>
+					</c:if>
 					<div>
 						<a href="/login">LOGIN</a>
 					</div>
@@ -33,25 +36,25 @@
 				</div>
 			</div>
 			<div class="nav_searce_bar">
-				<a href="/search">SEARCH</a>
+				
 			</div>
 		</div>
 		<div class="nav_cate_menu">
 			<div>
 				<a href="#">NEW</a>
-			</div> 
+			</div>
 			<div>
 				<a href="#">Dress</a>
-			</div> 
+			</div>
 			<div>
 				<a href="#">Outer</a>
 			</div>
 			<div>
 				<a href="#">Blouse</a>
 			</div>
-			<div> 
+			<div>
 				<a href="#">Tee</a>
-			</div> 
+			</div>
 			<div>
 				<a href="#">Knit</a>
 			</div>
