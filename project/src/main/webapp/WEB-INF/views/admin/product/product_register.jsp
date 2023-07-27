@@ -39,11 +39,13 @@
 				</tr>
 				<tr>
 					<td>색 상</td>
-					<td><select name="prdt_color">
-					<c:forEach var="color" items="${color }">
-						<option value="${color.color_id }" ${product.prdt_color == color.color_id ? 'selected="selected"' : '' }>${color.color_nm }</option>
-					</c:forEach>
-				</select></td>
+					<td>
+						<select name="prdt_color">
+							<c:forEach var="color" items="${color }">
+								<option value="${color.color_id }" ${product.prdt_color == color.color_id ? 'selected="selected"' : '' }>${color.color_nm }</option>
+							</c:forEach>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td>가 격</td>
