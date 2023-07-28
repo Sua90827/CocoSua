@@ -30,7 +30,6 @@
 
 	<div class="category_page">
 		<div class="category_location">
-
 			<table class="list_table">
 				<tr>
 					<th>Num</th>
@@ -50,10 +49,8 @@
 					</tr>
 				</c:forEach>
 			</table>
-
 		</div>
 	</div>
-	
 	<script>
 		function categoryDelete(id){
 			var cateId = id;
