@@ -20,7 +20,7 @@
 	<section class="page-section" id="portfolio">
 		<div class="container">
 			<div class="text-center">
-				<h2 class="section-heading text-uppercase">All</h2>
+				<h2 class="section-heading text-uppercase">${cate_nm }</h2>
 				<h3 class="section-subheading text-muted">CocoSua Shopping Mall All Product.</h3>
 			</div>
 			<div class="row">
