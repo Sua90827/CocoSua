@@ -2,11 +2,15 @@ package com.suamall.project.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.suamall.project.dto.CategoryDTO;
@@ -77,8 +81,36 @@ public class ProductController {
 	}
 	
 	@GetMapping("/prdtUpdate")
-	public String prdtUpdate(Model model) {
-		return "여기서부터 작업 시작!!!";
+	public String prdtUpdate(@RequestParam("prdt_id") int prdt_id , Model model) {
+		ProductDTO prdt = service.getPrdtDTO(prdt_id);
+		List<CategoryDTO> cate = service.getCategoryList();
+		List<ColorDTO> color = service.getColorList();
+		
+		model.addAttribute("prdt", prdt);
+		model.addAttribute("cate", cate);
+		model.addAttribute("color", color);
+		
+		return "admin/product/product_update";
 	}
 	
+	@PostMapping("/prdtUpdate.do")
+	public String prdtUpdate(@Valid ProductDTO dto, BindingResult br, Model model) {
+		String emptyCh = service.prdtUpdate(dto, br);
+		if(!(emptyCh.equals("완료"))) {
+			model.addAttribute("prdt", dto);
+			List<CategoryDTO> cate = service.getCategoryList();
+			List<ColorDTO> color = service.getColorList();
+			model.addAttribute("cate", cate);
+			model.addAttribute("color", color);
+			return "admin/product/product_update";
+		}
+		return "redirect:productList";
+	}
+	
+	
+	
+	@GetMapping("product_section")
+	public String prdtList(@RequestParam("cate_id") int cate_id, Model model) {
+		return "user/shop/shop_section";
+	}
 }

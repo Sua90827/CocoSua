@@ -39,4 +39,18 @@
 	<select id="getCateName" resultType="String">
 		SELECT cate_nm FROM sh_product_cate WHERE cate_id = #{cate_id}
 	</select>
+	
+	<select id="getPrdtDTO" resultType="com.suamall.project.dto.ProductDTO">
+		SELECT * FROM sh_product_info WHERE prdt_id = #{prdt_id}
+	</select>
+	<update id="updateExceptFile" parameterType="com.suamall.project.dto.ProductDTO">
+		UPDATE sh_product_info SET cate_id = #{cate_id}, prdt_nm = #{prdt_nm}, prdt_title = #{prdt_title},
+		prdt_content = #{prdt_content}, prdt_color = #{prdt_color}, prdt_price = #{prdt_price}, 
+		prdt_amount = #{prdt_amount} WHERE prdt_id = #{prdt_id}
+	</update>
+	<update id="updateIncludeFile" parameterType="com.suamall.project.dto.ProductDTO">
+		UPDATE sh_product_info SET cate_id = #{cate_id}, prdt_nm = #{prdt_nm}, prdt_img = #{prdt_img}, prdt_title = #{prdt_title},
+		prdt_content = #{prdt_content}, prdt_color = #{prdt_color}, prdt_price = #{prdt_price}, 
+		prdt_amount = #{prdt_amount} WHERE prdt_id = #{prdt_id} 
+	</update>
 </mapper>

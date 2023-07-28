@@ -29,6 +29,12 @@ public interface ProductRepository {
 	public String getCateName(int cate_id);
 
 	List<ProductListViewDTO> getProductListView();
+
+	public ProductDTO getPrdtDTO(int prdt_id);
+
+	public void updateExceptFile(ProductDTO dto);
+
+	public void updateIncludeFile(ProductDTO dto);
 	
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),

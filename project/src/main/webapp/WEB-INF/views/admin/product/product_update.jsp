@@ -16,6 +16,7 @@
 	<div class="product_location">
 		<form action="prdtUpdate.do" method="post" enctype="multipart/form-data">
 			<table class="product_table">
+				<input type="hidden" name="prdt_id" value="${prdt.prdt_id }">
 					<tr>
 						<td>카테고리</td>
 						<td><select name="cate_id">

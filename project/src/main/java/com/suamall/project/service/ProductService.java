@@ -6,8 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -21,6 +24,7 @@ import com.suamall.project.repository.ProductRepository;
 public class ProductService {
 	@Autowired 
 	private ProductRepository repo;
+	private static String directory = "E:\\cocosua\\project\\project\\src\\main\\webapp\\resources\\upload\\";
 
 	public String cateNmMsg(CategoryDTO input) {
 		if(input.getCate_nm()==null || input.getCate_nm().equals("")) {
@@ -104,26 +108,7 @@ public class ProductService {
 	
 	
 	
-	private String productImgSaveFile(MultipartFile file, int maxId) {
-		String directory = "E:\\cocosua\\project\\project\\src\\main\\webapp\\resources\\upload\\";
-		String originalName = file.getOriginalFilename();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss-");
-		Calendar cal = Calendar.getInstance();
-		String fileName = sdf.format(cal.getTime()) + originalName;
-		String path = directory + maxId + "\\" + fileName;
-		File targetFile = new File(path); //경로 설정
-		if (targetFile.exists() == false) {
-			targetFile.mkdirs(); //경로에 폴더가 없으면 폴더 생성
-		}
-		try {
-			file.transferTo(targetFile); //파일 생성
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return fileName;
-	}
+	
 
 	public List<ProductDTO> selectAll() {
 		List<ProductDTO> dto = repo.selectAll();
@@ -138,5 +123,90 @@ public class ProductService {
 	public List<ProductListViewDTO> getProductListView() {
 		List<ProductListViewDTO> list = repo.getProductListView();
 		return list;
+	}
+
+	public ProductDTO getPrdtDTO(int prdt_id) {
+		ProductDTO prdt=repo.getPrdtDTO(prdt_id);
+		return prdt;
+	}
+
+	public String prdtUpdate(ProductDTO dto, BindingResult br) {
+		
+		System.out.println("service -> prdtUpdate(dto, br)");
+		
+		String msg = emptyCh(dto, br);
+		//msg 값이 실패다? 그럼 실패 return
+		
+		if(msg.equals("실패")) {
+			return msg;
+		}
+		
+		MultipartFile file = dto.getFile();
+
+		if (file == null || file.isEmpty()) {
+			repo.updateExceptFile(dto);
+			return "완료";
+		}
+		ProductDTO db = new ProductDTO();
+		int prdtId = db.getPrdt_id();
+		
+		folderDelete(prdtId);
+		
+		String prdt_img = productImgSaveFile(file, prdtId);
+		
+		System.out.println(prdt_img);
+		
+		//~~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
+		
+		
+		dto.setPrdt_img(prdt_img);
+		repo.updateIncludeFile(dto);
+		return "완료";
+	}
+
+	private String emptyCh(ProductDTO dto, BindingResult br) {
+		if(br.hasErrors()) {
+			return "실패";
+		}return "검증 완료";
+	}
+	
+	private String productImgSaveFile(MultipartFile file, int maxId) {
+		
+		String originalName = file.getOriginalFilename();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss-");
+		Calendar cal = Calendar.getInstance();
+		String fileName = sdf.format(cal.getTime()) + originalName;
+		String path = directory + maxId + "\\" + fileName;
+		System.out.println(path);
+		File targetFile = new File(path); //경로 설정
+		if (targetFile.exists() == false) {
+			targetFile.mkdirs(); //경로에 폴더가 없으면 폴더 생성
+		}
+		try {
+			file.transferTo(targetFile); //파일 생성
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return fileName;
+	}
+	
+	private void folderDelete(int prdt_id) {
+		String path = directory + prdt_id;
+		File folder = new File(path);
+		try {
+			while (folder.exists()) {
+				File[] folder_list = folder.listFiles(); // 파일리스트 얻어오기
+				for (int j = 0; j < folder_list.length; j++) {
+					folder_list[j].delete(); // 파일 삭제
+				}
+				if (folder_list.length == 0 && folder.isDirectory()) {
+					folder.delete();	//폴더 삭제
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 }
