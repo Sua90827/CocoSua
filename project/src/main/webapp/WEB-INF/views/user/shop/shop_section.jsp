@@ -21,7 +21,7 @@
 		<div class="container">
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">${cate_nm }</h2>
-				<h3 class="section-subheading text-muted">CocoSua Shopping Mall All Product.</h3>
+				<h3 class="section-subheading text-muted">CocoSua Shopping Mall ${cate_nm } Product.</h3>
 			</div>
 			<div class="row">
 			<c:if test="${prdt.size() > 0 }">
