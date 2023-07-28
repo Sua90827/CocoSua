@@ -53,4 +53,7 @@
 		prdt_content = #{prdt_content}, prdt_color = #{prdt_color}, prdt_price = #{prdt_price}, 
 		prdt_amount = #{prdt_amount} WHERE prdt_id = #{prdt_id} 
 	</update>
+	<select id="getAllByCateId" resultType="com.suamall.project.dto.ProductDTO">
+		SELECT * FROM sh_product_info WHERE cate_id = #{cate_id}
+	</select>
 </mapper>
