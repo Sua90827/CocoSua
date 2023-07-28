@@ -35,6 +35,8 @@ public interface ProductRepository {
 	public void updateExceptFile(ProductDTO dto);
 
 	public void updateIncludeFile(ProductDTO dto);
+
+	List<ProductDTO> getAllByCateId(int cate_id);
 	
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.HomeDTO;
 import com.suamall.project.dto.ProductDTO;
 import com.suamall.project.service.HomeService;
@@ -22,7 +23,10 @@ public class HomeController {
 	@GetMapping("/")
 	public String main(Model model) {
 		List<ProductDTO> dto = service.selectMini();
+		List<CategoryDTO> cate = service.selectCate();
+		System.out.println(cate.get(0).getCate_nm());
 		model.addAttribute("prdt", dto);
+		model.addAttribute("cate", cate);
 		return "user/index";
 	}
 	

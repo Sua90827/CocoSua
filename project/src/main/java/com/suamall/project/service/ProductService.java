@@ -54,23 +54,14 @@ public class ProductService {
 	public String prdtInsert(ProductDTO dto) {
 		//multi parameter 설정
 		
-		if (dto.getPrdt_id() < 0) {
-			return "상품 id를 입력하시오";
-		} else if (dto.getCate_id() < 0) {
-			return "카테고리 id를 입력하시오.";
-		} else if (dto.getPrdt_nm() == null) {
-			return "상품 이름을 입력하시오.";
-		} else if (dto.getPrdt_title() == null) {
-			return "상품 설명을 입력하시오.";
-		}else if (dto.getPrdt_content() == null) {
-			return "상품 내용을 입력하시오.";
-		}else if (dto.getPrdt_color() < 0) {
-			return "상품 색상을 입력하시오.";
-		}else if (dto.getPrdt_price() < 0) {
-			return "상품 가격을 입력하시오.";
-		}else if (dto.getPrdt_amount() < 0) {
-			return "상품 수량을 입력하시오.";
+		String msg = insertEmptyCh(dto);
+		
+		if(!msg.equals("검증 완료")) {
+			return "실패";
 		}
+		
+		
+
 		
 		//~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
 		
@@ -130,14 +121,9 @@ public class ProductService {
 		return prdt;
 	}
 
-	public String prdtUpdate(ProductDTO dto, BindingResult br) {
-		
-		System.out.println("service -> prdtUpdate(dto, br)");
-		
-		String msg = emptyCh(dto, br);
-		//msg 값이 실패다? 그럼 실패 return
-		
-		if(msg.equals("실패")) {
+	public String prdtUpdate(ProductDTO dto) {
+		String msg = updateEmptyCh(dto);
+		if(!msg.equals("검증 완료")) {
 			return msg;
 		}
 		
@@ -147,14 +133,12 @@ public class ProductService {
 			repo.updateExceptFile(dto);
 			return "완료";
 		}
-		ProductDTO db = new ProductDTO();
-		int prdtId = db.getPrdt_id();
+		
+		int prdtId = dto.getPrdt_id();
 		
 		folderDelete(prdtId);
 		
 		String prdt_img = productImgSaveFile(file, prdtId);
-		
-		System.out.println(prdt_img);
 		
 		//~~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
 		
@@ -164,11 +148,43 @@ public class ProductService {
 		return "완료";
 	}
 
-	private String emptyCh(ProductDTO dto, BindingResult br) {
-		if(br.hasErrors()) {
-			return "실패";
+	private String insertEmptyCh(ProductDTO dto) {
+		if (dto.getPrdt_id() < 0) {
+			return "상품 id를 입력하시오";
+		} else if (dto.getCate_id() < 0) {
+			return "카테고리 id를 입력하시오.";
+		} else if (dto.getPrdt_nm() == null || dto.getPrdt_nm().equals("")) {
+			return "상품 이름을 입력하시오.";
+		} else if (dto.getPrdt_title() == null|| dto.getPrdt_title().equals("")) {
+			return "상품 설명을 입력하시오.";
+		}else if (dto.getPrdt_content() == null || dto.getPrdt_content().equals("")) {
+			return "상품 내용을 입력하시오.";
+		}else if (dto.getPrdt_color() < 0) {
+			return "상품 색상을 입력하시오.";
+		}else if (dto.getPrdt_price() < 0) {
+			return "상품 가격을 입력하시오.";
+		}else if (dto.getPrdt_amount() < 0) {
+			return "상품 수량을 입력하시오.";
 		}return "검증 완료";
 	}
+	
+	private String updateEmptyCh(ProductDTO dto) {
+		if (dto.getCate_id() < 0) {
+			return "카테고리를 선택하시오.";
+		}  else if (dto.getPrdt_nm() == null || dto.getPrdt_nm().equals("")) {
+			return "상품 이름을 입력하시오.";
+		} else if (dto.getPrdt_title() == null|| dto.getPrdt_title().equals("")) {
+			return "상품 설명을 입력하시오.";
+		}else if (dto.getPrdt_content() == null || dto.getPrdt_content().equals("")) {
+			return "상품 내용을 입력하시오.";
+		}else if (dto.getPrdt_color() < 0) {
+			return "상품 색상을 선택하시오.";
+		}else if (dto.getPrdt_price() < 0) {
+			return "상품 가격을 입력하시오.";
+		}else if (dto.getPrdt_amount() < 0) {
+			return "상품 수량을 입력하시오.";
+		}return "검증 완료";
+	}   
 	
 	private String productImgSaveFile(MultipartFile file, int maxId) {
 		
@@ -209,4 +225,11 @@ public class ProductService {
 			System.out.println(e);
 		}
 	}
+
+	public List<ProductDTO> getAllByCateId(int cate_id) {
+		List<ProductDTO> prdtByCateId = repo.getAllByCateId(cate_id);
+		return prdtByCateId;
+	}
+	
+	
 }

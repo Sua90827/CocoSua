@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
@@ -83,6 +82,7 @@ public class ProductController {
 	@GetMapping("/prdtUpdate")
 	public String prdtUpdate(@RequestParam("prdt_id") int prdt_id , Model model) {
 		ProductDTO prdt = service.getPrdtDTO(prdt_id);
+		System.out.println(prdt.getPrdt_id() + " === " + prdt.getPrdt_img());
 		List<CategoryDTO> cate = service.getCategoryList();
 		List<ColorDTO> color = service.getColorList();
 		
@@ -94,10 +94,12 @@ public class ProductController {
 	}
 	
 	@PostMapping("/prdtUpdate.do")
-	public String prdtUpdate(@Valid ProductDTO dto, BindingResult br, Model model) {
-		String emptyCh = service.prdtUpdate(dto, br);
-		if(!(emptyCh.equals("완료"))) {
-			model.addAttribute("prdt", dto);
+	public String prdtUpdate(ProductDTO dto, Model model) {
+		String emptyCh = service.prdtUpdate(dto);
+		if(!emptyCh.equals("완료")) {
+			model.addAttribute("msg", emptyCh);
+			ProductDTO prdt = service.getPrdtDTO(dto.getPrdt_id());
+			model.addAttribute("prdt", prdt);
 			List<CategoryDTO> cate = service.getCategoryList();
 			List<ColorDTO> color = service.getColorList();
 			model.addAttribute("cate", cate);
@@ -111,6 +113,8 @@ public class ProductController {
 	
 	@GetMapping("product_section")
 	public String prdtList(@RequestParam("cate_id") int cate_id, Model model) {
+		List<ProductDTO> dto = service.getAllByCateId(cate_id);
+		model.addAttribute("prdt", dto);
 		return "user/shop/shop_section";
 	}
 }

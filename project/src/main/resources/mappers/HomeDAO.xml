@@ -10,5 +10,7 @@
     	select * from SH_PRODUCT_INFO
     	ORDER BY prdt_id DESC
     </select>
-    
+    <select id="selectCate" resultType="com.suamall.project.dto.CategoryDTO">
+    	SELECT * FROM sh_product_cate 
+    </select>
 </mapper>

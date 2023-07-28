@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ProductDTO;
 import com.suamall.project.repository.HomeRepository;
 
@@ -24,6 +25,11 @@ public class HomeService {
 		List<ProductDTO> dto = repo.selectAll(); 
 		return dto;
 		
+	}
+
+	public List<CategoryDTO> selectCate() {
+		List<CategoryDTO> cate = repo.selectCate();
+		return cate;
 	}
 	
 }
