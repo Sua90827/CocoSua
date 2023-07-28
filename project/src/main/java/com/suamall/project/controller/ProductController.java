@@ -115,9 +115,19 @@ public class ProductController {
 	public String prdtList(@RequestParam("cate_id") int cate_id, Model model) {
 		List<ProductDTO> dto = service.getAllByCateId(cate_id);
 		List<CategoryDTO> cate = service.getCategoryList();
+		String cateNm = getCateName(cate, cate_id);
 		model.addAttribute("cate", cate);
 		model.addAttribute("prdt", dto);
+		model.addAttribute("cate_nm", cateNm);
 		return "user/shop/shop_section";
+	}
+
+	private String getCateName(List<CategoryDTO> cate, int cate_id) {
+		for(CategoryDTO dto : cate) {
+			if(dto.getCate_id() == cate_id)
+				return dto.getCate_nm();
+		}
+		return null;
 	}
 
 }
