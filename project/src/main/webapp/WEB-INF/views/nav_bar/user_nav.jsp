@@ -50,7 +50,7 @@
 		<div class="nav_cate_menu">
 			<c:forEach var="menu" items="${cate }">
 				<div>
-					<a href="#">${menu.cate_nm }</a>
+					<a href="product_section?cate_id=${menu.cate_id }">${menu.cate_nm }</a>
 				</div>
 			</c:forEach>
 			<div>
