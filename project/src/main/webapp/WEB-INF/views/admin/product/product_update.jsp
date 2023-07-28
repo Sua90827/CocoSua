@@ -59,18 +59,46 @@
 					</tr>
 				</table>
 				<div>
-					<img class="img-fluid product_list_img_size" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." />
+					<a onclick="fileSelect();"><img class = "img-fluid product_list_img_size" id="userImgFile"style="width: 130px;" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." /></a>
+					<a onclick="fileSelect();"><img class="img-fluid product_list_img_size" id="preview" alt="Preview"/></a>
 				</div>
 				<br><br>
 				<div class="product_file">
-					<input type="file" name="file"><br>
+					<input type="file" name="file" id="file" style="display:none;" onchange="previewImage(event);">
 				</div>
 				<div class="product_botton">
-					<button type="submit">상품 수정</button> <input type="button" onclick="window.history.back()" value="뒤로가기">
+					<button type="submit">상품 수정</button> <button type="reset" class="resume_person_info_save_button" id="cancelButton" onclick="fileCancel()"><b>취소</b></button>
 				</div>
 		</form>
 	</div>
 </div>
+
+<script>
+const fileSelect = () => {
+	document.getElementById('file').click();
+}
+
+const previewImage = (event) => {
+	var input = event.target;
+	var reader = new FileReader();
+
+	reader.onload = function() {
+		var imgElement = document.getElementById('preview');
+		imgElement.src = reader.result;
+	};
+
+	reader.readAsDataURL(input.files[0]);
+
+	document.getElementById('preview').style.display = 'block';
+	document.getElementById('userImgFile').style.display = 'none';
+}
+
+const fileCancel = () => {
+	document.getElementById('cancelButton').click();
+	document.getElementById('preview').style.display = 'none';
+	document.getElementById('userImgFile').style.display = 'block';
+}
+</script>
 
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
