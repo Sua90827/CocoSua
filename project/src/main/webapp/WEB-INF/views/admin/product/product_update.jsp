@@ -14,6 +14,8 @@
 <br>
 <div class="product_page">
 	<div class="product_location">
+	
+		${msg }
 		<form action="prdtUpdate.do" method="post" enctype="multipart/form-data">
 			<table class="product_table">
 				<input type="hidden" name="prdt_id" value="${prdt.prdt_id }">
@@ -56,6 +58,9 @@
 						<td><input type="text" name="prdt_amount" value="${prdt.prdt_amount }"></td>
 					</tr>
 				</table>
+				<div>
+					<img class="img-fluid product_list_img_size" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." />
+				</div>
 				<br><br>
 				<div class="product_file">
 					<input type="file" name="file"><br>

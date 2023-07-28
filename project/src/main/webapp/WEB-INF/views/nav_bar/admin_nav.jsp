@@ -28,16 +28,6 @@
 					<div>
 						<a href="/qna">Q&A</a>
 					</div>
-					<c:if test="${sessionScope.loginType eq 1 }">
-						<div>
-							<a href="https://kauth.kakao.com/oauth/logout?client_id=bb7ab199150e947c571829261362a621&logout_redirect_uri=http://localhost:8080/kakao_logout">LOGOUT</a>
-						</div>
-					</c:if>
-					<c:if test="${sessionScope.loginType eq 0 || sessionScope.loginType eq 2}">
-						<div>
-							<a href="/logout">LOGOUT</a>
-						</div>
-					</c:if>
 					<div>
 						<a href="/productList">PRODUCT</a>
 					</div>
