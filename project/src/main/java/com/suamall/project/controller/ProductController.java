@@ -65,7 +65,8 @@ public class ProductController {
 	}
 	
 	@GetMapping("/categoryRegister")
-	public String categoryRegister() {
+	public String categoryRegister(Model model) {
+		
 		return "admin/product/category_register";
 	}
 	
@@ -110,11 +111,13 @@ public class ProductController {
 	}
 	
 	
-	
 	@GetMapping("product_section")
 	public String prdtList(@RequestParam("cate_id") int cate_id, Model model) {
 		List<ProductDTO> dto = service.getAllByCateId(cate_id);
+		List<CategoryDTO> cate = service.getCategoryList();
+		model.addAttribute("cate", cate);
 		model.addAttribute("prdt", dto);
 		return "user/shop/shop_section";
 	}
+
 }
