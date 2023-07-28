@@ -53,48 +53,6 @@
 					<a href="product_section?cate_id=${menu.cate_id }">${menu.cate_nm }</a>
 				</div>
 			</c:forEach>
-			<div>
-				<a href="#">NEW</a>
-			</div>
-			<div>
-				<a href="#">Dress</a>
-			</div>
-			<div>
-				<a href="#">Outer</a>
-			</div>
-			<div>
-				<a href="#">Blouse</a>
-			</div>
-			<div>
-				<a href="#">Tee</a>
-			</div>
-			<div>
-				<a href="#">Knit</a>
-			</div>
-			<div>
-				<a href="#">Bottom</a>
-			</div>
-			<div>
-				<a href="#">Shoes</a>
-			</div>
-			<div>
-				<a href="#">Bag</a>
-			</div>
-			<div>
-				<a href="#">Acc</a>
-			</div>
-			<div>
-				<a href="#">Cruise</a>
-			</div>
-			<div>
-				<a href="#">Sale</a>
-			</div>
-			<div>
-				<a href="#">Only you</a>
-			</div>
-			<div>
-				<a href="#">Celebrity</a>
-			</div>
 		</div>
 	</div>
 </div>
