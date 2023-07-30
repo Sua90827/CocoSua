@@ -1,0 +1,28 @@
+.product_info_page{
+	
+	display: flex;
+	justify-content:center;
+}
+
+.product_info_location{
+	display: flex;
+}
+
+.product_info_box{
+	width:50%;
+}
+
+.product_info_imgBox img{
+	width: 100%;
+}
+
+.product_color_box{
+	display: flex;
+	justify-content: space-between;
+}
+
+.product_total_box{
+	display: flex;
+	justify-content: space-between;
+}
+

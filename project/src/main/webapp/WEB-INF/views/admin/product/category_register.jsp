@@ -35,6 +35,7 @@
 					<th>Num</th>
 					<th>Name</th>
 					<th>delete</th>
+					<th></th>
 				</tr>
 				<c:if test="${empty cate }">
 					<tr>
@@ -45,7 +46,8 @@
 					<tr>
 						<td>${cate.cate_id }</td>
 						<td>${cate.cate_nm }</td>
-						<td><button type="button" onclick="categoryDelete(${cate.cate_id})">삭제</button><a href="cateUpBtn?cate_id=${cate.cate_id }"><button class="cateUpBtn">▲</button></a>  <a href="cateDownBtn?cate_id=${cate.cate_id }"><button class="cateDownBtn">▼</button></a></td>
+						<td><button class="cateDeleteBtn" type="button" onclick="categoryDelete(${cate.cate_id})">삭제</button></td>
+						<td><a href="cateUpBtn?cate_id=${cate.cate_id }"><button class="cateUpBtn">▲</button></a>  <a href="cateDownBtn?cate_id=${cate.cate_id }"><button class="cateDownBtn">▼</button></a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -54,7 +56,7 @@
 	<script>
 		function categoryDelete(id){
 			var cateId = id;
-			if(window.confirm('카테고리를 삭제하시겠습니까?')){
+			if(window.confirm('삭제하게 되면 카테고리 관련된 모든 상품도 삭제됩니다. 카테고리를 삭제하시겠습니까?')){
 				location.href="categoryDelete.do?cate_id=" + cateId;	
 			}else
 			return;

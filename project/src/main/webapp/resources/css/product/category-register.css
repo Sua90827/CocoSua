@@ -52,9 +52,31 @@
 }
 
 .cateUpBtn{
-	
+	all: unset;
+	font-size: 12px;
+	padding-left: 3px;	
+}
+
+.cateUpBtn:hover{
+	color: var(--bs-link-hover-color);
 }
 
 .cateDownBtn{
-	
+	all: unset;
+	font-size: 12px;
+	padding-left: 3px;	
+}
+
+.cateDownBtn:hover{
+	color: var(--bs-link-hover-color);
+}
+
+.cateDeleteBtn{
+	all: unset;
+	font-size: 12px;
+	padding-left: 3px;	
+}
+
+.cateDeleteBtn:hover{
+	color: var(--bs-link-hover-color);
 }
