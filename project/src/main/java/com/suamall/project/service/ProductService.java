@@ -230,6 +230,11 @@ public class ProductService {
 		List<ProductDTO> prdtByCateId = repo.getAllByCateId(cate_id);
 		return prdtByCateId;
 	}
+
+	public ProductListViewDTO getCateColorNmByPrdtId(int prdt_id) {
+		ProductListViewDTO aw = repo.getCateColorNmByPrdtId(prdt_id);
+		return aw;
+	}
 	
 	
 }

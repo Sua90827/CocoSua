@@ -37,6 +37,8 @@ public interface ProductRepository {
 	public void updateIncludeFile(ProductDTO dto);
 
 	List<ProductDTO> getAllByCateId(int cate_id);
+
+	ProductListViewDTO getCateColorNmByPrdtId(int prdt_id);
 	
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),

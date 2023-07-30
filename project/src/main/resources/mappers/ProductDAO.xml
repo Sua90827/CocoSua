@@ -56,4 +56,10 @@
 	<select id="getAllByCateId" resultType="com.suamall.project.dto.ProductDTO">
 		SELECT * FROM sh_product_info WHERE cate_id = #{cate_id}
 	</select>
+	<select id="getCateColorNmByPrdtId" resultType="com.suamall.project.dto.ProductListViewDTO">
+		SELECT a.*, b.cate_nm, c.color_nm FROM sh_product_info a 
+		INNER JOIN sh_product_color c ON a.prdt_color=c.color_id 
+		INNER JOIN sh_product_cate b ON a.cate_id=b.cate_id
+		WHERE a.prdt_id = #{prdt_id}
+	</select>
 </mapper>

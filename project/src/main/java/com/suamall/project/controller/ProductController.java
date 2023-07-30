@@ -54,7 +54,7 @@ public class ProductController {
 		if(!msg.equals("성공")) {
 			List<ColorDTO> color = service.getColorList();
 			List<CategoryDTO> cate = service.getCategoryList();
-			model.addAttribute("color", color);
+			model.addAttribute("color", color); 
 			model.addAttribute("cate", cate);
 			model.addAttribute("product", dto);
 			model.addAttribute("msg", msg);
@@ -113,15 +113,25 @@ public class ProductController {
 	
 	@GetMapping("product_section")
 	public String prdtList(@RequestParam("cate_id") int cate_id, Model model) {
-		List<ProductDTO> dto = service.getAllByCateId(cate_id);
-		List<CategoryDTO> cate = service.getCategoryList();
+		List<ProductDTO> dto = service.getAllByCateId(cate_id);		//
+		List<CategoryDTO> cate = service.getCategoryList();			// 카테고리 메뉴
 		String cateNm = getCateName(cate, cate_id);
 		model.addAttribute("cate", cate);
 		model.addAttribute("prdt", dto);
 		model.addAttribute("cate_nm", cateNm);
 		return "user/shop/shop_section";
 	}
-
+	
+	@GetMapping("userPrdtInfo")
+	public String userPrdtInfo(@RequestParam("prdt_id") int prdt_id, Model model) {
+		ProductListViewDTO dto = service.getCateColorNmByPrdtId(prdt_id);
+		model.addAttribute("prdt", dto);
+		return "user/shop/product/product_info";
+	}
+	
+	
+	
+	
 	private String getCateName(List<CategoryDTO> cate, int cate_id) {
 		for(CategoryDTO dto : cate) {
 			if(dto.getCate_id() == cate_id)
@@ -129,5 +139,7 @@ public class ProductController {
 		}
 		return null;
 	}
+	
+	
 
 }
