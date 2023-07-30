@@ -66,7 +66,16 @@ public class ProductController {
 	
 	@GetMapping("/categoryRegister")
 	public String categoryRegister(Model model) {
-		
+		List<CategoryDTO> list = service.getCategoryList();
+		model.addAttribute("cate", list);
+		return "admin/product/category_register";
+	}
+	
+	@GetMapping("categoryDelete.do")
+	public String categoryDelete(@RequestParam("cate_id") int cate_id, Model model) {
+		service.CateDelete(cate_id);
+		List<CategoryDTO> list = service.getCategoryList();
+		model.addAttribute("cate", list);
 		return "admin/product/category_register";
 	}
 	
@@ -74,10 +83,14 @@ public class ProductController {
 	public String categoryRegister(CategoryDTO input, Model model) {
 		String msg = service.cateNmMsg(input);
 		if(msg!=null) {
+			List<CategoryDTO> list = service.getCategoryList();			
 			model.addAttribute("msg", msg);
+			model.addAttribute("cate", list);
 			return "admin/product/category_register";
 		}
-		return "admin/product/product_list";
+		List<CategoryDTO> list = service.getCategoryList();
+		model.addAttribute("cate", list);
+		return "admin/product/category_register";
 	}
 	
 	@GetMapping("/prdtUpdate")
@@ -125,12 +138,11 @@ public class ProductController {
 	@GetMapping("userPrdtInfo")
 	public String userPrdtInfo(@RequestParam("prdt_id") int prdt_id, Model model) {
 		ProductListViewDTO dto = service.getCateColorNmByPrdtId(prdt_id);
+		List<CategoryDTO> cate = service.getCategoryList();			// 카테고리 메뉴
+		model.addAttribute("cate", cate);
 		model.addAttribute("prdt", dto);
 		return "user/shop/product/product_info";
 	}
-	
-	
-	
 	
 	private String getCateName(List<CategoryDTO> cate, int cate_id) {
 		for(CategoryDTO dto : cate) {
@@ -139,6 +151,7 @@ public class ProductController {
 		}
 		return null;
 	}
+	
 	
 	
 

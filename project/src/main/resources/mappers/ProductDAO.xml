@@ -4,7 +4,7 @@
 
 <mapper namespace="com.suamall.project.repository.ProductRepository">
 	
-	<select id="checkDB" resultType="com.suamall.project.dto.ProductDTO">
+	<select id="checkDB" resultType="com.suamall.project.dto.CategoryDTO">
 		SELECT * FROM sh_product_cate WHERE cate_nm=#{cate_nm}
 	</select>
 	
@@ -13,6 +13,7 @@
 	</select>
 	<select id="getCategoryList" resultType="com.suamall.project.dto.CategoryDTO">
 		SELECT * FROM sh_product_cate
+		ORDER BY cate_id ASC
 	</select>
 	
 	<select id="getMaxId" resultType="Integer">
@@ -23,6 +24,14 @@
 	<insert id="productInsert" parameterType="com.suamall.project.dto.ProductDTO">
 		INSERT INTO sh_product_info VALUES(#{prdt_id}, #{cate_id}, #{prdt_nm}, #{prdt_img}, #{prdt_title}, 
 		#{prdt_content}, #{prdt_color}, #{prdt_price}, #{prdt_amount})
+	</insert>
+	
+	<insert id = "cate_id" parameterType = "com.suamall.project.dto.CategoryDTO">
+		<selectKey keyProperty="cate_id" resultType="Integer" order="BEFORE">
+			SELECT nvl(max(cate_id), 10000)+1
+			FROM sh_product_cate
+		</selectKey>
+		INSERT INTO sh_product_cate VALUES(#{cate_id}, #{cate_nm})
 	</insert>
 	
 	<select id="selectAll" resultType="com.suamall.project.dto.ProductDTO">
@@ -62,4 +71,7 @@
 		INNER JOIN sh_product_cate b ON a.cate_id=b.cate_id
 		WHERE a.prdt_id = #{prdt_id}
 	</select>
+	<delete id="CateDelete" parameterType="com.suamall.project.dto.CategoryDTO">
+		DELETE FROM sh_product_cate WHERE cate_id=#{cate_id}
+	</delete>
 </mapper>

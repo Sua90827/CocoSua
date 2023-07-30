@@ -235,6 +235,10 @@ public class ProductService {
 		ProductListViewDTO aw = repo.getCateColorNmByPrdtId(prdt_id);
 		return aw;
 	}
+
+	public void CateDelete(int cate_id) {
+		repo.CateDelete(cate_id);
+	}
 	
 	
 }

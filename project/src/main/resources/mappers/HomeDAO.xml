@@ -12,5 +12,6 @@
     </select>
     <select id="selectCate" resultType="com.suamall.project.dto.CategoryDTO">
     	SELECT * FROM sh_product_cate 
+    	ORDER BY cate_id ASC
     </select>
 </mapper>
