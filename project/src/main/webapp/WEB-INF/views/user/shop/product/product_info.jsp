@@ -39,7 +39,9 @@
 			<div>
 				${prdt.prdt_color }<br>
 				${prdt.prdt_price }<br>
-				${prdt.prdt_content }
+				${prdt.prdt_content }<br>
+				${prdt.color_nm }<br>
+				${prdt.cate_nm }<br>
 			</div>
 		</div>
 	</div>
