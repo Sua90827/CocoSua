@@ -31,8 +31,7 @@
 					<div class="portfolio-item">
 						<a class="portfolio-link" data-bs-toggle="modal"
 							href="userPrdtInfo?prdt_id=${prdt.prdt_id }">
-							 <img class="img-fluid" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}"
-								 alt="..." />
+							 <img class="img-fluid" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">${prdt.prdt_title }</div>
