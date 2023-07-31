@@ -1,3 +1,14 @@
+.user_index_page{
+	padding-left:100px;
+	width: 100%;
+	display: flex;
+	justify-content:center;
+}
+
+.user_index_location{
+	width: 60%;
+}
+
 .user_main_page{
 	display: flex;
 	justify-content: center;

@@ -16,20 +16,20 @@
 						src="/resources/img/userImg.png" alt="..." /></a>
 				</div>
 				<div class="navbar_sub sub_right_menu">
-					<div>
-						<a href="/qna">Q&A</a>
-					</div>
 					<c:if test="${sessionScope.loginType eq 2}">
 						<div>
 							<a href="/admin">ADMIN</a>
 						</div>
+					</c:if>
+					<div>
+						<a href="/qna">Q&A</a>
+					</div>
 						<div>
 							<a href="/cart">CART</a>
 						</div>
 						<div>
 							<a href="/mypages">MY PAGES</a>
 						</div>
-					</c:if>
 					<c:if test="${sessionScope.loginType eq 1 }">
 						<div>
 							<a href="https://kauth.kakao.com/oauth/logout?client_id=bb7ab199150e947c571829261362a621&logout_redirect_uri=http://localhost:8080/kakao_logout">LOGOUT</a>
