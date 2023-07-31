@@ -26,3 +26,21 @@
 	justify-content: space-between;
 }
 
+.product_infomation_location{
+	padding-left: 100px;
+}
+
+.product_title_box{
+	font-size:28px;
+	font-weight: bold;
+}
+
+.product_price_box{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 50px;
+}
+
+.product_color_box{
+	
+}

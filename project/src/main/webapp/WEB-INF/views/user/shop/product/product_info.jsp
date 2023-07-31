@@ -27,11 +27,11 @@
 			</div>
 		</div>
 		<div class="product_info_box">
-			<div>
-				<div>
+			<div class="product_infomation_location">
+				<div class="product_title_box">
 					${prdt.prdt_title }
 				</div>
-				<div>
+				<div class="product_price_box">
 					<div>PRICE</div>
 					<div>${prdt.prdt_price }</div>
 				</div>
