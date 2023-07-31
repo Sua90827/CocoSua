@@ -14,6 +14,12 @@
 <c:if test="${empty sessionScope.loginType }">
 	<%@ include file="/WEB-INF/views/nav_bar/basic_nav.jsp"%>
 </c:if>
+
+<c:if test="${not empty msg }">
+	<script>
+		alert("이미 가입된 아이디입니다.");
+	</script>
+</c:if>
 <div class="register_page">
 	<div class="register_location">
 		<form action="/join.do" method="post" id="f">
@@ -95,5 +101,6 @@
 
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 <script src="/resources/js/search_road.js"></script>
+<script src="/resources/js/register_regex.js"></script>
 </body>
 </html>
