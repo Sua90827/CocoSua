@@ -76,8 +76,6 @@ public class KakaoController {
 	@RequestMapping(value="/kakao_logout")
 	public ModelAndView logout(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-
-		service.kakaoLogout((String) session.getAttribute("accessToken"));
 		session.invalidate();
 		mav.setViewName("redirect:/");
 		return mav;

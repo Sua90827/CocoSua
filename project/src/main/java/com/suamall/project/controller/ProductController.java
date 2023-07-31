@@ -182,4 +182,11 @@ public class ProductController {
 		service.prdtDelete(prdt_id);
 		return "redirect:productList";
 	}
+	
+	@GetMapping("adminProductInfo")
+	public String adminPrdtInfo(@RequestParam("prdt_id") int prdt_id, Model model) {
+		ProductListViewDTO prdt = service.PrdtInfoByPrdtId(prdt_id);
+		model.addAttribute("prdt", prdt);
+		return "admin/product/product_view";
+	}
 }

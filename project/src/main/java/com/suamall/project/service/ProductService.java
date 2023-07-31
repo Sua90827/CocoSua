@@ -260,6 +260,11 @@ public class ProductService {
 		repo.prdtDelete(prdt_id);
 		folderDelete(prdt_id);		
 	}
+
+	public ProductListViewDTO PrdtInfoByPrdtId(int prdt_id) {
+		ProductListViewDTO answer = getCateColorNmByPrdtId(prdt_id);
+		return answer;
+	}
 	
 	
 }
