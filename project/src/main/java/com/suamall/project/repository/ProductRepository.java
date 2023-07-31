@@ -41,6 +41,12 @@ public interface ProductRepository {
 	ProductListViewDTO getCateColorNmByPrdtId(int prdt_id);
 
 	public void CateDelete(int cate_id);
+
+	public int selectAboveCateId(int cate_id);
+
+	public void updateForMovingButtons(CategoryDTO dto);
+
+	public int selectBelowCateId(int cate_id);
 	
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),

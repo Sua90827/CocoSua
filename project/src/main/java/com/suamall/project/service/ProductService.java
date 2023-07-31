@@ -24,7 +24,7 @@ import com.suamall.project.repository.ProductRepository;
 public class ProductService {
 	@Autowired 
 	private ProductRepository repo;
-	private static String directory = "E:\\cocosua\\project\\project\\src\\main\\webapp\\resources\\upload\\";
+	private static String directory = "D:\\cocosua\\project\\project\\src\\main\\webapp\\resources\\upload\\";
 
 	public String cateNmMsg(CategoryDTO input) {
 		if(input.getCate_nm()==null || input.getCate_nm().equals("")) {
@@ -238,6 +238,22 @@ public class ProductService {
 
 	public void CateDelete(int cate_id) {
 		repo.CateDelete(cate_id);
+	}
+
+	
+
+	public int selectAboveCateId(int cate_id) {
+		int answer = repo.selectAboveCateId(cate_id);
+		return answer;
+	}
+
+	public void updateForMovingButtons(CategoryDTO dto) {
+		repo.updateForMovingButtons(dto);
+	}
+
+	public int selectBelowCateId(int cate_id) {
+		int answer = repo.selectBelowCateId(cate_id);
+		return answer;
 	}
 	
 	

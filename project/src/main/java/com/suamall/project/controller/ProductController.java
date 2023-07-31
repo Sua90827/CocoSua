@@ -152,7 +152,27 @@ public class ProductController {
 		return null;
 	}
 	
+	@GetMapping("cateUpBtn")
+	public String cateUpBtn(@RequestParam("cate_id") int cate_id, Model model) {
+		int aboveCateId = service.selectAboveCateId(cate_id);
+		CategoryDTO store = new CategoryDTO();
+		store.setCate_id(cate_id);
+		store.setChanged(aboveCateId);
+		service.updateForMovingButtons(store);
+		List<CategoryDTO> list = service.getCategoryList();
+		model.addAttribute("cate", list);
+		return "admin/product/category_register";
+	}
 	
-	
-
+	@GetMapping("cateDownBtn")
+	public String cateDownBtn(@RequestParam("cate_id") int cate_id, Model model) {
+		int belowCateId = service.selectBelowCateId(cate_id);
+		CategoryDTO store = new CategoryDTO();
+		store.setCate_id(cate_id);
+		store.setChanged(belowCateId);
+		service.updateForMovingButtons(store);
+		List<CategoryDTO> list = service.getCategoryList();
+		model.addAttribute("cate", list);
+		return "admin/product/category_register";
+	}
 }
