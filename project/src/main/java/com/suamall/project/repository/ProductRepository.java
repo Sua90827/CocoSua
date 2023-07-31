@@ -47,6 +47,8 @@ public interface ProductRepository {
 	public void updateForMovingButtons(CategoryDTO dto);
 
 	public int selectBelowCateId(int cate_id);
+
+	void prdtDelete(int prdt_id);
 	
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),

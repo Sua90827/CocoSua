@@ -255,6 +255,11 @@ public class ProductService {
 		int answer = repo.selectBelowCateId(cate_id);
 		return answer;
 	}
+
+	public void prdtDelete(int prdt_id) {
+		repo.prdtDelete(prdt_id);
+		folderDelete(prdt_id);		
+	}
 	
 	
 }

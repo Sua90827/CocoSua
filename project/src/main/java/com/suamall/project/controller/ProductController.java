@@ -59,8 +59,10 @@ public class ProductController {
 			model.addAttribute("product", dto);
 			model.addAttribute("msg", msg);
 			return "admin/product/product_register";
-		}
+		}List<ProductListViewDTO> list = service.getProductListView();
 		
+		model.addAttribute("prdt", list);
+
 		return "admin/product/product_list";
 	}
 	
@@ -88,9 +90,8 @@ public class ProductController {
 			model.addAttribute("cate", list);
 			return "admin/product/category_register";
 		}
-		List<CategoryDTO> list = service.getCategoryList();
-		model.addAttribute("cate", list);
-		return "admin/product/category_register";
+		
+		return "redirect:productList";
 	}
 	
 	@GetMapping("/prdtUpdate")
@@ -174,5 +175,11 @@ public class ProductController {
 		List<CategoryDTO> list = service.getCategoryList();
 		model.addAttribute("cate", list);
 		return "admin/product/category_register";
+	}
+	
+	@GetMapping("prdtDelete.do")
+	public String prdtDelete(@RequestParam("prdt_id") int prdt_id, Model model) {
+		service.prdtDelete(prdt_id);
+		return "redirect:productList";
 	}
 }
