@@ -239,6 +239,22 @@ public class ProductService {
 	public void CateDelete(int cate_id) {
 		repo.CateDelete(cate_id);
 	}
+
+	
+
+	public int selectAboveCateId(int cate_id) {
+		int answer = repo.selectAboveCateId(cate_id);
+		return answer;
+	}
+
+	public void updateForMovingButtons(CategoryDTO dto) {
+		repo.updateForMovingButtons(dto);
+	}
+
+	public int selectBelowCateId(int cate_id) {
+		int answer = repo.selectBelowCateId(cate_id);
+		return answer;
+	}
 	
 	
 }

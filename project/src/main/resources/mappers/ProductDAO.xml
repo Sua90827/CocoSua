@@ -74,4 +74,20 @@
 	<delete id="CateDelete" parameterType="com.suamall.project.dto.CategoryDTO">
 		DELETE FROM sh_product_cate WHERE cate_id=#{cate_id}
 	</delete>
+	<select id="selectAboveCateId" resultType="Integer">
+		SELECT Max(cate_id) FROM sh_product_cate WHERE cate_id &lt; #{cate_id}
+	</select>
+	<select id="selectBelowCateId" resultType="Integer">
+		SELECT Min(cate_id) FROM sh_product_cate WHERE cate_id > #{cate_id}
+	</select>
+	<update id="updateForMovingButtons" parameterType="com.suamall.project.dto.CategoryDTO">
+		UPDATE sh_product_cate
+		SET cate_nm = CASE 
+                  WHEN cate_id = #{cate_id} THEN (SELECT cate_nm FROM sh_product_cate WHERE cate_id = #{changed})
+                  WHEN cate_id = #{changed} THEN (SELECT cate_nm FROM sh_product_cate WHERE cate_id = #{cate_id})
+                END
+		WHERE cate_id IN (#{cate_id}, #{changed})
+	</update>
+
+
 </mapper>

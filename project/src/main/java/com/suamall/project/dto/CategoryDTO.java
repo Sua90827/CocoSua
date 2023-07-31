@@ -6,4 +6,5 @@ import lombok.Data;
 public class CategoryDTO {
 	private int cate_id;
 	private String cate_nm;
+	private int changed;
 }
