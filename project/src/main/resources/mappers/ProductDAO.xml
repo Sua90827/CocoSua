@@ -88,6 +88,8 @@
                 END
 		WHERE cate_id IN (#{cate_id}, #{changed})
 	</update>
-
+	<delete id="prdtDelete" parameterType="Integer">
+		DELETE FROM sh_product_info WHERE prdt_id = #{prdt_id}
+	</delete>
 
 </mapper>
