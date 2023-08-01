@@ -6,10 +6,16 @@
 
 .product_info_location{
 	display: flex;
+	justify-content: center;
 }
 
 .product_info_box{
-	width:50%;
+	width:30%;
+}
+
+.product_info_imgBox{
+	text-align: right;
+	padding-right: 50px;
 }
 
 .product_info_imgBox img{
@@ -27,7 +33,7 @@
 }
 
 .product_infomation_location{
-	padding-left: 100px;
+	padding-left: 50px;
 }
 
 .product_title_box{
