@@ -18,7 +18,7 @@
 </c:if>
 
 <br>
-
+<input type="hidden" id="price" value="${prdt.prdt_price }">
 <section class="product_info_page">
 	<div class="product_info_location">
 		<div class="product_info_box">
@@ -39,14 +39,46 @@
 					<div>COLOR</div>
 					<div>${prdt.color_nm }</div>
 				</div>
+				<div class="product_amount_box">
+					<div>수량</div>
+					<div><button onclick="minus()">-</button></div>
+					<div><input type="text" id="productAmount" class="productAmount" name="cart_amount" value="0" readonly></div>
+					<div><button onclick="plus()">+</button></div>
+				</div>
 				<div class="product_total_box">
 					<div>TOTAL</div>
-					<div>0</div>
+					<div><input type="text" id="totalPrice" class="totalPrice" name="cart_price" value="0" readonly></div>
 				</div>
+				<div>담기</div>
+				<div>즉시구매</div>
 			</div>
 		</div>
 	</div>
 </section>
+<script>
+
+	
+	
+	function plus(){
+		var plus = document.getElementById("productAmount").value;
+		var price = document.getElementById("price").value;
+		
+		plus++;
+		document.getElementById("productAmount").value = plus;
+		document.getElementById("totalPrice").value = plus*price;
+	}
+	
+	function minus(){
+		var minus = document.getElementById("productAmount").value;
+		var price = document.getElementById("price").value;
+		minus--;
+		if(minus < 0){
+			minus = 0;
+		}
+		document.getElementById("productAmount").value = minus;
+		document.getElementById("totalPrice").value = minus*price;
+	}
+</script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>
