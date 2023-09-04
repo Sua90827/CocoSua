@@ -47,6 +47,42 @@
 	margin-top: 50px;
 }
 
-.product_color_box{
+.product_amount_div{
+	display:flex;
+}
+
+.product_amount_box{
+	display: flex;
+	justify-content: space-between;
+}
+
+.productAmount{
+	all:unset;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	width: 70px;
+	height: 25px;
+}
+
+.totalPrice{
+	text-align: center;
+	width: 100px;
+}
+
+.cartAddBtn{
+	all:unset;
+	cursor: pointer;
+	border: solid 1px rgba(0, 0, 0, 0.1);
+	width:25px;
+	height: 25px;
+	border-radius: 50px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
 	
+}
+
+.product_box{
+	margin-bottom: 20px;;
 }

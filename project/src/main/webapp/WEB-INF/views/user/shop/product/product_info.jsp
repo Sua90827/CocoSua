@@ -31,54 +31,42 @@
 				<div class="product_title_box">
 					${prdt.prdt_title }
 				</div>
-				<div class="product_price_box">
+				<div class="product_price_box product_box">
 					<div>PRICE</div>
 					<div>${prdt.prdt_price }</div>
 				</div>
-				<div class="product_color_box">
+				<div class="product_color_box product_box">
 					<div>COLOR</div>
 					<div>${prdt.color_nm }</div>
 				</div>
-				<div class="product_amount_box">
-					<div>수량</div>
-					<div><button onclick="minus()">-</button></div>
-					<div><input type="text" id="productAmount" class="productAmount" name="cart_amount" value="0" readonly></div>
-					<div><button onclick="plus()">+</button></div>
-				</div>
-				<div class="product_total_box">
-					<div>TOTAL</div>
-					<div><input type="text" id="totalPrice" class="totalPrice" name="cart_price" value="0" readonly></div>
-				</div>
-				<div>담기</div>
+				
+				<form action="cart.do" method="post">
+					<div class="product_box">
+						<input type="hidden" name="user_id" value="${sessionScope.user_id }">
+						<input type="hidden" name="prdt_id" value="${prdt.prdt_id }">
+						<div class="product_amount_box">
+							<div>수량</div>
+							<div class="product_amount_div">
+								<div><button class="cartAddBtn" type="button" onclick="minus()">-</button></div>
+								<div><input type="text" id="productAmount" class="productAmount" name="cart_amount" value="1" min="1" readonly></div>
+								<div><button class="cartAddBtn" type="button" onclick="plus()">+</button></div>
+							</div>
+						</div>
+					</div>
+					<div class="product_total_box product_box">
+					
+						<div>TOTAL</div>
+						<div><input type="text" id="totalPrice" class="totalPrice" name="cart_price" value="${prdt.prdt_price }" readonly>원</div>
+					</div>
+					<div><input type="submit" value="담기"></div>
+				</form>
 				<div>즉시구매</div>
 			</div>
 		</div>
 	</div>
 </section>
-<script>
 
-	
-	
-	function plus(){
-		var plus = document.getElementById("productAmount").value;
-		var price = document.getElementById("price").value;
-		
-		plus++;
-		document.getElementById("productAmount").value = plus;
-		document.getElementById("totalPrice").value = plus*price;
-	}
-	
-	function minus(){
-		var minus = document.getElementById("productAmount").value;
-		var price = document.getElementById("price").value;
-		minus--;
-		if(minus < 0){
-			minus = 0;
-		}
-		document.getElementById("productAmount").value = minus;
-		document.getElementById("totalPrice").value = minus*price;
-	}
-</script>
+<script src="/resources/js/product_info.js"></script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>
