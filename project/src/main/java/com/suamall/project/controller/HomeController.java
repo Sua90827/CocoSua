@@ -21,19 +21,13 @@ public class HomeController {
 	private final HomeService service;
 	
 	@GetMapping("/")
-	public String main(Model model) {
+	public String user(Model model) {
 		List<ProductDTO> dto = service.selectMini();
 		List<CategoryDTO> cate = service.selectCate();
-		System.out.println(cate.get(0).getCate_nm());
+		//System.out.println(cate.get(0).getCate_nm());
 		model.addAttribute("prdt", dto);
 		model.addAttribute("cate", cate);
 		return "user/index";
-	}
-	
-	@PostMapping("do.do")
-	public String main(HomeDTO dto) {
-		service.insertName(dto.getName());
-		return "good";
 	}
 	
 	@GetMapping("/admin")

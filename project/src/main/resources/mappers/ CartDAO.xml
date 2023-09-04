@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.suamall.project.repository.CartRepository">
+	<select id="getCartInfo" resultType="com.suamall.project.dto.CartDetailInfoDTO">
+		
+	</select>
+	
+	<select id="cartSelect" resultType="com.suamall.project.dto.CartDTO">
+		SELECT * FROM sh_cart_info WHERE user_id = ${user_id} AND prdt_id=${prdt_id}
+	</select>
+	
+	<update id="cartUpdate" parameterType="com.suamall.project.dto.CartDTO">
+		UPDATE sh_cart_info SET cart_amount=cart_amount+${cart_amount}, cart_price=cart_price+${cart_price} 
+		WHERE user_id=${user_id} AND prdt_id=${prdt_id}
+	</update>
+	
+	<insert id="cartInsert" parameterType="com.suamall.project.dto.CartDTO">
+		INSERT INTO sh_cart_info VALUES(${cart_id}, ${user_id}, ${prdt_id}, ${cart_amount}, ${cart_price})
+	</insert>
+		
+</mapper>
