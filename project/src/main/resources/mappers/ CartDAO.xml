@@ -3,21 +3,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.suamall.project.repository.CartRepository">
-	<select id="getCartInfo" resultType="com.suamall.project.dto.CartDetailInfoDTO">
-		
+	<select id="getCartInfo"
+		resultType="com.suamall.project.dto.CartInfoDTO">
+		SELECT
+		c.prdt_id,p.cate_id,p.prdt_nm,p.prdt_img,
+		p.prdt_title,p.prdt_content,co.color_nm AS prdt_color,
+		p.prdt_price,p.prdt_amount,c.cart_amount,c.cart_price
+		FROM
+		sh_cart_info c
+		JOIN
+		sh_member_info m ON c.user_id = m.member_id
+		JOIN
+		sh_product_info p ON c.prdt_id = p.prdt_id
+		JOIN
+		sh_product_color co ON p.prdt_color = co.color_id
+		WHERE c.user_id = '${user_id}'
 	</select>
-	
-	<select id="cartSelect" resultType="com.suamall.project.dto.CartDTO">
-		SELECT * FROM sh_cart_info WHERE user_id = ${user_id} AND prdt_id=${prdt_id}
+
+	<select id="cartSelect"
+		resultType="com.suamall.project.dto.CartDTO">
+		SELECT * FROM sh_cart_info WHERE user_id='${user_id}' AND
+		prdt_id=${prdt_id}
 	</select>
-	
-	<update id="cartUpdate" parameterType="com.suamall.project.dto.CartDTO">
-		UPDATE sh_cart_info SET cart_amount=cart_amount+${cart_amount}, cart_price=cart_price+${cart_price} 
-		WHERE user_id=${user_id} AND prdt_id=${prdt_id}
+
+	<update id="cartUpdate"
+		parameterType="com.suamall.project.dto.CartDTO">
+		UPDATE sh_cart_info SET
+		cart_amount=cart_amount+${cart_amount},
+		cart_price=cart_price+${cart_price}
+		WHERE user_id='${user_id}' AND prdt_id=${prdt_id}
 	</update>
-	
-	<insert id="cartInsert" parameterType="com.suamall.project.dto.CartDTO">
-		INSERT INTO sh_cart_info VALUES(${cart_id}, ${user_id}, ${prdt_id}, ${cart_amount}, ${cart_price})
+
+	<insert id="cartInsert"
+		parameterType="com.suamall.project.dto.CartDTO">
+		<selectKey order="BEFORE" keyProperty="cart_id"
+			resultType="Integer">
+			SELECT nvl(max(cart_id), 0) + 1 FROM sh_cart_info
+		</selectKey>
+		INSERT INTO sh_cart_info VALUES(${cart_id}, '${user_id}', ${prdt_id},
+		${cart_amount}, ${cart_price})
 	</insert>
-		
 </mapper>
+

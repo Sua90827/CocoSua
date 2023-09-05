@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.suamall.project.dto.CartDTO;
 import com.suamall.project.dto.CartDetailInfoDTO;
+import com.suamall.project.dto.CartInfoDTO;
+import com.suamall.project.dto.ProductListViewDTO;
 import com.suamall.project.repository.CartRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -15,9 +17,9 @@ import lombok.RequiredArgsConstructor;
 public class CartService {
 	private final CartRepository repo;
 
-	public List<CartDetailInfoDTO> getCartInfo(String user_id, int prdt_id) {
-		//List<CartDetailInfoDTO> = repo.getCartInfo(user_id, prdt_id);
-		return null;
+	public List<CartInfoDTO> getCartInfo(String user_id) {
+		List<CartInfoDTO> result = repo.getCartInfo(user_id);
+		return result;
 	}
 
 	public void cartAdd(CartDTO dto) {
