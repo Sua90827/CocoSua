@@ -3,7 +3,7 @@ package com.suamall.project.dto;
 import lombok.Data;
 
 @Data
-public class CartDetailInfoDTO {
+public class PaymentDetailInfoDTO {
 	int cart_id;
 	String member_id;
 	int prdt_id;

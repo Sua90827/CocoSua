@@ -6,9 +6,9 @@
 	<select id="getCartInfo"
 		resultType="com.suamall.project.dto.CartInfoDTO">
 		SELECT
-		c.prdt_id,p.cate_id,p.prdt_nm,p.prdt_img,
-		p.prdt_title,p.prdt_content,co.color_nm AS prdt_color,
-		p.prdt_price,p.prdt_amount,c.cart_amount,c.cart_price
+		c.prdt_id,c.user_id,p.cate_id,p.prdt_nm,p.prdt_img,
+		p.prdt_title,co.color_nm AS prdt_color,
+		p.prdt_price,c.cart_amount,c.cart_price
 		FROM
 		sh_cart_info c
 		JOIN
@@ -43,5 +43,13 @@
 		INSERT INTO sh_cart_info VALUES(${cart_id}, '${user_id}', ${prdt_id},
 		${cart_amount}, ${cart_price})
 	</insert>
+	
+	<delete id="cartDelete" parameterType="com.suamall.project.dto.CartDTO">
+		DELETE FROM sh_cart_info WHERE user_id='${user_id}' and prdt_id=${prdt_id}
+	</delete>
+	
+	<select id="getUserInfo" parameterType="String" resultType="com.suamall.project.dto.MemberDTO">
+		SELECT * FROM sh_member_info WHERE member_id='${user_id}'
+	</select>
 </mapper>
 

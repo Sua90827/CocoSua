@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.suamall.project.dto.CartDTO;
-import com.suamall.project.dto.CartDetailInfoDTO;
+import com.suamall.project.dto.PaymentDetailInfoDTO;
 import com.suamall.project.dto.CartInfoDTO;
+import com.suamall.project.dto.MemberDTO;
 import com.suamall.project.dto.ProductListViewDTO;
 import com.suamall.project.service.CartService;
 
@@ -36,5 +37,26 @@ public class CartController {
 	public String cartAdd(CartDTO dto) {
 		service.cartAdd(dto);
 		return "redirect:userPrdtInfo?prdt_id="+dto.getPrdt_id();
+	}
+	
+	@GetMapping("/cartDelete")
+	public String cartDelete(@RequestParam("user_id") String user_id, @RequestParam("prdt_id") int prdt_id) {
+		System.out.println("prdt_id:"+prdt_id);
+		System.out.println("user_id:"+user_id);
+		service.delete(user_id, prdt_id);
+		return "redirect:cart?user_id="+user_id;
+	}
+	
+	@GetMapping("/paymentInfo")
+	public String paymentInfo(@RequestParam("user_id") String user_id, Model model) {
+		MemberDTO dto = service.getUserInfo(user_id);
+		List<CartInfoDTO> cart = service.getCartInfo(user_id);
+		for(int i = 0; i < cart.size(); i++) {
+			System.out.println(cart.get(i).getUser_id());
+			System.out.println(cart.get(i).getCart_price());
+		}
+		model.addAttribute("member", dto);
+		model.addAttribute("cart", cart);
+		return "user/payment/payment_info";
 	}
 }
