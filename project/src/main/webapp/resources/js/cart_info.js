@@ -55,3 +55,4 @@ const prdtNum = (cnt) => {
 	totalPrice2Id.value = totalPrice;
 	return;
 }
+

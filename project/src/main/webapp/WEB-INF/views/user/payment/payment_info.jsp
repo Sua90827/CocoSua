@@ -24,15 +24,7 @@
 	</c:if>
 	<br>
     <c:forEach var="list" items="${cart }">
-	    prdt_id : ${ list.prdt_id }<br>
-	    cate_id : ${list.cate_id }<br>
-	    prdt_nm : ${ list.prdt_nm }<br>
-	    prdt_img : ${ list.prdt_img }<br>
-	    prdt_title : ${ list.prdt_title }<br>
-	    prdt_color : ${ list.prdt_color } <br>
-	    prdt_price : ${ list.prdt_price } <br>
-	    cart_amount : ${ list.cart_amount }<br>
-	    cart_price : ${ list.cart_price }
+	    user_id = ${ list.user_id }
     </c:forEach>
 	<%@ include file="../../footer/footer.jsp"%>
 </body>

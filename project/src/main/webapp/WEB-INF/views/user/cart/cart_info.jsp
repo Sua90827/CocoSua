@@ -64,7 +64,7 @@
 		    	<td><input style="width: 50px; text-align:center;" class="prdtNum" type="text" value="${ list.cart_amount }" onchange="prdtNum('<%=cnt%>');">개</td>
 		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtAllPrice" value="${ list.cart_price }">원</td>
 		    	<td><a href="cartUpdate?prdt_id=${ list.prdt_id }">수정</a></td>
-		    	<td><a href="cartDelete?prdt_id=${ list.prdt_id }">삭제</a></td>
+		    	<td><a href="cartDelete?user_id=${ sessionScope.user_id }&prdt_id=${ list.prdt_id }">삭제</a></td>
 		    	<% cnt++; %>
 		    </tr>
 		    </c:forEach>
@@ -77,7 +77,7 @@
 				total price : <input style="all:unset; width: 60px; text-align:right;" type="text" readonly id="totalPrice2">
 			</div>
 			<div style="text-align: right;">
-				<a href="paymentInfo">주문하기</a>
+				<a href="paymentInfo?user_id=${ sessionScope.user_id }">주문하기</a>
 			</div>
 		</div>
 		</div>
