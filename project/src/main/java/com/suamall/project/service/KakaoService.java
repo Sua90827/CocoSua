@@ -99,7 +99,7 @@ public class KakaoService {
 			
 			JsonParser parser = new JsonParser();
 			JsonElement element =  parser.parse(result);
-			
+			System.out.println(element);
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakaoAccount = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 			String member_id = element.getAsJsonObject().get("id").getAsString();

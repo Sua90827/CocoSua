@@ -8,6 +8,7 @@
 <link href="/resources/img/cocoIcon.png" rel="shortcut icon"
 	type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
+<link rel="stylesheet" href="/resources/css/cart_info.css">
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <!-- Google fonts-->
@@ -25,24 +26,40 @@
 	<br>
 	<% int cnt = 0; %>
 	
+	<div style="width:100%; display:flex; justify-content: center;">
+		<div style="width:57%; display:flex; justify-content:right;">
+		<div style="width:30%; border: solid 1px rgba(0, 0, 0, 0.1);">
+			<table>
+				<tr>
+					<th style="text-align: left; width:50%; background-color:white; color: black;">-total quantity</th>
+					<td><input style="all:unset; width:100%; text-align:right; border-left: solid 1px rgba(0, 0, 0, 1);" readonly type="text" id="totalNum" value=""></td>
+				</tr>
+				<tr>
+					<th style="text-align: left; width:50%; background-color:white; color: black;">-total price</th>
+					<td><input style="all:unset; width:100%; text-align:right; border-left: solid 1px rgba(0, 0, 0, 1);" readonly type="text" id="totalPrice" value=""></td>
+				</tr>
+			</table>
+		</div>
+		</div>
+	</div>
+	
 	<div align="center">
-		<table border="1">
+		<table class="cart_info_table">
 			<tr>
-				<th>Product</th>
-				<th>Name</th>
-				<th>Title</th>
-				<th>Color</th>
-				<th>Price</th>
-				<th>Amount</th>
-				<th>Total price</th>
-				<th colspan="2"></th>
+				<th style="padding: 0px 15px;">image</th>
+				<th style="width:630px;">product</th>
+				<th>price</th>
+				<th style="padding:0px 10px;">quantity</th>
+				<th>total price</th>
+				<th colspan="2" style="width:100px;"></th>
 			</tr>
 		    <c:forEach var="list" items="${cart }">
 		    <tr>
-		    	<td><img style="width:60px;" src="/resources/upload/${list.prdt_id }/${list.prdt_img}"></td>
-		    	<td>${ list.prdt_nm }</td>
-		    	<td>${ list.prdt_title }</td>
-		    	<td>${ list.prdt_color }</td>
+		    	<td><a href="userPrdtInfo?prdt_id=${ list.prdt_id }"><img style="width:40px;" src="/resources/upload/${list.prdt_id }/${list.prdt_img}"></a></td>
+		    	<td style="text-align: left;">
+		    		<span style="padding-left:10px;">${ list.prdt_title }</span><br>
+		    		<span style="padding-left:10px;">(name:${ list.prdt_nm } color:${ list.prdt_color })</span>
+		    	</td>
 		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtPrice" value="${ list.prdt_price }">원</td>
 		    	<td><input style="width: 50px; text-align:center;" class="prdtNum" type="text" value="${ list.cart_amount }" onchange="prdtNum('<%=cnt%>');">개</td>
 		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtAllPrice" value="${ list.cart_price }">원</td>
@@ -51,70 +68,21 @@
 		    	<% cnt++; %>
 		    </tr>
 		    </c:forEach>
-			<tr>
-				<td colspan="5"></td>
-				<td>총<input style="all:unset; width: 50px; text-align:center;" readonly type="text" id="totalNum" value="">개</td>
-				<td>총<input style="all:unset; width: 70px; text-align:center;" readonly type="text" id="totalPrice" value="">원</td>
-				<td colspan="2"></td>
-			</tr>
 		</table>
 	</div>
-	
-	<script>
-		let price;
-		let allPrice;
-		let number;
-		let numCheck = /^[0-9]+$/;
-		let totalNum = 0;
-		let totalPrice = 0;
-		window.onload = () => {
-			let numberAll = document.querySelectorAll(".prdtNum");
-			let priceAll = document.querySelectorAll(".prdtAllPrice");
-			price = document.querySelectorAll(".prdtPrice");
-			let totalNumId = document.getElementById("totalNum");
-			let totalPriceId = document.getElementById("totalPrice");
-			
-			for(var i = 0; i < priceAll.length; i++){
-				totalPrice += Number(priceAll[i].value);
-				totalNum += Number(numberAll[i].value);
-			}
-			totalNumId.value = totalNum;
-			totalPriceId.value = totalPrice;
-		}
-		
-		const prdtNum = (cnt) => {
-			console.log(cnt);
-			let count = Number(cnt);
-			let numberAll = document.querySelectorAll(".prdtNum");
-			number = numberAll[count].value;
-			if(!numCheck.test(number)){
-				alert("1이상의 숫자만 입력해주세요.");
-				location.reload();
-				return;
-			}
-			
-			if(number < 1){
-				alert("1이상의 숫자만 입력해주세요.");
-				location.reload();
-				return;
-			}
-			
-			allPrice = document.querySelectorAll(".prdtAllPrice");
-			allPrice[count].value = number * price[count].value;
-			let totalNumId = document.getElementById("totalNum");
-			let totalPriceId = document.getElementById("totalPrice");
-			totalNum = 0;
-			totalPrice = 0;
-			for(var i = 0; i < allPrice.length; i++){
-				totalNum += Number(numberAll[i].value);
-				totalPrice += Number(allPrice[i].value);
-			}
-			
-			totalNumId.value = totalNum;
-			totalPriceId.value = totalPrice;
-			return;
-		}
-	</script>
+	<div style="width:100%; display:flex; justify-content: center;">
+		<div style="width:57%; display:flex; justify-content:right;">
+		<div>
+			<div>
+				total price : <input style="all:unset; width: 60px; text-align:right;" type="text" readonly id="totalPrice2">
+			</div>
+			<div style="text-align: right;">
+				<a href="paymentInfo">주문하기</a>
+			</div>
+		</div>
+		</div>
+	</div>
+	<script src="/resources/js/cart_info.js"></script>
 	<%@ include file="../../footer/footer.jsp"%>
 </body>
 </html>
