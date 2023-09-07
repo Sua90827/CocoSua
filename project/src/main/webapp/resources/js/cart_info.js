@@ -11,18 +11,24 @@ window.onload = () => {
 	let totalNumId = document.getElementById("totalNum");
 	let totalPriceId = document.getElementById("totalPrice");
 	let totalPrice2Id = document.getElementById("totalPrice2");
-
+	/*let cartIdClass = document.querySelectorAll(".cart_id");*/
+	/*let cartId = document.getElementById("cart_id");*/
+	let cartAmountId = document.getElementById("cart_amount");
 	for (var i = 0; i < priceAll.length; i++) {
 		totalPrice += Number(priceAll[i].value);
 		totalNum += Number(numberAll[i].value);
+		/*cartId.value += cartIdClass[i].value + ",";*/
+		cartAmountId.value += numberAll[i].value + ",";
 	}
 	totalNumId.value = totalNum;
 	totalPriceId.value = totalPrice;
 	totalPrice2Id.value = totalPrice;
+	/*cartId.value = cartId.value.substring(0, cartId.value.length-1);*/
+	cartAmountId.value = cartAmountId.value.substring(0, cartAmountId.value.length-1);
 }
 
 const prdtNum = (cnt) => {
-	console.log(cnt);
+	console.log("gdgd");
 	let count = Number(cnt);
 	let numberAll = document.querySelectorAll(".prdtNum");
 	number = numberAll[count].value;
@@ -53,6 +59,42 @@ const prdtNum = (cnt) => {
 	totalNumId.value = totalNum;
 	totalPriceId.value = totalPrice;
 	totalPrice2Id.value = totalPrice;
+	return;
+}
+
+const plus = (cnt) => {
+	let prdtNumber = document.querySelectorAll('.prdtNum');
+	let cartAmountId = document.getElementById("cart_amount");
+	cartAmountId.value = "";
+	prdtNumber[cnt].value = Number(prdtNumber[cnt].value) + 1;
+	for(var i = 0; i < prdtNumber.length; i++){
+		cartAmountId.value += prdtNumber[i].value + ",";
+	}
+	cartAmountId.value = cartAmountId.value.substring(0, cartAmountId.value.length-1);
+	prdtNum(cnt);
+	return;
+}
+
+const minus = (cnt) => {
+	let prdtNumber = document.querySelectorAll('.prdtNum');
+	let cartAmountId = document.getElementById("cart_amount");
+	cartAmountId.value = "";
+	if(prdtNumber[cnt].value == 1){
+		prdtNumber[cnt].value = 1;
+		for(var i = 0; i < prdtNumber.length; i++){
+			cartAmountId.value += prdtNumber[i].value + ",";
+		}
+		cartAmountId.value = cartAmountId.value.substring(0, cartAmountId.value.length-1);
+		prdtNum(cnt);
+		return;
+		
+	}
+	prdtNumber[cnt].value -= 1;
+	for(var i = 0; i < prdtNumber.length; i++){
+		cartAmountId.value += prdtNumber[i].value + ",";
+	}
+	cartAmountId.value = cartAmountId.value.substring(0, cartAmountId.value.length-1);
+	prdtNum(cnt);
 	return;
 }
 

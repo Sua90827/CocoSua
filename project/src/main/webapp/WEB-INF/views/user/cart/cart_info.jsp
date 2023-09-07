@@ -28,18 +28,18 @@
 	
 	<div style="width:100%; display:flex; justify-content: center;">
 		<div style="width:57%; display:flex; justify-content:right;">
-		<div style="width:30%; border: solid 1px rgba(0, 0, 0, 0.1);">
-			<table>
-				<tr>
-					<th style="text-align: left; width:50%; background-color:white; color: black;">-total quantity</th>
-					<td><input style="all:unset; width:100%; text-align:right; border-left: solid 1px rgba(0, 0, 0, 1);" readonly type="text" id="totalNum" value=""></td>
-				</tr>
-				<tr>
-					<th style="text-align: left; width:50%; background-color:white; color: black;">-total price</th>
-					<td><input style="all:unset; width:100%; text-align:right; border-left: solid 1px rgba(0, 0, 0, 1);" readonly type="text" id="totalPrice" value=""></td>
-				</tr>
-			</table>
-		</div>
+			<div style="width:30%; border: solid 1px rgba(0, 0, 0, 0.1);">
+				<table>
+					<tr>
+						<th style="text-align: left; width:50%; background-color:white; color: black;">-total quantity</th>
+						<td><input style="all:unset; width:100%; text-align:right; border-left: solid 1px rgba(0, 0, 0, 1);" readonly type="text" id="totalNum" value=""></td>
+					</tr>
+					<tr>
+						<th style="text-align: left; width:50%; background-color:white; color: black;">-total price</th>
+						<td><input style="all:unset; width:100%; text-align:right; border-left: solid 1px rgba(0, 0, 0, 1);" readonly type="text" id="totalPrice" value=""></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
 	
@@ -47,13 +47,19 @@
 		<table class="cart_info_table">
 			<tr>
 				<th style="padding: 0px 15px;">image</th>
-				<th style="width:630px;">product</th>
+				<th style="width:700px;">product</th>
 				<th>price</th>
 				<th style="padding:0px 10px;">quantity</th>
 				<th>total price</th>
-				<th colspan="2" style="width:100px;"></th>
+				<th style="width:30px;"></th>
 			</tr>
+			<c:if test="${ cart.size() eq 0 }">
+				<tr>
+					<td colspan="7">상품을 담아주세요</td>
+				</tr>
+			</c:if>
 		    <c:forEach var="list" items="${cart }">
+		    <%-- <input type="hidden" value="${ list.cart_id }" class="cart_id"> --%>
 		    <tr>
 		    	<td><a href="userPrdtInfo?prdt_id=${ list.prdt_id }"><img style="width:40px;" src="/resources/upload/${list.prdt_id }/${list.prdt_img}"></a></td>
 		    	<td style="text-align: left;">
@@ -61,10 +67,13 @@
 		    		<span style="padding-left:10px;">(name:${ list.prdt_nm } color:${ list.prdt_color })</span>
 		    	</td>
 		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtPrice" value="${ list.prdt_price }">원</td>
-		    	<td><input style="width: 50px; text-align:center;" class="prdtNum" type="text" value="${ list.cart_amount }" onchange="prdtNum('<%=cnt%>');">개</td>
+		    	<td>
+		    		<button style="all:unset; cursor:pointer; border: solid 1px rgba(0, 0, 0, 0.2); border-radius: 50px; width:30px; height: 30px;" onclick="minus('<%=cnt%>');">-</button>
+		    		<input style="all:unset; width: 30px; text-align:center;" class="prdtNum" type="text" value="${ list.cart_amount }" onchange="prdtNum('<%=cnt%>');" readonly>
+		    		<button style="all:unset; cursor:pointer; border: solid 1px rgba(0, 0, 0, 0.2); border-radius: 50px; width:30px; height: 30px;" onclick="plus('<%=cnt%>');">+</button>
+		    	</td>
 		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtAllPrice" value="${ list.cart_price }">원</td>
-		    	<td><a href="cartUpdate?prdt_id=${ list.prdt_id }">수정</a></td>
-		    	<td><a href="cartDelete?user_id=${ sessionScope.user_id }&prdt_id=${ list.prdt_id }">삭제</a></td>
+		    	<td><a href="cartDelete?user_id=${ sessionScope.user_id }&prdt_id=${ list.prdt_id }"><img style="width:10px; border: solid 1px rgba(0, 0, 0, 0.2);" src="resources/img/x_button.svg"></a></td>
 		    	<% cnt++; %>
 		    </tr>
 		    </c:forEach>
@@ -77,7 +86,12 @@
 				total price : <input style="all:unset; width: 60px; text-align:right;" type="text" readonly id="totalPrice2">
 			</div>
 			<div style="text-align: right;">
-				<a href="paymentInfo?user_id=${ sessionScope.user_id }">주문하기</a>
+ 				<form action="paymentInfo" method="post">
+ 					<input type="text" value="" name="cart_id" id="cart_id"> 
+ 					<input type="text" value="" name="cart_amount" id="cart_amount"> 
+ 					<button>주문하기</button>
+ 				</form>
+				<a href="paymentInfo?user_id=${sessionScope.user_id }">주문하기</a>
 			</div>
 		</div>
 		</div>

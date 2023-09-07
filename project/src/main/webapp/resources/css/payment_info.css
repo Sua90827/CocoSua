@@ -1,0 +1,14 @@
+th{
+	background-color: gray;
+	color: white;
+}
+
+.cart_info_table td{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+.client_info_table td{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 0px 10px;
+}
