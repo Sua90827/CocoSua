@@ -87,7 +87,7 @@
 			</div>
 			<div style="text-align: right;">
  				<form action="paymentInfo" method="post">
- 					<input type="hidden" value="${ sessionScope.user_id }">
+ 					<input type="hidden" value="${ sessionScope.user_id }" name="user_id">
  					<input type="hidden" value="" name="cart_id" id="cart_id"> 
  					<input type="hidden" value="" name="cart_amount" id="cart_amount"> 
  					<button>주문하기</button>
