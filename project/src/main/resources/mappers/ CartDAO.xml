@@ -6,7 +6,7 @@
 	<select id="getCartInfo"
 		resultType="com.suamall.project.dto.CartInfoDTO">
 		SELECT
-		c.prdt_id,c.user_id,p.cate_id,p.prdt_nm,p.prdt_img,
+		c.cart_id, c.prdt_id,c.user_id,p.cate_id,p.prdt_nm,p.prdt_img,
 		p.prdt_title,co.color_nm AS prdt_color,
 		p.prdt_price,c.cart_amount,c.cart_price
 		FROM
