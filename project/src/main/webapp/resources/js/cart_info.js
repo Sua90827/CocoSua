@@ -11,19 +11,19 @@ window.onload = () => {
 	let totalNumId = document.getElementById("totalNum");
 	let totalPriceId = document.getElementById("totalPrice");
 	let totalPrice2Id = document.getElementById("totalPrice2");
-	/*let cartIdClass = document.querySelectorAll(".cart_id");*/
-	/*let cartId = document.getElementById("cart_id");*/
+	let cartIdClass = document.querySelectorAll(".cart_id");
+	let cartId = document.getElementById("cart_id");
 	let cartAmountId = document.getElementById("cart_amount");
 	for (var i = 0; i < priceAll.length; i++) {
 		totalPrice += Number(priceAll[i].value);
 		totalNum += Number(numberAll[i].value);
-		/*cartId.value += cartIdClass[i].value + ",";*/
+		cartId.value += cartIdClass[i].value + ",";
 		cartAmountId.value += numberAll[i].value + ",";
 	}
 	totalNumId.value = totalNum;
 	totalPriceId.value = totalPrice;
 	totalPrice2Id.value = totalPrice;
-	/*cartId.value = cartId.value.substring(0, cartId.value.length-1);*/
+	cartId.value = cartId.value.substring(0, cartId.value.length-1);
 	cartAmountId.value = cartAmountId.value.substring(0, cartAmountId.value.length-1);
 }
 
