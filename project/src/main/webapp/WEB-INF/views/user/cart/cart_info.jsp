@@ -59,7 +59,7 @@
 				</tr>
 			</c:if>
 		    <c:forEach var="list" items="${cart }">
-		    <%-- <input type="hidden" value="${ list.cart_id }" class="cart_id"> --%>
+		    <input type="hidden" value="${ list.cart_id }" class="cart_id">
 		    <tr>
 		    	<td><a href="userPrdtInfo?prdt_id=${ list.prdt_id }"><img style="width:40px;" src="/resources/upload/${list.prdt_id }/${list.prdt_img}"></a></td>
 		    	<td style="text-align: left;">
@@ -87,8 +87,9 @@
 			</div>
 			<div style="text-align: right;">
  				<form action="paymentInfo" method="post">
- 					<input type="text" value="" name="cart_id" id="cart_id"> 
- 					<input type="text" value="" name="cart_amount" id="cart_amount"> 
+ 					<input type="hidden" value="${ sessionScope.user_id }">
+ 					<input type="hidden" value="" name="cart_id" id="cart_id"> 
+ 					<input type="hidden" value="" name="cart_amount" id="cart_amount"> 
  					<button>주문하기</button>
  				</form>
 				<a href="paymentInfo?user_id=${sessionScope.user_id }">주문하기</a>
