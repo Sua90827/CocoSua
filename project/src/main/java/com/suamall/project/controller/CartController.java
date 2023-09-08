@@ -47,7 +47,7 @@ public class CartController {
 		return "redirect:cart?user_id="+user_id;
 	}
 	
-	@GetMapping("/paymentInfo")
+	@PostMapping("/paymentInfo")
 	public String paymentInfo(@RequestParam("user_id") String user_id, 
 								@RequestParam("cart_id") String cart_id,
 								@RequestParam("cart_amount") String cart_amount, Model model) {

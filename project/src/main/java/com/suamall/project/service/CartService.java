@@ -53,6 +53,8 @@ public class CartService {
 			for(int j = 0; j < size; ++j) {
 				if(Integer.parseInt(cartId[i]) == cart.get(j).getCart_id()) {
 					cart.get(j).setCart_amount(Integer.parseInt(cartAmount[i]));
+					int cart_price = cart.get(j).getCart_amount() * cart.get(j).getPrdt_price();
+					cart.get(j).setCart_price(cart_price);
 				}
 			}
 		}
