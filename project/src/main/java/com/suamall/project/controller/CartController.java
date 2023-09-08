@@ -48,13 +48,16 @@ public class CartController {
 	}
 	
 	@GetMapping("/paymentInfo")
-	public String paymentInfo(@RequestParam("user_id") String user_id, Model model) {
+	public String paymentInfo(@RequestParam("user_id") String user_id, 
+								@RequestParam("cart_id") String cart_id,
+								@RequestParam("cart_amount") String cart_amount, Model model) {
 		MemberDTO dto = service.getUserInfo(user_id);
 		List<CartInfoDTO> cart = service.getCartInfo(user_id);
-		for(int i = 0; i < cart.size(); i++) {
-			System.out.println(cart.get(i).getUser_id());
-			System.out.println(cart.get(i).getCart_price());
-		}
+//		for(int i = 0; i < cart.size(); i++) {
+//			System.out.println(cart.get(i).getUser_id());
+//			System.out.println(cart.get(i).getCart_price());
+//		}
+		cart=service.updateCart(cart,cart_id,cart_amount);
 		model.addAttribute("member", dto);
 		model.addAttribute("cart", cart);
 		return "user/payment/payment_info";

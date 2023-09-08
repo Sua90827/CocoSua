@@ -43,4 +43,19 @@ public class CartService {
 		MemberDTO result = repo.getUserInfo(user_id);
 		return result;
 	}
+
+	public List<CartInfoDTO> updateCart(List<CartInfoDTO> cart, String cart_id, String cart_amount) {
+		String[] cartId = cart_id.split(",");
+		String[] cartAmount = cart_amount.split(",");
+		int size = cart.size();
+		
+		for(int i = 0; i < size; ++i) {
+			for(int j = 0; j < size; ++j) {
+				if(Integer.parseInt(cartId[i]) == cart.get(j).getCart_id()) {
+					cart.get(j).setCart_amount(Integer.parseInt(cartAmount[i]));
+				}
+			}
+		}
+		return cart;
+	}
 }
