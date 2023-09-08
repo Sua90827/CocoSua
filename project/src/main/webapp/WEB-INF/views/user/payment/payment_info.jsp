@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="/resources/img/cocoIcon.png" rel="shortcut icon"
-	type="image/x-icon">
+<link href="/resources/img/cocoIcon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
 <link rel="stylesheet" href="/resources/css/payment_info.css">
 <!-- Font Awesome icons (free version)-->
@@ -14,6 +13,12 @@
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <title>CocoSua</title>
 </head>
 <body>
@@ -133,25 +138,63 @@
 	<div align="center">
 		<div>
 		<input type="hidden" id="memberPhone" value="${ member.member_phone_num }">
-			<table class="client_info_table">
+			<table class="client_info_table table_info" style="display:inline;">
 				<tr>
 					<td width="150px;">기존배송지</td>
-					<td width="950px;"></td>
+					<td width="950px;">
+						<select class="select_info" onchange="selectChange();">
+							<option value="0">새로운 배송지 입력</option>
+							<option value="1" selected>[기본 배송지] ${ member.member_nm } : ${ member.member_address } ${ member_address_detail }</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td>받으시는분</td>
-					<td></td>
+					<td><input type="text" value="${ member.member_nm }"></td>
 				</tr>
 				<tr>
-					<td>휴대전화</td>
+					<td>전화번호</td>
 					<td><input type="text" id="reciPhone1" value="">-<input type="text" id="reciPhone2" value="">-<input type="text" id="reciPhone3" value=""></td>
 				</tr>
 				<tr>
 					<td>주소</td>
 					<td>
-						<input type="text" readonly><button>우편번호</button><br>
-						<input type="text" readonly><br>
-						<input type="text">
+						<input type="text" value="${ member.member_zip_code }" style="width:100px;" readonly><button>우편번호</button><br>
+						<input type="text" value="${ member.member_address }" style="width:400px;" readonly><br>
+						<input type="text" value="${ member.member_address_detail }" style="width:200px;">
+					</td>
+				</tr>
+				<tr>
+					<td>배송메모</td>
+					<td>
+						<input type="text"><br>
+					</td>
+				</tr>
+			</table>
+			<table class="client_info_table table_info" style="display:none;">
+				<tr>
+					<td width="150px;">기존배송지</td>
+					<td width="950px;">
+						<select class="select_info" onchange="selectChange();">
+							<option value="0">새로운 배송지 입력</option>
+							<option value="1" selected>[기본 배송지] ${ member.member_nm } : ${ member.member_address } ${ member_address_detail }</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>받으시는분</td>
+					<td><input type="text" class="user_nm" value=""></td>
+				</tr>
+				<tr>
+					<td>전화번호</td>
+					<td><input type="text" id="reciPhone1" value="">-<input type="text" id="reciPhone2" value="">-<input type="text" id="reciPhone3" value=""></td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td>
+						<input type="text" value="" style="width:100px;" readonly><button>우편번호</button><br>
+						<input type="text" value="" style="width:400px;" readonly><br>
+						<input type="text" value="" style="width:200px;">
 					</td>
 				</tr>
 				<tr>
@@ -164,30 +207,9 @@
 		</div>
 	</div>
 	<div align="center">
-		<a href="#">주문하기</a>
+			<a onclick="kakaoPay('10000', 'CocoSua-Product', '${sessionScope.user_id}');">주문하기</a>
 	</div>
 	<script src="resources/js/payment_info.js"></script>
-    <c:forEach var="list" items="${cart }">
-	    user_id = ${ list.user_id }<br>
-	    prdt_id = ${ list.prdt_id }<br>
-	    cate_id = ${ list.cate_id }<br>
-	    prdt_nm = ${ list.prdt_nm }<br>
-	    prdt_img = ${ list.prdt_img }<br>
-	    prdt_title = ${ list.prdt_title }<br>
-	    prdt_color = ${ list.prdt_color }<br>
-	    prdt_price = ${ list.prdt_price }<br>
-	    cart_amount = ${ list.cart_amount }<br>
-	    cart_price = ${ list.cart_price }<br>
-	    
-    </c:forEach>
-    
-   	 	member_id = ${ member.member_id }<br>
-	    member_nm = ${ member.member_nm }<br>
-	    member_email = ${ member.member_email }<br>
-	    member_birth = ${ member.member_birth }<br>
-	    member_phone = ${ member.member_phone_num }<br>
-	    member_zip_code = ${ member.member_zip_code }<br>
-	    member_address = ${ member.member_address } ${ member_address_detail }<br>
 	<%@ include file="../../footer/footer.jsp"%>
 </body>
 </html>
