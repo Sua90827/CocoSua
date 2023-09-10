@@ -180,7 +180,6 @@
 				</tr>
 			</table>
 			
-			
 			<!-- 새로운 배송지 table -->
 			<table class="client_info_table table_info" style="display:none;">
 				<tr>
