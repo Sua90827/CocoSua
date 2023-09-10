@@ -26,11 +26,16 @@ window.onload = () => {
 	reciPhone1.value = memberPhoneId.value.substring(0, 3);
 	reciPhone2.value = memberPhoneId.value.substring(3, 7);
 	reciPhone3.value = memberPhoneId.value.substring(7, 11);
+
+    // creditInfo submit 할 정보
+    let creditPriceClass = document.querySelectorAll(".credit_price");
+    for(var i = 0; i < creditPriceClass.length; i++){
+        creditPriceClass[i].value = total;
+    }
 	return;
 }
 
 const selectChange = () => {
-	console.log("gdgd");
 	selectCnt++;
 	let selectInfo = document.querySelectorAll(".select_info");
 	let tableInfo = document.querySelectorAll(".table_info");
@@ -52,6 +57,13 @@ const selectChange = () => {
 }
 
 const kakaoPay = (price, shopNm, userId) => {
+
+    const blankResult = blankCheck(); // 빈칸 체크
+
+    if(blankResult == -1){
+        return;
+    }
+
 	$(function(){
         var IMP = window.IMP;
         IMP.init('imp22624237'); //가맹점 식별코드 삽입
@@ -114,7 +126,10 @@ const kakaoPay = (price, shopNm, userId) => {
                     }
                 });
                 //성공시 이동할 페이지
-                location.href='/orders?user_id='+user_id;
+                const submitNum = kakaopaySuccess();
+                let careditInfo = document.querySelectorAll(".credit_info");
+                careditInfo[submitNum].submit();
+                //location.href='/orders?user_id='+user_id;
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
@@ -126,3 +141,278 @@ const kakaoPay = (price, shopNm, userId) => {
 
     });
 }
+
+const blankCheck = () => {
+    let orderNmId = document.getElementById("order_nm").value;
+    let orderPhone1 = document.getElementById("phone1").value;
+    let orderPhone2 = document.getElementById("phone2").value;
+    let orderPhone3 = document.getElementById("phone3").value;
+    let orderEmail = document.getElementById("order_email").value;
+
+    if(orderNmId == ""){
+        alert("주문하시는 분 이름을 입력해주세요.");
+        document.getElementById("order_nm").focus();
+        return -1;
+    }
+    if(orderPhone1 == ""){
+        alert("핸드폰 번호를 입력해주세요.");
+        document.getElementById("phone1").focus();
+        return -1;
+    }
+    if(orderPhone2 == ""){
+        alert("핸드폰 번호를 입력해주세요.");
+        document.getElementById("phone2").focus();
+        return -1;
+    }
+    if(orderPhone3 == ""){
+        alert("핸드폰 번호를 입력해주세요.");
+        document.getElementById("phone3").focus();
+        return -1;
+    }
+    if(orderEmail == ""){
+        alert("이메일을 입력해주세요.");
+        document.getElementById("order_email").focus();
+        return -1;
+    }
+
+    if(selectCnt % 2 == 0){
+        let reciNm = document.getElementById("recipient_nm").value;
+        let reciPhone1 = document.getElementById("reciPhone1").value;
+        let reciPhone2 = document.getElementById("reciPhone2").value;
+        let reciPhone3 = document.getElementById("reciPhone3").value;
+        let zipCode = document.getElementById("zip_code").value;
+        let addressDetail = document.getElementById("address_detail").value;
+
+        if(reciNm == ""){
+            alert("받으시는 분 이름을 입력해주세요.");
+            document.getElementById("recipient_nm").focus();
+            return -1;
+        }
+        if(reciPhone1 == ""){
+            alert("핸드폰 번호를 입력해주세요.");
+            document.getElementById("reciPhone1").focus();
+            return -1;
+        }
+        if(reciPhone2 == ""){
+            alert("핸드폰 번호를 입력해주세요.");
+            document.getElementById("reciPhone2").focus();
+            return -1;
+        }
+        if(reciPhone3 == ""){
+            alert("핸드폰 번호를 입력해주세요.");
+            document.getElementById("reciPhone3").focus();
+            return -1;
+        }
+        if(zipCode == ""){
+            alert("배송지 정보를 입력해주세요.");
+            document.getElementById("zip_code").focus();
+            return -1;
+        }
+        if(addressDetail == ""){
+            alert("상세 주소를 입력해주세요.");
+            document.getElementById("address_detail").focus();
+            return -1;
+        }
+    }else{
+        let newReciNm = document.getElementById("new_recipient_nm").value;
+        let newReciPhone1 = document.getElementById("new_reciPhone1").value;
+        let newReciPhone2 = document.getElementById("new_reciPhone2").value;
+        let newReciPhone3 = document.getElementById("new_reciPhone3").value;
+        let newZipCode = document.getElementById("new_zip_code").value;
+        let newAddressDetail = document.getElementById("new_address_detail").value;
+
+        if(newReciNm == ""){
+            alert("받으시는 분 이름을 입력해주세요.");
+            document.getElementById("new_recipient_nm").focus();
+            return -1;
+        }
+        if(newReciPhone1 == ""){
+            alert("핸드폰 번호를 입력해주세요.");
+            document.getElementById("new_reciPhone1").focus();
+            return -1;
+        }
+        if(newReciPhone2 == ""){
+            alert("핸드폰 번호를 입력해주세요.");
+            document.getElementById("new_reciPhone2").focus();
+            return -1;
+        }
+        if(newReciPhone3 == ""){
+            alert("핸드폰 번호를 입력해주세요.");
+            document.getElementById("new_reciPhone3").focus();
+            return -1;
+        }
+        if(newZipCode == ""){
+            alert("배송지 정보를 입력해주세요.");
+            document.getElementById("new_zip_code").focus();
+            return -1;
+        }
+        if(newAddressDetail == ""){
+            alert("상세 주소를 입력해주세요.");
+            document.getElementById("new_address_detail").focus();
+            return -1;
+        }
+    }
+}
+
+const kakaopaySuccess = () => {
+    // 결제정보에 보낼 데이터
+    let prdtIdClass = document.querySelectorAll(".prdt_id");
+    let prdtPriceClass = document.querySelectorAll(".prdt_price");
+    let prdtAmountClass = document.querySelectorAll(".prdt_amount");
+    // let creditPriceClass = document.querySelectorAll(".credit_price");
+    // let creditWayClass = document.querySelectorAll(".credit_way");
+    let creditWayClass = document.querySelectorAll(".creditWay");
+    let creditWay = document.querySelectorAll(".credit_way");
+    let orderNmClass = document.querySelectorAll(".order_nm");
+    let orderPhoneNumClass = document.querySelectorAll(".order_phone_num");
+    let orderEmailClass = document.querySelectorAll(".order_email");
+    let recipientNmClass = document.querySelectorAll(".recipient_nm");
+    let recipientPhoneNumClass = document.querySelectorAll(".recipient_phone_num");
+    let recipientZipCodeClass = document.querySelectorAll(".recipient_zip_code");
+    let recipientAddressClass = document.querySelectorAll(".recipient_address");
+    let recipientAddressDetailClass = document.querySelectorAll(".recipient_address_detail");
+    let recipientMemoClass = document.querySelectorAll(".recipient_memo");
+    // 결제정보에 보낼 데이터
+
+    //결제 정보에 보낼 데이터에 들어갈 value config
+    let prdtId = document.querySelectorAll(".prdtId");
+    let prdtPrice = document.querySelectorAll(".prdtPrice");
+    let prdtAmount = document.querySelectorAll(".prdtAmount");
+    let orderNmId = document.getElementById("order_nm").value;
+    let orderPhone1 = document.getElementById("phone1").value;
+    let orderPhone2 = document.getElementById("phone2").value;
+    let orderPhone3 = document.getElementById("phone3").value;
+    let orderEmail = document.getElementById("order_email").value;
+    let reciNm = document.getElementById("recipient_nm").value;
+    let reciPhone1 = document.getElementById("reciPhone1").value;
+    let reciPhone2 = document.getElementById("reciPhone2").value;
+    let reciPhone3 = document.getElementById("reciPhone3").value;
+    let zipCode = document.getElementById("zip_code").value;
+    let address = document.getElementById("address").value;
+    let addressDetail = document.getElementById("address_detail").value;
+    let memo = document.getElementById("memo").value;
+
+    let newReciNm = document.getElementById("new_recipient_nm").value;
+    let newReciPhone1 = document.getElementById("new_reciPhone1").value;
+    let newReciPhone2 = document.getElementById("new_reciPhone2").value;
+    let newReciPhone3 = document.getElementById("new_reciPhone3").value;
+    let newZipCode = document.getElementById("new_zip_code").value;
+    let newAddress = document.getElementById("new_address").value;
+    let newAddressDetail = document.getElementById("new_address_detail").value;
+    let newMemo = document.getElementById("new_memo").value;
+    //결제 정보에 보낼 데이터에 들어갈 value config
+
+
+    if(selectCnt % 2 == 0){ // 기존 배송지일 경우
+        for(var i = 0; i < prdtId.length; i++){
+            prdtIdClass[0].value += prdtId[i].value + ",";
+            prdtPriceClass[0].value += prdtPrice[i].value + ",";
+            prdtAmountClass[0].value += prdtAmount[i].value + ",";
+        }
+        for(var i = 0; i < creditWayClass.length; i++){
+            if(creditWayClass[i].checked){
+                for(var j = 0; j < creditWay.length; j++){
+                    creditWay[j].value = creditWayClass[i].value;
+                }
+                break;
+            }
+        }
+        prdtIdClass[0].value = prdtIdClass[0].value.substring(0, prdtIdClass[0].value.length - 1);
+        prdtPriceClass[0].value = prdtPriceClass[0].value.substring(0, prdtPriceClass[0].value.length - 1);
+        prdtAmountClass[0].value = prdtAmountClass[0].value.substring(0, prdtAmountClass[0].value.length - 1);
+        orderNmClass[0].value = orderNmId;
+        orderPhoneNumClass[0].value = orderPhone1+orderPhone2+orderPhone3;
+        orderEmailClass[0].value = orderEmail;
+        recipientNmClass[0].value = reciNm;
+        recipientPhoneNumClass[0].value = reciPhone1+reciPhone2+reciPhone3;
+        recipientZipCodeClass[0].value = zipCode
+        recipientAddressClass[0].value = address;
+        recipientAddressDetailClass[0].value = addressDetail;
+        recipientMemoClass[0].value = memo;
+        return 0;
+    }else{ // 새로운 배송지일 경우
+        for(var i = 0; i < prdtId.length; i++){
+            prdtIdClass[1].value += prdtId[i].value + ",";
+            prdtPriceClass[1].value += prdtPrice[i].value + ",";
+            prdtAmountClass[1].value += prdtAmount[i].value + ",";
+        }
+        for(var i = 0; i < creditWayClass.length; i++){
+            if(creditWayClass[i].checked){
+                for(var j = 0; j < creditWay.length; j++){
+                    creditWay[j].value = creditWayClass[i].value;
+                }
+                break;
+            }
+        }
+        prdtIdClass[1].value = prdtIdClass[1].value.substring(0, prdtIdClass[1].value.length - 1);
+        prdtPriceClass[1].value = prdtPriceClass[1].value.substring(0, prdtPriceClass[1].value.length - 1);
+        prdtAmountClass[1].value = prdtAmountClass[1].value.substring(0, prdtAmountClass[1].value.length - 1);
+        orderNmClass[1].value = orderNmId
+        orderPhoneNumClass[1].value = orderPhone1+orderPhone2+orderPhone3;
+        orderEmailClass[1].value = orderEmail;
+        recipientNmClass[1].value = newReciNm;
+        recipientPhoneNumClass[1].value = newReciPhone1+newReciPhone2+newReciPhone3;
+        recipientZipCodeClass[1].value = newZipCode
+        recipientAddressClass[1].value = newAddress;
+        recipientAddressDetailClass[1].value = newAddressDetail;
+        recipientMemoClass[1].value = newMemo;
+        return 1;
+    }
+}
+
+
+const sample6_execDaumPostcode = () => {
+		new daum.Postcode(
+				{
+					oncomplete : function(data) {
+						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+						// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+						var addr = ''; // 주소 변수
+						var extraAddr = ''; // 참고항목 변수
+
+						//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+						if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+							addr = data.roadAddress;
+						} else { // 사용자가 지번 주소를 선택했을 경우(J)
+							addr = data.jibunAddress;
+						}
+
+						// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+						if (data.userSelectedType === 'R') {
+							// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+							// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+							if (data.bname !== ''
+									&& /[동|로|가]$/g.test(data.bname)) {
+								extraAddr += data.bname;
+							}
+							// 건물명이 있고, 공동주택일 경우 추가한다.
+							if (data.buildingName !== ''
+									&& data.apartment === 'Y') {
+								extraAddr += (extraAddr !== '' ? ', '
+										+ data.buildingName : data.buildingName);
+							}
+							// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+							if (extraAddr !== '') {
+								extraAddr = ' (' + extraAddr + ')';
+							}
+						}
+
+						// 우편번호와 주소 정보를 해당 필드에 넣는다.
+                        if(selectCnt % 2 == 0){
+                            document.getElementById('zip_code').value = data.zonecode;
+                            document.getElementById("address").value = addr;
+                            // 커서를 상세주소 필드로 이동한다.
+                            document.getElementById("address_detail")
+                                    .focus();
+                        }else{
+                            document.getElementById('new_zip_code').value = data.zonecode;
+                            document.getElementById("new_address").value = addr;
+                            // 커서를 상세주소 필드로 이동한다.
+                            document.getElementById("new_address_detail")
+                                    .focus();
+                        }
+					}
+				}).open();
+	}

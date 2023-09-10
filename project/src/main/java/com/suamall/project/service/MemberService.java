@@ -84,8 +84,4 @@ public class MemberService {
 		session.setAttribute("loginType", db.getMember_login_type());
 		return null;
 	}
-	
-	
-	
-	
 }

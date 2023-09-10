@@ -4,7 +4,6 @@ function birth_click() {
 function birth_blur() {
 	document.getElementById("member_birth").innerText = "";
 }
-
 function phone_click() {
 	document.getElementById("member_phone").innerText = "★ 휴대폰번호(-없이 입력) ★";
 }
