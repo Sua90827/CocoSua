@@ -49,8 +49,8 @@ public class CartService {
 		String[] cartAmount = cart_amount.split(",");
 		int size = cart.size();
 		
-		for(int i = 0; i < size; ++i) {
-			for(int j = 0; j < size; ++j) {
+		for(int i = 0; i < size; ++i) { //view에서 넘겨받은 수정값들의 인덱스 넘버
+			for(int j = 0; j < size; ++j) { //list용 인덱스 넘버
 				if(Integer.parseInt(cartId[i]) == cart.get(j).getCart_id()) {
 					cart.get(j).setCart_amount(Integer.parseInt(cartAmount[i]));
 					int cart_price = cart.get(j).getCart_amount() * cart.get(j).getPrdt_price();
