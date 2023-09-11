@@ -109,10 +109,17 @@ public class MemberController {
 		return "redirect:myPage";
 	}
 	
-	@GetMapping("memberDeleteInfo")//cart, member 삭제
-	public String memberDeleteInfo() {
-		service.deleteMember((String)session.getAttribute("user_id"));
-		return "user/myPage/index";
+	@GetMapping("memberDeleteInfo")
+	public String getMemberDelete(Model model) {
+		MemberDTO memberInfo = service.getMemberInfo((String)session.getAttribute("user_id"));
+		model.addAttribute("member", memberInfo);
+		return "user/myPage/member_delete";
+	}
+	
+	@PostMapping("memberDelete.do")//cart, member 삭제
+	public String memberDeleteInfo(MemberDTO dto) {
+		service.deleteMember(dto);
+		return "redirect:/";
 	}
 	
 }
