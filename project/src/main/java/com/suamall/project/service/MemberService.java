@@ -85,8 +85,8 @@ public class MemberService {
 		return null;
 	}
 
-	public MemberDTO getMemberInfo(MemberDTO dto) {
-		MemberDTO memberInfo = repo.idCheck(dto.getMember_id());
+	public MemberDTO getMemberInfo(String id) {
+		MemberDTO memberInfo = repo.idCheck(id);
 		return memberInfo;
 	}
 }
