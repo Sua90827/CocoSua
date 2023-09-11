@@ -100,7 +100,10 @@ public class MemberService {
 		repo.updateWithoutPw(dto);
 	}
 
-	public void deleteMember(String id) {//cart, member 삭제
-		repo.deleteMember(id);
+	public void deleteMember(MemberDTO dto) {//cart, member 삭제
+		MemberDTO db = repo.idCheck(dto.getMember_id());
+		if(passwordEncoder.matches(dto.getMember_pw(), db.getMember_pw())) {
+			repo.deleteMember(dto);			
+		}
 	}
 }
