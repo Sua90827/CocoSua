@@ -15,4 +15,6 @@ public interface MemberRepository {
 
 	public void updateWithoutPw(MemberDTO dto);
 
+	public void deleteMember(String id);
+
 }
