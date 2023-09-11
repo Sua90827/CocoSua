@@ -84,4 +84,9 @@ public class MemberService {
 		session.setAttribute("loginType", db.getMember_login_type());
 		return null;
 	}
+
+	public MemberDTO getMemberInfo(MemberDTO dto) {
+		MemberDTO memberInfo = repo.idCheck(dto.getMember_id());
+		return memberInfo;
+	}
 }
