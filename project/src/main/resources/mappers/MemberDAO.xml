@@ -20,7 +20,7 @@
 	    member_zip_code = #{member_zip_code}, 
 	    member_address = #{member_address}, 
 	    member_address_detail = #{member_address_detail}
-		WHERE member_id = #{member_id};
+		WHERE member_id = #{member_id}
     </update>
     
     <update id="updateWithoutPw" parameterType="com.suamall.project.dto.MemberDTO">
@@ -32,7 +32,7 @@
 	    member_zip_code = '${member_zip_code}', 
 	    member_address = '${member_address}', 
 	    member_address_detail = '${member_address_detail}'
-		WHERE member_id = '${member_id}';
+		WHERE member_id = '${member_id}'
     </update>
     
     <delete id="deleteMember" parameterType="com.suamall.project.dto.MemberDTO">
