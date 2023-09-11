@@ -86,7 +86,13 @@ public class MemberController {
 	@PostMapping("modifyWithPw")
 	public String updateWithPw(MemberDTO dto, Model model) {
 		service.updateWithPw(dto);
-		return null;
+		return "user/myPage/index";
+	}
+	
+	@PostMapping("modifyWithoutPw")
+	public String updateWithoutPw(MemberDTO dto, Model model) {
+		service.updateWithoutPw(dto);
+		return "user/myPage/index";
 	}
 	
 }

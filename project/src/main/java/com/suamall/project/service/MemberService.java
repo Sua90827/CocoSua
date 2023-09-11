@@ -92,7 +92,10 @@ public class MemberService {
 
 
 	public void updateWithPw(MemberDTO dto) {
-		// TODO Auto-generated method stub
-		
+		repo.updateWithPw(dto);
+	}
+
+	public void updateWithoutPw(MemberDTO dto) {
+		repo.updateWithoutPw(dto);
 	}
 }
