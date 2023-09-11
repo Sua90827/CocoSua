@@ -70,18 +70,22 @@ public class MemberController {
 	}
 	
 	@GetMapping("myPage")
-	public String myPage(MemberDTO dto, Model model) {
-		MemberDTO memberInfo = service.getMemberInfo(dto);
+	public String myPage(Model model) {
+		MemberDTO memberInfo = service.getMemberInfo((String)session.getAttribute("user_id"));
 		model.addAttribute("member", memberInfo);
 		return "user/myPage/index";
 	}
 	
 	@GetMapping("modifyInfo")
-	public String modifyInfo(MemberDTO dto, Model model) {
-		MemberDTO memberInfo = service.getMemberInfo(dto);
+	public String modifyInfo(Model model) {
+		MemberDTO memberInfo = service.getMemberInfo((String)session.getAttribute("user_id"));
 		model.addAttribute("member", memberInfo);
 		return "user/myPage/modify";
 	}
 	
+	@PostMapping("modifyInfoDo")
+	public String modifyInfoDo(MemberDTO dto, Model model) {
+		return null;
+	}
 	
 }
