@@ -25,14 +25,14 @@
     
     <update id="updateWithoutPw" parameterType="com.suamall.project.dto.MemberDTO">
 		UPDATE sh_member_info 
-		SET member_nm = #{member_nm}, 
-	    member_email = #{member_email}, 
-	    member_birth = #{member_birth}, 
-	    member_phone_num = #{member_phone_num}, 
-	    member_zip_code = #{member_zip_code}, 
-	    member_address = #{member_address}, 
-	    member_address_detail = #{member_address_detail}
-		WHERE member_id = #{member_id};
+		SET member_nm = '${member_nm}', 
+	    member_email = '${member_email}', 
+	    member_birth = '${member_birth}', 
+	    member_phone_num = '${member_phone_num}', 
+	    member_zip_code = '${member_zip_code}', 
+	    member_address = '${member_address}', 
+	    member_address_detail = '${member_address_detail}'
+		WHERE member_id = '${member_id}';
     </update>
     
     <delete id="deleteMember" parameterType="com.suamall.project.dto.MemberDTO">
