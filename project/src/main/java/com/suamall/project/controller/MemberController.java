@@ -76,15 +76,16 @@ public class MemberController {
 		return "user/myPage/index";
 	}
 	
-	@GetMapping("modifyInfo")
+	@GetMapping("memberModifyInfo")
 	public String modifyInfo(Model model) {
 		MemberDTO memberInfo = service.getMemberInfo((String)session.getAttribute("user_id"));
 		model.addAttribute("member", memberInfo);
-		return "user/myPage/modify";
+		return "user/myPage/member_update";
 	}
 	
-	@PostMapping("modifyInfoDo")
-	public String modifyInfoDo(MemberDTO dto, Model model) {
+	@PostMapping("modifyWithPw")
+	public String updateWithPw(MemberDTO dto, Model model) {
+		service.updateWithPw(dto);
 		return null;
 	}
 	

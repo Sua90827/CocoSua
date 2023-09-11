@@ -89,4 +89,10 @@ public class MemberService {
 		MemberDTO memberInfo = repo.idCheck(id);
 		return memberInfo;
 	}
+
+
+	public void updateWithPw(MemberDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
 }
