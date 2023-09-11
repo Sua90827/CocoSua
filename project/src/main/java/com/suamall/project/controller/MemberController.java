@@ -68,4 +68,20 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	@GetMapping("myPage")
+	public String myPage(MemberDTO dto, Model model) {
+		MemberDTO memberInfo = service.getMemberInfo(dto);
+		model.addAttribute("member", memberInfo);
+		return "user/myPage/index";
+	}
+	
+	@GetMapping("modifyInfo")
+	public String modifyInfo(MemberDTO dto, Model model) {
+		MemberDTO memberInfo = service.getMemberInfo(dto);
+		model.addAttribute("member", memberInfo);
+		return "user/myPage/modify";
+	}
+	
+	
 }
