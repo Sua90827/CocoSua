@@ -85,12 +85,26 @@ public class MemberController {
 	
 	@PostMapping("modifyWithPw")
 	public String updateWithPw(MemberDTO dto, Model model) {
+		System.out.println("id" +dto.getMember_id());
+		System.out.println("pw" +dto.getMember_pw());
+		System.out.println("email"+dto.getMember_email());
+		System.out.println("birth"+dto.getMember_birth());
+		System.out.println("zip"+dto.getMember_zip_code());
+		System.out.println("detail"+dto.getMember_address_detail());
+		
 		service.updateWithPw(dto);
 		return "redirect:myPage";
 	}
 	
 	@PostMapping("modifyWithoutPw")
 	public String updateWithoutPw(MemberDTO dto, Model model) {
+		System.out.println("id" +dto.getMember_id());
+		System.out.println("pw" +dto.getMember_pw());
+		System.out.println("email"+dto.getMember_email());
+		System.out.println("birth"+dto.getMember_birth());
+		System.out.println("zip"+dto.getMember_zip_code());
+		System.out.println("detail"+dto.getMember_address_detail());
+		
 		service.updateWithoutPw(dto);
 		return "redirect:myPage";
 	}
