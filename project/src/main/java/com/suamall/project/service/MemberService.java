@@ -92,10 +92,15 @@ public class MemberService {
 
 
 	public void updateWithPw(MemberDTO dto) {
+		dto.setMember_pw(passwordEncoder.encode(dto.getMember_pw()));
 		repo.updateWithPw(dto);
 	}
 
 	public void updateWithoutPw(MemberDTO dto) {
 		repo.updateWithoutPw(dto);
+	}
+
+	public void deleteMember(String id) {//cart, member 삭제
+		repo.deleteMember(id);
 	}
 }

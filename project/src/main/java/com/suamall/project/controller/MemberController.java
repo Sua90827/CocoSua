@@ -86,12 +86,18 @@ public class MemberController {
 	@PostMapping("modifyWithPw")
 	public String updateWithPw(MemberDTO dto, Model model) {
 		service.updateWithPw(dto);
-		return "user/myPage/index";
+		return "redirect:myPage";
 	}
 	
 	@PostMapping("modifyWithoutPw")
 	public String updateWithoutPw(MemberDTO dto, Model model) {
 		service.updateWithoutPw(dto);
+		return "redirect:myPage";
+	}
+	
+	@GetMapping("memberDeleteInfo")//cart, member 삭제
+	public String memberDeleteInfo() {
+		service.deleteMember((String)session.getAttribute("user_id"));
 		return "user/myPage/index";
 	}
 	
