@@ -29,12 +29,14 @@
 				<th>이름</th>
 				<td>${ member.member_nm }</td>
 			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td>
-					<input type="password" name="member_pw">
-				</td>
-			</tr>
+			<c:if test="${ sessionScope.loginType eq 0 || sessionScope.loginType eq 2 }">
+				<tr>
+					<th>비밀번호</th>
+					<td>
+						<input type="password" name="member_pw">
+					</td>
+				</tr>
+			</c:if>
 		</table>
 		<button>탈퇴하기</button>
 	</form>

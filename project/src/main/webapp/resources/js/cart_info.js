@@ -15,6 +15,7 @@ window.onload = () => {
 	let cartId = document.getElementById("cart_id");
 	let cartAmountId = document.getElementById("cart_amount");
 	for (var i = 0; i < priceAll.length; i++) {
+		priceAll[i].value = price[i].value * numberAll[i].value;
 		totalPrice += Number(priceAll[i].value);
 		totalNum += Number(numberAll[i].value);
 		cartId.value += cartIdClass[i].value + ",";
