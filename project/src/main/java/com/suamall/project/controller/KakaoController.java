@@ -40,7 +40,7 @@ public class KakaoController {
 		System.out.println("userInfo ----> " + userInfo);
 		
 		if (userInfo != null) {  //이미 회원인 경우
-			session.setAttribute("userId", userInfo.getMember_id());
+			session.setAttribute("user_id", userInfo.getMember_id());
 			//session.setAttribute("accessToken", accessToken);
 			session.setAttribute("loginType", userInfo.getMember_login_type());
 			mav.setViewName("redirect:/");
