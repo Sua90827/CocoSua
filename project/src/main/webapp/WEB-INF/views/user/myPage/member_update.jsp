@@ -96,8 +96,6 @@
 		</form>
 	</div>
 </div>
-
-
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 <script src="/resources/js/search_road.js"></script>
 <script src="/resources/js/update_regex.js"></script>
