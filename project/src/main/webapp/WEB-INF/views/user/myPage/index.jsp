@@ -18,7 +18,14 @@
 </c:if>
 <br>
 <input type="hidden" value="${ member.member_phone_num }" id="memberPhone">
-<a href="memberModifyInfo">회원수정</a> <a href="memberDeleteInfo">회원탈퇴</a> <a href="orderList">구매목록</a>
+<a href="memberModifyInfo">회원수정</a>
+<c:if test="${ sessionScope.loginType eq 1 }">
+	<a onclick="kakaoMemberDelete('${sessionScope.user_id}');">회원탈퇴</a>
+</c:if>
+<c:if test="${ sessionScope.loginType eq 0 || sessionScope.loginType eq 2 }"> 
+	<a href="memberDeleteInfo">회원탈퇴</a>
+</c:if> 
+<a href="orderList">구매목록</a>
 <div align="center">
 	${member.member_nm } 님 환영합니다.
 	<table>

@@ -7,3 +7,9 @@ window.onload = () => {
 		document.getElementById("userPhone").innerText = phoneNum;
 		
 	}
+	
+const kakaoMemberDelete = (userId) => {
+	if(window.confirm("정말 탈퇴하시겠습니까?")){
+		location.href="kakaoMemberDelete.do?member_id=" + userId;
+	}
+}
