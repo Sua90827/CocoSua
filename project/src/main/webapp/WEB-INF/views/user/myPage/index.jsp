@@ -17,28 +17,34 @@
 	<%@ include file="/WEB-INF/views/nav_bar/user_nav.jsp"%>
 </c:if>
 <br>
+<input type="hidden" value="${ member.member_phone_num }" id="memberPhone">
+<a href="memberModifyInfo">회원수정</a> <a href="memberDeleteInfo">회원탈퇴</a> <a href="orderList">구매목록</a>
 <div align="center">
-	<form action="memberDelete.do" method="post">
-		<input type="hidden" value="${ member.member_id }" name="member_id">
-		<table>
-			<tr>
-				<th>아이디</th>
-				<td>${ member.member_id }</td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td>${ member.member_nm }</td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td>
-					<input type="password" name="member_pw">
-				</td>
-			</tr>
-		</table>
-		<button>탈퇴하기</button>
-	</form>
+	${member.member_nm } 님 환영합니다.
+	<table>
+		<tr>
+			<th>아이디</th>
+			<td>${ member.member_id }</td>
+			<th>이메일</th>
+			<td>${ member.member_email }</td>
+		</tr>
+		<tr>
+			<th>생년월일</th>
+			<td>${ member.member_birth }</td>
+			<th>핸드폰</th>
+			<td><span id="userPhone"></span></td>
+		</tr>
+		<tr>
+			<th>주소</th>
+			<td>${ member.member_address } ${ member.member_address_detail }</td>
+			<th></th>
+			<td></td>
+		</tr>
+	</table>
+	
 </div>
+<script src="resources/js/mypage_index.js"></script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
+
 </body>
 </html>

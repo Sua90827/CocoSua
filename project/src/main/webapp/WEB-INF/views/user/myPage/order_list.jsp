@@ -17,6 +17,11 @@
 	<%@ include file="/WEB-INF/views/nav_bar/user_nav.jsp"%>
 </c:if>
 <br>
+<c:forEach var="list" items="${orderList }">
+	<c:forEach var="product" items="${ list.productOrderDTO }">
+		
+	</c:forEach>
+</c:forEach>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>
