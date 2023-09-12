@@ -37,9 +37,9 @@ CreditService service;
 		//service.getCreditDate();
 		
 		service.insertCreditInfo(dto);
+		service.updateDeleteCreditInfo(dto);
 		
-		
-		return "redirect:cart?user_id="+dto.getUser_id();
+		return "user/payment/payment_success";
 	}
 
 

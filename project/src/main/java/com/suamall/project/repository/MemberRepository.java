@@ -11,4 +11,10 @@ public interface MemberRepository {
 
 	public void storeDTO(MemberDTO inputDTO);
 
+	public void updateWithPw(MemberDTO dto);
+
+	public void updateWithoutPw(MemberDTO dto);
+
+	public void deleteMember(MemberDTO dto);
+
 }

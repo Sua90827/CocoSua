@@ -16,4 +16,15 @@
 										'${recipient_zip_code}','${recipient_address}','${recipient_address_detail}',
 										'${recipient_memo}',SYSTIMESTAMP)
 	</insert>
+	<select id="getPreviousAmount" resultType="com.suamall.project.dto.CartDTO">
+		SELECT user_id, prdt_id, cart_amount FROM sh_cart_info WHERE user_id='${user_id}'
+	</select>
+	
+	<update id="updateCartAmount" parameterType="com.suamall.project.dto.CartDTO">
+		UPDATE sh_cart_info SET cart_amount = ${cart_amount} WHERE prdt_id=${prdt_id} AND user_id='${user_id}'
+	</update>
+	
+	<delete id="deleteCartItem" parameterType="com.suamall.project.dto.CartDTO">
+		DELETE FROM sh_cart_info WHERE user_id='${user_id}' AND prdt_id=${prdt_id}
+	</delete>
 </mapper>

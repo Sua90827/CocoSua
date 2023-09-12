@@ -28,7 +28,7 @@
 							<a href="/cart?user_id=${ sessionScope.user_id }">CART</a>
 						</div>
 						<div>
-							<a href="/mypages">MY PAGES</a>
+							<a href="/myPage">MY PAGE</a>
 						</div>
 					<c:if test="${sessionScope.loginType eq 1 }">
 						<div>

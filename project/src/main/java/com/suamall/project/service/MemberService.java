@@ -84,4 +84,26 @@ public class MemberService {
 		session.setAttribute("loginType", db.getMember_login_type());
 		return null;
 	}
+
+	public MemberDTO getMemberInfo(String id) {
+		MemberDTO memberInfo = repo.idCheck(id);
+		return memberInfo;
+	}
+
+
+	public void updateWithPw(MemberDTO dto) {
+		dto.setMember_pw(passwordEncoder.encode(dto.getMember_pw()));
+		repo.updateWithPw(dto);
+	}
+
+	public void updateWithoutPw(MemberDTO dto) {
+		repo.updateWithoutPw(dto);
+	}
+
+	public void deleteMember(MemberDTO dto) {//cart, member 삭제
+		MemberDTO db = repo.idCheck(dto.getMember_id());
+		if(passwordEncoder.matches(dto.getMember_pw(), db.getMember_pw())) {
+			repo.deleteMember(dto);			
+		}
+	}
 }
