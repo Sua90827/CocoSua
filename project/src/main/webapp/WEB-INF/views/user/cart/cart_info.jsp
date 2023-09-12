@@ -92,7 +92,6 @@
  					<input type="hidden" value="" name="cart_amount" id="cart_amount"> 
  					<button>주문하기</button>
  				</form>
-				<a href="paymentInfo?user_id=${sessionScope.user_id }">주문하기</a>
 			</div>
 		</div>
 		</div>
