@@ -100,10 +100,20 @@ public class MemberService {
 		repo.updateWithoutPw(dto);
 	}
 
-	public void deleteMember(MemberDTO dto) {//cart, member 삭제
+	public String deleteMember(MemberDTO dto) {//session, cart, member 삭제 void 로 하면 안된다고 함.
 		MemberDTO db = repo.idCheck(dto.getMember_id());
 		if(passwordEncoder.matches(dto.getMember_pw(), db.getMember_pw())) {
-			repo.deleteMember(dto);			
+			repo.cartdelete(dto.getMember_id());
+			session.invalidate();
+			repo.deleteMember(dto);
+			return "탈퇴가 완료되었습니다";
 		}
+		return null;
+	}
+
+	public void kakaoMemberDelete(MemberDTO dto) {
+		repo.cartdelete(dto.getMember_id());
+		session.invalidate();
+		repo.deleteMember(dto);
 	}
 }

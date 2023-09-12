@@ -1,5 +1,10 @@
 package com.suamall.project.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.http.HttpResponse;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -117,8 +122,29 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberDelete.do")//cart, member 삭제
-	public String memberDeleteInfo(MemberDTO dto) {
-		service.deleteMember(dto);
+	public String memberDeleteInfo(MemberDTO dto, HttpServletResponse res) throws IOException {
+		String result = service.deleteMember(dto);
+		String msg = "";
+		if(result!=null) {
+			msg += "<script>alert('" + result + "'); location.href='/';</script>";
+			res.setContentType("text/html; charset=UTF-8");
+			System.out.println(msg);
+			PrintWriter out = res.getWriter();
+			out.print(msg);
+			out.flush();
+		}else {
+			msg += "<script>alert('비밀번호를 다시 확인해주세요.'); window.history.back();</script>";
+			res.setContentType("text/html; charset=UTF-8");
+			System.out.println(msg);
+			PrintWriter out = res.getWriter();
+			out.print(msg);
+			out.flush();
+		}
+		return "redirect:/";
+	}
+	@GetMapping("kakaoMemberDelete.do")
+	public String kakaoMemberDelete(MemberDTO dto, HttpServletResponse res) {
+		service.kakaoMemberDelete(dto);
 		return "redirect:/";
 	}
 	
