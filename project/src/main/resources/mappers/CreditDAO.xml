@@ -27,4 +27,18 @@
 	<delete id="deleteCartItem" parameterType="com.suamall.project.dto.CartDTO">
 		DELETE FROM sh_cart_info WHERE user_id='${user_id}' AND prdt_id=${prdt_id}
 	</delete>
+	<select id="selectUserCreditInfo" resultType="com.suamall.project.dto.CreditInfoDTO">
+		SELECT * FROM sh_credit_info WHERE user_id=#{id} ORDER BY credit_date DESC
+	</select>
+	<select id ="selectProductOrderInfo" resultType="com.suamall.project.dto.orderInfoView.ProductOrderDTO">
+		SELECT
+		p.prdt_id,p.cate_id,p.prdt_nm,p.prdt_img,
+		p.prdt_title,co.color_nm AS prdt_color,
+		p.prdt_price
+		FROM
+		sh_product_info p
+		JOIN
+		sh_product_color co ON p.prdt_color = co.color_id
+		WHERE p.prdt_id = #{id}
+	</select>
 </mapper>

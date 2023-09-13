@@ -1,16 +1,26 @@
 package com.suamall.project.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.suamall.project.dto.CreditInfoDTO;
+import com.suamall.project.dto.orderInfoView.OrderListDTO;
+import com.suamall.project.dto.orderInfoView.ProductOrderDTO;
 import com.suamall.project.service.CreditService;
 
 @Controller
 public class CreditController {
 @Autowired
 CreditService service;
+@Autowired
+private HttpSession session;
 
 	@PostMapping("creditInfo.do")
 	public String creditInfoDo(CreditInfoDTO dto) {//장바구니
@@ -37,6 +47,12 @@ CreditService service;
 		service.updateDeleteCreditInfo(dto);
 		
 		return "user/payment/payment_success";
+	}
+	@GetMapping("orderList")
+	public String orderList(CreditInfoDTO dto) {
+		List<OrderListDTO> orderListDto = service.dkdk((String)session.getAttribute("user_id"));
+		
+		return "user/myPage/order_list";
 	}
 
 

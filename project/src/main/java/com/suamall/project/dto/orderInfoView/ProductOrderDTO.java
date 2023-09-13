@@ -1,6 +1,10 @@
 package com.suamall.project.dto.orderInfoView;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Data
 public class ProductOrderDTO {
 	private int prdt_id;
     private int cate_id;      

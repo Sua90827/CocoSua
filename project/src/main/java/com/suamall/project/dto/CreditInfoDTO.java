@@ -8,9 +8,9 @@ import lombok.Setter;
 public class CreditInfoDTO {
 	private int credit_id;
 	private String user_id;
-	private String prdt_id;
-	private String prdt_price;
-	private String prdt_amount;
+	private String prdt_id; //split///
+	private String prdt_price; //split
+	private String prdt_amount; //split
 	private int credit_price;
 	private int credit_way;
 	private String order_nm;
