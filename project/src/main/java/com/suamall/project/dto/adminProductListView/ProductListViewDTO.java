@@ -1,4 +1,4 @@
-package com.suamall.project.dto;
+package com.suamall.project.dto.adminProductListView;
 
 import lombok.Getter;
 import lombok.Setter;

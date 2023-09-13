@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.suamall.project.dto.CreditDTO;
 import com.suamall.project.dto.CreditInfoDTO;
 import com.suamall.project.service.CreditService;
-
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 public class CreditController {

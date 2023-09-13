@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.suamall.project.dto.CartDTO;
-import com.suamall.project.dto.PaymentDetailInfoDTO;
-import com.suamall.project.dto.CartInfoDTO;
 import com.suamall.project.dto.MemberDTO;
-import com.suamall.project.dto.ProductListViewDTO;
+import com.suamall.project.dto.cartInfoView.CartInfoDTO;
 import com.suamall.project.service.CartService;
 
 import lombok.RequiredArgsConstructor;
