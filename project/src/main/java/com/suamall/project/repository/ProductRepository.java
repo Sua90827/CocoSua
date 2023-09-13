@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
-import com.suamall.project.dto.ProductListViewDTO;
+import com.suamall.project.dto.adminProductListView.ProductListViewDTO;
 
 @Mapper
 public interface ProductRepository {

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <link href="/resources/img/cocoIcon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
+<link rel="stylesheet" href="/resources/css/myPage.css">
 <title>CocoSua</title>
 </head>
 <body>
@@ -18,22 +19,36 @@
 </c:if>
 <br>
 <input type="hidden" value="${ member.member_phone_num }" id="memberPhone">
-<a href="memberModifyInfo">회원수정</a>
-<c:if test="${ sessionScope.loginType eq 1 }">
-	<a onclick="kakaoMemberDelete('${sessionScope.user_id}');">회원탈퇴</a>
-</c:if>
-<c:if test="${ sessionScope.loginType eq 0 || sessionScope.loginType eq 2 }"> 
-	<a href="memberDeleteInfo">회원탈퇴</a>
-</c:if> 
-<a href="orderList">구매목록</a>
 <div align="center">
-	${member.member_nm } 님 환영합니다.
+	<div style="width: 600px; display: flex; justify-content:space-between;">
+		<div style="width:33.33%">
+			<a class="itemsList" href="orderList">구매목록</a>
+		</div>
+		<div style="width:33.33%">
+			<a class="itemsList" href="memberModifyInfo">회원수정</a>
+		</div>
+		<c:if test="${ sessionScope.loginType eq 1 }">
+			<div style="width:33.33%">
+				<a class="itemsList" onclick="kakaoMemberDelete('${sessionScope.user_id}');">회원탈퇴</a>
+			</div>
+		</c:if>
+		<c:if test="${ sessionScope.loginType eq 0 || sessionScope.loginType eq 2 }">
+			<div style="width:33.33%"> 
+				<a class="itemsList" href="memberDeleteInfo">회원탈퇴</a>
+			</div>
+		</c:if> 
+	</div>
+</div>
+<div align="center">
+	<div style="width:600px; text-align: left;">
+		<span style="font-weight:bold;">${member.member_nm }</span> <span style="color:gray; font-weight:bold;">님 환영합니다.</span>
+	</div>
 	<table>
 		<tr>
-			<th>아이디</th>
-			<td>${ member.member_id }</td>
-			<th>이메일</th>
-			<td>${ member.member_email }</td>
+			<th style="width:100px;">아이디</th>
+			<td style="width: 150px;">${ member.member_id }</td>
+			<th style="width:100px;">이메일</th>
+			<td style="width: 250px;">${ member.member_email }</td>
 		</tr>
 		<tr>
 			<th>생년월일</th>
@@ -43,9 +58,7 @@
 		</tr>
 		<tr>
 			<th>주소</th>
-			<td>${ member.member_address } ${ member.member_address_detail }</td>
-			<th></th>
-			<td></td>
+			<td colspan="3">${ member.member_address } ${ member.member_address_detail }</td>
 		</tr>
 	</table>
 	

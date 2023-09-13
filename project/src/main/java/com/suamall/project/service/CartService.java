@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.suamall.project.dto.CartDTO;
-import com.suamall.project.dto.PaymentDetailInfoDTO;
-import com.suamall.project.dto.CartInfoDTO;
 import com.suamall.project.dto.MemberDTO;
-import com.suamall.project.dto.ProductListViewDTO;
+import com.suamall.project.dto.cartInfoView.CartInfoDTO;
 import com.suamall.project.repository.CartRepository;
 
 import lombok.RequiredArgsConstructor;

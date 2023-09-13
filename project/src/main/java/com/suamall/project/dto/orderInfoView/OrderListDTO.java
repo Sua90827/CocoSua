@@ -1,4 +1,4 @@
-package com.suamall.project.dto;
+package com.suamall.project.dto.orderInfoView;
 
 import java.util.List;
 

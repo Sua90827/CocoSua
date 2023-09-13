@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
-import com.suamall.project.dto.ProductListViewDTO;
+import com.suamall.project.dto.adminProductListView.ProductListViewDTO;
 import com.suamall.project.service.ProductService;
 
 @Controller

@@ -1,4 +1,4 @@
-package com.suamall.project.dto;
+package com.suamall.project.dto.cartInfoView;
 
 import lombok.Data;
 
@@ -12,9 +12,7 @@ public class CartInfoDTO {
     private String prdt_img;
     private String prdt_title; 
     private String prdt_color;    
-    private int prdt_price;  
-    private String cate_nm;
-    private String color_nm;
+    private int prdt_price;
     private int cart_amount;
     private int cart_price;
 }

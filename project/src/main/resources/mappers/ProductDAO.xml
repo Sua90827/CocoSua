@@ -38,7 +38,7 @@
 		SELECT * FROM SH_PRODUCT_INFO
 	</select>
 	
-	<select id="getProductListView" resultType="com.suamall.project.dto.ProductListViewDTO">
+	<select id="getProductListView" resultType="com.suamall.project.dto.adminProductListView.ProductListViewDTO">
 		SELECT a.*, b.cate_nm, c.color_nm FROM sh_product_info a 
 		INNER JOIN sh_product_color c ON a.prdt_color=c.color_id 
 		INNER JOIN sh_product_cate b ON a.cate_id=b.cate_id
@@ -65,7 +65,7 @@
 	<select id="getAllByCateId" resultType="com.suamall.project.dto.ProductDTO">
 		SELECT * FROM sh_product_info WHERE cate_id = #{cate_id}
 	</select>
-	<select id="getCateColorNmByPrdtId" resultType="com.suamall.project.dto.ProductListViewDTO">
+	<select id="getCateColorNmByPrdtId" resultType="com.suamall.project.dto.adminProductListView.ProductListViewDTO">
 		SELECT a.*, b.cate_nm, c.color_nm FROM sh_product_info a 
 		INNER JOIN sh_product_color c ON a.prdt_color=c.color_id 
 		INNER JOIN sh_product_cate b ON a.cate_id=b.cate_id

@@ -4,7 +4,7 @@
 
 <mapper namespace="com.suamall.project.repository.CartRepository">
 	<select id="getCartInfo"
-		resultType="com.suamall.project.dto.CartInfoDTO">
+		resultType="com.suamall.project.dto.cartInfoView.CartInfoDTO">
 		SELECT
 		c.cart_id, c.prdt_id,c.user_id,p.cate_id,p.prdt_nm,p.prdt_img,
 		p.prdt_title,co.color_nm AS prdt_color,
