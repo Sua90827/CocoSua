@@ -17,4 +17,6 @@ public interface MemberRepository {
 
 	public void deleteMember(MemberDTO dto);
 
+	public void cartdelete(String member_id);
+
 }

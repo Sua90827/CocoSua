@@ -38,4 +38,7 @@
     <delete id="deleteMember" parameterType="com.suamall.project.dto.MemberDTO">
     	DELETE FROM sh_member_info WHERE member_id=#{member_id}
     </delete>
+    <delete id="cartdelete" parameterType="String">
+    	DELETE FROM sh_cart_info WHERE user_id='${member_id}'
+    </delete>
 </mapper>

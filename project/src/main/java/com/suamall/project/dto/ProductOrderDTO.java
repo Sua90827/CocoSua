@@ -1,10 +1,11 @@
 package com.suamall.project.dto;
 
+
 public class ProductOrderDTO {
-	private int prdt_id;       
-    private int cate_id;      
-    private String prdt_nm;   
-    private String prdt_img;
+	private int prdt_id;    //split   
+    private int cate_id;    //  
+    private String prdt_nm;   //split
+    private String prdt_img;  
     private String prdt_title;     
     private String prdt_content;  
     private int prdt_color;    
