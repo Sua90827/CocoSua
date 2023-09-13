@@ -90,7 +90,9 @@
  					<input type="hidden" value="${ sessionScope.user_id }" name="user_id">
  					<input type="hidden" value="" name="cart_id" id="cart_id"> 
  					<input type="hidden" value="" name="cart_amount" id="cart_amount"> 
- 					<button>주문하기</button>
+ 					<c:if test="${cart.size() ne 0 }">
+ 						<button>주문하기</button>
+ 					</c:if>
  				</form>
 			</div>
 		</div>

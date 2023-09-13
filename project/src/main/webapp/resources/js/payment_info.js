@@ -57,13 +57,17 @@ const selectChange = () => {
 }
 
 const kakaoPay = (price, shopNm, userId) => {
-
+    let total = 0;
+    let prdtPrice = document.querySelectorAll(".prdtAllPrice");
     const blankResult = blankCheck(); // 빈칸 체크
 
     if(blankResult == -1){
         return;
     }
 
+    for (var i = 0; i < prdtPrice.length; i++) {
+		total += Number(prdtPrice[i].value);
+	}
 	$(function(){
         var IMP = window.IMP;
         IMP.init('imp22624237'); //가맹점 식별코드 삽입
@@ -90,7 +94,7 @@ const kakaoPay = (price, shopNm, userId) => {
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : shopNm,
-            amount : price,
+            amount : total,
             buyer_email : '이메일 넣기',
             buyer_name : '이름 넣기',
             buyer_tel : '번호 넣기',
