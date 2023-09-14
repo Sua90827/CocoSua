@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <link href="/resources/img/cocoIcon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
+<link rel="stylesheet" href="/resources/css/myDelete.css">
 <title>CocoSua</title>
 </head>
 <body>
