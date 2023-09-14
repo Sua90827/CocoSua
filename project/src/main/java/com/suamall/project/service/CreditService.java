@@ -72,6 +72,7 @@ public List<OrderListDTO> dkdk(String id) {
 	for(CreditInfoDTO t : CreditInfoDTOList) {
 		String[] prdtId = t.getPrdt_id().split(",");
 		String[] prdtAmount = t.getPrdt_amount().split(",");
+		OrderListDTO OLD = new OrderListDTO();
 		
 		for (String pId : prdtId) {
 			System.out.println(pId);
@@ -80,8 +81,6 @@ public List<OrderListDTO> dkdk(String id) {
 			cnt++;
 			prdtOrderDtoList.add(dto);
 		}cnt = 0;
-		
-		OrderListDTO OLD = new OrderListDTO();
 		OLD.setProductOrderDTO(prdtOrderDtoList);
 		OLD.setCredit_id(t.getCredit_id());
 		OLD.setUser_id(t.getUser_id());
