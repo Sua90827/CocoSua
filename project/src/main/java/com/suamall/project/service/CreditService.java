@@ -65,24 +65,26 @@ public List<OrderListDTO> dkdk(String id) {
 	
 	List<CreditInfoDTO> CreditInfoDTOList = repo.selectUserCreditInfo(id);
 	
-	List<ProductOrderDTO> prdtOrderDtoList = new ArrayList<>();
 	List<OrderListDTO> orderList = new ArrayList<>();
-	
+	//각 orderlist 별 prdtOrderDtoList 는 달라야 함.
 	int cnt = 0;
-	int sizeOft = 0;
+	//int sizeOft = 0;
 	for(CreditInfoDTO t : CreditInfoDTOList) {
 		String[] prdtId = t.getPrdt_id().split(",");
 		String[] prdtAmount = t.getPrdt_amount().split(",");
 		OrderListDTO OLD = new OrderListDTO();
+		List<ProductOrderDTO> prdtOrderDtoList = new ArrayList<>();
+		
 		for (String pId : prdtId) {
 			System.out.println(pId);
 			ProductOrderDTO dto = repo.selectProductOrderInfo(pId);
 			dto.setPrdt_amount(Integer.parseInt(prdtAmount[cnt]));
 			cnt++;
-			prdtOrderDtoList.add(sizeOft, dto);
+			prdtOrderDtoList.add(dto);
+			//prdtOrderDtoList.add(sizeOft, dto);
+
 		}cnt = 0;
-		sizeOft++;
-		
+		//sizeOft++;
 		OLD.setProductOrderDTO(prdtOrderDtoList);
 		OLD.setCredit_id(t.getCredit_id());
 		OLD.setUser_id(t.getUser_id());
