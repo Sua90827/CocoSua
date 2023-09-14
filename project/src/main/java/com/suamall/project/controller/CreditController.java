@@ -7,6 +7,7 @@ import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -49,9 +50,9 @@ private HttpSession session;
 		return "user/payment/payment_success";
 	}
 	@GetMapping("orderList")
-	public String orderList(CreditInfoDTO dto) {
+	public String orderList(CreditInfoDTO dto, Model model) {
 		List<OrderListDTO> orderListDto = service.dkdk((String)session.getAttribute("user_id"));
-		
+		model.addAttribute("orderList", orderListDto);
 		return "user/myPage/order_list";
 	}
 
