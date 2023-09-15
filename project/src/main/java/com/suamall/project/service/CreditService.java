@@ -73,8 +73,9 @@ public List<OrderListDTO> dkdk(String id) {
 		String[] prdtId = t.getPrdt_id().split(",");
 		String[] prdtAmount = t.getPrdt_amount().split(",");
 		OrderListDTO OLD = new OrderListDTO();
+		// 오빠 여기야 여기이이이!!!!!!
 		List<ProductOrderDTO> prdtOrderDtoList = new ArrayList<>();
-		
+		// 내가 한 거 위의 한줄 추가한거임 ㅋㅋㅋㅋ 
 		for (String pId : prdtId) {
 			System.out.println(pId);
 			ProductOrderDTO dto = repo.selectProductOrderInfo(pId);

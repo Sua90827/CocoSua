@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.suamall.project.dto.CreditInfoDTO;
+import com.suamall.project.dto.orderInfoView.DeliveryInfoDTO;
 import com.suamall.project.dto.orderInfoView.OrderListDTO;
 import com.suamall.project.dto.orderInfoView.ProductOrderDTO;
 import com.suamall.project.service.CreditService;
@@ -55,6 +56,10 @@ private HttpSession session;
 		model.addAttribute("orderList", orderListDto);
 		return "user/myPage/order_list";
 	}
-
-
+	
+	@PostMapping("delivery.do")
+	public String deliveryInfo(DeliveryInfoDTO dto ,Model model) {
+		model.addAttribute("delivery", dto);
+		return "user/myPage/delivery_info";
+	}
 }
