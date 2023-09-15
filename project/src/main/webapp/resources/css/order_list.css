@@ -1,0 +1,24 @@
+th{
+	background-color: gray;
+	color: white;
+}
+
+.order_list_table td{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+.order_list_table td{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 0px 10px;
+}
+
+.deliveryBtn{
+	all:unset; 
+	cursor:pointer;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.deliveryBtn:hover{
+	color: rgba(0, 0, 0, 1);
+}
