@@ -91,5 +91,12 @@
 	<delete id="prdtDelete" parameterType="Integer">
 		DELETE FROM sh_product_info WHERE prdt_id = #{prdt_id}
 	</delete>
+	
+	<insert id="insertWishItem" parameterType="com.suamall.project.dto.WishListDTO">
+		INSERT INTO sh_wish_info VALUES(wish_info_seq.nextval, #{user_id}, #{prdt_id})
+	</insert>
+	<select id="chWishItem" resultType="com.suamall.project.dto.WishListDTO">
+		SELECT * FROM sh_wish_info WHERE user_id=#{user_id} AND prdt_id=#{prdt_id}
+	</select>
 
 </mapper>

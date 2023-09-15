@@ -2,19 +2,19 @@ package com.suamall.project.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.WishListDTO;
 import com.suamall.project.dto.adminProductListView.ProductListViewDTO;
 import com.suamall.project.service.ProductService;
 
@@ -22,7 +22,8 @@ import com.suamall.project.service.ProductService;
 public class ProductController {
 	@Autowired 
 	private ProductService service;
-	
+	@Autowired
+	private HttpSession session;
 	
 	@GetMapping("/productList")
 	public String productlist(Model model) {
@@ -137,11 +138,15 @@ public class ProductController {
 	}
 	
 	@GetMapping("userPrdtInfo")
-	public String userPrdtInfo(@RequestParam("prdt_id") int prdt_id, Model model) {
+	public String userPrdtInfo(@RequestParam("prdt_id") int prdt_id,  Model model) {//HttpSession session,
 		ProductListViewDTO dto = service.getCateColorNmByPrdtId(prdt_id);
 		List<CategoryDTO> cate = service.getCategoryList();			// 카테고리 메뉴
+		WishListDTO wish = service.chWishItem(prdt_id, (String) this.session.getAttribute("user_id"));
 		model.addAttribute("cate", cate);
 		model.addAttribute("prdt", dto);
+		
+		//model.addAttribute("wish", wish); 
+		//해당 prdt_id, user_id로 wish db 조회해서 dto 넘겨줌.값이 없으면 wish list 에 등록되지 않은 상품임.
 		return "user/shop/product/product_info";
 	}
 	
@@ -188,5 +193,13 @@ public class ProductController {
 		ProductListViewDTO prdt = service.PrdtInfoByPrdtId(prdt_id);
 		model.addAttribute("prdt", prdt);
 		return "admin/product/product_view";
+	}
+	
+	
+	
+	@PostMapping("insertWish")
+	public String insertWish(WishListDTO dto) {
+		service.insertWishItem(dto);
+		return "redirect:userPrdtInfo?prdt_id="+dto.getPrdt_id();
 	}
 }

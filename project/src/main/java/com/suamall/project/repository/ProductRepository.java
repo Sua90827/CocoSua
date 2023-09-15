@@ -3,10 +3,12 @@ package com.suamall.project.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.WishListDTO;
 import com.suamall.project.dto.adminProductListView.ProductListViewDTO;
 
 @Mapper
@@ -49,6 +51,10 @@ public interface ProductRepository {
 	public int selectBelowCateId(int cate_id);
 
 	void prdtDelete(int prdt_id);
+
+	void insertWishItem(WishListDTO dto);
+
+	WishListDTO chWishItem(@Param("prdt_id")int prdt_id, @Param("user_id") String user_id);
 	
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),

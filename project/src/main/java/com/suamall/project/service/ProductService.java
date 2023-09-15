@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.WishListDTO;
 import com.suamall.project.dto.adminProductListView.ProductListViewDTO;
 import com.suamall.project.repository.ProductRepository;
 
@@ -264,6 +265,15 @@ public class ProductService {
 	public ProductListViewDTO PrdtInfoByPrdtId(int prdt_id) {
 		ProductListViewDTO answer = getCateColorNmByPrdtId(prdt_id);
 		return answer;
+	}
+
+	public void insertWishItem(WishListDTO dto) {
+		repo.insertWishItem(dto);
+	}
+
+	public WishListDTO chWishItem(int prdt_id, String user_id) {
+		WishListDTO result = repo.chWishItem(prdt_id, user_id);
+		return result;
 	}
 	
 	

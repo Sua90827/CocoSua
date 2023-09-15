@@ -60,6 +60,13 @@
 					</div>
 					<div><input type="submit" value="담기"></div>
 				</form>
+				<div>
+					<form action="insertWish" method="post">
+						<input type="hidden" name="user_id" value="${sessionScope.user_id }">
+						<input type="hidden" name="prdt_id" value="${prdt.prdt_id }">
+						<div><input type="submit" value="heart"></div>
+					</form>
+				</div>
 				<div>즉시구매</div>
 			</div>
 		</div>

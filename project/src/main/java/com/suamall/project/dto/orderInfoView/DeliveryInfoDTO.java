@@ -100,6 +100,4 @@ public class DeliveryInfoDTO {
 	public void setCredit_date(String credit_date) {
 		this.credit_date = credit_date;
 	}
-	
-	
 }
