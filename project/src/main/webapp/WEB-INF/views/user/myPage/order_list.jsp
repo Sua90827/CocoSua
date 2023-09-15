@@ -18,6 +18,7 @@
 </c:if>
 <br>
 <c:forEach var="list" items="${orderList }">
+<hr>
 	credit_id : ${ list.credit_id }<br>
 	user_id : ${ list.user_id }<br>
 	credit_price : ${ list.credit_price }<br>
@@ -26,15 +27,16 @@
 	order_phone_num : ${ list.order_phone_num }<br>
 	order_email : ${ list.order_email }<br>
 	order_state : ${ list.order_state }<br>
-	recipient_nm : ${ list.recipient_nm }<br>
-	recipient_phone_num : ${ list.recipient_phone_num }<br>
-	recipient_zip_code : ${ list.recipient_zip_code }<br>
-	recipient_address : ${ list.recipient_address }<br>
-	recipient_address_detail : ${ list.recipient_address_detail }<br>
-	recipient_memo : ${ list.recipient_memo }<br>
-	credit_date : ${ list.credit_date }<br>
+		<table border="1">
+			<tr>
+				<th>IMG</th>
+				<th>TITLE</th>
+				<th>PRICE</th>
+				<th>AMOUNT</th>
+				<th>ALLPRICE</th>
+			</tr>
 	<c:forEach var="product" items="${ list.productOrderDTO }">
-		<tr>
+			<tr>
 		    	<td><a href="userPrdtInfo?prdt_id=${ product.prdt_id }"><img style="width:40px;" src="/resources/upload/${product.prdt_id }/${product.prdt_img}"></a></td>
 		    	<td style="text-align: left;">
 		    		<span style="padding-left:10px;">${ product.prdt_title }</span><br>
@@ -45,9 +47,17 @@
 		    		<input style="all:unset; width: 30px; text-align:center;" class="prdtNum" type="text" value="${ product.prdt_amount }" readonly>
 		    	</td>
 		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtAllPrice" value="">원</td>
-		    	<td><a href="cartDelete?user_id=${ sessionScope.user_id }&prdt_id=${ product.prdt_id }"><img style="width:10px; border: solid 1px rgba(0, 0, 0, 0.2);" src="resources/img/x_button.svg"></a></td>
 		    </tr>
 	</c:forEach>
+		</table>
+	recipient_nm : ${ list.recipient_nm }<br>
+	recipient_phone_num : ${ list.recipient_phone_num }<br>
+	recipient_zip_code : ${ list.recipient_zip_code }<br>
+	recipient_address : ${ list.recipient_address }<br>
+	recipient_address_detail : ${ list.recipient_address_detail }<br>
+	recipient_memo : ${ list.recipient_memo }<br>
+	credit_date : ${ list.credit_date }<br>
+	<hr>
 </c:forEach>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
