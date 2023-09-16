@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.suamall.project.dto.CartDTO;
 import com.suamall.project.dto.MemberDTO;
+import com.suamall.project.dto.ProductDTO;
 import com.suamall.project.dto.cartInfoView.CartInfoDTO;
 import com.suamall.project.repository.CartRepository;
 
@@ -57,5 +58,10 @@ public class CartService {
 			}
 		}
 		return cart;
+	}
+
+	public ProductDTO getProductInfo(int prdt_id) {
+		ProductDTO result = repo.getProductInfo(prdt_id);
+		return result;
 	}
 }

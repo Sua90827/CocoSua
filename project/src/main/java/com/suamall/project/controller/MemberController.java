@@ -3,6 +3,7 @@ package com.suamall.project.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.http.HttpResponse;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,7 +16,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.MemberDTO;
+import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.WishListDTO;
 import com.suamall.project.service.MemberService;
 
 @Controller
@@ -147,5 +151,11 @@ public class MemberController {
 		service.kakaoMemberDelete(dto);
 		return "redirect:/";
 	}
-	
+
+	@GetMapping("wishList")
+	public String wishList(Model model) {
+		List<ProductDTO> dto = service.selectWishItems((String) session.getAttribute("user_id"));
+		model.addAttribute("prdt", dto);
+		return "user/myPage/wish_list";
+	}
 }

@@ -51,5 +51,9 @@
 	<select id="getUserInfo" parameterType="String" resultType="com.suamall.project.dto.MemberDTO">
 		SELECT * FROM sh_member_info WHERE member_id='${user_id}'
 	</select>
+	
+	<select id="getProductInfo" resultType="com.suamall.project.dto.ProductDTO">
+		SELECT * FROM sh_product_info WHERE prdt_id=#{prdt_id}
+	</select>
 </mapper>
 

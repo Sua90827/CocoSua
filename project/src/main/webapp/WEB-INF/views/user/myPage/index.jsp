@@ -21,22 +21,33 @@
 <input type="hidden" value="${ member.member_phone_num }" id="memberPhone">
 <div align="center">
 	<div style="width: 600px; display: flex; justify-content:space-between;">
-		<div style="width:33.33%">
+		
+		<div style="width:25%">
 			<a class="itemsList" href="orderList">구매목록</a>
 		</div>
-		<div style="width:33.33%">
+		
+		
+		<div style="width:25%">
 			<a class="itemsList" href="memberModifyInfo">회원수정</a>
 		</div>
+		
+		
 		<c:if test="${ sessionScope.loginType eq 1 }">
-			<div style="width:33.33%">
+			<div style="width:25%">
 				<a class="itemsList" onclick="kakaoMemberDelete('${sessionScope.user_id}');">회원탈퇴</a>
 			</div>
 		</c:if>
+				
 		<c:if test="${ sessionScope.loginType eq 0 || sessionScope.loginType eq 2 }">
-			<div style="width:33.33%"> 
+			<div style="width:25%"> 
 				<a class="itemsList" href="memberDeleteInfo">회원탈퇴</a>
 			</div>
 		</c:if> 
+		
+		<div style="width:25%">
+			<a class="wishList" href="wishList">위시리스트</a>
+		</div>
+		
 	</div>
 </div>
 <div align="center">

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.suamall.project.dto.CartDTO;
 import com.suamall.project.dto.MemberDTO;
+import com.suamall.project.dto.ProductDTO;
 import com.suamall.project.dto.cartInfoView.CartInfoDTO;
 import com.suamall.project.service.CartService;
 
@@ -59,5 +60,23 @@ public class CartController {
 		model.addAttribute("member", dto);
 		model.addAttribute("cart", cart);
 		return "user/payment/payment_info";
+	}
+	
+	@PostMapping("directPaymentInfo")
+	public String directPaymentInfo(@RequestParam("member_id") String member_id, 
+									@RequestParam("prdt_id") int prdt_id, 	
+									@RequestParam("amount") String amount, Model model) {
+		MemberDTO dto = service.getUserInfo(member_id);
+		ProductDTO prdt = service.getProductInfo(prdt_id);
+		
+		System.out.println("prdt_id======>"+prdt_id);
+		System.out.println("dto========>"+dto.getMember_id());
+		System.out.println("prdt========>"+prdt);
+		System.out.println("amount========>"+amount);
+		
+		model.addAttribute("member", dto);
+		model.addAttribute("product", prdt);
+		model.addAttribute("amount", amount);
+		return "user/payment/direct_payment_info";
 	}
 }

@@ -41,4 +41,12 @@
     <delete id="cartdelete" parameterType="String">
     	DELETE FROM sh_cart_info WHERE user_id='${member_id}'
     </delete>
+    
+    <select id="getWishItems" resultType="com.suamall.project.dto.ProductDTO">
+    SELECT sh_product_info.* 
+    FROM sh_wish_info INNER JOIN sh_product_info 
+    ON sh_wish_info.prdt_id = sh_product_info.prdt_id
+    WHERE sh_wish_info.user_id = #{user_id}
+	ORDER BY sh_wish_info.id
+	</select>
 </mapper>

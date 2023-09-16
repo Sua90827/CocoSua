@@ -271,10 +271,13 @@ public class ProductService {
 		repo.insertWishItem(dto);
 	}
 
+	public void deleteWishItem(WishListDTO dto) {
+		repo.deleteWishItem(dto);
+	}
+	
 	public WishListDTO chWishItem(int prdt_id, String user_id) {
 		WishListDTO result = repo.chWishItem(prdt_id, user_id);
 		return result;
 	}
-	
-	
+
 }

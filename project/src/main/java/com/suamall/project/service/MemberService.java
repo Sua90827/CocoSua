@@ -1,5 +1,7 @@
 package com.suamall.project.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.suamall.project.dto.MemberDTO;
+import com.suamall.project.dto.ProductDTO;
 import com.suamall.project.repository.MemberRepository;
 
 @Service
@@ -116,4 +119,12 @@ public class MemberService {
 		session.invalidate();
 		repo.deleteMember(dto);
 	}
+
+	public List<ProductDTO> selectWishItems(String user_id) {
+		List<ProductDTO> result = repo.getWishItems(user_id);
+		return result;
+	}
+
+
+
 }

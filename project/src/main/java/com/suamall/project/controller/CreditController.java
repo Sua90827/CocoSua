@@ -46,6 +46,7 @@ private HttpSession session;
 		//service.getCreditDate();
 		
 		service.insertCreditInfo(dto);
+		
 		service.updateDeleteCreditInfo(dto);
 		
 		return "user/payment/payment_success";

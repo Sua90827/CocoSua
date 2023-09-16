@@ -1,8 +1,11 @@
 package com.suamall.project.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.suamall.project.dto.MemberDTO;
+import com.suamall.project.dto.ProductDTO;
 
 @Mapper
 public interface MemberRepository {
@@ -18,5 +21,7 @@ public interface MemberRepository {
 	public void deleteMember(MemberDTO dto);
 
 	public void cartdelete(String member_id);
+
+	public List<ProductDTO> getWishItems(String user_id);
 
 }

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.suamall.project.dto.CartDTO;
 import com.suamall.project.dto.MemberDTO;
+import com.suamall.project.dto.ProductDTO;
 import com.suamall.project.dto.cartInfoView.CartInfoDTO;
 
 @Mapper
@@ -22,5 +23,7 @@ public interface CartRepository {
 	void cartDelete(CartDTO dto);
 
 	MemberDTO getUserInfo(String user_id);
+
+	ProductDTO getProductInfo(int prdt_id);
 	
 }
