@@ -46,7 +46,7 @@ private HttpSession session;
 		//service.getCreditDate();
 		
 		service.insertCreditInfo(dto);
-		
+		//수량 없애는거 하고 싶으면 여기서 하면 됨.********************************************************************************************
 		service.updateDeleteCreditInfo(dto);
 		
 		return "user/payment/payment_success";
