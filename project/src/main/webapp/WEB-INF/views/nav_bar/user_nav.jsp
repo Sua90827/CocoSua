@@ -25,7 +25,17 @@
 						<a href="/qna">Q&A</a>
 					</div>
 						<div>
-							<a href="/cart?user_id=${ sessionScope.user_id }"><span><img src="resources/img/cart.png" style="width:20px;"></span><span>0</span></a>
+							<a href="/cart?user_id=${ sessionScope.user_id }">
+								<span><img src="resources/img/cart.png" style="width:20px;"></span>
+								<c:if test="${ sessionScope.cart_amount eq 0 }">
+									<span>0</span>
+								</c:if>
+								<c:if test="${ sessionScope.cart_amount ne 0 }">
+									<span>
+										${ sessionScope.cart_amount }
+									</span>
+								</c:if>
+							</a>
 						</div>
 						<div>
 							<a href="/myPage">MY PAGE</a>
