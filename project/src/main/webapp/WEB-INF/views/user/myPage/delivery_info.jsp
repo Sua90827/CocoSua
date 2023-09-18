@@ -33,11 +33,14 @@
 	<br> recipient_address_detail : ${ delivery.recipient_address_detail }
 	<br> recipient_memo : ${ delivery.recipient_memo }
 	<br> credit_date : ${ delivery.credit_date } --%>
+	<br>
+	<br>
+	<br>
 
 	<div style="width: 100%; display: flex; justify-content: center;">
-		<div style="width: 57%; display: flex;">
+		<div style="width: 36%; display: flex;">
 			<div>
-				<div>2 주문자정보 | INPUT FIELD - CLIENT</div>
+				<div>주문자정보 | INPUT FIELD - CLIENT</div>
 			</div>
 		</div>
 	</div>
@@ -46,7 +49,7 @@
 			<table class="client_info_table">
 				<tr>
 					<td width="150px;">주문하시는분</td>
-					<td width="950px;">${ delivery.order_nm }</td>
+					<td width="550px;">${ delivery.order_nm }</td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
@@ -60,9 +63,9 @@
 		</div>
 	</div>
 	<div style="width: 100%; display: flex; justify-content: center;">
-		<div style="width: 57%; display: flex;">
+		<div style="width: 36%; display: flex;">
 			<div>
-				<div>3 배송지정보 | INPUT FIELD - RECIPIENT</div>
+				<div>배송지정보 | INPUT FIELD - RECIPIENT</div>
 			</div>
 		</div>
 	</div>
@@ -71,8 +74,8 @@
 			<!-- 기존 배송지 table -->
 			<table class="client_info_table table_info" style="display: inline;">
 				<tr>
-					<td>받으시는분</td>
-					<td>${ delivery.recipient_nm }</td>
+					<td width="150px;">받으시는분</td>
+					<td width="550px;">${ delivery.recipient_nm }</td>
 				</tr>
 				<tr>
 					<td>전화번호</td>

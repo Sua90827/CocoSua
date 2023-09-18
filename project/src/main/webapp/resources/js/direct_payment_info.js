@@ -311,11 +311,6 @@ const kakaopaySuccess = () => {
 
 
     if(selectCnt % 2 == 0){ // 기존 배송지일 경우
-        for(var i = 0; i < prdtId.length; i++){
-            prdtIdClass[0].value += prdtId[i].value + ",";
-            prdtPriceClass[0].value += prdtPrice[i].value + ",";
-            prdtAmountClass[0].value += prdtAmount[i].value + ",";
-        }
         for(var i = 0; i < creditWayClass.length; i++){
             if(creditWayClass[i].checked){
                 for(var j = 0; j < creditWay.length; j++){
@@ -324,9 +319,6 @@ const kakaopaySuccess = () => {
                 break;
             }
         }
-        prdtIdClass[0].value = prdtIdClass[0].value.substring(0, prdtIdClass[0].value.length - 1);
-        prdtPriceClass[0].value = prdtPriceClass[0].value.substring(0, prdtPriceClass[0].value.length - 1);
-        prdtAmountClass[0].value = prdtAmountClass[0].value.substring(0, prdtAmountClass[0].value.length - 1);
         orderNmClass[0].value = orderNmId;
         orderPhoneNumClass[0].value = orderPhone1+orderPhone2+orderPhone3;
         orderEmailClass[0].value = orderEmail;
@@ -338,11 +330,6 @@ const kakaopaySuccess = () => {
         recipientMemoClass[0].value = memo;
         return 0;
     }else{ // 새로운 배송지일 경우
-        for(var i = 0; i < prdtId.length; i++){
-            prdtIdClass[1].value += prdtId[i].value + ",";
-            prdtPriceClass[1].value += prdtPrice[i].value + ",";
-            prdtAmountClass[1].value += prdtAmount[i].value + ",";
-        }
         for(var i = 0; i < creditWayClass.length; i++){
             if(creditWayClass[i].checked){
                 for(var j = 0; j < creditWay.length; j++){
@@ -351,9 +338,6 @@ const kakaopaySuccess = () => {
                 break;
             }
         }
-        prdtIdClass[1].value = prdtIdClass[1].value.substring(0, prdtIdClass[1].value.length - 1);
-        prdtPriceClass[1].value = prdtPriceClass[1].value.substring(0, prdtPriceClass[1].value.length - 1);
-        prdtAmountClass[1].value = prdtAmountClass[1].value.substring(0, prdtAmountClass[1].value.length - 1);
         orderNmClass[1].value = orderNmId
         orderPhoneNumClass[1].value = orderPhone1+orderPhone2+orderPhone3;
         orderEmailClass[1].value = orderEmail;

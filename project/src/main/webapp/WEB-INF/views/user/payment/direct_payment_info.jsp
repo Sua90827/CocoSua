@@ -220,9 +220,9 @@
 	
 	<form action="creditInfo.do" method="post" class="credit_info">
 		<input type="hidden" name="user_id" value="${ sessionScope.user_id }">
-		<input type="hidden" name="prdt_id" value="" class="prdt_id">
-		<input type="hidden" name="prdt_price" value="" class="prdt_price">
-		<input type="hidden" name="prdt_amount" value="" class="prdt_amount">
+		<input type="hidden" name="prdt_id" value="${ product.prdt_id }" class="prdt_id">
+		<input type="hidden" name="prdt_price" value="${ product.prdt_price }" class="prdt_price">
+		<input type="hidden" name="prdt_amount" value="${ amount }" class="prdt_amount">
 		<input type="hidden" name="credit_price" value="" class="credit_price">
 		<input type="hidden" name="credit_way" value="" class="credit_way">
 		<input type="hidden" name="order_nm" value="" class="order_nm">
@@ -241,9 +241,9 @@
 	
 	<form action="creditInfo.do" method="post" class="credit_info">
 		<input type="hidden" name="user_id" value="${ sessionScope.user_id }">
-		<input type="hidden" name="prdt_id" value="" class="prdt_id">
-		<input type="hidden" name="prdt_price" value="" class="prdt_price">
-		<input type="hidden" name="prdt_amount" value="" class="prdt_amount">
+		<input type="hidden" name="prdt_id" value="${ product.prdt_id }" class="prdt_id">
+		<input type="hidden" name="prdt_price" value="${ product.prdt_price }" class="prdt_price">
+		<input type="hidden" name="prdt_amount" value="${ amount }" class="prdt_amount">
 		<input type="hidden" name="credit_price" value="" class="credit_price">
 		<input type="hidden" name="credit_way" value="" class="credit_way">
 		<input type="hidden" name="order_nm" value="" class="order_nm">
