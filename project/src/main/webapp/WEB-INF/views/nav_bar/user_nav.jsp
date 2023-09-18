@@ -25,7 +25,7 @@
 						<a href="/qna">Q&A</a>
 					</div>
 						<div>
-							<a href="/cart?user_id=${ sessionScope.user_id }">CART</a>
+							<a href="/cart?user_id=${ sessionScope.user_id }"><span><img src="resources/img/cart.png" style="width:20px;"></span><span>0</span></a>
 						</div>
 						<div>
 							<a href="/myPage">MY PAGE</a>

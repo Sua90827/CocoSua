@@ -26,3 +26,11 @@
 		document.getElementById("amount").value = productAmount;
 		directForm.submit();
 	}
+
+	const cartAdd = () => {
+		document.getElementById("cartForm").submit();
+	}
+
+	const wish = () => {
+		document.getElementById("wishForm").submit();
+	}

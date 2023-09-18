@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <link href="/resources/img/cocoIcon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
 <title>CocoSua</title>
 </head>
 <body>
@@ -22,7 +24,7 @@
 			<section class="page-section" id="portfolio">
 				<div class="container">
 					<div class="text-center">
-						<h2 class="section-heading text-uppercase">♡♡♡여기는 위시리스트예요♡♡♡</h2>
+						<h2 class="section-heading text-uppercase">Wish List</h2>
 						<h3 class="section-subheading text-muted">My Wish List</h3>
 					</div>
 					<div class="row">

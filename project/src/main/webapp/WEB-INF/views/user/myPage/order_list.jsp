@@ -8,6 +8,8 @@
 <link href="/resources/img/cocoIcon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
 <link rel="stylesheet" href="/resources/css/order_list.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
 <title>CocoSua</title>
 </head>
 <body>
@@ -38,7 +40,9 @@
 	recipient_memo : ${ list.recipient_memo }<br>
 	credit_date : ${ list.credit_date }<br>
 	-->
-	<div style="width: 900px; display:flex;"><div style="width:50%; text-align:left;">${ list.credit_date }</div><div style="width:50%; text-align:right;"><button type="button" class="deliveryBtn" onclick="deliveryBtn('<%= cnt %>');">배송정보</button></div></div>
+	<div style="width: 900px; display:flex;"><div style="width:50%; text-align:left;">${ list.credit_date }</div>
+<%-- 	<div style="width:50%; text-align:right;"><button type="button" class="deliveryBtn" onclick="deliveryBtn('<%= cnt %>');">배송정보</button></div> --%>
+	</div>
 		<table class="order_list_table">
 			<tr>
 				<th style="width:60px;">IMG</th>
@@ -62,6 +66,70 @@
 		    </tr>
 	</c:forEach>
 		</table>
+		<div style="width:48%; text-align:left;">
+			<a onclick="deliveryInfoBlock('<%= cnt %>')" class="deliveryInfoView" style="display:flex; cursor: pointer;">▶ 배송정보</a>
+			<a onclick="deliveryInfoNone('<%= cnt %>')" class="deliveryInfoNonView" style="display:none; cursor: pointer;">▼ 배송정보</a>
+		</div>
+		<div style="width: 48%; text-align:left; display:none;" class="deleveryInfoDiv">
+		<hr>
+			<div style="width: 100%;">
+				<div style="width: 36%; display: flex;">
+					<div>
+						<div style="padding-left: 10px;"><b>주문자정보 | INPUT FIELD - CLIENT</b></div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div>
+					<table class="client_info_table">
+						<tr>
+							<th width="150px;"><b>주문하시는분</b></th>
+							<td width="950px;">${ list.order_nm }</td>
+						</tr>
+						<tr>
+							<th><b>전화번호</b></th>
+							<td>${ list.order_phone_num }</td>
+						</tr>
+						<tr>
+							<th><b>이메일</b></th>
+							<td>${ list.order_email }</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div style="width: 100%;">
+				<div style="width: 36%; display: flex;">
+					<div>
+						<div style="padding-left: 10px;"><b>배송지정보 | INPUT FIELD - RECIPIENT</b></div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div>
+					<!-- 기존 배송지 table -->
+					<table class="client_info_table" style="display: inline;">
+						<tr>
+							<th width="150px;"><b>받으시는분</b></th>
+							<td width="950px;">${ list.recipient_nm }</td>
+						</tr>
+						<tr>
+							<th><b>전화번호</b></th>
+							<td>${ list.recipient_phone_num }</td>
+						</tr>
+						<tr>
+							<th><b>주소</b></th>
+							<td>
+								(${ list.recipient_zip_code }) ${ list.recipient_address } ${ list.recipient_address_detail }
+							</td>
+						</tr>
+						<tr>
+							<th><b>배송메모</b></th>
+							<td>${ list.recipient_memo }</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
 		<br><br>
 		
 		<form action="delivery.do" method="post" class="deliveryForm">
@@ -84,24 +152,7 @@
 </c:forEach>
 </div>
 
-<script>
-	window.onload = () => {
-		let prdtPrice = document.querySelectorAll(".prdtPrice");
-		let prdtNum = document.querySelectorAll(".prdtNum");
-		let prdtAllPrice = document.querySelectorAll(".prdtAllPrice");
-		
-		for(var i = 0; i < prdtPrice.length; i++){
-			prdtAllPrice[i].value = Number(prdtPrice[i].value) * Number(prdtNum[i].value);
-		}
-		
-	}
-	
-	const deliveryBtn = (cnt) => {
-		let number = Number(cnt);
-		let deliveryForm = document.querySelectorAll(".deliveryForm");
-		deliveryForm[number].submit();
-	}
-</script>
+<script src="resources/js/order_list.js"></script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>

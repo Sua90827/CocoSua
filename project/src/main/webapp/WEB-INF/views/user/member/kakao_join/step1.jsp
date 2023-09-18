@@ -8,6 +8,8 @@
 <link href="/resources/img/cocoIcon.png" rel="shortcut icon"
 	type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>CocoSua</title>

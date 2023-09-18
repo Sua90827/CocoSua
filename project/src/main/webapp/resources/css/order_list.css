@@ -22,3 +22,17 @@ th{
 .deliveryBtn:hover{
 	color: rgba(0, 0, 0, 1);
 }
+
+th{
+	background-color: gray;
+	color: white;
+}
+
+.client_info_table td{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 0px 10px;
+}
+
+.client_info_table th{
+	text-align: center;
+}
