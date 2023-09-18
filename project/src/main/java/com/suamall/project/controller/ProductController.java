@@ -207,5 +207,10 @@ public class ProductController {
 		service.deleteWishItem(dto);
 		return "redirect:userPrdtInfo?prdt_id="+dto.getPrdt_id();
 	}
-	
+	@GetMapping("wishList")
+	public String wishList(Model model) {
+		List<ProductDTO> dto = service.selectWishItems((String) session.getAttribute("user_id"));
+		model.addAttribute("prdt", dto);
+		return "user/myPage/wish_list";
+	}
 }

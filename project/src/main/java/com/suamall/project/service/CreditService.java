@@ -12,6 +12,7 @@ import com.suamall.project.dto.CartDTO;
 import com.suamall.project.dto.CreditInfoDTO;
 import com.suamall.project.dto.orderInfoView.OrderListDTO;
 import com.suamall.project.dto.orderInfoView.ProductOrderDTO;
+import com.suamall.project.dto.orderInfoView.ReducingAmountDTO;
 import com.suamall.project.repository.CreditRepository;
 
 @Service
@@ -61,7 +62,7 @@ public void updateDeleteCreditInfo(CreditInfoDTO dto) {
 }
 
 
-public List<OrderListDTO> dkdk(String id) {
+public List<OrderListDTO> getOrderListById(String id) {
 	
 	List<CreditInfoDTO> CreditInfoDTOList = repo.selectUserCreditInfo(id);
 	
@@ -140,6 +141,24 @@ public List<OrderListDTO> dkdk(String id) {
 	}
 	
 	return orderList;
+}
+
+
+public void reducingPrdtAmount(CreditInfoDTO dto) {
+	System.out.println("creditService dto.getprdtamount!!!!============>"+dto.getPrdt_amount());
+	String[] prdtId = dto.getPrdt_id().split(",");
+	String[] prdtAmount = dto.getPrdt_amount().split(",");
+	
+	for(int i=0; i < prdtId.length; i++) {
+		int productId = Integer.parseInt(prdtId[i]);
+		int productAmount = Integer.parseInt(prdtAmount[i]);
+		ReducingAmountDTO abc = new ReducingAmountDTO();
+		abc.setPrdt_id(Integer.parseInt(prdtId[i]));
+		abc.setPrdt_amount(Integer.parseInt(prdtAmount[i]));
+		System.out.println("prdt_amount+++++++++++++"+productAmount);
+		System.out.println("prdt_id+++++++++++++"+productId);
+		repo.reducingPrdtAmount(abc);
+	}
 }
 
 

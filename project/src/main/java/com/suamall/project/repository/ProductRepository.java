@@ -58,7 +58,8 @@ public interface ProductRepository {
 	
 	WishListDTO chWishItem(@Param("prdt_id")int prdt_id, @Param("user_id") String user_id);
 
-	
+	public List<ProductDTO> getWishItems(String user_id);
+
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),
 //	dto.setColor_nm("sjiod");

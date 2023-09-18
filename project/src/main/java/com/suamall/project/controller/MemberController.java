@@ -152,10 +152,5 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	@GetMapping("wishList")
-	public String wishList(Model model) {
-		List<ProductDTO> dto = service.selectWishItems((String) session.getAttribute("user_id"));
-		model.addAttribute("prdt", dto);
-		return "user/myPage/wish_list";
-	}
+
 }

@@ -41,4 +41,8 @@
 		sh_product_color co ON p.prdt_color = co.color_id
 		WHERE p.prdt_id = #{id}
 	</select>
+	
+	<update id="reducingPrdtAmount" parameterType="com.suamall.project.dto.orderInfoView.ReducingAmountDTO"> 
+		UPDATE sh_product_info SET prdt_amount = prdt_amount-#{prdt_amount} WHERE prdt_id=#{prdt_id}
+	</update>
 </mapper>
