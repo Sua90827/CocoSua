@@ -22,5 +22,7 @@ public interface MemberRepository {
 
 	public void cartdelete(String member_id);
 
+	public int getCartAmount(String member_id);
+
 
 }

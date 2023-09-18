@@ -25,5 +25,7 @@ public interface CartRepository {
 	MemberDTO getUserInfo(String user_id);
 
 	ProductDTO getProductInfo(int prdt_id);
+
+	int getCartAmount(String user_id);
 	
 }

@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.suamall.project.dto.CartDTO;
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.MemberDTO;
 import com.suamall.project.dto.ProductDTO;

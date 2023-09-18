@@ -41,6 +41,8 @@
     <delete id="cartdelete" parameterType="String">
     	DELETE FROM sh_cart_info WHERE user_id='${member_id}'
     </delete>
-    
+    <select id="getCartAmount" resultType="Integer">
+    	SELECT NVL(SUM(cart_amount), 0) FROM sh_cart_info WHERE user_id=#{member_id}
+    </select>
 
 </mapper>

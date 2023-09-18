@@ -83,8 +83,10 @@ public class MemberService {
 		if(!(passwordEncoder.matches(dto.getMember_pw(), db.getMember_pw()))) {
 			return "비밀번호가 일치하지 않습니다.";
 		}
+		int cart_amount = repo.getCartAmount(dto.getMember_id());
 		session.setAttribute("user_id", dto.getMember_id());
 		session.setAttribute("loginType", db.getMember_login_type());
+		session.setAttribute("cart_amount", cart_amount);
 		return null;
 	}
 
