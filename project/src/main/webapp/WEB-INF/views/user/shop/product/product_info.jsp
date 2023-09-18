@@ -69,11 +69,11 @@
 				</div>
 				
 				<div>
-				<form action="directPaymentInfo" method="post">
+				<form action="directPaymentInfo" method="post" id="directForm">
  					<input type="hidden" value="${ sessionScope.user_id }" name="member_id">
  					<input type="hidden" value="${prdt.prdt_id }" name="prdt_id">
- 					<input type="hidden" value="3" name="amount">
- 					<button>즉시구매</button>
+ 					<input type="hidden" value="" name="amount" id="amount">
+ 					<button type="button" onclick="directPay()">즉시구매</button>
  				</form>
  				</div>
 			</div>

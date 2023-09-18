@@ -1,6 +1,8 @@
 let selectCnt = 0;
 
 window.onload = () => {
+    let prdtNum = document.querySelectorAll(".prdtNum");
+    let productPrice = document.querySelectorAll(".prdtPrice");
 	let prdtPrice = document.querySelectorAll(".prdtAllPrice");
 	let prdtAllPriceId = document.getElementById("totalPrice");
 	let paymentPriceId = document.getElementById("paymentPrice");
@@ -12,6 +14,7 @@ window.onload = () => {
 	let reciPhone2 = document.getElementById("reciPhone2");
 	let reciPhone3 = document.getElementById("reciPhone3");
 	let total = 0;
+    prdtPrice[0].value = prdtNum[0].value * productPrice[0].value;
 	for (var i = 0; i < prdtPrice.length; i++) {
 		total += Number(prdtPrice[i].value);
 	}
@@ -312,9 +315,6 @@ const kakaopaySuccess = () => {
             prdtIdClass[0].value += prdtId[i].value + ",";
             prdtPriceClass[0].value += prdtPrice[i].value + ",";
             prdtAmountClass[0].value += prdtAmount[i].value + ",";
-            console.log(prdtIdClass[0].value);
-            console.log(prdtPriceClass[0].value);
-            console.log(prdtAmountClass[0].value);
         }
         for(var i = 0; i < creditWayClass.length; i++){
             if(creditWayClass[i].checked){

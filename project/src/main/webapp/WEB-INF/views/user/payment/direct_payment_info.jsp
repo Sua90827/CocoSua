@@ -48,26 +48,22 @@
 				<th style="padding:0px 10px;">수량</th>
 				<th>합계</th>
 			</tr>
-			<c:if test="${ cart.size() eq 0 }">
+			<c:if test="${ empty product }">
 				<tr>
 					<td colspan="5">상품을 담아주세요</td>
 				</tr>
 			</c:if>
-		    <c:forEach var="list" items="${cart }">
-		    <input type="hidden" value="${ list.prdt_id }" class="prdtId">
-		    <input type="hidden" value="${ list.cart_amount }" class="prdtAmount">
 		    <tr>
-		    	<td><a href="userPrdtInfo?prdt_id=${ list.prdt_id }"><img style="width:40px;" src="/resources/upload/${list.prdt_id }/${list.prdt_img}"></a></td>
+		    	<td><a href="userPrdtInfo?prdt_id=${ product.prdt_id }"><img style="width:40px;" src="/resources/upload/${product.prdt_id }/${product.prdt_img}"></a></td>
 		    	<td style="text-align: left;">
-		    		<span style="padding-left:10px;">${ list.prdt_title }</span>(name:${ list.prdt_nm } color:${ list.prdt_color })
+		    		<span style="padding-left:10px;">${ product.prdt_title }</span>(name:${ product.prdt_nm } color:${ product.prdt_color })
 		    	</td>
-		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtPrice" value="${ list.prdt_price }">원</td>
+		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtPrice" value="${ product.prdt_price }">원</td>
 		    	<td>
-		    		<input style="all:unset; width: 30px; text-align:center;" class="prdtNum" type="text" value="${ list.cart_amount }" onchange="prdtNum();" readonly>
+		    		<input style="all:unset; width: 30px; text-align:center;" class="prdtNum" type="text" value="${ amount }" onchange="prdtNum();" readonly>
 		    	</td>
-		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtAllPrice" value="${ list.cart_price }">원</td>
+		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtAllPrice" value="">원</td>
 		    </tr>
-		    </c:forEach>
 		</table>
 	</div>
 	<div style="width:100%; display:flex; justify-content: center;">
@@ -262,7 +258,7 @@
 		<input type="hidden" name="recipient_memo" value="" class="recipient_memo">
 	</form>
 	
-	<script src="resources/js/payment_info.js"></script>
+	<script src="resources/js/direct_payment_info.js"></script>
 	<%@ include file="../../footer/footer.jsp"%>
 </body>
 </html>
