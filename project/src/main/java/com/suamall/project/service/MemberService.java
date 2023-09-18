@@ -120,10 +120,7 @@ public class MemberService {
 		repo.deleteMember(dto);
 	}
 
-	public List<ProductDTO> selectWishItems(String user_id) {
-		List<ProductDTO> result = repo.getWishItems(user_id);
-		return result;
-	}
+
 
 
 

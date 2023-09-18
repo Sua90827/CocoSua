@@ -279,5 +279,10 @@ public class ProductService {
 		WishListDTO result = repo.chWishItem(prdt_id, user_id);
 		return result;
 	}
+	
+	public List<ProductDTO> selectWishItems(String user_id) {
+		List<ProductDTO> result = repo.getWishItems(user_id);
+		return result;
+	}
 
 }

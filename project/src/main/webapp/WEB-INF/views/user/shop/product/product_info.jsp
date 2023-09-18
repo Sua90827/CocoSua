@@ -61,7 +61,7 @@
 					<div><input type="submit" value="담기"></div>
 				</form>
 				<div>
-					<form action="insertWish" method="post"><!-- insertWish 이미 db에 담겨 있는 상품이라면 deleteWish로!! -->
+					<form action="deleteWish" method="post"><!-- insertWish 이미 db에 담겨 있는 상품이라면 deleteWish로!! -->
 						<input type="hidden" name="user_id" value="${sessionScope.user_id }">
 						<input type="hidden" name="prdt_id" value="${prdt.prdt_id }">
 						<div><input type="submit" value="heart"></div>

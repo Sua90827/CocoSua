@@ -22,6 +22,5 @@ public interface MemberRepository {
 
 	public void cartdelete(String member_id);
 
-	public List<ProductDTO> getWishItems(String user_id);
 
 }

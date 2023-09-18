@@ -1,6 +1,5 @@
 package com.suamall.project.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -8,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.suamall.project.dto.CartDTO;
 import com.suamall.project.dto.CreditInfoDTO;
 import com.suamall.project.dto.orderInfoView.ProductOrderDTO;
+import com.suamall.project.dto.orderInfoView.ReducingAmountDTO;
 
 @Mapper
 public interface CreditRepository {
@@ -23,6 +23,8 @@ public interface CreditRepository {
 	List<CreditInfoDTO> selectUserCreditInfo(String id);
 
 	ProductOrderDTO selectProductOrderInfo(String id);
+
+	void reducingPrdtAmount(ReducingAmountDTO dto);
 
 
 }
