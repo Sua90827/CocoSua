@@ -24,13 +24,17 @@
             <tr>
                <td>
                   <b>작성자</b><br>
-                  <input type="text" name="id" value="${ dto.user_id }" readonly>
+                  <input type="text" name="user_id" value="${ dto.user_id }" readonly>
                </td>
             </tr>
             <tr>
                <td>
                   <b>상품명</b><br>
                   <input type="text" name="id" value="${ dto.prdt_nm } ${dto.prdt_title} ${dto.prdt_color} ${dto.prdt_id}" readonly>
+                  <input type="hidden" name="prdt_id" value="${dto.prdt_id}">
+                  <input type="hidden" name="prdt_nm" value="${dto.prdt_nm}">
+                  <input type="hidden" name="prdt_color" value="${dto.prdt_color}">
+                  <input type="hidden" name="prdt_title" value="${dto.prdt_title}">
                </td>
             </tr>
             <tr>
@@ -48,7 +52,7 @@
             <tr>
                <td>
                   <b>이미지파일 첨부</b>
-                  <input type="file" name="image_file_name" onchange="readURL(this);">
+                  <input type="file" name="file" onchange="readURL(this);">
                   <div><img id="preview"  width=100 height=100 alt="선택된 이미지가 없습니다." /></div>
 
                </td>

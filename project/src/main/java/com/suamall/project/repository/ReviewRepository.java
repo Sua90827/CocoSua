@@ -9,6 +9,8 @@ import com.suamall.project.dto.ReviewDTO;
 @Mapper
 public interface ReviewRepository {
 
-//	List<ReviewDTO> getAllReview(int prdt_id);
+	int saveReview(ReviewDTO dto);
+
+	List<ReviewDTO> getAllReview(int prdt_id);
 
 }
