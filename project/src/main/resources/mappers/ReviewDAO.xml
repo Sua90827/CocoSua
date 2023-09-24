@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.suamall.project.repository.ReviewRepository">
+	
+	<select id="getAllReview" resultType="com.suamall.project.dto.ReviewDTO">
+		SELECT * FROM sh_review_info WHERE prdt_id = #{prdt_id}
+	</select>
+	
+	
+	<insert id="saveReview" parameterType="com.suamall.project.dto.ReviewDTO">
+		<selectKey order="BEFORE" keyProperty="review_no"
+			resultType="Integer">
+			SELECT nvl(max(review_no), 0) + 1 FROM sh_review_info
+		</selectKey>
+		INSERT INTO sh_review_info
+		(review_no, prdt_id, prdt_nm, prdt_color, prdt_title, user_id, title, content, save_date, image_file_name ) 
+		VALUES (#{review_no}, #{prdt_id},#{prdt_nm},#{prdt_color},#{prdt_title},#{user_id},#{title},#{content},SYSTIMESTAMP,#{image_file_name})
+	</insert>
+</mapper>

@@ -63,6 +63,7 @@
 		    		<input style="all:unset; width: 30px; text-align:center;" class="prdtNum" type="text" value="${ product.prdt_amount }" readonly> 개
 		    	</td>
 		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtAllPrice" value="">원</td>
+		    	<td><a href="writingReview?user_id=${user_id }&prdt_title=${ product.prdt_title }&prdt_nm=${ product.prdt_nm }&prdt_id=${ product.prdt_id }&prdt_color=${ product.prdt_color }">Writing Review 페이지로 이동</a></td>
 		    </tr>
 	</c:forEach>
 		</table>

@@ -55,5 +55,8 @@
 	<select id="getProductInfo" resultType="com.suamall.project.dto.ProductDTO">
 		SELECT * FROM sh_product_info WHERE prdt_id=#{prdt_id}
 	</select>
+	<select id="getCartAmount" resultType="Integer">
+		SELECT NVL(SUM(cart_amount), 0) from sh_cart_info WHERE user_id = #{user_id}
+	</select>
 </mapper>
 

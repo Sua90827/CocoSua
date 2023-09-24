@@ -2,6 +2,10 @@ package com.suamall.project.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.suamall.project.dto.CartDTO;
@@ -16,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CartService {
 	private final CartRepository repo;
+	@Autowired HttpSession session;
 
 	public List<CartInfoDTO> getCartInfo(String user_id) {
 		List<CartInfoDTO> result = repo.getCartInfo(user_id);
@@ -29,6 +34,7 @@ public class CartService {
 		}else {
 			repo.cartInsert(dto);
 		}
+		session.setAttribute("cart_amount", repo.getCartAmount(dto.getUser_id()));
 	}
 
 	public void delete(String user_id, int prdt_id) {
@@ -36,6 +42,8 @@ public class CartService {
 		dto.setPrdt_id(prdt_id);
 		dto.setUser_id(user_id);
 		repo.cartDelete(dto);
+		session.setAttribute("cart_amount", repo.getCartAmount(dto.getUser_id()));
+
 	}
 
 	public MemberDTO getUserInfo(String user_id) {
