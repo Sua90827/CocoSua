@@ -81,6 +81,9 @@
 
 .nav_searce_bar{
     display: flex;
-    
     padding-right:10px;
+}
+
+.img_cart:hover{
+	color: var(--bs-link-hover-color);
 }

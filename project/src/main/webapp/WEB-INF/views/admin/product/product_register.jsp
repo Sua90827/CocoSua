@@ -37,7 +37,11 @@
 				</tr>
 				<tr>
 					<td>내 용</td>
-					<td><input type="text" name="prdt_content" value="${product.prdt_content }"></td>
+					<td>
+						<div>
+							<textarea style="width:500px; height:300px;" name="prdt_content">${ product.prdt_content }</textarea>
+						</div>
+					</td>
 				</tr>
 				<tr>
 					<td>색 상</td>

@@ -19,7 +19,7 @@
 		<%@ include file="/WEB-INF/views/nav_bar/user_nav.jsp"%>
 	</c:if>
 
-	<br>
+	<br><br><br>
 	<input type="hidden" id="price" value="${prdt.prdt_price }">
 	<section class="product_info_page">
 		<div class="product_info_location">
@@ -96,7 +96,19 @@
 			</div>
 		</div>
 	</section>
-
+	<br><br><br>
+	
+	<div align="center" style="width:100%;">
+		<div style="width:50%;">
+			<div>
+				<hr>
+				${ prdt.prdt_content }
+			</div>
+		</div>
+		<div style="width:50%;">
+			<hr>
+		</div>
+	</div>
 
 	<!-- 즉시구매 Form -->
 	<form action="directPaymentInfo" method="post" id="directForm">
