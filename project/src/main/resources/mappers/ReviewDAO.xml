@@ -16,6 +16,6 @@
 		</selectKey>
 		INSERT INTO sh_review_info
 		(review_no, prdt_id, prdt_nm, prdt_color, prdt_title, user_id, title, content, save_date, image_file_name ) 
-		VALUES (#{review_no}, #{prdt_id},#{prdt_nm},#{prdt_color},#{title},#{user_id},#{title},#{content},SYSTIMESTAMP,#{image_file_name})
+		VALUES (#{review_no}, #{prdt_id},#{prdt_nm},#{prdt_color},#{prdt_title},#{user_id},#{title},#{content},SYSTIMESTAMP,#{image_file_name})
 	</insert>
 </mapper>

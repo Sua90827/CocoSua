@@ -120,7 +120,27 @@
 		</form>
 	</c:if>
 	<!-- insertWish 이미 db에 담겨 있는 상품이라면 deleteWish로!! -->
-
+	
+	<hr>
+	<div>
+		리뷰<br>
+		<table border='1'>
+			<tr>
+				<!-- <th>No.</th> -->
+				<th>작성자</th><th>제목</th><th>구매상품</th><th>작성일</th><th>조회수</th>
+			</tr>
+				<c:forEach var = "review" items="${reviews }" >
+				<tr>
+					<!-- <td>${review.review_no }</td> -->
+					<td>${review.user_id }</td>
+					<td><a href="review_detail?review_no=${review.review_no }">${review.title }</a></td>
+					<td>${review.prdt_title }<br>${review.prdt_nm }<br>${review.prdt_color }</td>
+					<td>${review.save_date }</td><td>${review.hit }</td>
+				</tr>
+				</c:forEach>
+		</table>
+		<!-- <a href = "">상세페이지</a><a hef = "view_reviews" -->
+	</div>
 
 	<script src="/resources/js/product_info.js"></script>
 	<%@ include file="/WEB-INF/views/footer/footer.jsp"%>

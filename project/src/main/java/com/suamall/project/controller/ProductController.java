@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.ReviewDTO;
 import com.suamall.project.dto.WishListDTO;
 import com.suamall.project.dto.adminProductListView.ProductListViewDTO;
 import com.suamall.project.service.ProductService;
@@ -142,9 +143,11 @@ public class ProductController {
 		ProductListViewDTO dto = service.getCateColorNmByPrdtId(prdt_id);
 		List<CategoryDTO> cate = service.getCategoryList();			// 카테고리 메뉴
 		WishListDTO wish = service.chWishItem(prdt_id, (String)session.getAttribute("user_id"));
+		List<ReviewDTO> review = service.getReviewList(prdt_id);
 		model.addAttribute("cate", cate);
 		model.addAttribute("prdt", dto);
 		model.addAttribute("wish", wish); 
+		model.addAttribute("reviews", review);
 		//해당 prdt_id, user_id로 wish db 조회해서 dto 넘겨줌.값이 없으면 wish list 에 등록되지 않은 상품임.
 		return "user/shop/product/product_info";
 	}

@@ -109,4 +109,8 @@
 	    WHERE sh_wish_info.user_id = #{user_id}
 		ORDER BY sh_wish_info.id DESC
 	</select>
+	
+	<select id = "getReviewList" resultType="com.suamall.project.dto.ReviewDTO">
+		SELECT * FROM sh_review_info WHERE prdt_id=#{prdt_id}
+	</select>
 </mapper>

@@ -17,9 +17,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.ReviewDTO;
 import com.suamall.project.dto.WishListDTO;
 import com.suamall.project.dto.adminProductListView.ProductListViewDTO;
 import com.suamall.project.repository.ProductRepository;
+
+import ch.qos.logback.core.pattern.color.RedCompositeConverter;
 
 @Service
 public class ProductService {
@@ -282,6 +285,11 @@ public class ProductService {
 	
 	public List<ProductDTO> selectWishItems(String user_id) {
 		List<ProductDTO> result = repo.getWishItems(user_id);
+		return result;
+	}
+
+	public List<ReviewDTO> getReviewList(int prdt_id) {
+		List<ReviewDTO> result = repo.getReviewList(prdt_id);
 		return result;
 	}
 

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.suamall.project.dto.CategoryDTO;
 import com.suamall.project.dto.ColorDTO;
 import com.suamall.project.dto.ProductDTO;
+import com.suamall.project.dto.ReviewDTO;
 import com.suamall.project.dto.WishListDTO;
 import com.suamall.project.dto.adminProductListView.ProductListViewDTO;
 
@@ -59,6 +60,8 @@ public interface ProductRepository {
 	WishListDTO chWishItem(@Param("prdt_id")int prdt_id, @Param("user_id") String user_id);
 
 	public List<ProductDTO> getWishItems(String user_id);
+
+	List<ReviewDTO> getReviewList(int prdt_id);
 
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),

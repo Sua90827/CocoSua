@@ -45,7 +45,7 @@ public class ReviewController {
 		System.out.println("prdt_id=***************>"+dto.getPrdt_id());
 		System.out.println("prdt_nm=***************>"+dto.getPrdt_nm());
 		System.out.println("prdt_color=***************>"+dto.getPrdt_color());
-		System.out.println("prdt_title=***************>"+dto.getPrdt_title());
+		System.out.println("prdt_title=***************>"+dto.getPrdt_title());//splite blouse shirt
 		System.out.println("Date=***************>"+dto.getSave_date());
 		System.out.println("imageName=***************>"+dto.getFile().getOriginalFilename());
 		String msg = service.reviewSave(dto);
@@ -54,6 +54,10 @@ public class ReviewController {
 		out.print(msg);
 		return null;
 	}
-	
+	@GetMapping("review_detail")
+	public String reviewDetail(@RequestParam ("review_no") int review_no) {
+		
+		return "user/board/review_detail";
+	}
 	
 }
