@@ -40,7 +40,7 @@ public List<ReviewDTO> getAllReview(int prdt_id) {
 	List<ReviewDTO> result = repo.getAllReview(prdt_id);
 	return result;
 }
-public String IMAGE_REPO = "c:/spring/cocoSua";
+public String IMAGE_REPO = "D:/cocosua/project/project/src/main/webapp/resources/reviewImg";
 
 public String saveFile(MultipartFile image_file_name) {
 	SimpleDateFormat fo=new SimpleDateFormat("yyyyMMddHHmmss-");
@@ -64,5 +64,9 @@ public String getMessage(String msg, String url) {
 public void deleteImage(String fileName) {
 	File file = new File(IMAGE_REPO+"/"+fileName);
 	file.delete();
+}
+
+public void deleteReview(int review_no) {
+	repo.deleteReview(review_no);
 }
 }

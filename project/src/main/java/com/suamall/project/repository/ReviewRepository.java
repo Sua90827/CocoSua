@@ -13,4 +13,6 @@ public interface ReviewRepository {
 
 	List<ReviewDTO> getAllReview(int prdt_id);
 
+	void deleteReview(int review_no);
+
 }
