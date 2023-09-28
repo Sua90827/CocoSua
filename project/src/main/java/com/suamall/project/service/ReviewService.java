@@ -30,9 +30,10 @@ public String reviewSave(ReviewDTO dto) {
 	}else {
 		msg="문제가 발생했습니다";
 		url = "window.history.back()";
+		return getAlertHistoryBack(msg, url);
 	}
 	
-	return getMessage(msg, url);
+	return getAlertLocation(msg, url);
 	
 }
 
@@ -55,9 +56,15 @@ public String saveFile(MultipartFile image_file_name) {
 	return sysFileName;
 }
 
-public String getMessage(String msg, String url) {
+public String getAlertHistoryBack(String msg, String url) {
 	String message = "<script>alert('" + msg + "');";
-	message += "location.href='" + url + "';</script>";
+	message += url + "</script>";
+	return message;
+}
+
+public String getAlertLocation(String msg, String url) {
+	String message = "<script>alert('" + msg + "');";
+	message += "location.href='" +url + "';</script>";
 	return message;
 }
 
@@ -66,7 +73,60 @@ public void deleteImage(String fileName) {
 	file.delete();
 }
 
-public void deleteReview(int review_no) {
-	repo.deleteReview(review_no);
+public String deleteReview(int review_no) {
+	int result = repo.deleteReview(review_no);
+	System.out.println("여기는 review_no. ====>"+review_no);
+	deletePic(review_no);
+	String msg = "", url="";
+	if(result ==1) {
+		msg = "리뷰가 삭제되었습니다.";
+		url = "history.back()";
+	}else {
+		msg="문제가 발생했습니다";
+		url = "window.history.back()";
+	}
+	
+	return getAlertHistoryBack(msg, url);
+}
+
+//	private String image_file_name;
+//	private MultipartFile file;
+private void deletePic(int review_no) {
+	System.out.println("여기는 deletePic 넘어온 review_no.======>"+review_no);
+	ReviewDTO db = repo.getReviewDTO(review_no);
+	System.out.println("pathOfPic=>>>>>>>>>>>>>>>>>>>"+ db.getImage_file_name());
+	//여기 위에줄에서 걸림... ㅠㅠ
+	
+}
+
+public ReviewDTO getReviewDTO(int review_no) {
+	ReviewDTO result = repo.getReviewDTO(review_no);
+	return result;
+}
+
+public String SaveModifiedReview(ReviewDTO dto) {
+	ReviewDTO db = new ReviewDTO();
+	if( dto.getFile().isEmpty()) {
+		dto.setImage_file_name("nan");
+	}else {
+		if(db.getFile().equals(dto.getFile())){
+			
+		}
+		dto.setImage_file_name(saveFile(dto.getFile()));
+	}
+	int result = repo.saveReview(dto);
+	String msg = "", url="";
+	if(result ==1) {
+		msg = "리뷰 작성이 완료되었습니다.";
+		url = "/orderList";
+	}else {
+		msg="문제가 발생했습니다";
+		url = "window.history.back()";
+		return getAlertHistoryBack(msg, url);
+	}
+	
+	return getAlertLocation(msg, url);
+	
+
 }
 }

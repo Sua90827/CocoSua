@@ -4,10 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="resources/js/img_view.js"></script>
 </head>
 <body>
   	<c:if test="${empty sessionScope.loginType }">
@@ -18,8 +16,8 @@
 	</c:if>
 	<br>
    <div align="center">
-      <h1>리뷰 작성</h1>
-      <form action="writeSave" method="post" enctype="multipart/form-data">
+      <h1>리뷰 수정</h1>
+      <form action="SaveModifiedReview" method="post" enctype="multipart/form-data">
          <table>
             <tr>
                <td>

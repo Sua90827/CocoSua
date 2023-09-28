@@ -53,7 +53,6 @@
 var cnt = 0;
 const gd = () => {
 	cnt++;
-	console.log("gdgdg");
 	const gd = document.getElementById("gd");
 	if(cnt % 2 == 0){
 		gd.style.display = "none";
@@ -213,7 +212,7 @@ $(".tr_visible a").click(function() {
 		</form>
 	</c:if>
 	<!-- insertWish 이미 db에 담겨 있는 상품이라면 deleteWish로!! -->
-	
+	<% int cnt = 0; %>
 	<hr>
 	<div>
 		리뷰<br>
@@ -235,7 +234,7 @@ $(".tr_visible a").click(function() {
 						<td>${review.prdt_title }<br>${review.prdt_nm }<br>${review.prdt_color }</td>
 						<td>${review.save_date }</td><td>${review.hit }</td>
 					</tr>
-					<tr id="gd" style="display:none;">
+					<tr class="gd" style="display:none;">
 						<td scope="row" colspan="5">
 						<img style="width:300px;" src="resources/reviewImg/${review.image_file_name }">
 						${review.content} <br>

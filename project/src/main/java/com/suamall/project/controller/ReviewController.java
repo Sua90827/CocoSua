@@ -56,14 +56,25 @@ public class ReviewController {
 	}
 	
 	@GetMapping("deleteReview")
-	public String deleteReview(@RequestParam ("review_no") int review_no, @RequestParam int prdt_id) {
-		service.deleteReview(review_no);
-		return "redirect:userPrdtInfo?prdt_id="+prdt_id;
+	public String deleteReview(@RequestParam ("review_no") int review_no, HttpServletResponse res) throws IOException {
+		String msg = service.deleteReview(review_no);
+		res.setContentType("text/html; charset=utf-8");
+		PrintWriter out = res.getWriter();
+		out.print(msg);
+		return null;
 	}
 	
 	@GetMapping("modifyReview")
-	public String modifyReview(@RequestParam ("review_no") int review_no, ReviewDTO dto) {
-		return null ;
+	public String modifyReview(@RequestParam ("review_no") int review_no, Model model) {
+		ReviewDTO dto = service.getReviewDTO(review_no);
+		model.addAttribute("dto", dto);
+		return "user/board/review_modify" ;
 
+	}
+	
+	@PostMapping("SaveModifiedReview")
+	public String SaveModifiedReview(ReviewDTO dto, HttpServletResponse res) {
+		String msg = service.SaveModifiedReview(dto);
+		return msg;
 	}
 }

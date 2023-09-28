@@ -27,9 +27,9 @@ private HttpSession session;
 	@PostMapping("creditInfo.do")
 	public String creditInfoDo(CreditInfoDTO dto) {//장바구니
 //		System.out.println("user_id====================================== => " + dto.getUser_id());
-		System.out.println("prdt_id => " + dto.getPrdt_id());
-		System.out.println("prdt_price => "+dto.getPrdt_price());
-		System.out.println("amount => "+dto.getPrdt_amount());
+//		System.out.println("prdt_id => " + dto.getPrdt_id());
+//		System.out.println("prdt_price => "+dto.getPrdt_price());
+//		System.out.println("amount => "+dto.getPrdt_amount());
 //		System.out.println("credit_price => "+dto.getCredit_price());
 //		System.out.println("credit_way=>"+dto.getCredit_way());
 //		System.out.println("order_name=>"+dto.getOrder_nm());

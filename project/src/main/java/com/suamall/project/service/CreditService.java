@@ -107,38 +107,38 @@ public List<OrderListDTO> getOrderListById(String id) {
 	} 
 	
 	
-	for(OrderListDTO old : orderList) {
-		System.out.println("######################### 여기부터 orderList ###########################");
-		List<ProductOrderDTO> productOrderDTO = old.getProductOrderDTO();
-		for( ProductOrderDTO pod : productOrderDTO ) {
-			System.out.println("*******여기는 prdtorderdto 시작*********");
-			System.out.println(pod.getPrdt_id());
-			System.out.println(pod.getCate_id());
-			System.out.println(pod.getPrdt_nm());
-			System.out.println(pod.getPrdt_img());
-			System.out.println(pod.getPrdt_title());
-			System.out.println(pod.getPrdt_color());
-			System.out.println("*******여기는 prdtorderdto 끝*********");
-		}
-		
-		System.out.println(old.getCredit_id());
-		System.out.println(old.getUser_id());
-		System.out.println(old.getCredit_price());
-		System.out.println(old.getCredit_way());
-		System.out.println(old.getOrder_nm());
-		System.out.println(old.getOrder_phone_num());
-		System.out.println(old.getOrder_email());
-		System.out.println(old.getOrder_state());
-		System.out.println(old.getRecipient_nm());
-		System.out.println(old.getRecipient_phone_num());
-		System.out.println(old.getRecipient_zip_code());
-		System.out.println(old.getRecipient_address());
-		System.out.println(old.getRecipient_address_detail());
-		System.out.println(old.getRecipient_memo());
-		System.out.println(old.getCredit_date());
-		System.out.println("######################### 여기가 orderList 끝 ###########################");
-
-	}
+//	for(OrderListDTO old : orderList) {
+//		System.out.println("######################### 여기부터 orderList ###########################");
+//		List<ProductOrderDTO> productOrderDTO = old.getProductOrderDTO();
+////		for( ProductOrderDTO pod : productOrderDTO ) {
+////			System.out.println("*******여기는 prdtorderdto 시작*********");
+////			System.out.println(pod.getPrdt_id());
+////			System.out.println(pod.getCate_id());
+////			System.out.println(pod.getPrdt_nm());
+////			System.out.println(pod.getPrdt_img());
+////			System.out.println(pod.getPrdt_title());
+////			System.out.println(pod.getPrdt_color());
+////			System.out.println("*******여기는 prdtorderdto 끝*********");
+////		}
+//		
+//		System.out.println(old.getCredit_id());
+//		System.out.println(old.getUser_id());
+//		System.out.println(old.getCredit_price());
+//		System.out.println(old.getCredit_way());
+//		System.out.println(old.getOrder_nm());
+//		System.out.println(old.getOrder_phone_num());
+//		System.out.println(old.getOrder_email());
+//		System.out.println(old.getOrder_state());
+//		System.out.println(old.getRecipient_nm());
+//		System.out.println(old.getRecipient_phone_num());
+//		System.out.println(old.getRecipient_zip_code());
+//		System.out.println(old.getRecipient_address());
+//		System.out.println(old.getRecipient_address_detail());
+//		System.out.println(old.getRecipient_memo());
+//		System.out.println(old.getCredit_date());
+//		System.out.println("######################### 여기가 orderList 끝 ###########################");
+//
+//	}
 	
 	return orderList;
 }
