@@ -54,10 +54,16 @@ public class ReviewController {
 		out.print(msg);
 		return null;
 	}
-	@GetMapping("review_detail")
-	public String reviewDetail(@RequestParam ("review_no") int review_no) {
-		
-		return "user/board/review_detail";
+	
+	@GetMapping("deleteReview")
+	public String deleteReview(@RequestParam ("review_no") int review_no, @RequestParam int prdt_id) {
+		service.deleteReview(review_no);
+		return "redirect:userPrdtInfo?prdt_id="+prdt_id;
 	}
 	
+	@GetMapping("modifyReview")
+	public String modifyReview(@RequestParam ("review_no") int review_no, ReviewDTO dto) {
+		return null ;
+
+	}
 }

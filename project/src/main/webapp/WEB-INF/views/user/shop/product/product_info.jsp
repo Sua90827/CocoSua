@@ -9,6 +9,99 @@
 	type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/styles.css">
 <title>CocoSua</title>
+
+<style>
+.tb_fruits {width:100%; border-spacing:0; border-collapse:collapse; position:relative;}
+
+.tb_fruits th,
+
+.tb_fruits td {border:1px solid #ccc; border-top:0; text-align:center; width:50%;}
+
+.tb_fruits thead th {border-top:1px solid #ccc; background:#767676; color:#fff;}
+
+.tb_fruits caption {position:absolute; height:0; overflow:hidden;}
+
+.tb_fruits tbody tr {display:none;}
+
+.tb_fruits tbody tr.tr_visible {background:#eee; display:table-row;}
+
+.tb_fruits .tr_visible a {
+
+    position:absolute;
+
+    width:100%;
+
+    text-indent:-9999px;
+
+    left:0;
+
+    background:#fff;
+
+    opacity:0;
+
+    -ms-filter:alpha(opacity=0);
+
+    filter:alpha(opacity=0);
+
+}
+
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+var cnt = 0;
+const gd = () => {
+	cnt++;
+	console.log("gdgdg");
+	const gd = document.getElementById("gd");
+	if(cnt % 2 == 0){
+		gd.style.display = "none";
+	}else{
+		gd.style.display = "block";
+	}	
+}
+</script>
+<script>
+	var toggleCells = document.querySelectorAll(".ClickforDetail");
+	toggleCells.forEach(function(cell){
+		cell.addEventListener("click", function(){
+			var contentRow = this.parentNode.nextElementSibling;
+			if(contentRow.classList.contains("detail")){
+				contentRow.classList.remove("detail");
+			}else{
+				contentRow.classList.add("detail");
+			}
+		})
+	})
+	
+	
+$(".tr_visible a").click(function() {
+
+    $(this).parent().parent().nextUntil(".tr_visible").toggle();
+
+    return false;
+
+});
+	
+	$(document).ready(function(){
+		$("#forDetail").click(updateHit);
+	});
+	
+	function updateHit(){
+		$.ajax({
+			url:"updateHit",
+			type:'post',
+			data : JSON.stringify( {hit :${review.hit } ),
+			contentType : "application/json; charset=utf-8",
+			dataType:"json",
+			success:function(data){
+				let obj=JSON.parse(data);
+			}
+		})
+	}
+</script>
+
 </head>
 <body>
 	<c:if test="${empty sessionScope.loginType }">
@@ -112,7 +205,42 @@
 		</div>
 	</div>
 	
-	<div align="center" style="width:100%;">
+	<hr>
+	<div>
+		리뷰<br>
+		<table class="tb_fruits" border='1'>
+		<thead>
+			<tr>
+				<!-- <th>No.</th> -->
+				<th scope="col">작성자</th><th scope="col">제목</th><th scope="col">구매상품</th><th scope="col">작성일</th><th scope="col">조회수</th>
+			</tr>
+		</thead>
+			<tbody>
+				<c:forEach var = "review" items="${reviews }" >
+					<tr class="tr_visible">
+						<!-- <td>${review.review_no }</td> -->
+						
+						<td>${review.user_id }</td>
+						 <th scope="row"><a onclick="gd();" style="cursor:pointer;">View More</a>${review.title }</th> 
+						<!--<td class="ClickforDetail">${review.title }</td> -->
+						<td>${review.prdt_title }<br>${review.prdt_nm }<br>${review.prdt_color }</td>
+						<td>${review.save_date }</td><td>${review.hit }</td>
+					</tr>
+					<tr id="gd" style="display:none;">
+						<td scope="row" colspan="5">
+						<img style="width:300px;" src="resources/reviewImg/${review.image_file_name }">
+						${review.content} <br>
+						<a href="modifyReview?review_no=${review.review_no }">수정</a>
+						<a href="deleteReview?review_no=${review.review_no }&prdt_id=${review.prdt_id}">삭제</a>
+
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	
+	<%-- <div align="center" style="width:100%;">
 		<div style="width:50%;" align="left">
 		<hr>
 			리뷰(${ reviews.size() })<br>
@@ -158,7 +286,9 @@
 			<input type="hidden" name="prdt_id" value="${prdt.prdt_id }">
 		</form>
 	</c:if>
-	<!-- insertWish 이미 db에 담겨 있는 상품이라면 deleteWish로!! -->
+	<!-- insertWish 이미 db에 담겨 있는 상품이라면 deleteWish로!! --> --%>
+	<script src="/resources/js/product_info.js"></script>
 	<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
+	
 </body>
 </html>

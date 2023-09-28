@@ -18,4 +18,8 @@
 		(review_no, prdt_id, prdt_nm, prdt_color, prdt_title, user_id, title, content, save_date, image_file_name ) 
 		VALUES (#{review_no}, #{prdt_id},#{prdt_nm},#{prdt_color},#{prdt_title},#{user_id},#{title},#{content},SYSTIMESTAMP,#{image_file_name})
 	</insert>
+	
+	<delete id="deleteReview" parameterType="Integer">
+		DELETE FROM sh_review_info WHERE review_no=#{review_no}
+	</delete>
 </mapper>
