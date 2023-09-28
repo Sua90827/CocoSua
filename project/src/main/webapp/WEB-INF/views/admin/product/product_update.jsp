@@ -39,7 +39,7 @@
 					</tr>
 					<tr>
 						<td>내 용</td>
-						<td><input type="text" name="prdt_content" value="${prdt.prdt_content }"></td>
+						<td><textarea style="width:500px; height:300px; " name="prdt_content">${ prdt.prdt_content }</textarea></td>
 					</tr>
 					<tr>
 						<td>색 상</td>
@@ -61,8 +61,10 @@
 					</tr>
 				</table>
 				<div>
-					<a onclick="fileSelect();"><img class = "img-fluid product_list_img_size" id="userImgFile"style="width: 130px;" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." /></a>
-					<a onclick="fileSelect();"><img class="img-fluid product_list_img_size" id="preview" alt="Preview"/></a>
+					<div align="center" style="padding-top:30px;">
+						<a onclick="fileSelect();"><img class = "img-fluid product_list_img_size" id="userImgFile"style="width: 130px;" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." /></a>
+						<a onclick="fileSelect();"><img class="img-fluid product_list_img_size" id="preview" alt="Preview"/></a>
+					</div>
 				</div>
 				<br><br>
 				<div class="product_file">

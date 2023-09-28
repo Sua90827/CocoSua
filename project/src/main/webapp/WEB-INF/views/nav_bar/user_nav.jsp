@@ -26,7 +26,7 @@
 					</div>
 						<div>
 							<a href="/cart?user_id=${ sessionScope.user_id }">
-								<span><img src="resources/img/cart.png" style="width:20px;"></span>
+								<span><img class="img_cart" src="resources/img/cart.png" style="width:20px;"></span>
 								<c:if test="${ sessionScope.cart_amount eq 0 }">
 									<span>0</span>
 								</c:if>

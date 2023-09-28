@@ -74,7 +74,7 @@
 		<div style="width: 48%; text-align:left; display:none;" class="deleveryInfoDiv">
 		<hr>
 			<div style="width: 100%;">
-				<div style="width: 36%; display: flex;">
+				<div style="width: 100%; display: flex;">
 					<div>
 						<div style="padding-left: 10px;"><b>주문자정보 | INPUT FIELD - CLIENT</b></div>
 					</div>
@@ -99,7 +99,7 @@
 				</div>
 			</div>
 			<div style="width: 100%;">
-				<div style="width: 36%; display: flex;">
+				<div style="width: 100%; display: flex;">
 					<div>
 						<div style="padding-left: 10px;"><b>배송지정보 | INPUT FIELD - RECIPIENT</b></div>
 					</div>
