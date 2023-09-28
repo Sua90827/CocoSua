@@ -20,7 +20,7 @@
    <div align="center">
       <h1>리뷰 작성</h1>
       <form action="writeSave" method="post" enctype="multipart/form-data">
-         <table>
+         <table border="1">
             <tr>
                <td>
                   <b>작성자</b><br>

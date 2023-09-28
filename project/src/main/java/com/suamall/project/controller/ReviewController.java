@@ -1,5 +1,6 @@
 package com.suamall.project.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -67,7 +68,10 @@ public class ReviewController {
 	@GetMapping("modifyReview")
 	public String modifyReview(@RequestParam ("review_no") int review_no, Model model) {
 		ReviewDTO dto = service.getReviewDTO(review_no);
+		String previousPathForPic = service.getPreviousPathForPic(review_no);
 		model.addAttribute("dto", dto);
+		model.addAttribute("previousPathForPic", previousPathForPic);
+		System.out.println("previousPathForPic=============>"+previousPathForPic);
 		return "user/board/review_modify" ;
 
 	}

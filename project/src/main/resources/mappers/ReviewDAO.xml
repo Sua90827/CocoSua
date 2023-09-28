@@ -23,7 +23,7 @@
 		DELETE FROM sh_review_info WHERE review_no=#{review_no}
 	</delete>
 	
-	<select id="getImageFileName" resultType="com.suamall.project.dto.ReviewDTO">
+	<select id="getImageFileName" resultType="String">
 		SELECT image_file_name FROM sh_review_info where review_no=#{review.no}
 	</select>
 	

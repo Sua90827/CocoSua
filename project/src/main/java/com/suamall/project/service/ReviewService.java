@@ -74,9 +74,10 @@ public void deleteImage(String fileName) {
 }
 
 public String deleteReview(int review_no) {
+	String ImageFileName = repo.getImageFileName(review_no);////ImageFileName ==> 20230928162324-marcus-lewis-87DgFV9SOc4-unsplash.jpg
+	deleteImage(ImageFileName);
 	int result = repo.deleteReview(review_no);
-	System.out.println("여기는 review_no. ====>"+review_no);
-	deletePic(review_no);
+//	System.out.println("여기는 review_no. ====>"+review_no);
 	String msg = "", url="";
 	if(result ==1) {
 		msg = "리뷰가 삭제되었습니다.";
@@ -89,15 +90,6 @@ public String deleteReview(int review_no) {
 	return getAlertHistoryBack(msg, url);
 }
 
-//	private String image_file_name;
-//	private MultipartFile file;
-private void deletePic(int review_no) {
-	System.out.println("여기는 deletePic 넘어온 review_no.======>"+review_no);
-	ReviewDTO db = repo.getReviewDTO(review_no);
-	System.out.println("pathOfPic=>>>>>>>>>>>>>>>>>>>"+ db.getImage_file_name());
-	//여기 위에줄에서 걸림... ㅠㅠ
-	
-}
 
 public ReviewDTO getReviewDTO(int review_no) {
 	ReviewDTO result = repo.getReviewDTO(review_no);
@@ -128,5 +120,11 @@ public String SaveModifiedReview(ReviewDTO dto) {
 	return getAlertLocation(msg, url);
 	
 
+}
+
+public String getPreviousPathForPic(int review_no) {
+	String ImageFileName = repo.getImageFileName(review_no);////ImageFileName ==> 20230928162324-marcus-lewis-87DgFV9SOc4-unsplash.jpg
+	String result = IMAGE_REPO+"/"+ImageFileName;
+	return result;
 }
 }

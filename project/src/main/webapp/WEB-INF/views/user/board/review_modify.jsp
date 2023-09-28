@@ -18,7 +18,7 @@
    <div align="center">
       <h1>리뷰 수정</h1>
       <form action="SaveModifiedReview" method="post" enctype="multipart/form-data">
-         <table>
+         <table border="1">
             <tr>
                <td>
                   <b>작성자</b><br>
@@ -38,21 +38,27 @@
             <tr>
                <td>
                   <b>제목</b><br>
-                  <input type="text" name="title"> 
+                  <input type="text" name="title" value="${dto.title }"> 
                </td>
             </tr>
             <tr>
                <td>
                   <b>내용</b><br>
-                  <textarea name="content"></textarea>
+                  <textarea name="content">${dto.content }</textarea>
                </td>
             </tr>
             <tr>
                <td>
-                  <b>이미지파일 첨부</b>
+                  <b>기존 이미지 파일</b>
+                  	<img alt="이미지 없음" id="preview" height="100" width="100" src="resources/reviewImg/20230928164901-mojtaba-fahiminia-t4g1gctAaKk-unsplash.jpg"><br>
+                  	<hr>
+                  	<b>변경할 이미지 파일</b><br>
+					<input type="file" name="file" onchange="readURL(this);">
+					<hr>
+                  <!-- 
                   <input type="file" name="file" onchange="readURL(this);">
                   <div><img id="preview"  width=100 height=100 alt="선택된 이미지가 없습니다." /></div>
-
+ -->
                </td>
             </tr>
             <tr>

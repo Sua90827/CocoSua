@@ -17,7 +17,7 @@ public interface ReviewRepository {
 
 	ReviewDTO getReviewDTO(int review_no);
 
-	ReviewDTO getImageFileName(int review_no);
+	String getImageFileName(int review_no);
 
 
 }
