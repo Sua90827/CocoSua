@@ -3,11 +3,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.suamall.project.repository.ReviewRepository">
-	
+	<!-- 
 	<select id="getAllReview" resultType="com.suamall.project.dto.ReviewDTO">
 		SELECT * FROM sh_review_info WHERE prdt_id = #{prdt_id}
 	</select>
-	
+	 -->
 	
 	<insert id="saveReview" parameterType="com.suamall.project.dto.ReviewDTO">
 		<selectKey order="BEFORE" keyProperty="review_no"
@@ -18,6 +18,11 @@
 		(review_no, prdt_id, prdt_nm, prdt_color, prdt_title, user_id, title, content, save_date, image_file_name ) 
 		VALUES (#{review_no}, #{prdt_id},#{prdt_nm},#{prdt_color},#{prdt_title},#{user_id},#{title},#{content},SYSTIMESTAMP,#{image_file_name})
 	</insert>
+	
+	<update id="modifyReview" parameterType="com.suamall.project.dto.ReviewDTO">
+		UPDATE sh_review_info SET title=#{title}, content=#{content}, image_file_name=#{image_file_name}
+		WHERE review_no=#{review_no}
+	</update>
 	
 	<delete id="deleteReview" parameterType="Integer">
 		DELETE FROM sh_review_info WHERE review_no=#{review_no}
