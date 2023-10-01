@@ -21,7 +21,7 @@
 
 .tb_fruits caption {position:absolute; height:0; overflow:hidden;}
 
-.tb_fruits tbody tr {display:none;}
+
 
 .tb_fruits tbody tr.tr_visible {background:#eee; display:table-row;}
 
@@ -54,7 +54,7 @@ const reviewDetail = (cnt) => {
 	var number = Number(cnt);
 	const detailClass = document.querySelectorAll(".detail");
 	if(detailClass[number].style.display == "none"){
-		detailClass[number].style.display = "block";
+		detailClass[number].style.display = "";
 	}else{
 		detailClass[number].style.display = "none";
 	}
@@ -121,6 +121,7 @@ $(".tr_visible a").click(function() {
 						<img class="img-fluid" style="width:1200px;" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." />
 					</div>
 				</div>
+				
 				<div class="product_info_box" style="width:100%;">
 					<div class="product_infomation_location">
 						<div class="product_title_box">${prdt.prdt_title }</div>
@@ -132,7 +133,7 @@ $(".tr_visible a").click(function() {
 							<div>COLOR</div>
 							<div>${prdt.color_nm }</div>
 						</div>
-	
+						<c:if test="${ not empty sessionScope.user_id }">
 						<form action="cart.do" method="post" id="cartForm">
 							<div class="product_box">
 								<input type="hidden" name="user_id"
@@ -180,9 +181,11 @@ $(".tr_visible a").click(function() {
 									<span id="heartTxt">♡</span>
 								</c:if>
 							</a>
-	
 						</div>
-	
+						</c:if>
+						<c:if test="${ empty sessionScope.user_id }">
+							<span><span><a style=" text-decoration: underline;" href="login"><b>로그인</b></a></span> 후 상품 구매가 가능합니다.</span>
+						</c:if>
 						<!-- Button Items -->
 					</div>
 				</div>
@@ -250,14 +253,14 @@ $(".tr_visible a").click(function() {
 						<td>${review.save_date }</td><td>${review.hit }</td>
 					</tr>
 					<tr class="detail" style="display:none;">
-						<td  colspan="5">
-						<img style="width:300px;" src="resources/reviewImg/${review.image_file_name }">
-						${review.content} <br>
-						<c:if test="${review.user_id == user_id}">
-						<a href="modifyReview?review_no=${review.review_no }">수정</a>
-						<a href="deleteReview?review_no=${review.review_no }&prdt_id=${review.prdt_id}">삭제</a>
-						</c:if>
-						<% cnt++; %>
+						<td colspan="5">
+							<img style="width:300px;" src="resources/reviewImg/${review.image_file_name }">
+							${review.content} <br>
+							<c:if test="${review.user_id == user_id}">
+							<a href="modifyReview?review_no=${review.review_no }">수정</a>
+							<a href="deleteReview?review_no=${review.review_no }&prdt_id=${review.prdt_id}">삭제</a>
+							</c:if>
+							<% cnt++; %>
 						</td>
 					</tr>
 				</c:forEach>
