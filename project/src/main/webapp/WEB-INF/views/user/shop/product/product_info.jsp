@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/resources/css/styles.css">
 <title>CocoSua</title>
 
-<style>
+<style> 
 .tb_fruits {width:100%; border-spacing:0; border-collapse:collapse; position:relative;}
 
 .tb_fruits th,
@@ -49,16 +49,15 @@
 </style>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script>
-var cnt = 0;
-const gd = () => {
-	cnt++;
-	const gd = document.getElementById("gd");
-	if(cnt % 2 == 0){
-		gd.style.display = "none";
+<script> 
+const reviewDetail = (cnt) => {
+	var number = Number(cnt);
+	const detailClass = document.querySelectorAll(".detail");
+	if(detailClass[number].style.display == "none"){
+		detailClass[number].style.display = "block";
 	}else{
-		gd.style.display = "block";
-	}	
+		detailClass[number].style.display = "none";
+	}
 }
 </script>
 <script>
@@ -102,7 +101,7 @@ $(".tr_visible a").click(function() {
 </script>
 
 </head>
-<body>
+<body> <!-- -----------------------------------<Body Tag>---------------------------------------------------- -->
 	<c:if test="${empty sessionScope.loginType }">
 		<%@ include file="/WEB-INF/views/nav_bar/basic_nav.jsp"%>
 	</c:if>
@@ -214,7 +213,7 @@ $(".tr_visible a").click(function() {
 		</form>
 	</c:if>
 	<!-- insertWish 이미 db에 담겨 있는 상품이라면 deleteWish로!! -->
-	<% int cnt = 0; %>
+	
 	<br><br><br>
 	
 	<div align="center" style="width:100%;">
@@ -228,8 +227,7 @@ $(".tr_visible a").click(function() {
 			<hr>
 		</div>
 	</div>
-	
-
+	<% int cnt = 0; %>
 	<hr>
 	<div>
 		리뷰<br>
@@ -246,18 +244,21 @@ $(".tr_visible a").click(function() {
 						<!-- <td>${review.review_no }</td> -->
 						
 						<td>${review.user_id }</td>
-						 <th scope="row"><a onclick="gd();" style="cursor:pointer;">View More</a>${review.title }</th> 
+						 <th scope="row"><a onclick="reviewDetail('<%= cnt %>');" style="cursor:pointer;">View More</a>${review.title }</th> 
 						<!--<td class="ClickforDetail">${review.title }</td> -->
 						<td>${review.prdt_title }<br>${review.prdt_nm }<br>${review.prdt_color }</td>
 						<td>${review.save_date }</td><td>${review.hit }</td>
 					</tr>
-					<tr id="gd" style="display:none;">
-						<td scope="row" colspan="5">
+
+					<tr class="detail" style="display:none;">
+						<td  colspan="5">
 						<img style="width:300px;" src="resources/reviewImg/${review.image_file_name }">
 						${review.content} <br>
+						<c:if test="${review.user_id == user_id}">
 						<a href="modifyReview?review_no=${review.review_no }">수정</a>
 						<a href="deleteReview?review_no=${review.review_no }&prdt_id=${review.prdt_id}">삭제</a>
-
+						</c:if>
+						<% cnt++; %>
 						</td>
 					</tr>
 				</c:forEach>

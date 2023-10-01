@@ -37,10 +37,10 @@ public String reviewSave(ReviewDTO dto) {
 	
 }
 
-public List<ReviewDTO> getAllReview(int prdt_id) {
-	List<ReviewDTO> result = repo.getAllReview(prdt_id);
-	return result;
-}
+//public List<ReviewDTO> getAllReview(int prdt_id) {
+//	List<ReviewDTO> result = repo.getAllReview(prdt_id);
+//	return result;
+//}
 public String IMAGE_REPO = "D:/cocosua/project/project/src/main/webapp/resources/reviewImg";
 
 public String saveFile(MultipartFile image_file_name) {
@@ -74,9 +74,10 @@ public void deleteImage(String fileName) {
 }
 
 public String deleteReview(int review_no) {
+	String ImageFileName = repo.getImageFileName(review_no);////ImageFileName ==> 20230928162324-marcus-lewis-87DgFV9SOc4-unsplash.jpg
+	deleteImage(ImageFileName);
 	int result = repo.deleteReview(review_no);
-	System.out.println("여기는 review_no. ====>"+review_no);
-	deletePic(review_no);
+//	System.out.println("여기는 review_no. ====>"+review_no);
 	String msg = "", url="";
 	if(result ==1) {
 		msg = "리뷰가 삭제되었습니다.";
@@ -89,15 +90,6 @@ public String deleteReview(int review_no) {
 	return getAlertHistoryBack(msg, url);
 }
 
-//	private String image_file_name;
-//	private MultipartFile file;
-private void deletePic(int review_no) {
-	System.out.println("여기는 deletePic 넘어온 review_no.======>"+review_no);
-	ReviewDTO db = repo.getReviewDTO(review_no);
-	System.out.println("pathOfPic=>>>>>>>>>>>>>>>>>>>"+ db.getImage_file_name());
-	//여기 위에줄에서 걸림... ㅠㅠ
-	
-}
 
 public ReviewDTO getReviewDTO(int review_no) {
 	ReviewDTO result = repo.getReviewDTO(review_no);
@@ -105,16 +97,20 @@ public ReviewDTO getReviewDTO(int review_no) {
 }
 
 public String SaveModifiedReview(ReviewDTO dto) {
+	
+	String ImageFileName = repo.getImageFileName(dto.getReview_no());
 	ReviewDTO db = new ReviewDTO();
-	if( dto.getFile().isEmpty()) {
+	
+	if( dto.getFile().isEmpty()) {//선택된 파일이 없을 때
+		deleteImage(ImageFileName);//기존 파일 삭제
 		dto.setImage_file_name("nan");
-	}else {
-		if(db.getFile().equals(dto.getFile())){
-			
+	}else { //선택된 파일이 있을 때
+		if(!(db.getFile().equals(dto.getFile()))){//선택된 파일이 기존과 다를 경우.
+			deleteImage(ImageFileName);//기존 파일 삭제
+			dto.setImage_file_name(saveFile(dto.getFile()));			
 		}
-		dto.setImage_file_name(saveFile(dto.getFile()));
 	}
-	int result = repo.saveReview(dto);
+	int result = repo.modifyReview(dto);
 	String msg = "", url="";
 	if(result ==1) {
 		msg = "리뷰 작성이 완료되었습니다.";
@@ -128,5 +124,10 @@ public String SaveModifiedReview(ReviewDTO dto) {
 	return getAlertLocation(msg, url);
 	
 
+}
+
+public String getPicName(int review_no) {
+	String result = repo.getImageFileName(review_no);////ImageFileName ==> 20230928162324-marcus-lewis-87DgFV9SOc4-unsplash.jpg
+	return result;
 }
 }

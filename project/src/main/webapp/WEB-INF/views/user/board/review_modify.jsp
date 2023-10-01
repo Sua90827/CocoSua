@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="resources/js/img_view.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -18,7 +20,7 @@
    <div align="center">
       <h1>리뷰 수정</h1>
       <form action="SaveModifiedReview" method="post" enctype="multipart/form-data">
-         <table>
+         <table border="1">
             <tr>
                <td>
                   <b>작성자</b><br>
@@ -38,26 +40,34 @@
             <tr>
                <td>
                   <b>제목</b><br>
-                  <input type="text" name="title"> 
+                  <input type="text" name="title" value="${dto.title }"> 
                </td>
             </tr>
             <tr>
                <td>
                   <b>내용</b><br>
-                  <textarea name="content"></textarea>
+                  <textarea name="content">${dto.content }</textarea>
                </td>
             </tr>
             <tr>
                <td>
-                  <b>이미지파일 첨부</b>
+                  <b>기존 이미지 파일</b><br>
+                  	<img alt="이미지 없음" id="preview" height="100" width="100" src="resources/reviewImg/${picName }"><br>
+                  	<hr>
+                  	<b>변경할 이미지 파일</b><br>
+                  	(이미지 파일을 선택하지 않으면 기존의 파일은 삭제됩니다. <br>
+                  	기존의 파일을 유지하고 싶다면, 같은 파일을 다시 선택해주세요.)<br>
+					<input type="file" name="file" onchange="readURL(this);">
+					<hr>
+                  <!-- 
                   <input type="file" name="file" onchange="readURL(this);">
                   <div><img id="preview"  width=100 height=100 alt="선택된 이미지가 없습니다." /></div>
-
+ -->
                </td>
             </tr>
             <tr>
                <td>
-                  <button type="submit">글쓰기</button>
+                  <button type="submit">수정하기</button>
                   <button type="button" onclick="window.history.back();">목록보기</button>
                </td>
             </tr>

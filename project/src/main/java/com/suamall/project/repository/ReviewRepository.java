@@ -11,13 +11,15 @@ public interface ReviewRepository {
 
 	int saveReview(ReviewDTO dto);
 
-	List<ReviewDTO> getAllReview(int prdt_id);
+//	List<ReviewDTO> getAllReview(int prdt_id);
 
 	int deleteReview(int review_no);
 
 	ReviewDTO getReviewDTO(int review_no);
 
-	ReviewDTO getImageFileName(int review_no);
+	String getImageFileName(int review_no);
+
+	int modifyReview(ReviewDTO dto);
 
 
 }

@@ -1,5 +1,6 @@
 package com.suamall.project.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -23,12 +24,12 @@ import oracle.jdbc.proxy.annotation.Post;
 public class ReviewController {
 @Autowired ReviewService service;
 	
-	@GetMapping("review_list")
-	public String board(@RequestParam int prdt_id, Model model) {
-		List<ReviewDTO> reviewList = service.getAllReview(prdt_id);
-		model.addAttribute("list", reviewList);
-		return "user/board/review_list";
-	}
+//	@GetMapping("review_list")
+//	public String board(@RequestParam int prdt_id, Model model) {
+//		List<ReviewDTO> reviewList = service.getAllReview(prdt_id);
+//		model.addAttribute("list", reviewList);
+//		return "user/board/review_list";
+//	}
 	
 	@GetMapping("writingReview")
 	public String writingReview(ReviewDTO dto, Model model) {
@@ -67,8 +68,11 @@ public class ReviewController {
 	@GetMapping("modifyReview")
 	public String modifyReview(@RequestParam ("review_no") int review_no, Model model) {
 		ReviewDTO dto = service.getReviewDTO(review_no);
+		String picName = service.getPicName(review_no);
 		model.addAttribute("dto", dto);
-		return "user/board/review_modify" ;
+		model.addAttribute("picName", picName);
+		System.out.println("previousPathForPic=============>"+picName);
+		return "user/board/review_modify";
 
 	}
 	
