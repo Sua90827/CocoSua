@@ -14,4 +14,5 @@ public class ProductOrderDTO {
     private String prdt_color;    
     private int prdt_price;
     private int prdt_amount;
+    private int review_check;
 }

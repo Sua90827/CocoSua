@@ -6,6 +6,8 @@ import lombok.Data;
 
 @Data
 public class ReviewDTO {
+	private int credit_id;
+	private int index;
 	private int review_no;//
 	private int prdt_id;
 	private String prdt_nm;

@@ -35,6 +35,8 @@
                   <input type="hidden" name="prdt_nm" value="${dto.prdt_nm}">
                   <input type="hidden" name="prdt_color" value="${dto.prdt_color}">
                   <input type="hidden" name="prdt_title" value="${dto.prdt_title}">
+                  <input type="hidden" name="credit_id" value="${dto.credit_id }">
+                  <input type="hidden" name="index" value="${dto.index }">
                </td>
             </tr>
             <tr>

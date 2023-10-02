@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.suamall.project.dto.ReviewDTO;
+import com.suamall.project.service.CreditService;
 import com.suamall.project.service.ReviewService;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -23,6 +24,7 @@ import oracle.jdbc.proxy.annotation.Post;
 @Controller
 public class ReviewController {
 @Autowired ReviewService service;
+@Autowired CreditService creditService;
 	
 //	@GetMapping("review_list")
 //	public String board(@RequestParam int prdt_id, Model model) {
@@ -50,6 +52,8 @@ public class ReviewController {
 		System.out.println("Date=***************>"+dto.getSave_date());
 		System.out.println("imageName=***************>"+dto.getFile().getOriginalFilename());
 		String msg = service.reviewSave(dto);
+		creditService.reviewUpdate(dto.getCredit_id(), dto.getIndex());
+		
 		res.setContentType("text/html; charset=utf-8");
 		PrintWriter out = res.getWriter();
 		out.print(msg);

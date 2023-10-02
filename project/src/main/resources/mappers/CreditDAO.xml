@@ -14,7 +14,7 @@
 										'${credit_price}','${credit_way}','${order_nm}','${order_phone_num}',
 										'${order_email}','${order_state}','${recipient_nm}','${recipient_phone_num}',
 										'${recipient_zip_code}','${recipient_address}','${recipient_address_detail}',
-										'${recipient_memo}',SYSTIMESTAMP)
+										'${recipient_memo}',SYSTIMESTAMP, '${review_check}')
 	</insert>
 	<select id="getPreviousAmount" resultType="com.suamall.project.dto.CartDTO">
 		SELECT user_id, prdt_id, cart_amount FROM sh_cart_info WHERE user_id='${user_id}'
@@ -44,5 +44,13 @@
 	
 	<update id="reducingPrdtAmount" parameterType="com.suamall.project.dto.orderInfoView.ReducingAmountDTO"> 
 		UPDATE sh_product_info SET prdt_amount = prdt_amount-#{prdt_amount} WHERE prdt_id=#{prdt_id}
+	</update>
+	
+	<select id="getReviewCheck" resultType="String">
+		SELECT review_check FROM sh_credit_info WHERE credit_id=#{credit_id} 
+	</select>
+	
+	<update id="reviewCheckUpdate" parameterType="com.suamall.project.dto.orderInfoView.ReviewCheckUpdateDTO">
+		UPDATE sh_credit_info SET review_check=#{review_check} WHERE credit_id=#{credit_id}
 	</update>
 </mapper>

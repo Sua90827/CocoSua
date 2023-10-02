@@ -21,7 +21,10 @@
 </c:if>
 <br>
 <div align="center">
-<% int cnt = 0; %>
+<% 
+	int cnt = 0;
+	int index = 0;
+%>
 <c:forEach var="list" items="${orderList }">
 	<c:set var="cnt" value="0" />
 	<!-- 
@@ -64,7 +67,9 @@
 		    		<input style="all:unset; width: 30px; text-align:center;" class="prdtNum" type="text" value="${ product.prdt_amount }" readonly> 개
 		    	</td>
 		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtAllPrice" value="">원</td>
-		    	<td><a href="writingReview?user_id=${user_id }&prdt_title=${ product.prdt_title }&prdt_nm=${ product.prdt_nm }&prdt_id=${ product.prdt_id }&prdt_color=${ product.prdt_color }">Review</a></td>
+		    	<c:if test="${ product.review_check eq 0 }"><td><a href="writingReview?user_id=${user_id }&prdt_title=${ product.prdt_title }&prdt_nm=${ product.prdt_nm }&prdt_id=${ product.prdt_id }&prdt_color=${ product.prdt_color }&index=<%=index++%>&credit_id=${list.credit_id}">Review</a></td></c:if>
+		    	<c:if test="${ product.review_check eq 1 }"><td>Review 완료<%index++; %></td></c:if>
+		    	
 		    </tr>
 	</c:forEach>
 		</table>
@@ -150,7 +155,11 @@
 			<input type="hidden" name="recipient_memo" value="${ list.recipient_memo }">
 			<input type="hidden" name="credit_date" value="${ list.credit_date }">
 		</form>
-		<% cnt++; %>
+		<% 
+			cnt++;
+			index = 0;
+		%>
+		
 </c:forEach>
 </div>
 

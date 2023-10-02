@@ -13,6 +13,7 @@ import com.suamall.project.dto.CreditInfoDTO;
 import com.suamall.project.dto.orderInfoView.OrderListDTO;
 import com.suamall.project.dto.orderInfoView.ProductOrderDTO;
 import com.suamall.project.dto.orderInfoView.ReducingAmountDTO;
+import com.suamall.project.dto.orderInfoView.ReviewCheckUpdateDTO;
 import com.suamall.project.repository.CreditRepository;
 
 @Service
@@ -73,6 +74,7 @@ public List<OrderListDTO> getOrderListById(String id) {
 	for(CreditInfoDTO t : CreditInfoDTOList) {
 		String[] prdtId = t.getPrdt_id().split(",");
 		String[] prdtAmount = t.getPrdt_amount().split(",");
+		String[] reviewCheck = t.getReview_check().split(",");
 		OrderListDTO OLD = new OrderListDTO();
 		// 오빠 여기야 여기이이이!!!!!!
 		List<ProductOrderDTO> prdtOrderDtoList = new ArrayList<>();
@@ -81,6 +83,7 @@ public List<OrderListDTO> getOrderListById(String id) {
 			System.out.println(pId);
 			ProductOrderDTO dto = repo.selectProductOrderInfo(pId);
 			dto.setPrdt_amount(Integer.parseInt(prdtAmount[cnt]));
+			dto.setReview_check(Integer.parseInt(reviewCheck[cnt]));
 			cnt++;
 			prdtOrderDtoList.add(dto);
 			//prdtOrderDtoList.add(sizeOft, dto);
@@ -159,6 +162,26 @@ public void reducingPrdtAmount(CreditInfoDTO dto) {
 		System.out.println("prdt_id+++++++++++++"+productId);
 		repo.reducingPrdtAmount(abc);
 	}
+}
+
+
+public void reviewUpdate(int credit_id, int index) {
+	System.out.println("credit_id ===> "+credit_id);
+	System.out.println("index ===> "+index);
+	String reviewCheck = repo.getReviewCheck(credit_id);
+	String[] reviewCheckSplit = reviewCheck.split(",");
+	System.out.println("reviewCheck ===> "+reviewCheck);
+	System.out.println("index ===> "+index);
+	reviewCheckSplit[index] = "1";
+	reviewCheck = "";
+	for(int i = 0; i < reviewCheckSplit.length; ++i) {
+		reviewCheck += reviewCheckSplit[i] + ",";
+	}
+	reviewCheck = reviewCheck.substring(0, reviewCheck.length()-1);
+	ReviewCheckUpdateDTO dto = new ReviewCheckUpdateDTO();
+	dto.setCredit_id(credit_id);
+	dto.setReview_check(reviewCheck);
+	repo.reviewCheckUpdate(dto);
 }
 
 

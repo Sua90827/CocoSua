@@ -24,4 +24,5 @@ public class CreditInfoDTO {
 	private String recipient_address_detail;
 	private String recipient_memo;
 	private String credit_date;
+	private String review_check;
 }
