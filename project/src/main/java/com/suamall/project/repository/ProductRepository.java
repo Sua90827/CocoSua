@@ -63,6 +63,10 @@ public interface ProductRepository {
 
 	List<ReviewDTO> getReviewList(int prdt_id);
 
+	void deleteRelatedPrdt(int cate_id);
+
+    void swapCategoryIds(@Param("cateId1") int cateId1, @Param("cateId2") int cateId2);
+
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),
 //	dto.setColor_nm("sjiod");

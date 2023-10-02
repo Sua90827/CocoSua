@@ -71,6 +71,10 @@
 		INNER JOIN sh_product_cate b ON a.cate_id=b.cate_id
 		WHERE a.prdt_id = #{prdt_id}
 	</select>
+	
+	<delete id="deleteRelatedPrdt" parameterType="Integer">
+		DELETE FROM sh_product_info WHERE cate_id=#{cate_id}
+	</delete>
 	<delete id="CateDelete" parameterType="com.suamall.project.dto.CategoryDTO">
 		DELETE FROM sh_product_cate WHERE cate_id=#{cate_id}
 	</delete>
@@ -113,4 +117,14 @@
 	<select id = "getReviewList" resultType="com.suamall.project.dto.ReviewDTO">
 		SELECT * FROM sh_review_info WHERE prdt_id=#{prdt_id}
 	</select>
+	
+	<update id="swapCategoryIds" parameterType="Integer">
+	    UPDATE sh_product_info
+	    SET cate_id =
+	        CASE
+	            WHEN cate_id = #{cateId1} THEN #{cateId2}
+	            WHEN cate_id = #{cateId2} THEN #{cateId1}
+	        END
+	    WHERE cate_id IN (#{cateId1}, #{cateId2})
+	</update>
 </mapper>

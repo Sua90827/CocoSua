@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -26,17 +27,17 @@ import ch.qos.logback.core.pattern.color.RedCompositeConverter;
 
 @Service
 public class ProductService {
-	@Autowired 
+	@Autowired
 	private ProductRepository repo;
 	private static String directory = "D:\\cocosua\\project\\project\\src\\main\\webapp\\resources\\upload\\";
 
 	public String cateNmMsg(CategoryDTO input) {
-		if(input.getCate_nm()==null || input.getCate_nm().equals("")) {
+		if (input.getCate_nm() == null || input.getCate_nm().equals("")) {
 			return "카테고리명을 입력해주세요.";
-		}		
+		}
 		CategoryDTO db = new CategoryDTO();
-		db=repo.checkDB(input);
-		if(db!=null) {
+		db = repo.checkDB(input);
+		if (db != null) {
 			return "이미 존재하는 카테고리입니다.";
 		}
 		repo.cate_id(input);
@@ -44,9 +45,9 @@ public class ProductService {
 	}
 
 	public List<ColorDTO> getColorList() {
-		
+
 		List<ColorDTO> color = repo.getColorList();
-		
+
 		return color;
 	}
 
@@ -54,33 +55,30 @@ public class ProductService {
 		List<CategoryDTO> cate = repo.getCategoryList();
 		return cate;
 	}
-	
+
 	public String prdtInsert(ProductDTO dto) {
-		//multi parameter 설정
-		
+		// multi parameter 설정
+
 		String msg = insertEmptyCh(dto);
-		
-		if(!msg.equals("검증 완료")) {
+
+		if (!msg.equals("검증 완료")) {
 			return "실패";
 		}
-		
-		
 
-		
-		//~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
-		
+		// ~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
+
 		MultipartFile file = dto.getFile();
 
 		if (file == null || file.isEmpty()) {
 			return "파일을 업로드해주세요.";
 		}
-		
+
 		int maxId = repo.getMaxId();
 
 		String prdt_img = productImgSaveFile(file, maxId);
-		
-		//~~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
-		
+
+		// ~~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
+
 		dto.setPrdt_id(maxId);
 		dto.setPrdt_img(prdt_img);
 
@@ -88,7 +86,7 @@ public class ProductService {
 
 		return "성공";
 	}
-	
+
 //	public ProductDTO getPrdtInput(MultipartHttpServletRequest multi) {//뷰에 남기기 위한 애들
 //		ProductDTO dto = new ProductDTO();
 //		dto.setPrdt_amount(Integer.parseInt(multi.getParameter("prdt_amount")));
@@ -100,16 +98,12 @@ public class ProductService {
 //		dto.setPrdt_title(multi.getParameter("prdt_title"));
 //		return dto;
 //	}
-	
-	
-	
-	
 
 	public List<ProductDTO> selectAll() {
 		List<ProductDTO> dto = repo.selectAll();
 		return dto;
 	}
-	
+
 	public String getCateName(int cate_id) {
 		String cate_nm = repo.getCateName(cate_id);
 		return cate_nm;
@@ -121,32 +115,31 @@ public class ProductService {
 	}
 
 	public ProductDTO getPrdtDTO(int prdt_id) {
-		ProductDTO prdt=repo.getPrdtDTO(prdt_id);
+		ProductDTO prdt = repo.getPrdtDTO(prdt_id);
 		return prdt;
 	}
 
 	public String prdtUpdate(ProductDTO dto) {
 		String msg = updateEmptyCh(dto);
-		if(!msg.equals("검증 완료")) {
+		if (!msg.equals("검증 완료")) {
 			return msg;
 		}
-		
+
 		MultipartFile file = dto.getFile();
 
 		if (file == null || file.isEmpty()) {
 			repo.updateExceptFile(dto);
 			return "완료";
 		}
-		
+
 		int prdtId = dto.getPrdt_id();
-		
+
 		folderDelete(prdtId);
-		
+
 		String prdt_img = productImgSaveFile(file, prdtId);
-		
-		//~~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
-		
-		
+
+		// ~~~~~~~~~~~~~~~~~img 파일 생성 및 img값 가져오는 곳
+
 		dto.setPrdt_img(prdt_img);
 		repo.updateIncludeFile(dto);
 		return "완료";
@@ -159,51 +152,53 @@ public class ProductService {
 			return "카테고리 id를 입력하시오.";
 		} else if (dto.getPrdt_nm() == null || dto.getPrdt_nm().equals("")) {
 			return "상품 이름을 입력하시오.";
-		} else if (dto.getPrdt_title() == null|| dto.getPrdt_title().equals("")) {
+		} else if (dto.getPrdt_title() == null || dto.getPrdt_title().equals("")) {
 			return "상품 설명을 입력하시오.";
-		}else if (dto.getPrdt_content() == null || dto.getPrdt_content().equals("")) {
+		} else if (dto.getPrdt_content() == null || dto.getPrdt_content().equals("")) {
 			return "상품 내용을 입력하시오.";
-		}else if (dto.getPrdt_color() < 0) {
+		} else if (dto.getPrdt_color() < 0) {
 			return "상품 색상을 입력하시오.";
-		}else if (dto.getPrdt_price() < 0) {
+		} else if (dto.getPrdt_price() < 0) {
 			return "상품 가격을 입력하시오.";
-		}else if (dto.getPrdt_amount() < 0) {
+		} else if (dto.getPrdt_amount() < 0) {
 			return "상품 수량을 입력하시오.";
-		}return "검증 완료";
+		}
+		return "검증 완료";
 	}
-	
+
 	private String updateEmptyCh(ProductDTO dto) {
 		if (dto.getCate_id() < 0) {
 			return "카테고리를 선택하시오.";
-		}  else if (dto.getPrdt_nm() == null || dto.getPrdt_nm().equals("")) {
+		} else if (dto.getPrdt_nm() == null || dto.getPrdt_nm().equals("")) {
 			return "상품 이름을 입력하시오.";
-		} else if (dto.getPrdt_title() == null|| dto.getPrdt_title().equals("")) {
+		} else if (dto.getPrdt_title() == null || dto.getPrdt_title().equals("")) {
 			return "상품 설명을 입력하시오.";
-		}else if (dto.getPrdt_content() == null || dto.getPrdt_content().equals("")) {
+		} else if (dto.getPrdt_content() == null || dto.getPrdt_content().equals("")) {
 			return "상품 내용을 입력하시오.";
-		}else if (dto.getPrdt_color() < 0) {
+		} else if (dto.getPrdt_color() < 0) {
 			return "상품 색상을 선택하시오.";
-		}else if (dto.getPrdt_price() < 0) {
+		} else if (dto.getPrdt_price() < 0) {
 			return "상품 가격을 입력하시오.";
-		}else if (dto.getPrdt_amount() < 0) {
+		} else if (dto.getPrdt_amount() < 0) {
 			return "상품 수량을 입력하시오.";
-		}return "검증 완료";
-	}   
-	
+		}
+		return "검증 완료";
+	}
+
 	private String productImgSaveFile(MultipartFile file, int maxId) {
-		
+
 		String originalName = file.getOriginalFilename();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss-");
 		Calendar cal = Calendar.getInstance();
 		String fileName = sdf.format(cal.getTime()) + originalName;
 		String path = directory + maxId + "\\" + fileName;
 		System.out.println(path);
-		File targetFile = new File(path); //경로 설정
+		File targetFile = new File(path); // 경로 설정
 		if (targetFile.exists() == false) {
-			targetFile.mkdirs(); //경로에 폴더가 없으면 폴더 생성
+			targetFile.mkdirs(); // 경로에 폴더가 없으면 폴더 생성
 		}
 		try {
-			file.transferTo(targetFile); //파일 생성
+			file.transferTo(targetFile); // 파일 생성
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -211,7 +206,7 @@ public class ProductService {
 		}
 		return fileName;
 	}
-	
+
 	private void folderDelete(int prdt_id) {
 		String path = directory + prdt_id;
 		File folder = new File(path);
@@ -222,7 +217,7 @@ public class ProductService {
 					folder_list[j].delete(); // 파일 삭제
 				}
 				if (folder_list.length == 0 && folder.isDirectory()) {
-					folder.delete();	//폴더 삭제
+					folder.delete(); // 폴더 삭제
 				}
 			}
 		} catch (Exception e) {
@@ -244,8 +239,6 @@ public class ProductService {
 		repo.CateDelete(cate_id);
 	}
 
-	
-
 	public int selectAboveCateId(int cate_id) {
 		int answer = repo.selectAboveCateId(cate_id);
 		return answer;
@@ -262,7 +255,7 @@ public class ProductService {
 
 	public void prdtDelete(int prdt_id) {
 		repo.prdtDelete(prdt_id);
-		folderDelete(prdt_id);		
+		folderDelete(prdt_id);
 	}
 
 	public ProductListViewDTO PrdtInfoByPrdtId(int prdt_id) {
@@ -277,12 +270,12 @@ public class ProductService {
 	public void deleteWishItem(WishListDTO dto) {
 		repo.deleteWishItem(dto);
 	}
-	
+
 	public WishListDTO chWishItem(int prdt_id, String user_id) {
 		WishListDTO result = repo.chWishItem(prdt_id, user_id);
 		return result;
 	}
-	
+
 	public List<ProductDTO> selectWishItems(String user_id) {
 		List<ProductDTO> result = repo.getWishItems(user_id);
 		return result;
@@ -291,6 +284,27 @@ public class ProductService {
 	public List<ReviewDTO> getReviewList(int prdt_id) {
 		List<ReviewDTO> result = repo.getReviewList(prdt_id);
 		return result;
+	}
+
+	public void deleteRelatedPrdt(int cate_id) {
+		repo.deleteRelatedPrdt(cate_id);
+	}
+
+	@Transactional
+	public void swapCategoryIds(int cateId1, int cateId2) {
+		try {
+			// 두 개의 카테고리 ID를 서로 바꾸는 쿼리 실행
+			repo.swapCategoryIds(cateId1, cateId2);
+		} catch (Exception e) {
+			// 예외 발생 시 롤백
+			e.printStackTrace();
+			throw e; // 롤백을 위해 예외를 다시 던집니다.
+		}
+	}
+
+	public void updateCateId(int cate_id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
