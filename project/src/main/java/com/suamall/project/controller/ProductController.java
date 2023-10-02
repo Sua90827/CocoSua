@@ -142,11 +142,13 @@ public class ProductController {
 	public String userPrdtInfo(@RequestParam("prdt_id") int prdt_id,  Model model) {//HttpSession session,
 		ProductListViewDTO dto = service.getCateColorNmByPrdtId(prdt_id);
 		List<CategoryDTO> cate = service.getCategoryList();			// 카테고리 메뉴
-		WishListDTO wish = service.chWishItem(prdt_id, (String)session.getAttribute("user_id"));
+		if(session.getAttribute("user_id") != null) {
+			WishListDTO wish = service.chWishItem(prdt_id, (String)session.getAttribute("user_id"));
+			model.addAttribute("wish", wish); 
+		}
 		List<ReviewDTO> review = service.getReviewList(prdt_id);
 		model.addAttribute("cate", cate);
 		model.addAttribute("prdt", dto);
-		model.addAttribute("wish", wish); 
 		model.addAttribute("reviews", review);
 		//해당 prdt_id, user_id로 wish db 조회해서 dto 넘겨줌.값이 없으면 wish list 에 등록되지 않은 상품임.
 		return "user/shop/product/product_info";
