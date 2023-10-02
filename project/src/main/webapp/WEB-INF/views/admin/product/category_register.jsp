@@ -29,7 +29,9 @@
 			</form>
 		</div>
 	</div>
-
+	<c:set var="cnt" value="0"></c:set>
+	<% int cnt = 0; %>
+	<c:set var="length" value="${cate.size() }"></c:set>
 	<div class="category_page">
 		<div class="category_location">
 			<table class="list_table">
@@ -49,9 +51,17 @@
 						<td>${cate.cate_id }</td>
 						<td>${cate.cate_nm }</td>
 						<td><button class="cateDeleteBtn" type="button" onclick="categoryDelete(${cate.cate_id})">삭제</button></td>
-						<td><a href="cateUpBtn?cate_id=${cate.cate_id }"><button class="cateUpBtn">▲</button></a>  <a href="cateDownBtn?cate_id=${cate.cate_id }"><button class="cateDownBtn">▼</button></a></td>
+						<c:if test="${cnt eq 0 }">
+							<td><a href="cateDownBtn?cate_id=${cate.cate_id }"><button class="cateDownBtn">▼</button></a></td>						
+						</c:if>
+						<c:if test="${cnt ne 0 }">
+							<c:if test="${cnt eq length-1 }"><td><a href="cateUpBtn?cate_id=${cate.cate_id }"><button class="cateUpBtn">▲</button></a></td></c:if>
+							<c:if test="${cnt ne length-1 }"><td><a href="cateUpBtn?cate_id=${cate.cate_id }"><button class="cateUpBtn">▲</button></a>  <a href="cateDownBtn?cate_id=${cate.cate_id }"><button class="cateDownBtn">▼</button></a></td></c:if>
+							
+						</c:if>
+						 <c:set var="cnt" value="<%= ++cnt %>"></c:set>
 					</tr>
-				</c:forEach>
+				</c:forEach><!-- sh_product_cate -->
 			</table>
 		</div>
 	</div>

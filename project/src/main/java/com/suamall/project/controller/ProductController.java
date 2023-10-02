@@ -56,7 +56,7 @@ public class ProductController {
 		if(!msg.equals("성공")) {
 			List<ColorDTO> color = service.getColorList();
 			List<CategoryDTO> cate = service.getCategoryList();
-			model.addAttribute("color", color); 
+			model.addAttribute("color", color);
 			model.addAttribute("cate", cate);
 			model.addAttribute("product", dto);
 			model.addAttribute("msg", msg);
@@ -77,6 +77,7 @@ public class ProductController {
 	
 	@GetMapping("categoryDelete.do")
 	public String categoryDelete(@RequestParam("cate_id") int cate_id, Model model) {
+		service.deleteRelatedPrdt(cate_id);
 		service.CateDelete(cate_id);
 		List<CategoryDTO> list = service.getCategoryList();
 		model.addAttribute("cate", list);
@@ -170,6 +171,7 @@ public class ProductController {
 		store.setChanged(aboveCateId);
 		service.updateForMovingButtons(store);
 		List<CategoryDTO> list = service.getCategoryList();
+		service.swapCategoryIds(cate_id, aboveCateId);//카테고리 순서 변경시, 상품들도 변경되기 위해서.
 		model.addAttribute("cate", list);
 		return "admin/product/category_register";
 	}
@@ -182,6 +184,7 @@ public class ProductController {
 		store.setChanged(belowCateId);
 		service.updateForMovingButtons(store);
 		List<CategoryDTO> list = service.getCategoryList();
+		service.swapCategoryIds(cate_id, belowCateId);//카테고리 순서 변경시, 상품들도 변경되기 위해서.
 		model.addAttribute("cate", list);
 		return "admin/product/category_register";
 	}
