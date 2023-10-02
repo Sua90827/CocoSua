@@ -276,6 +276,7 @@ const kakaopaySuccess = () => {
     let recipientAddressClass = document.querySelectorAll(".recipient_address");
     let recipientAddressDetailClass = document.querySelectorAll(".recipient_address_detail");
     let recipientMemoClass = document.querySelectorAll(".recipient_memo");
+    let reviewCheckClass = document.querySelectorAll(".review_check");
     // 결제정보에 보낼 데이터
 
     //결제 정보에 보낼 데이터에 들어갈 value config
@@ -312,6 +313,7 @@ const kakaopaySuccess = () => {
             prdtIdClass[0].value += prdtId[i].value + ",";
             prdtPriceClass[0].value += prdtPrice[i].value + ",";
             prdtAmountClass[0].value += prdtAmount[i].value + ",";
+            reviewCheckClass[0].value += "0,";
             console.log(prdtIdClass[0].value);
             console.log(prdtPriceClass[0].value);
             console.log(prdtAmountClass[0].value);
@@ -327,6 +329,7 @@ const kakaopaySuccess = () => {
         prdtIdClass[0].value = prdtIdClass[0].value.substring(0, prdtIdClass[0].value.length - 1);
         prdtPriceClass[0].value = prdtPriceClass[0].value.substring(0, prdtPriceClass[0].value.length - 1);
         prdtAmountClass[0].value = prdtAmountClass[0].value.substring(0, prdtAmountClass[0].value.length - 1);
+        reviewCheckClass[0].value = reviewCheckClass[0].value.substring(0, reviewCheckClass[0].value.length - 1);
         orderNmClass[0].value = orderNmId;
         orderPhoneNumClass[0].value = orderPhone1+orderPhone2+orderPhone3;
         orderEmailClass[0].value = orderEmail;
@@ -342,6 +345,7 @@ const kakaopaySuccess = () => {
             prdtIdClass[1].value += prdtId[i].value + ",";
             prdtPriceClass[1].value += prdtPrice[i].value + ",";
             prdtAmountClass[1].value += prdtAmount[i].value + ",";
+            reviewCheckClass[1].value += "0,";
         }
         for(var i = 0; i < creditWayClass.length; i++){
             if(creditWayClass[i].checked){
@@ -354,6 +358,7 @@ const kakaopaySuccess = () => {
         prdtIdClass[1].value = prdtIdClass[1].value.substring(0, prdtIdClass[1].value.length - 1);
         prdtPriceClass[1].value = prdtPriceClass[1].value.substring(0, prdtPriceClass[1].value.length - 1);
         prdtAmountClass[1].value = prdtAmountClass[1].value.substring(0, prdtAmountClass[1].value.length - 1);
+        reviewCheckClass[1].value = reviewCheckClass[1].value.substring(0, reviewCheckClass[1].value.length - 1);
         orderNmClass[1].value = orderNmId
         orderPhoneNumClass[1].value = orderPhone1+orderPhone2+orderPhone3;
         orderEmailClass[1].value = orderEmail;

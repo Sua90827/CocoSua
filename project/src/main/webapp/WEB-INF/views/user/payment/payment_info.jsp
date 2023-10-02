@@ -239,6 +239,7 @@
 		<input type="hidden" name="recipient_address" value="" class="recipient_address">
 		<input type="hidden" name="recipient_address_detail" value="" class="recipient_address_detail">
 		<input type="hidden" name="recipient_memo" value="" class="recipient_memo">
+		<input type="hidden" name="review_check" value="" class="review_check">
 	</form>
 	
 	<!-- 새로운 배송지 -->
@@ -260,6 +261,7 @@
 		<input type="hidden" name="recipient_address" value="" class="recipient_address">
 		<input type="hidden" name="recipient_address_detail" value="" class="recipient_address_detail">
 		<input type="hidden" name="recipient_memo" value="" class="recipient_memo">
+		<input type="hidden" name="review_check" value="" class="review_check">
 	</form>
 	
 	<script src="resources/js/payment_info.js"></script>

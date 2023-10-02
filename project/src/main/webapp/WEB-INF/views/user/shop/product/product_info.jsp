@@ -216,10 +216,15 @@ $(".tr_visible a").click(function() {
 		</form>
 	</c:if>
 	<!-- insertWish 이미 db에 담겨 있는 상품이라면 deleteWish로!! -->
-	
 	<br><br><br>
-	
 	<div align="center" style="width:100%;">
+		<div style="width:50%; display:flex; justify-content:space-between;">
+			<div class="viewClass" style="width:50%; background-color:#fff; height:50px; display:flex; justify-content:center; align-items:center;"><a style="cursor:pointer;" onclick="contentView();">내용보기</a></div>
+			<div class="viewClass" style="width:50%; background-color:#fff; height:50px; display:flex; justify-content:center; align-items:center;"><a style="cursor:pointer;" onclick="reviewView();">리뷰보기</a></div>
+		</div>
+	</div>
+	
+	<div id="contentViewId" align="center" style="width:100%; display:none;">
 		<div style="width:50%;">
 			<div>
 				<hr>
@@ -231,91 +236,54 @@ $(".tr_visible a").click(function() {
 		</div>
 	</div>
 	<% int cnt = 0; %>
-	<hr>
-	<div>
-		리뷰<br>
-		<table class="tb_fruits" border='1'>
-		<thead>
-			<tr>
-				<!-- <th>No.</th> -->
-				<th scope="col">작성자</th><th scope="col">제목</th><th scope="col">구매상품</th><th scope="col">작성일</th><th scope="col">조회수</th>
-			</tr>
-		</thead>
-			<tbody>
-				<c:forEach var = "review" items="${reviews }" >
-					<tr class="tr_visible">
-						<!-- <td>${review.review_no }</td> -->
-						
-						<td>${review.user_id }</td>
-						 <th scope="row"><a onclick="reviewDetail('<%= cnt %>');" style="cursor:pointer;">View More</a>${review.title }</th> 
-						<!--<td class="ClickforDetail">${review.title }</td> -->
-						<td>${review.prdt_title }<br>${review.prdt_nm }<br>${review.prdt_color }</td>
-						<td>${review.save_date }</td><td>${review.hit }</td>
-					</tr>
-
-					<tr class="detail" style="display:none;">
-						<td colspan="5">
-							<img style="width:300px;" src="resources/reviewImg/${review.image_file_name }">
-							${review.content} <br>
-							<c:if test="${review.user_id == user_id}">
-							<a href="modifyReview?review_no=${review.review_no }">수정</a>
-							<a href="deleteReview?review_no=${review.review_no }&prdt_id=${review.prdt_id}">삭제</a>
-							</c:if>
-							<% cnt++; %>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
-	
-	<%-- <div align="center" style="width:100%;">
-		<div style="width:50%;" align="left">
-		<hr>
-			리뷰(${ reviews.size() })<br>
-			<table border='1'>
-				<tr>
-					<!-- <th>No.</th> -->
-					<th>작성자</th><th>제목</th><th>구매상품</th><th>작성일</th><th>조회수</th>
-				</tr>
-					<c:forEach var = "review" items="${reviews }" >
+	<div id="reviewDiv" align="center" style="width:100%; display:none;">
+		<div style="width:50%;">
+			<hr>
+			<div>
+				리뷰<br>
+				<table class="tb_fruits" border='1'>
+				<thead>
 					<tr>
-						<!-- <td>${review.review_no }</td> -->
-						<td>${review.user_id }</td>
-						<td><a href="review_detail?review_no=${review.review_no }">${review.title }</a></td>
-						<td>${review.prdt_title }<br>${review.prdt_nm }<br>${review.prdt_color }</td>
-						<td>${review.save_date }</td><td>${review.hit }</td>
+						<!-- <th>No.</th> -->
+						<th scope="col">작성자</th><th scope="col">제목</th><th scope="col">구매상품</th><th scope="col">작성일</th><th scope="col">조회수</th>
 					</tr>
-					</c:forEach>
-			</table>
+				</thead>
+					<tbody>
+						<c:forEach var = "review" items="${reviews }" >
+							<tr class="tr_visible">
+								<!-- <td>${review.review_no }</td> -->
+								
+								<td>${review.user_id }</td>
+								 <th scope="row"><a onclick="reviewDetail('<%= cnt %>');" style="cursor:pointer;">View More</a>${review.title }</th> 
+								<!--<td class="ClickforDetail">${review.title }</td> -->
+								<td>${review.prdt_title }<br>${review.prdt_nm }<br>${review.prdt_color }</td>
+								<td>${review.save_date }</td><td>${review.hit }</td>
+							</tr>
+		
+							<tr class="detail" style="display:none;">
+								<td colspan="5">
+									<div align="center" style="width:100%">
+										<div style="width:50%;">
+											<textarea class="textareaId" style="all:unset; width:100%; height:100px; text-align:center; display:none;">${review.content}</textarea>
+											<div class="textareaValue"></div>
+											 <br>
+											<img style="width:300px;" src="resources/reviewImg/${review.image_file_name }">
+											<c:if test="${review.user_id == user_id}"><br>	
+											<a href="modifyReview?review_no=${review.review_no }">수정</a>
+											<a href="deleteReview?review_no=${review.review_no }&prdt_id=${review.prdt_id}">삭제</a>
+											</c:if>
+											<% cnt++; %>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		<!-- <a href = "">상세페이지</a><a hef = "view_reviews" -->
 	</div>
 	
-	<script src="/resources/js/product_info.js"></script>
-	
-	<!-- 즉시구매 Form -->
-	<form action="directPaymentInfo" method="post" id="directForm">
-		<input type="hidden" value="${ sessionScope.user_id }" name="member_id"> 
-		<input type="hidden" value="${prdt.prdt_id }" name="prdt_id"> 
-		<input type="hidden" value="" name="amount" id="amount">
-	</form>
-	<!-- 즉시구매 Form -->
-
-	<!-- insertWish 이미 db에 담겨 있는 상품이라면 deleteWish로!! -->
-	<c:if test="${ empty wish }">
-		<form action="insertWish" method="post" id="wishForm">
-			<input type="hidden" name="user_id" value="${sessionScope.user_id }">
-			<input type="hidden" name="prdt_id" value="${prdt.prdt_id }">
-		</form>
-	</c:if>
-	<c:if test="${ not empty wish }">
-		<form action="deleteWish" method="post" id="wishForm">
-			<input type="hidden" name="user_id" value="${sessionScope.user_id }">
-			<input type="hidden" name="prdt_id" value="${prdt.prdt_id }">
-		</form>
-	</c:if>
-	<!-- insertWish 이미 db에 담겨 있는 상품이라면 deleteWish로!! --> --%>
 	<script src="/resources/js/product_info.js"></script>
 	<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 	
