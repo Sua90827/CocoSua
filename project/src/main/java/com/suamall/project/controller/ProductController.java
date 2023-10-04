@@ -29,11 +29,15 @@ public class ProductController {
 	
 	@GetMapping("/productList")
 	public String productlist(Model model) {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
+		
 		List<ProductListViewDTO> list = service.getProductListView();
 		
 		model.addAttribute("prdt", list);
@@ -42,19 +46,26 @@ public class ProductController {
 	
 	@GetMapping("/productInfo")
 	public String productInfo() {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
+		
 		return "admin/product/product_view";
 	}
 	
 	@GetMapping("/productRegister")
 	public String productRegister(Model model) {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
 		List<ColorDTO> color = service.getColorList();
@@ -86,11 +97,15 @@ public class ProductController {
 	
 	@GetMapping("/categoryRegister")
 	public String categoryRegister(Model model) {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
+		
 		List<CategoryDTO> list = service.getCategoryList();
 		model.addAttribute("cate", list);
 		return "admin/product/category_register";
@@ -122,11 +137,15 @@ public class ProductController {
 	
 	@GetMapping("/prdtUpdate")
 	public String prdtUpdate(@RequestParam("prdt_id") int prdt_id , Model model) {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
+		
 		ProductDTO prdt = service.getPrdtDTO(prdt_id);
 		System.out.println(prdt.getPrdt_id() + " === " + prdt.getPrdt_img());
 		List<CategoryDTO> cate = service.getCategoryList();

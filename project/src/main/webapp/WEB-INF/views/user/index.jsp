@@ -22,6 +22,16 @@
 	<c:if test="${sessionScope.loginType eq 0 || sessionScope.loginType eq 1 || sessionScope.loginType eq 2 }">
 		<%@ include file="../nav_bar/user_nav.jsp"%>
 	</c:if>
+	<c:if test="${ not empty msg }">
+		<script>
+			alert("이미 로그인하셨습니다.");
+		</script>
+	</c:if>
+	<c:if test="${ not empty msg1 }">
+		<script>
+			alert("이미 로그인하셨습니다.");
+		</script>
+	</c:if>
 	<br>
 	<div class="user_index_page">
 		<div class="user_index_location">
