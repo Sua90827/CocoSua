@@ -77,6 +77,8 @@ public class ProductController {
 	
 	@GetMapping("categoryDelete.do")
 	public String categoryDelete(@RequestParam("cate_id") int cate_id, Model model) {
+		List<Integer> prdtByCate = service.getPrdtByCate(cate_id);
+		service.deletePrdtPics(prdtByCate);//
 		service.deleteRelatedPrdt(cate_id);
 		service.CateDelete(cate_id);
 		List<CategoryDTO> list = service.getCategoryList();

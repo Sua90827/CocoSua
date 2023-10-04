@@ -62,10 +62,16 @@
 					<td><input type="text" name="prdt_amount" value="${product.prdt_amount }"></td>
 				</tr>
 			</table>
-			<br><br>
-			<div class="product_file">
-				<input type="file" name="file"><br>
-			</div>
+				<div>
+					<div align="center" style="padding-top:30px;">
+						<img class = "img-fluid product_list_img_size" id="userImgFile"style="width: 130px;" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." />
+						<img class="img-fluid product_list_img_size" id="preview" alt="Preview"/>
+					</div>
+				</div>
+				<br><br>
+				<div class="product_file">
+					<input type="file" name="file" id="file"  onchange="previewImage(event);">
+				</div>
 			<div class="product_botton">
 				<button type="submit">상품 등록</button> <input type="button" onclick="window.history.back()" value="뒤로가기">
 			</div>
@@ -73,7 +79,22 @@
 	</div>
 </div>
 
+<script>
+const previewImage = (event) => {
+	var input = event.target;
+	var reader = new FileReader();
 
+	reader.onload = function() {
+		var imgElement = document.getElementById('preview');
+		imgElement.src = reader.result;
+	};
+
+	reader.readAsDataURL(input.files[0]);
+
+	document.getElementById('preview').style.display = 'block';
+	document.getElementById('userImgFile').style.display = 'none';
+}
+</script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>

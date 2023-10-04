@@ -67,6 +67,8 @@ public interface ProductRepository {
 
     void swapCategoryIds(@Param("cateId1") int cateId1, @Param("cateId2") int cateId2);
 
+	List<Integer> getPrdtByCate(int cate_id);
+
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),
 //	dto.setColor_nm("sjiod");

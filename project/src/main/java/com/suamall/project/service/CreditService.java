@@ -5,6 +5,8 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +17,17 @@ import com.suamall.project.dto.orderInfoView.ProductOrderDTO;
 import com.suamall.project.dto.orderInfoView.ReducingAmountDTO;
 import com.suamall.project.dto.orderInfoView.ReviewCheckUpdateDTO;
 import com.suamall.project.repository.CreditRepository;
+import com.suamall.project.repository.MemberRepository;
 
 @Service
 public class CreditService {
 @Autowired
-CreditRepository repo;
+private CreditRepository repo;
+@Autowired
+private MemberRepository memberRepo;
+@Autowired
+private HttpSession session;
+
 //public void getCreditDate() {
 //	LocalDate now = LocalDate.now(ZoneId.of())
 //}
@@ -57,6 +65,8 @@ public void updateDeleteCreditInfo(CreditInfoDTO dto) {
 				}
 			}
 		}
+		int num = memberRepo.getCartAmount(dto.getUser_id());
+		session.setAttribute("cart_amount", num);	
 	}catch(Exception e) {
 		e.printStackTrace();
 	}

@@ -78,6 +78,10 @@
 	}
 
 	window.onload = () => {
+		let contentId = document.getElementById("contentViewId");
+		let viewClass = document.querySelectorAll(".viewClass");
+		contentId.style.display = "";
+		viewClass[0].style.backgroundColor = "#eee";
 		let textareaId = document.querySelectorAll(".textareaId");
 		let textareaValue = document.querySelectorAll(".textareaValue");
 		for(var i = 0; i < textareaId.length; i++){

@@ -127,4 +127,7 @@
 	        END
 	    WHERE cate_id IN (#{cateId1}, #{cateId2})
 	</update>
+	<select id="getPrdtByCate" resultType="integer">
+		SELECT prdt_id FROM sh_product_info WHERE cate_id=#{cate_id}
+	</select>
 </mapper>
