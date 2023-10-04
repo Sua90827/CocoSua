@@ -293,18 +293,21 @@ public class ProductService {
 	@Transactional
 	public void swapCategoryIds(int cateId1, int cateId2) {
 		try {
-			// 두 개의 카테고리 ID를 서로 바꾸는 쿼리 실행
 			repo.swapCategoryIds(cateId1, cateId2);
 		} catch (Exception e) {
-			// 예외 발생 시 롤백
 			e.printStackTrace();
 			throw e; // 롤백을 위해 예외를 다시 던집니다.
 		}
 	}
 
-	public void updateCateId(int cate_id) {
-		// TODO Auto-generated method stub
-		
+	public void deletePrdtPics(List<Integer> prdtByCate) {
+		for(int prdtId : prdtByCate) {
+			folderDelete(prdtId);
+		}
 	}
 
+	public List<Integer> getPrdtByCate(int cate_id) {
+		List<Integer> result = repo.getPrdtByCate(cate_id);
+		return result;
+	}
 }

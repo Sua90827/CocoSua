@@ -85,6 +85,7 @@ public class MemberService {
 		}
 		int cart_amount = repo.getCartAmount(dto.getMember_id());
 		session.setAttribute("user_id", dto.getMember_id());
+		System.out.println("memberService loginType =======>"+ db.getMember_login_type());
 		session.setAttribute("loginType", db.getMember_login_type());
 		session.setAttribute("cart_amount", cart_amount);
 		return null;

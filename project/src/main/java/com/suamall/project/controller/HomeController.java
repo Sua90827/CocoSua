@@ -2,6 +2,8 @@ package com.suamall.project.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +31,12 @@ public class HomeController {
 	}
 	
 	@GetMapping("/admin")
-	public String admin() {
+	public String admin(HttpSession session) {
+		int loginTypeSession = (int) session.getAttribute("loginType");
+		System.out.println("LoginType Session =====>"+ loginTypeSession);
+		if(loginTypeSession!=2) {
+			return "redirect:/";
+		}
 		return "admin/index";
 	}
 }

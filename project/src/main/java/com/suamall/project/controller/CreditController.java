@@ -48,9 +48,11 @@ private HttpSession session;
 		service.insertCreditInfo(dto);
 		
 		//수량 없애는거 하고 싶으면 여기서 하면 됨.********************************************************************************************
-		service.reducingPrdtAmount(dto); 
+//		service.reducingPrdtAmount(dto); 
 		
 		service.updateDeleteCreditInfo(dto);
+		
+		
 		
 		return "user/payment/payment_success";
 	}

@@ -26,8 +26,14 @@ public class ProductController {
 	@Autowired
 	private HttpSession session;
 	
+	
 	@GetMapping("/productList")
 	public String productlist(Model model) {
+		int loginTypeSession = (int) session.getAttribute("loginType");
+		System.out.println("LoginType Session =====>"+ loginTypeSession);
+		if(loginTypeSession!=2) {
+			return "redirect:/";
+		}
 		List<ProductListViewDTO> list = service.getProductListView();
 		
 		model.addAttribute("prdt", list);
@@ -36,11 +42,21 @@ public class ProductController {
 	
 	@GetMapping("/productInfo")
 	public String productInfo() {
+		int loginTypeSession = (int) session.getAttribute("loginType");
+		System.out.println("LoginType Session =====>"+ loginTypeSession);
+		if(loginTypeSession!=2) {
+			return "redirect:/";
+		}
 		return "admin/product/product_view";
 	}
 	
 	@GetMapping("/productRegister")
 	public String productRegister(Model model) {
+		int loginTypeSession = (int) session.getAttribute("loginType");
+		System.out.println("LoginType Session =====>"+ loginTypeSession);
+		if(loginTypeSession!=2) {
+			return "redirect:/";
+		}
 		List<ColorDTO> color = service.getColorList();
 		List<CategoryDTO> cate = service.getCategoryList();
 		
@@ -70,6 +86,11 @@ public class ProductController {
 	
 	@GetMapping("/categoryRegister")
 	public String categoryRegister(Model model) {
+		int loginTypeSession = (int) session.getAttribute("loginType");
+		System.out.println("LoginType Session =====>"+ loginTypeSession);
+		if(loginTypeSession!=2) {
+			return "redirect:/";
+		}
 		List<CategoryDTO> list = service.getCategoryList();
 		model.addAttribute("cate", list);
 		return "admin/product/category_register";
@@ -77,6 +98,8 @@ public class ProductController {
 	
 	@GetMapping("categoryDelete.do")
 	public String categoryDelete(@RequestParam("cate_id") int cate_id, Model model) {
+		List<Integer> prdtByCate = service.getPrdtByCate(cate_id);
+		service.deletePrdtPics(prdtByCate);//
 		service.deleteRelatedPrdt(cate_id);
 		service.CateDelete(cate_id);
 		List<CategoryDTO> list = service.getCategoryList();
@@ -99,6 +122,11 @@ public class ProductController {
 	
 	@GetMapping("/prdtUpdate")
 	public String prdtUpdate(@RequestParam("prdt_id") int prdt_id , Model model) {
+		int loginTypeSession = (int) session.getAttribute("loginType");
+		System.out.println("LoginType Session =====>"+ loginTypeSession);
+		if(loginTypeSession!=2) {
+			return "redirect:/";
+		}
 		ProductDTO prdt = service.getPrdtDTO(prdt_id);
 		System.out.println(prdt.getPrdt_id() + " === " + prdt.getPrdt_img());
 		List<CategoryDTO> cate = service.getCategoryList();
