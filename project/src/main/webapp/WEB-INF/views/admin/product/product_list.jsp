@@ -48,7 +48,11 @@
 					<td>${product.prdt_price }</td>
 					<td>${product.prdt_amount }</td>
 					<td>${product.cate_nm }</td>
-					<td><a href="prdtUpdate?prdt_id=${product.prdt_id }"><button type="button" class="product_update_button">수정</button></a><button type="button" class="product_delete_button" onclick="productDelete(${product.prdt_id});">삭제</button></td>
+					<td>
+					<a href="prdtUpdate?prdt_id=${product.prdt_id }"><button type="button" class="product_update_button">수정</button></a>
+					<button type="button" class="product_delete_button abc" onclick="productDelete(${product.prdt_id});">삭제</button>
+					<button type="button" class="product_hide_button abc" onclick="productHide(${product.prdt_id});">숨기기</button>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -60,6 +64,18 @@
 		if (window.confirm('상품을 삭제하시겠습니까?'))
 		{
 		    location.href="prdtDelete.do?prdt_id=" + prdtId;
+		}
+		else
+		{
+		    return;
+		}
+	}
+	
+	function productHide(id){
+		var prdtId = id;
+		if (window.confirm('상품을 숨기겠습니까?'))
+		{
+		    location.href="productHide.do?prdt_id=" + prdtId;
 		}
 		else
 		{
