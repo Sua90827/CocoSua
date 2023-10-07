@@ -45,6 +45,13 @@ public class ProductController {
 		return "admin/product/product_list";
 	}
 	
+	@GetMapping("/hiddenProductList")
+	public String hiddenProductList(Model model) {
+		List<ProductDTO> hiddenList = service.getHiddenList();
+		model.addAttribute("hiddenList", hiddenList);
+		return "admin/product/hidden_product_list";
+	}
+	
 	@GetMapping("/productInfo")
 	public String productInfo() {
 		try {
@@ -242,16 +249,7 @@ public class ProductController {
 		service.prdtDelete(prdt_id);
 		return "redirect:productList";
 	}
-	
-	@GetMapping("productHide.do")
-	public String productHide(@RequestParam("prdt_id") int prdt_id, Model model) {
-		
-		//컬럼 추가(숨김=0 보임=1) 
-		//select * oooooo where show=1; ===> user에게 보여지는 상품 목록
-		//
-		
-		return null;
-	}
+
 	
 	@GetMapping("adminProductInfo")
 	public String adminPrdtInfo(@RequestParam("prdt_id") int prdt_id, Model model) {
@@ -278,5 +276,15 @@ public class ProductController {
 		List<ProductDTO> dto = service.selectWishItems((String) session.getAttribute("user_id"));
 		model.addAttribute("prdt", dto);
 		return "user/myPage/wish_list";
+	}
+	
+	@GetMapping("productHide.do")
+	public String productHide(@RequestParam("prdt_id") int prdt_id, Model model) {
+		service.prdtHide(prdt_id);
+		//컬럼 추가(숨김=0 보임=1) 
+		//select * oooooo where show=1; ===> user에게 보여지는 상품 목록
+		//
+		
+		return "redirect:/productList";
 	}
 }

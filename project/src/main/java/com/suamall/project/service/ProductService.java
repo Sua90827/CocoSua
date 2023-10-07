@@ -310,4 +310,13 @@ public class ProductService {
 		List<Integer> result = repo.getPrdtByCate(cate_id);
 		return result;
 	}
+
+	public void prdtHide(int prdt_id) {
+		repo.prdtHide(prdt_id);
+	}
+
+	public List<ProductDTO> getHiddenList() {
+		List<ProductDTO> result = repo.getHiddenList();
+		return result;
+	}
 }

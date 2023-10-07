@@ -69,6 +69,10 @@ public interface ProductRepository {
 
 	List<Integer> getPrdtByCate(int cate_id);
 
+	void prdtHide(int prdt_id);
+
+	List<ProductDTO> getHiddenList();
+
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),
 //	dto.setColor_nm("sjiod");
