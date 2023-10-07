@@ -68,7 +68,7 @@
 		    	</td>
 		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtAllPrice" value="">원</td>
 		    	<c:if test="${ product.review_check eq 0 }"><td><a href="writingReview?user_id=${user_id }&prdt_title=${ product.prdt_title }&prdt_nm=${ product.prdt_nm }&prdt_id=${ product.prdt_id }&prdt_color=${ product.prdt_color }&index=<%=index++%>&credit_id=${list.credit_id}">Review</a></td></c:if>
-		    	<c:if test="${ product.review_check eq 1 }"><td>Review 완료<%index++; %></td></c:if>
+		    	<c:if test="${ product.review_check eq 1 }"><td>Review 완료<%index++; %></td></c:if>.
 		    	
 		    </tr>
 	</c:forEach>
