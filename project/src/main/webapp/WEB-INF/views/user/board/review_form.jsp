@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/resources/img/cocoIcon.png" rel="shortcut icon"
+	type="image/x-icon">
+<link rel="stylesheet" href="/resources/css/styles.css">
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="resources/js/img_view.js"></script>
 </head>
