@@ -21,9 +21,7 @@
 							<a href="/admin">ADMIN</a>
 						</div>
 					</c:if>
-					<div>
-						<a href="/qna">Q&A</a>
-					</div>
+					
 						<div>
 							<a href="/cart?user_id=${ sessionScope.user_id }">
 								<span><img class="img_cart" src="resources/img/cart.png" style="width:20px;"></span>
