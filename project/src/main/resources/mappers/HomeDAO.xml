@@ -7,7 +7,8 @@
     	insert into test values(#{name})
     </insert>
     <select id="selectAll" resultType="com.suamall.project.dto.ProductDTO">
-    	select * from SH_PRODUCT_INFO
+    	SELECT * FROM sh_product_info
+    	WHERE display_status = 1
     	ORDER BY prdt_id DESC
     </select>
     <select id="selectCate" resultType="com.suamall.project.dto.CategoryDTO">
