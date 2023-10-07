@@ -24,6 +24,11 @@
 </c:if>
 <div class="register_page">
 	<div class="register_location">
+		<div align="center" style="width:100%; margin-bottom:30px;">
+			<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=bb7ab199150e947c571829261362a621&redirect_uri=http://localhost:8080/login/kakao&response_type=code">
+				<img src="resources/img/kakao_short.png"/>
+			</a>
+		</div>
 		<form action="/join.do" method="post" id="f">
 			<input type="hidden" name="member_login_type" value="0">
 			<input type="hidden" id="sample6_extraAddress" readonly="readonly">
