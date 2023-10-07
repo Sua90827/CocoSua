@@ -16,12 +16,6 @@
 						src="/resources/img/userImg.png" alt="..." /></a>
 				</div>
 				<div class="navbar_sub sub_right_menu">
-					<div>
-						<a href="/notice">NOTICE</a>
-					</div>
-					<div>
-						<a href="/qna">Q&A</a>
-					</div>
 					<c:if test="${sessionScope.loginType eq 2}">
 						<div>
 							<a href="/admin">ADMIN</a>

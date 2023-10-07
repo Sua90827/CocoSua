@@ -23,12 +23,6 @@
 						</div>
 					</c:if>
 					<div>
-						<a href="/notice">NOTICE</a>
-					</div>
-					<div>
-						<a href="/qna">Q&A</a>
-					</div>
-					<div>
 						<a href="/productList">PRODUCT</a>
 					</div>
 					<c:if test="${sessionScope.loginType eq 1 }">
