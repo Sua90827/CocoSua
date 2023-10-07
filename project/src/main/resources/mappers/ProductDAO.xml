@@ -42,6 +42,7 @@
 		SELECT a.*, b.cate_nm, c.color_nm FROM sh_product_info a 
 		INNER JOIN sh_product_color c ON a.prdt_color=c.color_id 
 		INNER JOIN sh_product_cate b ON a.cate_id=b.cate_id
+		WHERE display_status=1
 		ORDER BY a.prdt_id DESC
 	</select>
 	
@@ -63,7 +64,7 @@
 		prdt_amount = #{prdt_amount} WHERE prdt_id = #{prdt_id} 
 	</update>
 	<select id="getAllByCateId" resultType="com.suamall.project.dto.ProductDTO">
-		SELECT * FROM sh_product_info WHERE cate_id = #{cate_id}
+		SELECT * FROM sh_product_info WHERE cate_id = #{cate_id} AND display_status=1
 	</select>
 	<select id="getCateColorNmByPrdtId" resultType="com.suamall.project.dto.adminProductListView.ProductListViewDTO">
 		SELECT a.*, b.cate_nm, c.color_nm FROM sh_product_info a 
@@ -129,5 +130,17 @@
 	</update>
 	<select id="getPrdtByCate" resultType="integer">
 		SELECT prdt_id FROM sh_product_info WHERE cate_id=#{cate_id}
+	</select>
+	
+	<update id="prdtHide" parameterType="Integer">
+		UPDATE sh_product_info SET display_status=0 WHERE prdt_id=#{prdt_id}
+	</update>
+	
+	<select id="getHiddenList" resultType="com.suamall.project.dto.adminProductListView.ProductListViewDTO">
+		SELECT a.*, b.cate_nm, c.color_nm FROM sh_product_info a 
+		INNER JOIN sh_product_color c ON a.prdt_color=c.color_id 
+		INNER JOIN sh_product_cate b ON a.cate_id=b.cate_id
+		WHERE display_status=0
+		ORDER BY a.prdt_id DESC
 	</select>
 </mapper>
