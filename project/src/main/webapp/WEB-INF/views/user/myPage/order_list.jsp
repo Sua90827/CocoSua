@@ -53,7 +53,7 @@
 				<th style="width:120px;">PRICE</th>
 				<th style="width:100px;">AMOUNT</th>
 				<th style="width:120px;">ALLPRICE</th>
-				<th></th>
+				<th style="width:120px;"></th>
 			</tr>
 	<c:forEach var="product" items="${ list.productOrderDTO }">
 			<tr>
