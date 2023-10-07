@@ -143,4 +143,8 @@
 		WHERE display_status=0
 		ORDER BY a.prdt_id DESC
 	</select>
+	
+	<update id="prdtDisplay" parameterType="Integer">
+		UPDATE sh_product_info SET display_status=1 WHERE prdt_id=#{prdt_id}
+	</update>
 </mapper>

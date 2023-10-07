@@ -284,7 +284,12 @@ public class ProductController {
 		//컬럼 추가(숨김=0 보임=1) 
 		//select * oooooo where show=1; ===> user에게 보여지는 상품 목록
 		//
-		
 		return "redirect:/productList";
+	}
+	
+	@GetMapping("productDisplay.do")
+	public String productDisplay(@RequestParam("prdt_id") int prdt_id, Model model) {
+		service.prdtDispaly(prdt_id);
+		return "redirect:/hiddenProductList";
 	}
 }

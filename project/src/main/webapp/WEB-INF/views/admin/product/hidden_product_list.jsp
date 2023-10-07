@@ -53,7 +53,7 @@
 					<td>
 					<a href="prdtUpdate?prdt_id=${product.prdt_id }"><button type="button" class="product_update_button">수정</button></a>
 					<button type="button" class="product_delete_button abc" onclick="productDelete(${product.prdt_id});">삭제</button>
-					<button type="button" class="product_hide_button abc" onclick="productHide(${product.prdt_id});">숨기기</button>
+					<button type="button" class="product_hide_button abc" onclick="productDisplay(${product.prdt_id});">보이기</button>
 					</td>
 				</tr>
 			</c:forEach>
@@ -73,11 +73,11 @@
 		}
 	}
 	
-	function productHide(id){
+	function productDisplay(id){
 		var prdtId = id;
 		if (window.confirm('상품을 사용자에게 보이도록 하겠습니까?'))
 		{
-		    location.href="productHide.do?prdt_id=" + prdtId;
+		    location.href="productDisplay.do?prdt_id=" + prdtId;
 		}
 		else
 		{
