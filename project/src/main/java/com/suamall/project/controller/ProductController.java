@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -29,11 +30,15 @@ public class ProductController {
 	
 	@GetMapping("/productList")
 	public String productlist(Model model) {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
+		
 		List<ProductListViewDTO> list = service.getProductListView();
 		
 		model.addAttribute("prdt", list);
@@ -42,19 +47,26 @@ public class ProductController {
 	
 	@GetMapping("/productInfo")
 	public String productInfo() {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
+		
 		return "admin/product/product_view";
 	}
 	
 	@GetMapping("/productRegister")
 	public String productRegister(Model model) {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
 		List<ColorDTO> color = service.getColorList();
@@ -86,11 +98,15 @@ public class ProductController {
 	
 	@GetMapping("/categoryRegister")
 	public String categoryRegister(Model model) {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
+		
 		List<CategoryDTO> list = service.getCategoryList();
 		model.addAttribute("cate", list);
 		return "admin/product/category_register";
@@ -122,11 +138,15 @@ public class ProductController {
 	
 	@GetMapping("/prdtUpdate")
 	public String prdtUpdate(@RequestParam("prdt_id") int prdt_id , Model model) {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
+		
 		ProductDTO prdt = service.getPrdtDTO(prdt_id);
 		System.out.println(prdt.getPrdt_id() + " === " + prdt.getPrdt_img());
 		List<CategoryDTO> cate = service.getCategoryList();
@@ -221,6 +241,16 @@ public class ProductController {
 	public String prdtDelete(@RequestParam("prdt_id") int prdt_id, Model model) {
 		service.prdtDelete(prdt_id);
 		return "redirect:productList";
+	}
+	
+	@GetMapping("productHide.do")
+	public String productHide(@RequestParam("prdt_id") int prdt_id, Model model) {
+		
+		//컬럼 추가(숨김=0 보임=1) 
+		//select * oooooo where show=1; ===> user에게 보여지는 상품 목록
+		//
+		
+		return null;
 	}
 	
 	@GetMapping("adminProductInfo")

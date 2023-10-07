@@ -47,6 +47,12 @@
 	padding-left: 3px;	
 }
 
-.product_delete_button:hover{
+.product_hide_button{
+	all: unset;
+	font-size: 12px;
+	padding-left: 3px;	
+}
+
+.abc:hover{
 	color: var(--bs-link-hover-color);
 }

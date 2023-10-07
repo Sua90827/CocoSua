@@ -32,11 +32,16 @@ public class HomeController {
 	
 	@GetMapping("/admin")
 	public String admin(HttpSession session) {
-		int loginTypeSession = (int) session.getAttribute("loginType");
-		System.out.println("LoginType Session =====>"+ loginTypeSession);
-		if(loginTypeSession!=2) {
+
+		try {
+			int loginTypeSession = (int) session.getAttribute("loginType");
+			if(loginTypeSession!=2) {
+				return "redirect:/";
+			}
+		}catch(NullPointerException e) {
 			return "redirect:/";
 		}
+
 		return "admin/index";
 	}
 }
