@@ -67,7 +67,11 @@
 		    		<input style="all:unset; width: 30px; text-align:center;" class="prdtNum" type="text" value="${ product.prdt_amount }" readonly> 개
 		    	</td>
 		    	<td><input style="all:unset; width: 70px; text-align:center;" type="text" readonly class="prdtAllPrice" value="">원</td>
-		    	<c:if test="${ product.review_check eq 0 }"><td><a href="writingReview?user_id=${user_id }&prdt_title=${ product.prdt_title }&prdt_nm=${ product.prdt_nm }&prdt_id=${ product.prdt_id }&prdt_color=${ product.prdt_color }&index=<%=index++%>&credit_id=${list.credit_id}">Review</a></td></c:if>
+		    	<c:if test="${ product.review_check eq 0 }">
+		    		<td>
+		    			<a class="btnColor" onclick="reviewOn('${ product.prdt_title }','${ product.prdt_nm }','${ product.prdt_id }','${ product.prdt_color }','<%=index++%>','${list.credit_id}')">Review</a>
+		    		</td>
+		    	</c:if>
 		    	<c:if test="${ product.review_check eq 1 }"><td>Review 완료<%index++; %></td></c:if>
 		    	
 		    </tr>
@@ -161,6 +165,75 @@
 		%>
 		
 </c:forEach>
+</div>
+
+<div id="modalContainer" style="display:none;">
+	<div id="modalContent">
+		<div align="center">
+			<h1>Review</h1>
+		</div>
+	    <form action="writeSave" method="post" enctype="multipart/form-data">
+	    	<input type="hidden" id="user_id" name="user_id" value="${ sessionScope.user_id }">
+	        <input type="hidden" id="id" name="id">
+	        <input type="hidden" id="prdt_id" name="prdt_id">
+	        <input type="hidden" id="prdt_nm" name="prdt_nm">
+	        <input type="hidden" id="prdt_color" name="prdt_color">
+	        <input type="hidden" id="prdt_title" name="prdt_title">
+	        <input type="hidden" id="credit_id" name="credit_id">
+	        <input type="hidden" id="index" name="index">
+	        <input type="file" name="file" id="file" style="display:none;" onchange="readURL(event);">
+	         <table>
+	            <tr>
+	               <td style="width:50px; text-align:center;">
+	                  <b>title</b>
+	               </td>
+	               <td style="width:280px;">
+	               		<input style="all:unset; border:1px solid rgba(0, 0, 0, 0.1); width:100%; height:30px;" type="text" name="title">
+	               </td>
+	            </tr>
+	            <tr>
+	               <td style="text-align:center;">
+	                  <b>content</b>
+	               </td>
+	               <td>
+	               	  <textarea style="all:unset; border:1px solid rgba(0, 0, 0, 0.1); width:100%; height:250px;" name="content"></textarea>
+	               </td>
+	            </tr>
+	            <tr>
+	               <td style="text-align:center;">
+	                  <b>Img</b>
+	               </td>
+	               <td align="center" style="height:100px;">
+	               	  
+	               	  	<a id="fileDiv" class="btnColor" onclick="fileClick()">
+		               	  	<div style="display:flex; justify-content:center; align-items:center; width:100px; height:50px; border:1px solid rgba(0, 0, 0, 0.1);">
+		               	  		파일 선택
+		               	  	</div>
+	               	  	</a>
+	               	  
+	               	  <div align="center">
+	               	  	<a onclick="fileClick()"><img style="height:100px; width:auto;" id="preview" alt="Preview"/></a>
+	               	  </div>
+	               </td>
+	            </tr>
+	            <tr>
+	               <td colspan="2" style="text-align:center;">
+	               		<div style="display:flex;">
+	               			<div align="center" style="width:50%;">
+	               				<button class="btnColor" type="submit">글쓰기</button>
+	               			</div>
+	               			<div align="center" style="width:50%;">
+	               				<button class="btnColor" type="button" onclick="reviewOff();">뒤로가기</button>
+	               			</div>
+	               		</div>
+	                  
+	                  
+	                  <button type="reset" id="resetBtn" style="display:none;">초기화</button>
+	               </td>
+	            </tr>
+	         </table>
+	      </form>
+	</div>
 </div>
 
 <script src="resources/js/order_list.js"></script>
