@@ -292,4 +292,11 @@ public class ProductController {
 		service.prdtDispaly(prdt_id);
 		return "redirect:/hiddenProductList";
 	}
+	
+	@GetMapping("search")
+	public String search(@RequestParam("text_for_search") String text, Model model) {
+		List<ProductDTO> searchedProducts = service.search(text);
+		model.addAttribute("searched", searchedProducts);
+		return "user/shop/searched_products";
+	}
 }
