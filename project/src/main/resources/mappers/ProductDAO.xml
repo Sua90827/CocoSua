@@ -147,4 +147,11 @@
 	<update id="prdtDisplay" parameterType="Integer">
 		UPDATE sh_product_info SET display_status=1 WHERE prdt_id=#{prdt_id}
 	</update>
+	
+	<select id="search" resultType="com.suamall.project.dto.ProductDTO">
+		SELECT * FROM (SELECT * FROM sh_product_info WHERE display_status=1)
+		WHERE prdt_nm LIKE '%' || #{text} || '%'
+        OR prdt_title LIKE '%' || #{text} || '%'
+        OR prdt_content LIKE '%' || #{text} || '%'
+	</select>
 </mapper>

@@ -75,6 +75,8 @@ public interface ProductRepository {
 
 	void prdtDisplay(int prdt_id);
 
+	List<ProductDTO> search(String text);
+
 //	ColorDTO dto = new ColorDTO();
 //	dto.setColor_id(1),
 //	dto.setColor_nm("sjiod");

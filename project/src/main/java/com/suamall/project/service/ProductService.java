@@ -323,4 +323,9 @@ public class ProductService {
 	public void prdtDispaly(int prdt_id) {
 		repo.prdtDisplay(prdt_id);
 	}
+
+	public List<ProductDTO> search(String text) {
+		List<ProductDTO> results = repo.search(text);
+		return results;
+	}
 }
