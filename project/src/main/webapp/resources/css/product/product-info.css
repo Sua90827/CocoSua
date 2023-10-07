@@ -121,3 +121,11 @@
 	justify-content:center; 
 	align-items:center;
 }
+
+#addView:hover .addViewText{
+	font-weight:bold;
+}
+
+#foldView:hover .foldViewText{
+	font-weight:bold;
+}

@@ -96,4 +96,53 @@
 			}
 			textareaValue[i].innerHTML = msg;
 		}
+
+
+		let reviewCnt = document.getElementById("reviewCnt").value;
+		let user_id = document.querySelectorAll(".user_id");
+		let title = document.querySelectorAll(".title");
+		let save_date = document.querySelectorAll(".save_date");
+		let content = document.querySelectorAll(".content");
+		let basicUserIdClass = document.querySelectorAll(".basicUserId");
+		let basicSaveDateClass = document.querySelectorAll(".basicSaveDate");
+		let basicTitleClass = document.querySelectorAll(".basicTitle");
+		let detailUserIdClass = document.querySelectorAll(".detailUserId");
+		let detailSaveDateClass = document.querySelectorAll(".detailSaveDate");
+		let detailTitleClass = document.querySelectorAll(".detailTitle");
+		let detailContentClass = document.querySelectorAll(".detailContent");
+
+		for(var i = 0; i < reviewCnt; i++){
+			let userIdValue = user_id[i].value;
+			let titleValue = title[i].value;
+			let saveDateValue = save_date[i].value;
+			let contentValue = content[i].value.replaceAll("\n", "<br>");
+
+			userIdValue = userIdValue.substring(0, 5);
+			userIdValue += "****";
+			saveDateValue = saveDateValue.substring(0, 10);
+
+			basicUserIdClass[i].innerText = userIdValue;
+			basicSaveDateClass[i].innerText = saveDateValue;
+			basicTitleClass[i].innerText = titleValue;
+			detailUserIdClass[i].innerText = userIdValue;
+			detailSaveDateClass[i].innerText = saveDateValue;
+			detailTitleClass[i].innerText = titleValue;
+			detailContentClass[i].innerHTML = contentValue;
+		}
+	}
+
+	const addViewBtn = (cnt) => {
+		let addViewDivClass = document.querySelectorAll(".addViewDiv");
+		let foldViewDivClass = document.querySelectorAll(".foldViewDiv");
+
+		addViewDivClass[Number(cnt)].style.display = "none";
+		foldViewDivClass[Number(cnt)].style.display = "flex";
+	}
+	
+	const foldViewBtn = (cnt) => {
+		let addViewDivClass = document.querySelectorAll(".addViewDiv");
+		let foldViewDivClass = document.querySelectorAll(".foldViewDiv");
+
+		addViewDivClass[Number(cnt)].style.display = "flex";
+		foldViewDivClass[Number(cnt)].style.display = "none";
 	}

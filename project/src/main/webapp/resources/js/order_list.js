@@ -2,11 +2,10 @@ window.onload = () => {
     let prdtPrice = document.querySelectorAll(".prdtPrice");
     let prdtNum = document.querySelectorAll(".prdtNum");
     let prdtAllPrice = document.querySelectorAll(".prdtAllPrice");
-    
+
     for(var i = 0; i < prdtPrice.length; i++){
         prdtAllPrice[i].value = Number(prdtPrice[i].value) * Number(prdtNum[i].value);
     }
-    
 }
 
 const deliveryBtn = (cnt) => {
