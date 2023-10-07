@@ -223,7 +223,8 @@ $(".tr_visible a").click(function() {
 			<div class="viewClass" style="width:50%; background-color:#fff; height:50px; display:flex; justify-content:center; align-items:center;"><a style="cursor:pointer;" onclick="reviewView();">리뷰보기</a></div>
 		</div>
 	</div>
-	
+	<% int cnt = 0; %>
+	<input type="hidden" id="reviewCnt" value="${ reviews.size() }">
 	<div id="contentViewId" align="center" style="width:100%; display:none;">
 		<div style="width:50%;">
 			<div>
@@ -235,8 +236,50 @@ $(".tr_visible a").click(function() {
 			<hr>
 		</div>
 	</div>
-	<% int cnt = 0; %>
 	<div id="reviewDiv" align="center" style="width:100%; display:none;">
+		<div style="width:50%;">
+			<c:forEach var="review" items="${reviews }">
+				<input type="hidden" class="user_id" value="${review.user_id }">
+				<input type="hidden" class="title" value="${review.title }">
+				<input type="hidden" class="save_date" value="${ review.save_date }">
+				<textarea class="content" style="display:none;">${review.content}</textarea>
+				
+				<div class="addViewDiv" align="left" style="display:flex;">
+					<div>
+						<c:if test="${ review.image_file_name.length() eq 3 }"><div style="width:100px;"></div></c:if>
+						<c:if test="${ review.image_file_name.length() ne 3 }"><img style=" width:100px;" src="resources/reviewImg/${review.image_file_name }"></c:if>
+						
+					</div>
+					<a id="addView" style="cursor:pointer;" onclick="addViewBtn('<%=cnt%>')">
+						<div style="padding-left:50px;">
+							<span class="basicUserId">jyseo****</span> | <span class="basicSaveDate">23-10-10</span><br>
+							<span style="font-size:15px;"><b class="basicTitle">이옷이 너무 이쁜거 같아요</b></span><br>
+							<span class="addViewText">더보기▽</span>
+						</div>
+					</a>
+				</div>
+				<div class="foldViewDiv" align="left" style="display:none;">
+					<div style="width:100px;">
+						
+					</div>
+					<a id="foldView" style="cursor:pointer;" onclick="foldViewBtn('<%=cnt++%>')">
+						<div style="padding-left:50px;">
+							<span class="detailUserId">jyseo****</span> | <span class="detailSaveDate">23-10-10</span><br>
+							<span style="font-size:15px;"><b class="detailTitle">이옷이 너무 이쁜거 같아요</b></span><br>
+							<span class="detailContent">아주아주 마음에 들어요 여러분들 많이많이 사주세요 ㅎㅎ!</span><br>
+							<span class="foldViewText">접기△</span>
+							<div>
+								<c:if test="${ review.image_file_name.length() ne 3 }"><img style=" width:300px;" src="resources/reviewImg/${review.image_file_name }"></c:if>
+							</div>
+						</div>
+					</a>
+				</div>
+				<hr>
+			</c:forEach>
+		</div>
+	</div>
+	
+	<div id="reviewDiv1" align="center" style="width:100%; display:none;">
 		<div style="width:50%;">
 			<hr>
 			<div>
