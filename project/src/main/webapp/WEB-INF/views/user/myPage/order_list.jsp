@@ -181,36 +181,54 @@
 	        <input type="hidden" id="prdt_title" name="prdt_title">
 	        <input type="hidden" id="credit_id" name="credit_id">
 	        <input type="hidden" id="index" name="index">
+	        <input type="file" name="file" id="file" style="display:none;" onchange="readURL(event);">
 	         <table>
 	            <tr>
-	               <td style="width:20%; text-align:center;">
+	               <td style="width:50px; text-align:center;">
 	                  <b>title</b>
 	               </td>
-	               <td style="width:90%;">
-	               		<input style="all:unset; border:1px solid rgba(0, 0, 0, 0.1); width:90%; height:30px;" type="text" name="title">
+	               <td style="width:280px;">
+	               		<input style="all:unset; border:1px solid rgba(0, 0, 0, 0.1); width:100%; height:30px;" type="text" name="title">
 	               </td>
 	            </tr>
 	            <tr>
-	               <td style="width:20%; text-align:center;">
+	               <td style="text-align:center;">
 	                  <b>content</b>
 	               </td>
-	               <td style="width:90%;">
-	               	  <textarea style="all:unset; border:1px solid rgba(0, 0, 0, 0.1); width:90%; height:250px;" name="content"></textarea>
+	               <td>
+	               	  <textarea style="all:unset; border:1px solid rgba(0, 0, 0, 0.1); width:100%; height:250px;" name="content"></textarea>
 	               </td>
 	            </tr>
 	            <tr>
 	               <td style="text-align:center;">
 	                  <b>Img</b>
 	               </td>
-	               <td>
-	               	  <input type="file" name="file" style="" onchange="readURL(this);">
-	               	  <img id="preview"  width=100 height=100 alt="선택된 이미지가 없습니다." />
+	               <td align="center" style="height:100px;">
+	               	  
+	               	  	<a id="fileDiv" class="btnColor" onclick="fileClick()">
+		               	  	<div style="display:flex; justify-content:center; align-items:center; width:100px; height:50px; border:1px solid rgba(0, 0, 0, 0.1);">
+		               	  		파일 선택
+		               	  	</div>
+	               	  	</a>
+	               	  
+	               	  <div align="center">
+	               	  	<a onclick="fileClick()"><img style="height:100px; width:auto;" id="preview" alt="Preview"/></a>
+	               	  </div>
 	               </td>
 	            </tr>
 	            <tr>
-	               <td colspan="2" style="width:50%; text-align:center;">
-	                  <button class="btnColor" type="submit">글쓰기</button>
-	                  <button class="btnColor" type="button" onclick="reviewOff();">뒤로가기</button>
+	               <td colspan="2" style="text-align:center;">
+	               		<div style="display:flex;">
+	               			<div align="center" style="width:50%;">
+	               				<button class="btnColor" type="submit">글쓰기</button>
+	               			</div>
+	               			<div align="center" style="width:50%;">
+	               				<button class="btnColor" type="button" onclick="reviewOff();">뒤로가기</button>
+	               			</div>
+	               		</div>
+	                  
+	                  
+	                  <button type="reset" id="resetBtn" style="display:none;">초기화</button>
 	               </td>
 	            </tr>
 	         </table>

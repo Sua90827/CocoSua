@@ -15,7 +15,7 @@
 
 .tb_fruits th,
 
-.tb_fruits td {border:1px solid #ccc; border-top:0; text-align:center; width:50%;}
+.tb_fruits td {border:1px solid #ccc; border-top:0; text-align:center;}
 
 .tb_fruits thead th {border-top:1px solid #ccc; background:#767676; color:#fff;}
 
@@ -245,7 +245,7 @@ $(".tr_visible a").click(function() {
 				<thead>
 					<tr>
 						<!-- <th>No.</th> -->
-						<th scope="col">작성자</th><th scope="col">제목</th><th scope="col">구매상품</th><th scope="col">작성일</th><th scope="col">조회수</th>
+						<th	style="width:20%;">작성자</th><th style="width:20%;">제목</th><th style="width:30%;">구매상품</th><th style="width:30%;">작성일</th>
 					</tr>
 				</thead>
 					<tbody>
@@ -257,11 +257,11 @@ $(".tr_visible a").click(function() {
 								 <th scope="row"><a onclick="reviewDetail('<%= cnt %>');" style="cursor:pointer;">View More</a>${review.title }</th> 
 								<!--<td class="ClickforDetail">${review.title }</td> -->
 								<td>${review.prdt_title }<br>${review.prdt_nm }<br>${review.prdt_color }</td>
-								<td>${review.save_date }</td><td>${review.hit }</td>
+								<td>${review.save_date }</td>
 							</tr>
 		
 							<tr class="detail" style="display:none;">
-								<td colspan="5">
+								<td colspan="4">
 									<div align="center" style="width:100%">
 										<div style="width:50%;">
 											<textarea class="textareaId" style="all:unset; width:100%; height:100px; text-align:center; display:none;">${review.content}</textarea>
