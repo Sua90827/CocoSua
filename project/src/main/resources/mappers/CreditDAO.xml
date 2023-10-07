@@ -34,7 +34,7 @@
 		SELECT
 		p.prdt_id,p.cate_id,p.prdt_nm,p.prdt_img,
 		p.prdt_title,co.color_nm AS prdt_color,
-		p.prdt_price
+		p.prdt_price, p.display_status
 		FROM
 		sh_product_info p
 		JOIN

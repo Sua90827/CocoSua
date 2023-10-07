@@ -319,4 +319,8 @@ public class ProductService {
 		List<ProductDTO> result = repo.getHiddenList();
 		return result;
 	}
+
+	public void prdtDispaly(int prdt_id) {
+		repo.prdtDisplay(prdt_id);
+	}
 }

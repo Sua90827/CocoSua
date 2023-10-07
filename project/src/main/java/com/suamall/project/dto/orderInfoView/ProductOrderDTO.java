@@ -15,4 +15,5 @@ public class ProductOrderDTO {
     private int prdt_price;
     private int prdt_amount;
     private int review_check;
+    private int display_status;
 }

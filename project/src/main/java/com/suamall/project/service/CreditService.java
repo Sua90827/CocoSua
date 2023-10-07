@@ -90,8 +90,8 @@ public List<OrderListDTO> getOrderListById(String id) {
 		List<ProductOrderDTO> prdtOrderDtoList = new ArrayList<>();
 		// 내가 한 거 위의 한줄 추가한거임 ㅋㅋㅋㅋ 
 		for (String pId : prdtId) {
-			System.out.println(pId);
 			ProductOrderDTO dto = repo.selectProductOrderInfo(pId);
+			
 			dto.setPrdt_amount(Integer.parseInt(prdtAmount[cnt]));
 			dto.setReview_check(Integer.parseInt(reviewCheck[cnt]));
 			cnt++;
