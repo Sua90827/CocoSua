@@ -79,3 +79,7 @@ function readURL(event) {
 	document.getElementById('preview').style.display = 'block';
 	document.getElementById('fileDiv').style.display = 'none';
 }
+
+const hiddenImg = () => {
+    alert("상품판매를 중단한 상품입니다.");
+}

@@ -12,7 +12,7 @@
 <title>CocoSua</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/nav_bar/product_nav.jsp"%>
+<%@ include file="/WEB-INF/views/nav_bar/register_nav.jsp"%>
 <br>
 
 <div class="product_page">
@@ -64,7 +64,9 @@
 			</table>
 				<div>
 					<div align="center" style="padding-top:30px;">
-						<img class = "img-fluid product_list_img_size" id="userImgFile"style="width: 130px;" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." />
+						<%-- <c:if test="${not empty prdt.prdt_img }"> --%>
+							<img class = "img-fluid product_list_img_size" id="userImgFile"style="width: 130px;" src="resources/upload/${prdt.prdt_id }/${prdt.prdt_img}" alt="..." />
+					<%-- 	</c:if> --%>
 						<img class="img-fluid product_list_img_size" id="preview" alt="Preview"/>
 					</div>
 				</div>

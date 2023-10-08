@@ -26,7 +26,10 @@
 						</div>
 					</c:if>
 					<div>
-						<a href="/productList">PRODUCT</a>
+						<a href="/productList">PRODUCT LIST</a>
+					</div>
+					<div>
+						<a href="/productRegister">REGISTER</a>
 					</div>
 					<c:if test="${sessionScope.loginType eq 1 }">
 						<div>

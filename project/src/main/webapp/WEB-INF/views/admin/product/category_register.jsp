@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<%@ include file="/WEB-INF/views/nav_bar/product_nav.jsp"%>
+	<%@ include file="/WEB-INF/views/nav_bar/register_nav.jsp"%>
 	<br>
 	<div class="category_page">
 		<div class="category_location">

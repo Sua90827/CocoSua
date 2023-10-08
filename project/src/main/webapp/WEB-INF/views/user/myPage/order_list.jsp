@@ -57,7 +57,16 @@
 			</tr>
 	<c:forEach var="product" items="${ list.productOrderDTO }">
 			<tr>
-		    	<td><a href="userPrdtInfo?prdt_id=${ product.prdt_id }"><img style="width:40px;" src="/resources/upload/${product.prdt_id }/${product.prdt_img}"></a></td>
+		    	<td>
+		    		<c:if test="${ product.display_status eq 1 }">
+		    			<a href="userPrdtInfo?prdt_id=${ product.prdt_id }"><img style="width:40px;" src="/resources/upload/${product.prdt_id }/${product.prdt_img}"></a>
+		    		</c:if>
+		    		<c:if test="${ product.display_status eq 0 }">
+		    			<a style="cursor:pointer" onclick="hiddenImg()">
+		    				<img style="width:40px;" src="/resources/upload/${product.prdt_id }/${product.prdt_img}">
+		    			</a>
+		    		</c:if>
+		    	</td>
 		    	<td style="text-align: left;">
 		    		<span style="padding-left:10px;">${ product.prdt_title }</span>
 		    		<span style="padding-left:10px;">(name:${ product.prdt_nm } color:${ product.prdt_color })</span>

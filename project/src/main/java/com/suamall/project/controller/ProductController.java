@@ -140,7 +140,7 @@ public class ProductController {
 			return "admin/product/category_register";
 		}
 		
-		return "redirect:productList";
+		return "redirect:categoryRegister";
 	}
 	
 	@GetMapping("/prdtUpdate")
