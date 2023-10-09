@@ -60,7 +60,7 @@ public class MemberController {
 		}
 		msg = service.idCheck(dto);
 		if (msg == "가입완료")
-			return "user/member/join/step2";
+			return "user/member/login";
 		else {
 			model.addAttribute("msg", msg);
 			model.addAttribute("member", dto);
