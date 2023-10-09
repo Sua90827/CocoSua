@@ -26,7 +26,7 @@
 						</div>
 					</c:if>
 					<div>
-						<a href="/productList">PRODUCT LIST</a>
+						<a href="/productList">LIST</a>
 					</div>
 					<div>
 						<a href="/productRegister">REGISTER</a>
@@ -46,10 +46,10 @@
 			
 		</div>
 		<div class="nav_cate_menu">
-			<div>
+			<div class="registerMenu" style="width:50%;">
 				<a href="/productRegister">Product</a>
 			</div> 
-			<div>
+			<div class="registerMenu" style="width:50%;">
 				<a href="/categoryRegister">Category</a>
 			</div>
 		</div>

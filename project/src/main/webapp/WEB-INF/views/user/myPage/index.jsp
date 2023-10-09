@@ -59,10 +59,16 @@
 	</div>
 	<table>
 		<tr>
-			<th style="width:100px;">Id</th>
-			<td style="width: 150px;">${ member.member_id }</td>
-			<th style="width:100px;">Email</th>
-			<td style="width: 250px;">${ member.member_email }</td>
+			<c:if test="${sessionScope.loginType ne 1}">
+				<th style="width:100px;">Id</th>
+				<td style="width: 150px;">${ member.member_id }</td>
+				<th style="width:100px;">Email</th>
+				<td style="width: 250px;">${ member.member_email }</td>
+			</c:if>
+			<c:if test="${ sessionScope.loginType eq 1 }">
+				<th style="width:100px;">Email</th>
+				<td colspan="3" style="width: 500px;">${ member.member_email }</td>
+			</c:if>
 		</tr>
 		<tr>
 			<th>Birthday</th>

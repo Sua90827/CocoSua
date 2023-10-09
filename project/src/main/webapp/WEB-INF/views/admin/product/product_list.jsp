@@ -40,7 +40,7 @@
 			<c:forEach var="product" items="${prdt }">
 				<tr>
 					<td>${product.prdt_id }</td>
-					<td><a href="adminProductInfo?prdt_id=${product.prdt_id }"><img class="img-fluid product_list_img_size" src="resources/upload/${product.prdt_id }/${product.prdt_img}"
+					<td><a href="userPrdtInfo?prdt_id=${product.prdt_id }"><img class="img-fluid product_list_img_size" src="resources/upload/${product.prdt_id }/${product.prdt_img}"
 								 alt="..." /></a></td>
 					<td>${product.prdt_nm }</td>
 					<td>${product.prdt_title }</td>
@@ -58,32 +58,7 @@
 		</table>
 	</div>
 </div>
-<script>
-	function productDelete(id){
-		var prdtId = id;
-		if (window.confirm('상품을 삭제하시겠습니까?'))
-		{
-		    location.href="prdtDelete.do?prdt_id=" + prdtId;
-		}
-		else
-		{
-		    return;
-		}
-	}
-	
-	function productHide(id){
-		var prdtId = id;
-		if (window.confirm('상품을 숨기겠습니까?'))
-		{
-		    location.href="productHide.do?prdt_id=" + prdtId;
-		}
-		else
-		{
-		    return;
-		}
-	}
-</script>
-
+<script src="/resources/js/product_list.js"></script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>

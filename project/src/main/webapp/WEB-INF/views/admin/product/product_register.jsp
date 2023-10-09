@@ -14,7 +14,6 @@
 <body>
 <%@ include file="/WEB-INF/views/nav_bar/register_nav.jsp"%>
 <br>
-
 <div class="product_page">
 	<div class="product_location">
 		<form action="productRegister.do" method="post" enctype="multipart/form-data">
@@ -80,23 +79,7 @@
 		</form>
 	</div>
 </div>
-
-<script>
-const previewImage = (event) => {
-	var input = event.target;
-	var reader = new FileReader();
-
-	reader.onload = function() {
-		var imgElement = document.getElementById('preview');
-		imgElement.src = reader.result;
-	};
-
-	reader.readAsDataURL(input.files[0]);
-
-	document.getElementById('preview').style.display = 'block';
-	document.getElementById('userImgFile').style.display = 'none';
-}
-</script>
+<script src="/resources/js/product_register.js"></script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>

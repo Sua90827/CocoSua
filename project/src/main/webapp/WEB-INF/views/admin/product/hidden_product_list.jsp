@@ -61,31 +61,9 @@
 	</div>
 </div>
 <script>
-	function productDelete(id){
-		var prdtId = id;
-		if (window.confirm('상품을 삭제하시겠습니까?'))
-		{
-		    location.href="prdtDelete.do?prdt_id=" + prdtId;
-		}
-		else
-		{
-		    return;
-		}
-	}
 	
-	function productDisplay(id){
-		var prdtId = id;
-		if (window.confirm('상품을 사용자에게 보이도록 하겠습니까?'))
-		{
-		    location.href="productDisplay.do?prdt_id=" + prdtId;
-		}
-		else
-		{
-		    return;
-		}
-	}
 </script>
-
+<script src="/resources/js/hidden_product_list.js"></script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>
