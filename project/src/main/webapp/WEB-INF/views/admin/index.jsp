@@ -14,7 +14,10 @@
 <body>
 <%@ include file="../nav_bar/admin_nav.jsp"%>
 <br>
-
+	<div align="center" style="padding-top:50px;">
+		<a href="/productList"><button style="all:unset; cursor:pointer; width:200px; height:50px; border: 1px solid rgba(0, 0, 0, 0.1);">Product List</button></a><br>
+		<a href="/productRegister"><button style="all:unset; cursor:pointer; width:200px; height:50px; border: 1px solid rgba(0, 0, 0, 0.1);">Register</button></a>
+	</div>
 
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>

@@ -26,7 +26,7 @@
 						</div>
 					</c:if>
 					<div>
-						<a href="/productList">PRODUCT LIST</a>
+						<a href="/productList">LIST</a>
 					</div>
 					<div>
 						<a href="/productRegister">REGISTER</a>

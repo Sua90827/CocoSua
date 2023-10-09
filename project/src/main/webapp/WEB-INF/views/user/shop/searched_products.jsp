@@ -60,6 +60,11 @@
 						</div>
 						</c:forEach>
 					</c:if>
+					<c:if test="${ searched.size() eq 0 }">
+						<div align="center" style="color:red;">
+							There are no related products
+						</div>
+					</c:if>
 					</div>
 				</div>
 			</section>
