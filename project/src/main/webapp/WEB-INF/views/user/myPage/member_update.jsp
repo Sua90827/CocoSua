@@ -16,6 +16,9 @@
 <c:if test="${ empty sessionScope.loginType }">
 	<%@ include file="/WEB-INF/views/nav_bar/basic_nav.jsp"%>
 </c:if>
+<c:if test="${sessionScope.loginType eq 0 || sessionScope.loginType eq 1 || sessionScope.loginType eq 2 }">
+	<%@ include file="../../nav_bar/user_nav.jsp"%>
+</c:if>
 
 <c:if test="${ not empty msg }">
 	<script>
@@ -27,6 +30,12 @@
 		<form method="post" id="f">
 			<input type="hidden" id="sample6_extraAddress" readonly="readonly">
 			<table class="join_table">
+				<c:if test="${ sessionScope.loginType eq 1 }">
+					<input type="hidden" id="id" class="id" name="member_id" value="${member.member_id }">
+					<input type="hidden" id="pw" name="member_pw" value="" onkeydown="pw_click();" onblur="pw_blur();" placeholder="PASSWORD">
+					<input type="hidden" id="pwCheck" name="member_pwCheck" value="" placeholder="PASSWORDCHECK">
+				</c:if>
+				<c:if test="${ sessionScope.loginType ne 1}">
 				<tr>
 				    <td style="width:30%">
 				    	아이디
@@ -51,6 +60,7 @@
 				    	<input type="password" id="pwCheck" name="member_pwCheck" value="" placeholder="PASSWORDCHECK">
 				    </td>
 				</tr>
+				</c:if>
 				<tr>
 				    <td>이름</td>
 				    <td>

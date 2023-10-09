@@ -95,24 +95,24 @@ function check(){
 	    }		
 	}
     
-    var idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{5,19}$/;
+    // var idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{5,19}$/;
     var pwRegex = /(?=.*\d)(?=.*[a-zA-ZS])(?=.*?[#?!@$%^&*-]).{8,19}/;
     var birthRegex;
     var emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
     var phoneRegex = /^[0-9]{11,11}$/;
     
-    var idr = idRegex.test(id);
+    // var idr = idRegex.test(id);
     var pwr = pwRegex.test(pw);
     var emailr = emailRegex.test(email);
     var phoner = phoneRegex.test(phone);
     
 
-    if(idr === false){
-		alert("아이디가 형식에 맞지 않습니다.");
-		document.getElementById("id").focus();
-//        document.getElementById("msg").innerText="아이디가 형식에 맞지 않습니다.";
-        return;
-    }
+//     if(idr === false){
+// 		alert("아이디가 형식에 맞지 않습니다.");
+// 		document.getElementById("id").focus();
+//      document.getElementById("msg").innerText="아이디가 형식에 맞지 않습니다.";
+//         return;
+//     }
     if(pw.length > 0){
 	    if(pwr === false){
 			alert("비밀번호가 형식에 맞지 않습니다.");
