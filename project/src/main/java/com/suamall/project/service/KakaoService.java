@@ -146,6 +146,9 @@ public class KakaoService {
 			return "check detail address";
 		}
 		
+		session.setAttribute("user_id", input.getMember_id());
+		session.setAttribute("loginType", 1);
+		session.setAttribute("cart_amount", 0);
 		repo.storeDTO(input);
 		return "가입완료";
 	

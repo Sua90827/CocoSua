@@ -53,6 +53,8 @@ public class MemberService {
 
 		if(db == null) {
 			session.setAttribute("user_id", inputDTO.getMember_id());
+			session.setAttribute("loginType", 0);
+			session.setAttribute("cart_amount", 0);
 			inputDTO.setMember_pw(passwordEncoder.encode(inputDTO.getMember_pw()));
 			repo.storeDTO(inputDTO);
 			return "가입완료";
