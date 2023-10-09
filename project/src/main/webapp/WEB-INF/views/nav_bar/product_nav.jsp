@@ -46,10 +46,10 @@
 			
 		</div>
 		<div class="nav_cate_menu">
-			<div>
+			<div class="listMenu" style="width:50%;">
 				<a href="/productList">Display</a>
 			</div> 
-			<div>
+			<div class="listMenu" style="width:50%;">
 				<a href="/hiddenProductList">Hidden</a>
 			</div>
 		</div>

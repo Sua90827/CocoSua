@@ -222,7 +222,7 @@ $(".tr_visible a").click(function() {
 	<div align="center" style="width:100%;">
 		<div style="width:50%; display:flex; justify-content:space-between;">
 			<div class="viewClass" style="width:50%; background-color:#fff; height:50px; display:flex; justify-content:center; align-items:center;"><a style="cursor:pointer;" onclick="contentView();">내용보기</a></div>
-			<div class="viewClass" style="width:50%; background-color:#fff; height:50px; display:flex; justify-content:center; align-items:center;"><a style="cursor:pointer;" onclick="reviewView();">리뷰보기</a></div>
+			<div class="viewClass" style="width:50%; background-color:#fff; height:50px; display:flex; justify-content:center; align-items:center;"><a style="cursor:pointer;" onclick="reviewView();">리뷰보기(${ reviews.size() })</a></div>
 		</div>
 	</div>
 	<% int cnt = 0; %>
