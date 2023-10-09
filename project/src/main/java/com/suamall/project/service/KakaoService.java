@@ -146,7 +146,6 @@ public class KakaoService {
 			return "check detail address";
 		}
 		
-		session.setAttribute("user_id", input.getMember_id());
 		repo.storeDTO(input);
 		return "가입완료";
 	
