@@ -52,20 +52,6 @@ public class ProductController {
 		return "admin/product/hidden_product_list";
 	}
 	
-	@GetMapping("/productInfo")
-	public String productInfo() {
-		try {
-			int loginTypeSession = (int) session.getAttribute("loginType");
-			if(loginTypeSession!=2) {
-				return "redirect:/";
-			}
-		}catch(NullPointerException e) {
-			return "redirect:/";
-		}
-		
-		return "admin/product/product_view";
-	}
-	
 	@GetMapping("/productRegister")
 	public String productRegister(Model model) {
 		try {

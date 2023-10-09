@@ -112,7 +112,7 @@ public class MemberController {
 	public String modifyInfo(Model model) {
 		MemberDTO memberInfo = service.getMemberInfo((String) session.getAttribute("user_id"));
 		model.addAttribute("member", memberInfo);
-		return "user/myPage/member_update";
+		return "user/myPage/member_update";			
 	}
 
 	@PostMapping("modifyWithPw")

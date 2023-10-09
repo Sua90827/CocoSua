@@ -25,31 +25,33 @@
 	<div style="width: 600px; display: flex; justify-content:space-between;">
 		
 		<div style="width:25%">
-			<a class="itemsList" href="orderList">구매목록</a>
+			<a class="itemsList" href="orderList">Order List</a>
 		</div>
 		
 		
 		<div style="width:25%">
-			<a class="itemsList" href="memberModifyInfo">회원수정</a>
+			<a class="itemsList" href="memberModifyInfo">Modify Info</a>
 		</div>
 		
 		<c:if test="${ sessionScope.loginType eq 1 }">
 			<div style="width:25%">
-				<a class="itemsList" onclick="kakaoMemberDelete('${sessionScope.user_id}');">회원탈퇴</a>
+				<a class="itemsList" onclick="kakaoMemberDelete('${sessionScope.user_id}');">Unregister</a>
 			</div>
 		</c:if>
 				
 		<c:if test="${ sessionScope.loginType eq 0 || sessionScope.loginType eq 2 }">
 			<div style="width:25%"> 
-				<a class="itemsList" href="memberDeleteInfo">회원탈퇴</a>
+				<a class="itemsList" href="memberDeleteInfo">Unregister</a>
 			</div>
 		</c:if> 
 		
 		<div style="width:25%">
-			<a class="itemsList wishList" href="wishList">위시리스트</a>
+			<a class="itemsList wishList" href="wishList">Wish List</a>
 		</div>
 		
 	</div>
+</div>
+<div style="height:50px;">
 </div>
 <div align="center">
 	<div style="width:600px; text-align: left;">
@@ -58,24 +60,25 @@
 	<table>
 		<tr>
 			<c:if test="${sessionScope.loginType ne 1}">
-				<th style="width:100px;">아이디</th>
+				<th style="width:100px;">Id</th>
 				<td style="width: 150px;">${ member.member_id }</td>
-				<th style="width:100px;">이메일</th>
+				<th style="width:100px;">Email</th>
 				<td style="width: 250px;">${ member.member_email }</td>
 			</c:if>
 			<c:if test="${ sessionScope.loginType eq 1 }">
-				<th style="width:100px;">이메일</th>
+				<th style="width:100px;">Email</th>
 				<td colspan="3" style="width: 500px;">${ member.member_email }</td>
 			</c:if>
+
 		</tr>
 		<tr>
-			<th>생년월일</th>
+			<th>Birthday</th>
 			<td>${ member.member_birth }</td>
-			<th>핸드폰</th>
+			<th>Phone</th>
 			<td><span id="userPhone"></span></td>
 		</tr>
 		<tr>
-			<th>주소</th>
+			<th>Address</th>
 			<td colspan="3">${ member.member_address } ${ member.member_address_detail }</td>
 		</tr>
 	</table>
