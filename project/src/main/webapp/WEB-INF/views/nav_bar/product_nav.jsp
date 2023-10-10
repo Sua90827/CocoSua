@@ -7,12 +7,7 @@
 		<div class="navbar_bottom_line">
 			<div class="navbar_main_menu">
 				<div class="navbar_sub sub_left_menu">
-				<form action="search" method="get">
-					<div>
-						<input type="text" name="text_for_search">
-						<input type="submit" value="⌕" style="color:black;">
-					</div>
-				</form>
+				
 				</div>
 				<div class="navbar_sub">
 					<div class="sub_center_menu">

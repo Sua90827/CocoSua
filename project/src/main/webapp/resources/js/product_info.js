@@ -146,3 +146,15 @@
 		addViewDivClass[Number(cnt)].style.display = "flex";
 		foldViewDivClass[Number(cnt)].style.display = "none";
 	}
+
+	const reviewDetail = (cnt) => {
+		var number = Number(cnt);
+		const detailClass = document.querySelectorAll(".detail");
+		if(detailClass[number].style.display == "none"){
+			detailClass[number].style.display = "";
+		}else{
+			detailClass[number].style.display = "none";
+		}
+	}
+
+	

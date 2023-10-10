@@ -27,24 +27,7 @@
 %>
 <c:forEach var="list" items="${orderList }">
 	<c:set var="cnt" value="0" />
-	<!-- 
-	credit_id : ${ list.credit_id }<br>
-	credit_price : ${ list.credit_price }<br>
-	credit_way : ${ list.credit_way }<br>
-	order_nm : ${ list.order_nm }<br>
-	order_phone_num : ${ list.order_phone_num }<br>
-	order_email : ${ list.order_email }<br>
-	order_state : ${ list.order_state }<br>
-	recipient_nm : ${ list.recipient_nm }<br>
-	recipient_phone_num : ${ list.recipient_phone_num }<br>
-	recipient_zip_code : ${ list.recipient_zip_code }<br>
-	recipient_address : ${ list.recipient_address }<br>
-	recipient_address_detail : ${ list.recipient_address_detail }<br>
-	recipient_memo : ${ list.recipient_memo }<br>
-	credit_date : ${ list.credit_date }<br>
-	-->
 	<div style="width: 900px; display:flex;"><div style="width:50%; text-align:left;">${ list.credit_date }</div>
-<%-- 	<div style="width:50%; text-align:right;"><button type="button" class="deliveryBtn" onclick="deliveryBtn('<%= cnt %>');">배송정보</button></div> --%>
 	</div>
 		<table class="order_list_table">
 			<tr>
