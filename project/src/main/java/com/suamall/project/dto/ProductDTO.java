@@ -18,4 +18,4 @@ public class ProductDTO {
 	    private int prdt_amount;
 	    private MultipartFile file;
 	    private int display_status;
-};
+}
