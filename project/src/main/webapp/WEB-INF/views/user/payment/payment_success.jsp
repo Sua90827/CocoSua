@@ -18,7 +18,12 @@
 	</c:if>
 	<div align="center">
 		<h1>상품 주문이 완료되었습니다.</h1>
-		<a href="/">쇼핑하기</a><a href="orderList">구매목록</a>
+		
+		<div align="center" style="padding-top:100px;">
+			
+			<a href="/"><div style="width:200px; height:50px; border:1px solid rgba(0, 0, 0, 0.1); display:flex; justify-content: center; align-items:center;">쇼핑하기</div></a><a href="orderList"><div style="width:200px; height:50px; border:1px solid rgba(0, 0, 0, 0.1); display:flex; justify-content:center; align-items:center;">구매목록</div></a>
+			
+		</div>
 	</div>
 	<%@ include file="../../footer/footer.jsp"%>
 </body>
