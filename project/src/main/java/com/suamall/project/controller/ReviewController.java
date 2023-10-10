@@ -36,10 +36,6 @@ public class ReviewController {
 	@GetMapping("writingReview")
 	public String writingReview(ReviewDTO dto, Model model) {
 		model.addAttribute("dto", dto);
-//		System.out.println("prdt_id=***************>"+dto.getPrdt_id());
-//		System.out.println("prdt_nm=***************>"+dto.getPrdt_nm());
-//		System.out.println("prdt_color=***************>"+dto.getPrdt_color());
-//		System.out.println("prdt_title=***************>"+dto.getPrdt_title());
 		return "user/board/review_form";
 	}
 	

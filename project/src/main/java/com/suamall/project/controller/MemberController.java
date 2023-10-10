@@ -42,7 +42,6 @@ public class MemberController {
 		}
 		List<ProductDTO> dto = homeService.selectMini();
 		List<CategoryDTO> cate = homeService.selectCate();
-		//System.out.println(cate.get(0).getCate_nm());
 		model.addAttribute("prdt", dto);
 		model.addAttribute("cate", cate);
 		model.addAttribute("msg1", "z");
@@ -76,7 +75,6 @@ public class MemberController {
 		}
 		List<ProductDTO> dto = homeService.selectMini();
 		List<CategoryDTO> cate = homeService.selectCate();
-		//System.out.println(cate.get(0).getCate_nm());
 		model.addAttribute("prdt", dto);
 		model.addAttribute("cate", cate);
 		model.addAttribute("msg", "z");

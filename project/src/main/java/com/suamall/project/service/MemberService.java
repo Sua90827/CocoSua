@@ -124,9 +124,4 @@ public class MemberService {
 		session.invalidate();
 		repo.deleteMember(dto);
 	}
-
-
-
-
-
 }

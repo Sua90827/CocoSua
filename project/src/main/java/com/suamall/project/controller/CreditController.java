@@ -48,7 +48,7 @@ private HttpSession session;
 		service.insertCreditInfo(dto);
 		
 		//수량 없애는거 하고 싶으면 여기서 하면 됨.********************************************************************************************
-//		service.reducingPrdtAmount(dto); 
+		service.reducingPrdtAmount(dto); 
 		
 		service.updateDeleteCreditInfo(dto);
 		
@@ -63,9 +63,9 @@ private HttpSession session;
 		return "user/myPage/order_list";
 	}
 	
-	@PostMapping("delivery.do")
-	public String deliveryInfo(DeliveryInfoDTO dto ,Model model) {
-		model.addAttribute("delivery", dto);
-		return "user/myPage/delivery_info";
-	}
+//	@PostMapping("delivery.do")
+//	public String deliveryInfo(DeliveryInfoDTO dto ,Model model) {
+//		model.addAttribute("delivery", dto);
+//		return "user/myPage/delivery_info";
+//	}
 }
